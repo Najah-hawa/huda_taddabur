@@ -1,7 +1,11 @@
-<nav>
-  <a routerLink="/courses" routerLinkActive="active">courses</a> |
 
-  <a routerLink="/ramschema" routerLinkActive="active">ramschema</a>
-</nav>
+<div class="title-wrapper"> 
+  <div class="title-flex">
+    <h1 class="title-text" [routerLink]="['']">هُدىً و تَدَبرْ</h1>
+    <div class="title-icon"></div>
+  </div>
+</div>
 
-<router-outlet></router-outlet>  <!-- Här kommer de dynamiska sidorna att visas -->
+
+<router-outlet></router-outlet>  
+ 

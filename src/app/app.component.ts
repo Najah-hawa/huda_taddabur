@@ -17,5 +17,5 @@ import { FormsModule } from '@angular/forms';  // Import FormsModule
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'University_Site';
+  title = 'huda&taddabur';
 }

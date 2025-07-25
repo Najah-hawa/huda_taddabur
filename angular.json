@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "University_Site": {
+    "huda_taddabur": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,8 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/university-site/browser",
-            "baseHref": "/university-site/",
+            "outputPath": "dist/huda_taddabur/browser",
+            "baseHref": "/huda_taddabur/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "University_Site:build:production"
+              "buildTarget": "huda_taddabur:build:production"
             },
             "development": {
-              "buildTarget": "University_Site:build:development"
+              "buildTarget": "huda_taddabur:build:development"
             }
           },
           "defaultConfiguration": "development"

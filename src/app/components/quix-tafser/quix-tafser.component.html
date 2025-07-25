@@ -1,0 +1,40 @@
+<!-- Startknapp -->
+<div class="quiz-start">
+
+   <div class="quiz-promo-box">
+  <button class="quiz-button" (click)="showQuizSection()">اختبر نفسك</button>
+</div>
+
+</div>
+
+<!-- Frågor visas -->
+<div *ngIf="quizStarted && !quizCompleted && questions.length > 0" class="quiz-container">
+
+  <!-- Frågeräknare -->
+  <div class="question-counter">
+    السؤال {{ currentQuestionNumber }} من {{ totalQuestions }}
+  </div>
+
+  <h3 class="quiz-question">{{ questions[currentQuestionIndex].question }}</h3>
+
+  <ul class="quiz-answers">
+    <li *ngFor="let answer of questions[currentQuestionIndex].answers">
+      <button class="quiz-answer-btn" (click)="checkAnswer(answer.isCorrect)">
+        {{ answer.text }}
+      </button>
+    </li>
+  </ul>
+
+  <div *ngIf="showFeedback" class="quiz-feedback">
+    <p [ngClass]="{ 'correct-feedback': isCorrect, 'incorrect-feedback': !isCorrect }">
+      {{ isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة، حاول مرة أخرى.' }}
+    </p>
+  </div>
+</div>
+
+<!-- Slutmeddelande -->
+<div *ngIf="quizStarted && quizCompleted" class="quiz-completed">
+
+  <h3>🎉لقد اجتزت الاختبار ! </h3>
+  <button class="quiz-restart-btn" (click)="restartQuiz()">اعاده الاختبار </button>
+</div>

@@ -1,0 +1,25 @@
+<h2 class="glow-text">{{ surahName }}</h2>
+<div class="tabs">
+  <button 
+    class="tab" 
+    [class.active]="selectedTab === 'tadabbur'" 
+    (click)="selectTab('tadabbur')">
+    📖 تدبر سريع
+  </button>
+
+  <button 
+    class="tab" 
+    [class.active]="selectedTab === 'visual'" 
+    (click)="selectTab('visual')">
+    🧠 ربط تصويري
+  </button>
+</div>
+
+
+<div *ngIf="selectedTab === 'tadabbur'">
+  <ng-content select="[tadabbur]"></ng-content>
+</div>
+
+<div *ngIf="selectedTab === 'visual'">
+  <ng-content select="[visual]"></ng-content>
+</div>

@@ -1,0 +1,97 @@
+@keyframes glowing-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.glow-text {
+  font-family: 'Lateef', serif;
+  font-size: 2.5em;
+  background: linear-gradient(
+    90deg,
+    #46280f,
+    rgba(142, 112, 86, 0.788),
+    #46280f
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowing-gradient 20s ease-in-out infinite;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(70, 40, 15, 0.3);
+  margin: 0; /* يشيل كل الـ margin */
+ margin-bottom: 20px;
+}
+
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 700px;
+  margin-inline: auto; /* يوسّط العنصر */
+}
+
+.tab {
+  display: inline-flex;              /* ⬅️ مهم: يمنع أن يكون block */
+  justify-content: center;
+  align-items: center;
+  width: 160px;                      /* ⬅️ عرض ثابت لكل زر */
+  min-height: 48px;
+  background-color: #f3e5ab;
+  border: none;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.tab:hover {
+  transform: scale(1.05);
+}
+
+.tab.active {
+  background-color: #d4a373;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .glow-text {
+    line-height: 1.4;
+    padding: 0rem;
+  }
+}
+@media (max-width: 480px) {
+  .tabs {
+    gap: 0.5rem;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .tab {
+    width: 45%;             /* ⬅️ كل زر ياخد أقل من النصف */
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 18px;
+    min-height: 40px;
+  }
+  .glow-text {
+    line-height: 1.3;
+  }
+}

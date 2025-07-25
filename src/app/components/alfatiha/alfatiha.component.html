@@ -1,0 +1,179 @@
+<app-surah-hint
+  [surahName]="'الفاتحة'"
+  [hintText]="'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'">
+</app-surah-hint>
+
+<app-surah-tabs [surahName]="'سورة الفاتحة'" >
+
+
+<!--den första part av väljai meny 📖 تدبر سريع -->
+<div tadabbur>
+
+<div class="bismillah-container">
+      <div class="bismillah-line" (click)="toggleAwzoBillah()">
+        <p class="bismillah-text"> أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ</p>
+        <span class="arrow" [class.open]="AwzobillahShown">▼</span>
+      </div>
+
+      <div class="bismillah-tafsir" *ngIf="AwzobillahShown">
+      <p>احتمي وألنجأ الى الله من شر الشيطان<br><b>مواضع الاستعاذة </b>: 1-قبل تلاوة القران .<br>2-  في الصلاة قبل قراءة الفاتحة في الركعة الاولى.<br>3-لدفع الشيطان وكيده ووسوسته.  <br> </p>
+      </div>
+</div>
+
+<div class="bismillah-container">
+      <div class="bismillah-line" (click)="toggleBismillah()">
+        <p class="bismillah-text"> بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ </p>
+        <span class="arrow" [class.open]="bismillahShown">▼</span>
+      </div>
+
+      <div class="bismillah-tafsir" *ngIf="bismillahShown">
+      <p><b>بسم الله</b>: ابتدئ قراءة القرآن مستعينا به سبحانه <br><b>الله</b>: الرب المعبود دون سواه ولا يسمى به غيره سبحانه<br><b>الرحمن</b>: ذي الرحمة العامة لكل الخلق <br><b>الرحيم</b>: بالمؤمنين</p>
+      </div>
+</div>
+
+<!-- desgin och view of fast taddabour-->
+<div class="verse-block" *ngFor="let verse of verses; let i = index">
+  <div class="verse-line" (click)="toggleVerse(i)">
+    <p class="ayah">{{ verse.text }}</p>
+    <span class="arrow" [class.open]="shown[i]">▼</span>
+  </div>
+
+  <div class="tafsir" *ngIf="shown[i]" [innerHTML]="verse.tafsir"></div>
+</div>
+
+  <!-- Knapp för att visa quiz -->
+  
+<!-- alfatiha.html -->
+<div class="quiz-section">
+  <app-quix-tafser [questions]="alfatihaQuestions"></app-quix-tafser>
+</div>
+
+
+
+<div class="benefit-box">
+  <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
+  </svg>
+
+
+
+
+<!--div för فائدة text-->
+
+  <div class="benefit-text">
+    <strong>فائدة:</strong>
+    يستحب للقارئ في الصلاة عند قراءة <span class="highlight">الفاتحة</span> أن يقول
+    <strong>«آمين»</strong>، ومعناها: <em>يا رب استجب</em>.
+  </div>
+</div>
+
+<!--div för تذكير text-->
+<div class="benefit-box">
+  <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
+  </svg>
+
+ <div class="benefit-text">
+    <strong class="highlight">تذكير:</strong> <br>
+    <strong> البسملة </strong>تقليدا للنبي صلى الله عليه وسلم  <br>
+    <strong>وتطبيق لحديث:</strong> كل امر ذي بال لا بيدأ ببسم الله فهو أبتر أو أقطع  <br>
+    <strong> أبتر: </strong><em>المقطوع، الذي لا نسل له، أو الذي انقطع أثره وذِكره.</em><br>
+    <strong> أقطع: </strong><em> مقطوع من الخير، لا يصل إلى تمامه، أو لا يُتمّ بنجاح.</em>
+  </div>
+</div>
+
+
+<app-nezzol
+   [dalel]="' علينا يااحبتي ان نتعلم ان ديننا من القران والسنة وان لانقبل قولا في دينناالا بدليل من القران او السنة '"
+   [nezoolText]=" 
+   '<ul class=\'benefit-list\'>
+    <li>أنها ركن من أركان الصلاة، لا تصح الصلاة إلا بها. <em> روى البخاري ( 756) ومسلم (394) عَنْ عُبَادَةَ بْنِ الصَّامِتِ رضي الله عنه أَنَّ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: لَا صَلَاةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ.</em> </li>
+    <li>أنها أفضل سورة في القرآن.</li>
+    <li>أنها السبع المثاني <em>  قال الله فيها: وَلَقَدْ آتَيْنَاكَ سَبْعًا مِنْ الْمَثَانِي وَالْقُرْآنَ الْعَظِيمَ الحجر/87</em> </li>
+    <li>
+      انها جمعت بين التوسل إلى الله تعالى بالحمد والثناء على الله تعالى وتمجيده،
+     والتوسل إليه بعبوديته وتوحيده، ثم جاء سؤال الله بالهداية
+    </li>
+    <li>
+      أنها ـ مع قصرها ـ تشتمل على أنواع التوحيد الثلاثة،
+    <strong> توحيد الربوبية </strong> (الحمد لله رب العالمين)(مالك يوم الدين) , <strong> وتوحيد الألوهية </strong>
+    (اياك نعبد واياك نستعين)
+     <strong> توحيد الأسماء والصفات </strong>. (الرحمن الرحيم)
+    </li>
+    <li>أنها تشتمل على شفاء القلوب وشفاء الأبدان.</li>
+    <li>أنها تشتمل على الرد على أهل الضلال جميعا</li>
+    <li>الفاتحة هي رقية لأمراض القلب والروح والبدن.</li>
+  </ul>' 
+  ">
+</app-nezzol>
+
+<!-- <app-nezzol  [points]="fawaedAlFatiha"> </app-nezzol> -->
+<app-fawaed-of-surah
+  [SurahFaidah]="'الفاتحة'"
+  [FaidaText]="
+    '<ul class=\'benefit-list\'>
+      <li>الفاتحة ركن في كل ركعة من الصلاة.</li>
+      <li>الاستعانة والتوكل واللجوء لله وحده في كل أمر.</li>
+      <li>أهمية سؤال الله الهداية في كل صلاة.</li>
+      <li>عبادة الله أعظم مطلوب، والاستعانة به طريق الوصول.</li>
+      <li>الفاتحة هي رقية لأمراض القلب والروح والبدن.</li>
+    </ul>'
+  ">
+</app-fawaed-of-surah>
+</div>
+
+
+
+<!-- ربط تصويري لسورة الفاتحة-->
+
+<div visual>
+  
+<div class="map-container">
+<p class="intro-summary">
+  تتكوّن سورة الفاتحة من ثلاث وحدات متكاملة.
+  هذه الأجزاء مترابطة حيث أن:
+  <br>
+     الثناء على اللَّه يجعل القلب حاضر ومعترف بجلال اللَّه. ثم يعلن العبد عبودته الناتجة عن فهم صفات اللَّه. ويأتي  الختم بالدعاء و طلب الهداية فالدعاء الصادق لايكون الا من قلب خاشع ومؤمن بِاللَّه.
+</p>
+
+<!--loppa igenom information i ts -->
+  <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">  
+    <!--visa titel med det försst iden-->
+    <h3 class="section-title">{{ section.title }}</h3>
+     <!--visa descrbtion av delen-->
+    <p class="section-desc">{{ section.description }}</p>
+     <!--loppa igenom ayah som handlar om denna del-->
+    <ul class="verse-list">
+      <li class="verse-item verse-main">
+        <span class="verse-text">{{ section.verses[0] }}</span>
+
+        <!-- Toggle-knappen visas till vänster om första ayah -->
+        <button
+          *ngIf="section.verses.length > 1"
+          class="toggle-btn"
+          (click)="toggleExpanded(i)"
+        >
+          {{ expandedSections[i] ? '↑' : '⋮' }}
+        </button>
+      </li>
+
+      <!-- Visa resterande ayat om expanded -->
+      <li
+        *ngFor="let verse of section.verses.slice(1); let j = index"
+        class="verse-item"
+        [class.extra]="true"
+        [class.show]="expandedSections[i]"
+      >
+        {{ verse }}
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+</div>
+
+  
+</app-surah-tabs>
+
+<app-footer-info />

@@ -1,0 +1,29 @@
+.footer-container {
+  background-color: #f8f5f0;
+  color: #5c452c;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  margin-top: 2rem;
+  border-top: 2px solid #d4a373;
+  border-bottom: 2px solid #d4a373;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
+}
+
+.footer-text,
+.footer-author,
+.footer-contact,
+.footer-copy {
+  margin: 0.3rem 0;
+  line-height: 1.6;
+}
+
+.footer-contact a {
+  color: #a67c52;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}

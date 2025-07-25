@@ -1,0 +1,378 @@
+.quiz-promo-box {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+/* Knappen som startar quizet */
+.quiz-button {
+  background: #fff0da;         /* Ljus varm gul, matchar sidan */
+  border: 2px solid #d4a373;  /* Färgen från dina ramar */
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;         /* Lite rundare hörn */
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #5a3b1c;              /* Mörk brun text */
+  cursor: pointer;
+  width: 100%;                 /* Full bredd på små skärmar */
+  max-width: 400px;            /* Maxbredd på stora skärmar */
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  user-select: none;
+  box-shadow: 0 4px 8px rgba(212, 163, 115, 0.3);
+}
+
+.quiz-button:hover,
+.quiz-button:focus {
+  background: #fce5c3;         /* Ljusare vid hover */
+  outline: none;
+  box-shadow: 0 6px 12px rgba(212, 163, 115, 0.5);
+  color: #4b2f08;
+}
+
+@media (min-width: 601px) {
+  .quiz-promo-box {
+    display: flex;
+    justify-content: center;   /* Centrerar knappen horisontellt */
+  }
+
+  .quiz-button {
+    width: auto;               /* Anpassar bredden efter innehåll */
+  }
+}
+
+.intro-summary {
+  background-color: #fdfaf4;
+  border-top: 1px solid #e6d9c4;
+  border-bottom: 1px solid #e6d9c4;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  color: #5a4631;
+  font-size: 1.05rem;
+  text-align: right;
+  line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* الحاوية تبع بِسْمِ الله */
+.bismillah-container {
+  max-width: 600px;
+  margin: 1.5rem auto 2rem auto; /* في الوسط مع مسافة فوق وتحت */
+  border: 1px solid #d6c5a3;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 3px 8px rgba(212, 163, 115, 0.3);
+  user-select: none;
+}
+
+.bismillah-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.6rem;
+}
+
+.bismillah-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7a5a2a;
+  margin: 0;
+  direction: rtl;
+}
+
+.arrow {
+  font-size: 1.3rem;
+  color: #a67c52;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.bismillah-tafsir {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #5b452a;
+  background-color: #f3e7cd;
+  border-left: 4px solid #d4a373;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  line-height: 1.5;
+  text-align: center;
+  direction: rtl;
+}
+
+
+
+.verse-block {
+  margin-bottom: 1rem;
+  border: 1px solid #e6d7bc;
+  border-radius: 10px;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.verse-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ayah {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #5c432c;
+  margin: 0;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  color: #a67c52;
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.tafsir {
+  margin-top: 0.7rem;
+  padding: 0.7rem 1rem;
+  background-color: #f3e7cd;
+  border-left: 4px solid #d4a373;
+  border-radius: 8px;
+  color: #4c3a27;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+
+.benefit-box {
+  display: flex;
+  align-items: flex-start;
+  background-color: #fff9ec;
+  border: 1px dashed #d4a373;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  gap: 0.75rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.benefit-icon {
+  width: 24px;
+  height: 24px;
+  fill: #d4a373;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.benefit-text {
+  color: #4b3c28;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.benefit-text .highlight {
+  color: #8B4513;
+  font-weight: bold;
+}
+
+
+
+
+@media (max-width: 600px) {
+  .bismillah-container,
+  .verse-block {
+    max-width: 95%;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+  }
+
+  .bismillah-text {
+    font-size: 1.3rem;
+  }
+
+  .ayah {
+    font-size: 1.1rem;
+  }
+
+  .tafsir,
+  .bismillah-tafsir {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .verse-line,
+  .bismillah-line {
+    gap: 0.4rem;
+  }
+
+  .arrow {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .bismillah-text,
+  .ayah {
+    font-size: 1rem;
+  }
+
+  .tafsir,
+  .bismillah-tafsir {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .verse-block,
+  .bismillah-container {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .arrow {
+    font-size: 1rem;
+  }
+}
+
+/*desgin för visual delen */
+
+/* ⬅️ Container för hela kartan (alla block) */
+.map-container {
+  padding: 1rem; /* Inre marginal runt hela innehållet */
+  display: flex; /* Flexbox för att stapla blocken */
+  flex-direction: column; /* Stapla blocken vertikalt */
+  gap: 1.5rem; /* Avstånd mellan varje del/block */
+}
+
+/* ⬅️ Varje avsnitt (rubrik + beskrivning + verser) */
+.map-block {
+  background-color: #fff9ec; /* Ljusgul bakgrund för att se mjuk ut */
+  border-left: 4px solid #d4a373; /* Dekorativ vänsterram för struktur */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Lätt skugga (överflödig – nästa rad skriver över den) */
+  border-radius: 12px; /* Rundade hörn för finare känsla */
+  padding: 1rem; /* Inre marginal för luft */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Djupare skugga för att "lyfta upp" blocken */
+}
+
+/* ⬅️ Titeln för varje del */
+.section-title {
+  font-size: 1.2rem; /* Större textstorlek */
+  margin-bottom: 0.3rem; /* Avstånd till beskrivningen */
+  color: #4b3c28; /* Mörkbrun färg */
+  font-weight: 600; /* Halvfet text */
+}
+
+/* ⬅️ Beskrivningen under varje titel */
+.section-desc {
+  font-size: 0.95rem; /* Lite mindre än standardstorlek */
+  margin-bottom: 0.8rem; /* Avstånd till verslistan */
+  color: #6e5842; /* Mellanbrun textfärg */
+}
+
+/* ⬅️ Listan som innehåller verser */
+.verse-list {
+  list-style: none; /* Tar bort punkter från listan */
+  padding: 0; /* Ingen indragning */
+  margin: 0; /* Ingen marginal */
+  direction: rtl; /* Textinriktning höger-till-vänster för arabiska */
+}
+
+/* ⬅️ Varje enskild versrad (li) */
+.verse-item {
+  display: flex; /* Flex för att kunna placera vers och knapp bredvid varandra */
+  justify-content: space-between; /* Mellanrum mellan text och knapp */
+  align-items: center; /* Centrera vertikalt */
+  font-size: 1.05rem; /* Normalstor text för vers */
+  color: #3e2f1c; /* Mörk brun färg */
+  padding: 0.6rem 0.5rem; /* Inre marginaler top/bottom + höger/vänster */
+  border-bottom: 1px solid #eee; /* Ljus linje mellan verser */
+  transition: all 0.3s ease; /* Mjuk övergång för visuella ändringar */
+  direction: rtl; /* Viktigt: arabisk läsordning */
+}
+
+/* ⬅️ Första versen (huvudvers) – ges extra stil */
+.verse-main {
+  font-weight: 600; /* Fetare text */
+  background-color: #f9f4ec; /* Ljusare bakgrund än blockets färg */
+  border-radius: 8px; /* Mjuka hörn */
+  padding: 0.5rem; /* Extra luft inuti */
+}
+
+/* ⬅️ Själva versens text (separat från knappen) */
+.verse-text {
+  flex: 1; /* Tar upp all plats tillgänglig */
+  text-align: right; /* Justera texten till höger (korrekt för arabisk text) */
+}
+
+/* ⬅️ Knappen (⋮ eller ↑) för att visa/dölja extra verser */
+.toggle-btn {
+  background: none; /* Ingen bakgrundsfärg */
+  border: none; /* Ingen ram */
+  cursor: pointer; /* Muspekaren blir en hand */
+  font-size: 1.2rem; /* Lite större storlek */
+  color: #a67c52; /* Mjuk brun färg */
+  padding-left: 0.8rem; /* Avstånd till vänster */
+  line-height: 1; /* Ingen extra vertikal höjd */
+  flex-shrink: 0; /* Förhindrar att knappen krymper när platsen minskar */
+}
+
+/* ⬅️ Dolda verser (från andra till sista) */
+.extra {
+  display: none; /* Gömda från början */
+  font-weight: 600; /* Samma stil som första */
+  background-color: #f9f4ec; /* Samma bakgrund */
+  border-radius: 8px; /* Mjuka hörn */
+  padding: 0.5rem; /* Luft inuti */
+  text-align: right; /* Text mot höger */
+}
+
+/* ⬅️ När användaren klickar för att visa extra verser */
+.extra.show {
+  display: flex; /* Visa som flexbox (samma stil) */
+}
+
+/* ⬅️ RESPONSIV DESIGN för små skärmar (mobiler) */
+@media (max-width: 600px) {
+  .verse-item {
+    flex-direction: row; /* Liggande layout även på små skärmar */
+    align-items: flex-start; /* Justera uppåt för text */
+  }
+
+  .verse-text {
+    text-align: right; /* Behåll högerjusterad text */
+    font-size: 0.95rem; /* Lite mindre text för mobil */
+  }
+
+  .toggle-btn {
+    font-size: 1.1rem; /* Mindre ikon */
+    padding-left: 0.5rem; /* Mindre avstånd */
+    margin-top: 0rem; /* Undvik extra vertikal spacing */
+  }
+}
+
+
+.quiz-promo-box {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.quiz-button {
+  background: #fff0da;
+  border: 2px solid #d4a373;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #5a3b1c;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.quiz-button:hover {
+  background: #fce5c3;
+}

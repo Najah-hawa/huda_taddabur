@@ -1,47 +1,125 @@
-nav {
-  background-color: #a75bc8; 
+/*design för titeln */
+
+.title-wrapper {
+  background-color: #F8F5F0;
+  padding: 15px 25px;
+  margin: 10px auto;
+  border-radius: 15px;
+  box-shadow: 0 1px 9px #c99f76;
+  max-width: 90%;
+  text-align: center;
   display: flex;
   justify-content: center;
-  padding: 1rem 2rem;
-  gap: 2rem;
-  flex-wrap: wrap;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-
+  padding-right: 0px;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.2rem;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
-  border-bottom: 1px solid #e0e0e0;
-  border-top: 1px solid #e0e0e0;
+.title-flex {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* mellanrum mellan text och ikon */
 }
 
-nav a:hover {
-  background-color: #ab47bc;
-  color:rgba(0, 0, 0, 0.2);
-  
+
+@keyframes glowing-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-nav a.active {
-  background-color: #ab47bc;
- 
+.title-text {
+  font-family: 'Lateef', serif;
+  background: linear-gradient(
+    90deg,
+    #46280f,
+    rgba(142, 112, 86, 0.788),
+    #46280f
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glowing-gradient 20s ease-in-out infinite;
+  text-align: center;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(70, 40, 15, 0.3);
+  font-size: 3.3em;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  order: 1;
 }
 
-/* Responsiv design  */
+
+
+
+.title-icon {
+  background-image: url('./components/images/vecteezy_al-quran-illustration_364475.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 80px;
+  width: 70px;
+  flex-shrink: 0;
+  transform: rotate(+10deg);
+}
+
 @media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  .title-text {
+    font-size: 2.5em;
   }
 
-  nav a {
-    width: 100%;
-    text-align: center;
+  .title-icon {
+    height: 60px;
+    width: 50px;
   }
+}
+
+
+
+
+.surah-benefits.mini {
+  background-color: #fdfaf4;
+  border: 1px solid #e0c9a1;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  max-width: 100%;
+  font-size: 0.95rem;
+  box-shadow: none;
+}
+
+.benefit-title {
+  font-family: 'Lateef', serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #6d4c41;
+  margin-bottom: 0.6rem;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #5a4631;
+  line-height: 1.6;
+}
+
+.benefit-list li {
+  margin-bottom: 0.4rem;
+  padding-right: 1rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.benefit-list li::before {
+  content: ' 💎 ';
+  position: absolute;
+  right: -5px;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
