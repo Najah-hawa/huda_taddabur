@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router'; // 👈 مهم جداً
+
 @Component({
   selector: 'app-quran-parts',
   standalone: true,

@@ -50,6 +50,105 @@ body{
   opacity: 0.7;
 }
 
+/* global design för devar för ayah och tafser för varje surah*/
+
+.verse-block {
+  margin-bottom: 1rem;
+  border: 1px solid #e6d7bc;
+  border-radius: 10px;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.verse-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ayah {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #5c432c;
+  margin: 0;
+}
+
+.arrow {
+  font-size: 1.2rem;
+  color: #a67c52;
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.tafsir {
+  margin-top: 0.7rem;
+  padding: 0.7rem 1rem;
+  background-color: #f3e7cd;
+  border-left: 4px solid #d4a373;
+  border-radius: 8px;
+  color: #4c3a27;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+.ayah-number {
+  color: green;
+  font-weight: bold;
+  font-size: 1.2em;
+
+}
+
+
+@media (max-width: 600px) {
+  
+  .verse-block {
+    max-width: 95%;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+  }
+
+
+  .ayah {
+    font-size: 1.1rem;
+  }
+
+  .tafsir {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .verse-line {
+    gap: 0.4rem;
+  }
+
+  .arrow {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .ayah {
+    font-size: 1rem;
+  }
+
+  .tafsir {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .verse-block{
+    padding: 0.4rem 0.8rem;
+  }
+
+  .arrow {
+    font-size: 1rem;
+  }
+}
 
 
 /*  Media query */

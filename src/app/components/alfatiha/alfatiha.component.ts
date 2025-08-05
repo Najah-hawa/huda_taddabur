@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
 import { SurahHintComponent } from "../surah-hint/surah-hint.component";
+import { SurahsStartComponent } from '../surahs-start/surahs-start.component';
 import { SurahTabsComponent } from "../surah-tabs/surah-tabs.component"; 
 import { QuixTafserComponent } from '../quix-tafser/quix-tafser.component';
 import { FawaedOfSurahComponent } from '../fawaed-of-surah/fawaed-of-surah.component';
 import { FooterInfoComponent } from '../footer-info/footer-info.component';
-
 import { NezzolComponent } from '../nezzol/nezzol.component';
 @Component({
   selector: 'app-alfatiha',
   standalone: true,
-  imports: [RouterModule, SurahHintComponent, SurahTabsComponent, CommonModule, FawaedOfSurahComponent, NezzolComponent, QuixTafserComponent, FooterInfoComponent],
+  imports: [RouterModule, SurahHintComponent, SurahsStartComponent, SurahTabsComponent, CommonModule, FawaedOfSurahComponent, NezzolComponent, QuixTafserComponent, FooterInfoComponent],
   templateUrl: './alfatiha.component.html',
   styleUrl: './alfatiha.component.css'
 })
@@ -95,8 +95,7 @@ alfatihaQuestions = [
 
 
 
-bismillahShown = false;
-AwzobillahShown = false;
+
 shown: boolean[] = [];
 
  verses = [
@@ -162,17 +161,9 @@ toggleExpanded(index: number) {
 }
 
 
-  toggleBismillah() {
-    this.bismillahShown = !this.bismillahShown;
-  }
-
-  toggleAwzoBillah() {
-    this.AwzobillahShown = !this.AwzobillahShown;
-  }
-  toggleVerse(index: number) {
+toggleVerse(index: number) {
     this.shown[index] = !this.shown[index];
   }
-
 
   
 }

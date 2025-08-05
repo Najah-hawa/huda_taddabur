@@ -1,0 +1,71 @@
+<app-surah-hint
+  [surahName]="'النبأ'"
+  [hintText]="'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'">
+</app-surah-hint>
+
+<app-surah-tabs
+  [surahName]="'سورة النبأ'"
+  (tabChanged)="onTabChange($event)"
+>
+  <div tadabbur>
+    <app-surahs-start></app-surahs-start>
+  </div>
+
+  <div visual>
+    <div class="map-container">
+      <p class="intro-summary">
+        تتكوّن سورة الفاتحة من ثلاث وحدات متكاملة...
+      </p>
+
+      <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
+        <h3 class="section-title">{{ section.title }}</h3>
+        <p class="section-desc">{{ section.description }}</p>
+        <ul class="verse-list">
+          <li class="verse-item verse-main">
+            <span class="verse-text">{{ section.verses[0] }}</span>
+            <button
+              *ngIf="section.verses.length > 1"
+              class="toggle-btn"
+              (click)="toggleExpanded(i)">
+              {{ expandedSections[i] ? '↑' : '⋮' }}
+            </button>
+          </li>
+          <li
+            *ngFor="let verse of section.verses.slice(1); let j = index"
+            class="verse-item"
+            [class.extra]="true"
+            [class.show]="expandedSections[i]">
+            {{ verse }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  
+</app-surah-tabs>
+
+<!-- Visa ayah bara om flik == "tadabbur" -->
+<div *ngIf="selectedTab === 'tadabbur'" class="verse-wrapper">
+<div class="verse-block" *ngFor="let verse of verses; let i = index">
+  <div class="verse-line" (click)="toggleVerse(i)">
+
+    <!-- Själva texten -->
+    <p class="ayah">{{ verse.text }}</p>
+    <!-- Ayah-nummer -->
+    
+
+    <span class="arrow" [class.open]="shown[i]">▼</span>
+    <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+  </div>
+
+  <div class="tafsir" *ngIf="shown[i]" [innerHTML]="verse.tafsir"></div>
+</div>
+
+
+
+<!--visa frågot om surah-->
+<div class="quiz-section">
+      <app-quix-tafser [questions]="alfatihaQuestions"></app-quix-tafser>
+</div>
+<app-footer-info />

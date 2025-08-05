@@ -92,7 +92,20 @@
 .material-icons {
   font-size: 36px;
   margin-bottom: 10px;
-  color: #C5A880; /* guld */
+
+}
+
+/* Olika färger för varje ikon */
+.quran-icon {
+  color: #4caf50;
+}
+
+.hadith-icon {
+  color: #2196f3;
+}
+
+.fiqh-icon {
+  color: #ff9800;
 }
 
 

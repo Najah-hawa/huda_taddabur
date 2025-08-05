@@ -9,10 +9,9 @@ import { FormsModule } from '@angular/forms';  // Import FormsModule
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,         // ✅ behövs för routerLink
-    RouterLinkActive,   // ✅ behövs för routerLinkActive
-    FormsModule         // Add FormsModule here to enable ngModel
-  ],
+    RouterLink, // ✅ behövs för routerLinkActive
+    FormsModule // Add FormsModule here to enable ngModel
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

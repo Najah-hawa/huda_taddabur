@@ -1,0 +1,22 @@
+<div class="bismillah-container">
+      <div class="bismillah-line" (click)="toggleAwzoBillah()">
+        <p class="bismillah-text"> أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ</p>
+        <span class="arrow" [class.open]="AwzobillahShown">▼</span>
+      </div>
+
+      <div class="bismillah-tafsir" *ngIf="AwzobillahShown">
+      <p>احتمي وألنجأ الى الله من شر الشيطان<br><b>مواضع الاستعاذة </b>: 1-قبل تلاوة القران .<br>2-  في الصلاة قبل قراءة الفاتحة في الركعة الاولى.<br>3-لدفع الشيطان وكيده ووسوسته.  <br> </p>
+      </div>
+</div>
+
+<div class="bismillah-container">
+      <div class="bismillah-line" (click)="toggleBismillah()">
+        <p class="bismillah-text"> بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ </p>
+        <span class="arrow" [class.open]="bismillahShown">▼</span>
+      </div>
+
+      <div class="bismillah-tafsir" *ngIf="bismillahShown">
+      <p><b>بسم الله</b>: ابتدئ قراءة القرآن مستعينا به سبحانه <br><b>الله</b>: الرب المعبود دون سواه ولا يسمى به غيره سبحانه<br><b>الرحمن</b>: ذي الرحمة العامة لكل الخلق <br><b>الرحيم</b>: بالمؤمنين</p>
+      </div>
+</div>
+

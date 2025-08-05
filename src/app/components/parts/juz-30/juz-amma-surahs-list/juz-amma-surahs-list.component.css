@@ -1,0 +1,46 @@
+
+
+/* Container för parts */
+.parts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 15px;
+}
+
+/* Titeltext */
+.choose-text {
+  font-size: 1.5rem;
+  color: #4d2828;
+  font-family: 'Amiri', serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0px;/
+}
+
+/* Box för varje part */
+.part-box {
+  background: linear-gradient(#F8F5F0, #ece6d9);
+  color: #4d2828;
+  border: 2px solid #e1cfb6;
+  border-radius: 50px;
+  padding: 15px 30px;
+  width: 70%;
+  max-width: 400px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.part-box:hover {
+  background: linear-gradient(#ece6d9, #F8F5F0);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Aktivt val – om du använder routerLinkActive */
+.active {
+  border: 2px solid #C5A880;
+}

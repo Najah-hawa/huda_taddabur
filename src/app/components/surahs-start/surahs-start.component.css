@@ -1,0 +1,114 @@
+/* الحاوية تبع بِسْمِ الله */
+.bismillah-container {
+  max-width: 600px;
+  margin: 1.5rem auto 2rem auto; /* في الوسط مع مسافة فوق وتحت */
+  border: 1px solid #d6c5a3;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 3px 8px rgba(212, 163, 115, 0.3);
+  user-select: none;
+}
+
+.bismillah-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.6rem;
+}
+
+.bismillah-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7a5a2a;
+  margin: 0;
+  direction: rtl;
+}
+
+.arrow {
+  font-size: 1.3rem;
+  color: #a67c52;
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.bismillah-tafsir {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #5b452a;
+  background-color: #f3e7cd;
+  border-left: 4px solid #d4a373;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  line-height: 1.5;
+  text-align: center;
+  direction: rtl;
+}
+
+
+
+.verse-block {
+  margin-bottom: 1rem;
+  border: 1px solid #e6d7bc;
+  border-radius: 10px;
+  padding: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.verse-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .bismillah-container{
+    max-width: 95%;
+    margin: 1rem auto;
+    padding: 0.6rem 1rem;
+  }
+
+  .bismillah-text {
+    font-size: 1.3rem;
+  }
+
+  .bismillah-tafsir {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .bismillah-line {
+    gap: 0.4rem;
+  }
+
+  .arrow {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .bismillah-text {
+    font-size: 1rem;
+  }
+  .bismillah-tafsir {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .bismillah-container {
+    padding: 0.4rem 0.8rem;
+  }
+
+  .arrow {
+    font-size: 1rem;
+  }
+}

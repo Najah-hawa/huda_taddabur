@@ -8,30 +8,10 @@
 
 <!--den första part av väljai meny 📖 تدبر سريع -->
 <div tadabbur>
+<!-- lägg till copmonent för app surah start -->
+<app-surahs-start> </app-surahs-start>
 
-<div class="bismillah-container">
-      <div class="bismillah-line" (click)="toggleAwzoBillah()">
-        <p class="bismillah-text"> أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ</p>
-        <span class="arrow" [class.open]="AwzobillahShown">▼</span>
-      </div>
-
-      <div class="bismillah-tafsir" *ngIf="AwzobillahShown">
-      <p>احتمي وألنجأ الى الله من شر الشيطان<br><b>مواضع الاستعاذة </b>: 1-قبل تلاوة القران .<br>2-  في الصلاة قبل قراءة الفاتحة في الركعة الاولى.<br>3-لدفع الشيطان وكيده ووسوسته.  <br> </p>
-      </div>
-</div>
-
-<div class="bismillah-container">
-      <div class="bismillah-line" (click)="toggleBismillah()">
-        <p class="bismillah-text"> بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ </p>
-        <span class="arrow" [class.open]="bismillahShown">▼</span>
-      </div>
-
-      <div class="bismillah-tafsir" *ngIf="bismillahShown">
-      <p><b>بسم الله</b>: ابتدئ قراءة القرآن مستعينا به سبحانه <br><b>الله</b>: الرب المعبود دون سواه ولا يسمى به غيره سبحانه<br><b>الرحمن</b>: ذي الرحمة العامة لكل الخلق <br><b>الرحيم</b>: بالمؤمنين</p>
-      </div>
-</div>
-
-<!-- desgin och view of fast taddabour-->
+<!-- visa ayah från surah-->
 <div class="verse-block" *ngFor="let verse of verses; let i = index">
   <div class="verse-line" (click)="toggleVerse(i)">
     <p class="ayah">{{ verse.text }}</p>
@@ -41,7 +21,7 @@
   <div class="tafsir" *ngIf="shown[i]" [innerHTML]="verse.tafsir"></div>
 </div>
 
-  <!-- Knapp för att visa quiz -->
+<!-- Knapp för att visa quiz -->
   
 <!-- alfatiha.html -->
 <div class="quiz-section">
@@ -49,18 +29,13 @@
 </div>
 
 
-
+<!--div för فائدة text-->
 <div class="benefit-box">
   <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
   </svg>
 
-
-
-
-<!--div för فائدة text-->
-
-  <div class="benefit-text">
+<div class="benefit-text">
     <strong>فائدة:</strong>
     يستحب للقارئ في الصلاة عند قراءة <span class="highlight">الفاتحة</span> أن يقول
     <strong>«آمين»</strong>، ومعناها: <em>يا رب استجب</em>.
