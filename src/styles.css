@@ -84,6 +84,15 @@ body{
   transform: rotate(180deg);
 }
 
+
+.ayah-number {
+  color: green;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+
+
 .tafsir {
   margin-top: 0.7rem;
   padding: 0.7rem 1rem;
@@ -96,12 +105,125 @@ body{
 }
 
 
-.ayah-number {
-  color: green;
-  font-weight: bold;
-  font-size: 1.2em;
 
+/*desgin för visual delen */
+
+/* ⬅️ Container för hela kartan (alla block) */
+.map-container {
+  padding: 1rem; /* Inre marginal runt hela innehållet */
+  display: flex; /* Flexbox för att stapla blocken */
+  flex-direction: column; /* Stapla blocken vertikalt */
+  gap: 1.5rem; /* Avstånd mellan varje del/block */
 }
+
+/* ⬅️ Varje avsnitt (rubrik + beskrivning + verser) */
+.map-block {
+  background-color: #fff9ec; /* Ljusgul bakgrund för att se mjuk ut */
+  border-left: 4px solid #d4a373; /* Dekorativ vänsterram för struktur */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Lätt skugga (överflödig – nästa rad skriver över den) */
+  border-radius: 12px; /* Rundade hörn för finare känsla */
+  padding: 1rem; /* Inre marginal för luft */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Djupare skugga för att "lyfta upp" blocken */
+}
+
+/* ⬅️ Titeln för varje del */
+.section-title {
+  font-size: 1.2rem; /* Större textstorlek */
+  margin-bottom: 0.3rem; /* Avstånd till beskrivningen */
+  color: #4b3c28; /* Mörkbrun färg */
+  font-weight: 600; /* Halvfet text */
+}
+
+/* ⬅️ Beskrivningen under varje titel */
+.section-desc {
+  font-size: 0.95rem; /* Lite mindre än standardstorlek */
+  margin-bottom: 0.8rem; /* Avstånd till verslistan */
+  color: #6e5842; /* Mellanbrun textfärg */
+}
+
+/* ⬅️ Listan som innehåller verser */
+.verse-list {
+  list-style: none; /* Tar bort punkter från listan */
+  padding: 0; /* Ingen indragning */
+  margin: 0; /* Ingen marginal */
+  direction: rtl; /* Textinriktning höger-till-vänster för arabiska */
+}
+
+/* ⬅️ Varje enskild versrad (li) */
+.verse-item {
+  display: flex; /* Flex för att kunna placera vers och knapp bredvid varandra */
+  justify-content: space-between; /* Mellanrum mellan text och knapp */
+  align-items: center; /* Centrera vertikalt */
+  font-size: 1.05rem; /* Normalstor text för vers */
+  color: #3e2f1c; /* Mörk brun färg */
+  padding: 0.6rem 0.5rem; /* Inre marginaler top/bottom + höger/vänster */
+  border-bottom: 1px solid #eee; /* Ljus linje mellan verser */
+  transition: all 0.3s ease; /* Mjuk övergång för visuella ändringar */
+  direction: rtl; /* Viktigt: arabisk läsordning */
+}
+
+/* ⬅️ Första versen (huvudvers) – ges extra stil */
+.verse-main {
+  font-weight: 600; /* Fetare text */
+  background-color: #f9f4ec; /* Ljusare bakgrund än blockets färg */
+  border-radius: 8px; /* Mjuka hörn */
+  padding: 0.5rem; /* Extra luft inuti */
+}
+
+/* ⬅️ Själva versens text (separat från knappen) */
+.verse-text {
+  flex: 1; /* Tar upp all plats tillgänglig */
+  text-align: right; /* Justera texten till höger (korrekt för arabisk text) */
+}
+
+/* ⬅️ Knappen (⋮ eller ↑) för att visa/dölja extra verser */
+.toggle-btn {
+  background: none; /* Ingen bakgrundsfärg */
+  border: none; /* Ingen ram */
+  cursor: pointer; /* Muspekaren blir en hand */
+  font-size: 1.2rem; /* Lite större storlek */
+  color: #a67c52; /* Mjuk brun färg */
+  padding-left: 0.8rem; /* Avstånd till vänster */
+  line-height: 1; /* Ingen extra vertikal höjd */
+  flex-shrink: 0; /* Förhindrar att knappen krymper när platsen minskar */
+}
+
+/* ⬅️ Dolda verser (från andra till sista) */
+.extra {
+  display: none; /* Gömda från början */
+  font-weight: 600; /* Samma stil som första */
+  background-color: #f9f4ec; /* Samma bakgrund */
+  border-radius: 8px; /* Mjuka hörn */
+  padding: 0.5rem; /* Luft inuti */
+  text-align: right; /* Text mot höger */
+}
+
+/* ⬅️ När användaren klickar för att visa extra verser */
+.extra.show {
+  display: flex; /* Visa som flexbox (samma stil) */
+}
+
+/* ⬅️ RESPONSIV DESIGN för små skärmar (mobiler) */
+@media (max-width: 600px) {
+  .verse-item {
+    flex-direction: row; /* Liggande layout även på små skärmar */
+    align-items: flex-start; /* Justera uppåt för text */
+  }
+
+  .verse-text {
+    text-align: right; /* Behåll högerjusterad text */
+    font-size: 0.95rem; /* Lite mindre text för mobil */
+  }
+
+  .toggle-btn {
+    font-size: 1.1rem; /* Mindre ikon */
+    padding-left: 0.5rem; /* Mindre avstånd */
+    margin-top: 0rem; /* Undvik extra vertikal spacing */
+  }
+}
+
+
+
 
 
 @media (max-width: 600px) {
@@ -115,6 +237,7 @@ body{
 
   .ayah {
     font-size: 1.1rem;
+    max-width: 75%;
   }
 
   .tafsir {

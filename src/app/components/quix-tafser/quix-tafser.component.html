@@ -25,6 +25,11 @@
     </li>
   </ul>
 
+   <!-- Avsluta provet-knapp -->
+  <div class="quit-quiz-container">
+    <button class="quiz-quit-btn" (click)="quitQuiz()">إنهاء الاختبار</button>
+  </div>
+
   <div *ngIf="showFeedback" class="quiz-feedback">
     <p [ngClass]="{ 'correct-feedback': isCorrect, 'incorrect-feedback': !isCorrect }">
       {{ isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة، حاول مرة أخرى.' }}

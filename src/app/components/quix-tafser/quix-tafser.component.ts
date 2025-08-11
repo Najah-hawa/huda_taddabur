@@ -46,13 +46,19 @@ export class QuixTafserComponent {
     }
   }
 
-  restartQuiz() {
+restartQuiz() {
     this.currentQuestionIndex = 0;
     this.showFeedback = false;
     this.isCorrect = false;
     this.quizCompleted = false;
   }
-
+ quitQuiz() {
+  this.quizStarted = false;   // stänger quizet
+  this.quizCompleted = false; // nollställer status
+  this.currentQuestionIndex = 0; 
+  this.showFeedback = false;
+  this.isCorrect = false;
+}
   showQuizSection() {
     this.quizStarted = true;  // <--- Gör quizet synligt
     this.quizCompleted = false;
