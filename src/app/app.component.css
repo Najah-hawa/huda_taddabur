@@ -13,6 +13,8 @@
   padding-right: 0px;
 }
 
+
+
 .title-flex {
   display: flex;
   align-items: center;
@@ -36,8 +38,8 @@
   font-family: 'Lateef', serif;
   background: linear-gradient(
     90deg,
-    #46280f,
-    rgba(142, 112, 86, 0.788),
+    #46280f,        /* mörkbrun */
+    #8e7056,        /* varm beige/brun */
     #46280f
   );
   background-size: 400% 400%;
@@ -53,6 +55,7 @@
   white-space: nowrap;
   order: 1;
 }
+
 
 
 

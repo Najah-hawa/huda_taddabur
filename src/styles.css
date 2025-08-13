@@ -1,9 +1,10 @@
-body{
+body {
   font-family: sans-serif;
-  background:#fdfaf4;
-  color: #3e2f18;
+  background: #fcfaf7; /* lite mjukare, nära vit */
+  color: #3e2f18; /* behåller mörkbrunt för text */
   direction: rtl;
   padding: 0.6rem;
+  line-height: 1.6; /* bättre läsbarhet */
 }
 
 /* global design för både faidaa box och nezzol box */
@@ -53,11 +54,11 @@ body{
 /* global design för devar för ayah och tafser för varje surah*/
 
 .verse-block {
+  background: #fdfaf5;
+  border: 1px solid #e1cfb6;
+  border-radius: 12px;
   margin-bottom: 1rem;
-  border: 1px solid #e6d7bc;
-  border-radius: 10px;
-  padding: 0.8rem;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
 .verse-line {
@@ -79,20 +80,15 @@ body{
   color: #a67c52;
   transition: transform 0.3s ease;
 }
-
 .arrow.open {
   transform: rotate(180deg);
 }
-
-
 .ayah-number {
   color: green;
   font-weight: bold;
   font-size: 1.2em;
   margin-left: 10px;
 }
-
-
 .tafsir {
   margin-top: 0.7rem;
   padding: 0.7rem 1rem;
@@ -118,27 +114,25 @@ body{
 
 /* ⬅️ Varje avsnitt (rubrik + beskrivning + verser) */
 .map-block {
-  background-color: #fff9ec; /* Ljusgul bakgrund för att se mjuk ut */
-  border-left: 4px solid #d4a373; /* Dekorativ vänsterram för struktur */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Lätt skugga (överflödig – nästa rad skriver över den) */
-  border-radius: 12px; /* Rundade hörn för finare känsla */
-  padding: 1rem; /* Inre marginal för luft */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Djupare skugga för att "lyfta upp" blocken */
+  background: #fefaf5;
+  border: 1px solid #e1cfb6;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.04);
 }
 
 /* ⬅️ Titeln för varje del */
 .section-title {
-  font-size: 1.2rem; /* Större textstorlek */
-  margin-bottom: 0.3rem; /* Avstånd till beskrivningen */
-  color: #4b3c28; /* Mörkbrun färg */
-  font-weight: 600; /* Halvfet text */
+  color: #8B4513;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 /* ⬅️ Beskrivningen under varje titel */
 .section-desc {
-  font-size: 0.95rem; /* Lite mindre än standardstorlek */
-  margin-bottom: 0.8rem; /* Avstånd till verslistan */
-  color: #6e5842; /* Mellanbrun textfärg */
+  color: #4b3c28;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* ⬅️ Listan som innehåller verser */

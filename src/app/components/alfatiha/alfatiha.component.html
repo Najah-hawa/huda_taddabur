@@ -1,29 +1,37 @@
-<app-surah-hint
+<!-- section f;r summary text--> 
+ <app-surah-hint
   [surahName]="'الفاتحة'"
   [hintText]="'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'">
 </app-surah-hint>
 
 <app-surah-tabs [surahName]="'سورة الفاتحة'" >
 
-
 <!--den första part av väljai meny 📖 تدبر سريع -->
 <div tadabbur>
-<!-- lägg till copmonent för app surah start -->
+
+<!-- lägg till copmonent för app surah start meed bismlla div-->
 <app-surahs-start> </app-surahs-start>
 
 <!-- visa ayah från surah-->
 <div class="verse-block" *ngFor="let verse of verses; let i = index">
   <div class="verse-line" (click)="toggleVerse(i)">
     <p class="ayah">{{ verse.text }}</p>
-    <span class="arrow" [class.open]="shown[i]">▼</span>
+       <!--add ayah-nummer och pillen breddvid varandra-->
+        <div class="ayah-arrow"> 
+        <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+        <span class="arrow" [class.open]="shown[i]">▼</span>
+       </div>
   </div>
 
   <div class="tafsir" *ngIf="shown[i]" [innerHTML]="verse.tafsir"></div>
 </div>
 
-<!-- Knapp för att visa quiz -->
-  
-<!-- alfatiha.html -->
+<!-- text för källa -->
+<p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
+    📚 مصدر التفسير: <b>تفسير ابن كثير</b>
+</p>
+
+<!-- alfatiha quiz component -->
 <div class="quiz-section">
   <app-quix-tafser [questions]="alfatihaQuestions"></app-quix-tafser>
 </div>
@@ -34,7 +42,6 @@
   <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
   </svg>
-
 <div class="benefit-text">
     <strong>فائدة:</strong>
     يستحب للقارئ في الصلاة عند قراءة <span class="highlight">الفاتحة</span> أن يقول
@@ -47,19 +54,29 @@
   <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
   </svg>
-
  <div class="benefit-text">
     <strong class="highlight">تذكير:</strong> <br>
-    <strong> البسملة </strong>تقليدا للنبي صلى الله عليه وسلم  <br>
+    <strong> البسملة </strong>إتباعاً للنبي صلى الله عليه وسلم  <br>
     <strong>وتطبيق لحديث:</strong> كل امر ذي بال لا بيدأ ببسم الله فهو أبتر أو أقطع  <br>
     <strong> أبتر: </strong><em>المقطوع، الذي لا نسل له، أو الذي انقطع أثره وذِكره.</em><br>
     <strong> أقطع: </strong><em> مقطوع من الخير، لا يصل إلى تمامه، أو لا يُتمّ بنجاح.</em>
+  <details style="margin-top:5px; font-size:0.85em; color:#444;">
+    <summary style="cursor:pointer; color:#b88a00;">📜 عرض الحديث</summary>
+    <em>
+      أَبِي هُرَيْرَةَ رضي الله عنه قَالَ : قَالَ رَسُولُ اللهِ ﷺ :  
+      (كُلُّ كَلَامٍ أَوْ أَمْرٍ ذِي بَالٍ لَا يُفْتَحُ بِذِكْرِ اللهِ فَهُوَ أَبْتَرُ - أَوْ قَالَ : أَقْطَعُ -)  
+      وقد روي الحديث بألفاظ أخرى نحو هذا.  
+      رواه الإمام أحمد في "المسند" (14/329) طبعة مؤسسة الرسالة. وقد حَسَّن الحديث أو صححه جماعة من العلماء ، فقد حسنه النووي وابن حجر ، وصححه ابن دقيق العبد وابن الملقن .
+    </em>
+  </details>
   </div>
 </div>
 
 
+
+<!-- coponent för nezzol-->
 <app-nezzol
-   [dalel]="' علينا يااحبتي ان نتعلم ان ديننا من القران والسنة وان لانقبل قولا في دينناالا بدليل من القران او السنة '"
+   [dalel]="' علينا ياأحبتي أن نتعلم أن ديننا من القران والسنة وأن لانقبل قولاً في دينناالإ بدليل من القران أو السنة '"
    [nezoolText]=" 
    '<ul class=\'benefit-list\'>
     <li>أنها ركن من أركان الصلاة، لا تصح الصلاة إلا بها. <em> روى البخاري ( 756) ومسلم (394) عَنْ عُبَادَةَ بْنِ الصَّامِتِ رضي الله عنه أَنَّ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: لَا صَلَاةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ.</em> </li>
@@ -82,7 +99,8 @@
   ">
 </app-nezzol>
 
-<!-- <app-nezzol  [points]="fawaedAlFatiha"> </app-nezzol> -->
+
+<!-- coponent för faida -->
 <app-fawaed-of-surah
   [SurahFaidah]="'الفاتحة'"
   [FaidaText]="
@@ -95,21 +113,22 @@
     </ul>'
   ">
 </app-fawaed-of-surah>
+
+<!-- slutet av diven taddabur -->
 </div>
 
 
 
-<!-- ربط تصويري لسورة الفاتحة-->
+<!--blrjan av den visualla delen -->
 
 <div visual>
   
 <div class="map-container">
-<p class="intro-summary">
-  تتكوّن سورة الفاتحة من ثلاث وحدات متكاملة.
-  هذه الأجزاء مترابطة حيث أن:
-  <br>
-     الثناء على اللَّه يجعل القلب حاضر ومعترف بجلال اللَّه. ثم يعلن العبد عبودته الناتجة عن فهم صفات اللَّه. ويأتي  الختم بالدعاء و طلب الهداية فالدعاء الصادق لايكون الا من قلب خاشع ومؤمن بِاللَّه.
-</p>
+
+<div class="intro-summary">
+ <h3>ملخص السورة:</h3>
+ <p> الثناء على اللَّه →  العبديعلن عبوديته للَّه → الختم بالدعاء و طلب الهداية. </p>
+</div>
 
 <!--loppa igenom information i ts -->
   <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">  
