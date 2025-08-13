@@ -11,22 +11,20 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/huda_taddabur/browser",
             "baseHref": "/huda_taddabur/",
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "main": "src/main.ts",
+            
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
               },
-                "src/favicon.ico"
+              "src/favicon.ico"
             ],
             "styles": [
               "src/styles.css"
@@ -47,7 +45,9 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false
             },
             "development": {
               "optimization": false,
