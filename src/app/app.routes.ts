@@ -9,6 +9,7 @@ import { QuixTafserComponent } from './components/quix-tafser/quix-tafser.compon
 import { FooterInfoComponent } from './components/footer-info/footer-info.component';
 import { JuzAmmaSurahsListComponent } from './components/parts/juz-30/juz-amma-surahs-list/juz-amma-surahs-list.component';
 import { Surah78Component } from './components/parts/juz-30/surah-78/surah-78.component';
+import { Surah79Component } from './components/parts/juz-30/surah-79/surah-79.component';
 import { Component } from '@angular/core';
 export const routes: Routes = [
   {path: 'home', component: HomeComponent },  // الصفحة الرئيسية
@@ -21,6 +22,7 @@ export const routes: Routes = [
   {path: 'footer', component: FooterInfoComponent},
   {path:'juz-amma', component: JuzAmmaSurahsListComponent},
   {path:'surah-78', component:Surah78Component},
+  {path:'surah-79', component:Surah79Component},
   {path: '', redirectTo: '/home', pathMatch: 'full' }  // أي رابط خطأ يرجع لـ home
 ];
 
