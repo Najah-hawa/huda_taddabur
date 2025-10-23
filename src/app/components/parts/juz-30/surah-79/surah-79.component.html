@@ -3,85 +3,77 @@
   [hintText]="'السورة تذكر يوم القيامة وما يعتري الناس من خشية، وتبرز دور الملائكة في تدبير الأمور وأخذ الأرواح، وتدل على جزاء كل إنسان حسب عمله، وتقدم عبرة من قصص الأنبياء لتثبيت الإيمان بالله والبعث.'">
 </app-surah-hint>
 
-<app-surah-tabs
-  [surahName]="'سورة النازعات'"
-  (tabChanged)="onTabChange($event)"
->
+<app-surah-tabs [surahName]="'سورة النازعات'">
   <div tadabbur>
-    <app-surahs-start></app-surahs-start>
-  </div>
-
-<div visual>
-  <div class="map-container">
-     
-   
-
-
-<div class="intro-summary">
- <h3>ملخص السورة:</h3>
- <p> الناس يتساءلون ويشككون → الله يذكر آيات خلقه → يوم القيامة والعذاب للكافرين → جزاء المتقين → تذكير بعظمة الله والتحذير النهائي. </p>
-</div>
-
- 
-    <!-- الأقسام -->
-    <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
-      <h3 class="section-title">{{ section.title }}</h3>
-      <p class="section-desc">{{ section.description }}</p>
-      <ul class="verse-list">
-        <li class="verse-item verse-main">
-          <span class="verse-text">{{ section.verses[0] }}</span>
-          <button
-            *ngIf="section.verses.length > 1"
-            class="toggle-btn"
-            (click)="toggleExpanded(i)">
-            {{ expandedSections[i] ? '↑' : '⋮' }}
-          </button>
-        </li>
-        <li
-          *ngFor="let verse of section.verses.slice(1); let j = index"
-          class="verse-item"
-          [class.extra]="true"
-          [class.show]="expandedSections[i]">
-          {{ verse }}
-        </li>
-      </ul>
+  <app-surahs-start></app-surahs-start>
+  <!-- här lägger tafser för du den första part taddabur -->
+   <div class="verse-wrapper">
+      <div class="verse-block" *ngFor="let verse of verses; let i = index">
+        <div class="verse-line" (click)="toggleVerse(i)">
+          <p class="ayah">{{ verse.text }}</p>
+          <div class="ayah-arrow"> 
+            <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+            <span class="arrow" [class.open]="shown.has(i)">▼</span>
+          </div>
+        </div>
+        <div class="tafsir" *ngIf="shown.has(i)" [innerHTML]="verse.tafsir"></div>
+      </div>
     </div>
   </div>
-</div>
-
-
-
-</app-surah-tabs>
+     
+   
+  <div visual>
+   <div class="intro-summary">
+       <h3>ملخص السورة:</h3>
+       <p> أعمال الملائكة ومهامهم → يوم القيامة وخوف الإنسان →إنكار البعث ومصير الكافرين → قصة موسى وفرعون →  آيات الخلق وعظمة الله → السؤال عن الساعة. </p>
+   </div>
+    <!-- parts i visual delen -->
+    <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
+  <h3 class="section-title">{{ section.title }}</h3>
+  <p class="section-desc">{{ section.description }}</p>
   
-<!-- Visa ayah bara om flik == "tadabbur" -->
-<div *ngIf="selectedTab === 'tadabbur'" class="verse-wrapper">
-<div class="verse-block" *ngFor="let verse of verses; let i = index">
-  <div class="verse-line" (click)="toggleVerse(i)">
+  <ul class="verse-list">
+    <!-- Huvudvers -->
+    <li class="verse-item verse-main">
+      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+      <button
+        *ngIf="section.verseNumbers.length > 1"
+        class="toggle-btn"
+        (click)="toggleExpanded(i)">
+        {{ expandedSections[i] ? '↑' : '⋮' }}
+      </button>
+    </li>
 
-    <!-- Själva texten -->
-    <p class="ayah">{{ verse.text }}</p>
-    <!-- Ayah-nummer -->
-    
-<div class="ayah-arrow"> 
-   <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-   <span class="arrow" [class.open]="shown[i]">▼</span>
+    <!-- Extra verser -->
+    <li
+      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
+      class="verse-item"
+      [class.extra]="true"
+      [class.show]="expandedSections[i]">
+      {{ getVerseText(num) }}
+    </li>
+  </ul>
 </div>
 
   </div>
+</app-surah-tabs>
 
-  <div class="tafsir" *ngIf="shown[i]" [innerHTML]="verse.tafsir"></div>
+<!--visa var ifrån information-->
+<p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
+    📚 مصدر التفسير: <b>تفسير ابن كثير والسعدي وابن عثيمين</b>
+</p>
+
+<!--visa next och prev -->
+<div class="sura-nav">
+  <a class="prev" routerLink="/surah-78" routerLinkActive="active">السورة السابقة</a>
+  <a class="next" routerLink="/surah-80" routerLinkActive="active">السورة التالية</a>
 </div>
 
 
-    <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
-      📚 مصدر التفسير: <b>تفسير ابن كثير والسعدي وابن عثيمين</b>
-    </p>
 
-
-    
 <!--visa frågot om surah-->
 <div class="quiz-section">
-      <app-quix-tafser [questions]="alnabbaQuestions"></app-quix-tafser>
+      <app-quix-tafser [questions]="alnaziatQuestions"></app-quix-tafser>
 </div>
 
 <app-fawaed-of-surah

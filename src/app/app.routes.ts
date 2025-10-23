@@ -10,6 +10,10 @@ import { FooterInfoComponent } from './components/footer-info/footer-info.compon
 import { JuzAmmaSurahsListComponent } from './components/parts/juz-30/juz-amma-surahs-list/juz-amma-surahs-list.component';
 import { Surah78Component } from './components/parts/juz-30/surah-78/surah-78.component';
 import { Surah79Component } from './components/parts/juz-30/surah-79/surah-79.component';
+import { Surah80Component } from './components/parts/juz-30/surah-80/surah-80.component';
+import { Surah81Component } from './components/parts/juz-30/surah-81/surah-81.component';
+import { Surah82Component } from './components/parts/juz-30/surah-82/surah-82.component';
+
 import { Component } from '@angular/core';
 export const routes: Routes = [
   {path: 'home', component: HomeComponent },  // الصفحة الرئيسية
@@ -20,9 +24,12 @@ export const routes: Routes = [
   {path: 'nezzol', component: NezzolComponent},
   {path: 'quiz', component: QuixTafserComponent}, 
   {path: 'footer', component: FooterInfoComponent},
-  {path:'juz-amma', component: JuzAmmaSurahsListComponent},
-  {path:'surah-78', component:Surah78Component},
-  {path:'surah-79', component:Surah79Component},
+  {path: 'juz-amma', component: JuzAmmaSurahsListComponent},
+  {path: 'surah-78', component:Surah78Component},
+  {path: 'surah-79', component:Surah79Component},
+  {path: 'surah-80', component:Surah80Component},
+  {path: 'surah-81', component:Surah81Component},
+  {path: 'surah-82', component:Surah82Component},
   {path: '', redirectTo: '/home', pathMatch: 'full' }  // أي رابط خطأ يرجع لـ home
 ];
 

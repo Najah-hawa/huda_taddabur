@@ -1,0 +1,90 @@
+<app-surah-hint
+  [surahName]="'التكوير'"
+  [hintText]="' '">
+</app-surah-hint>
+
+<app-surah-tabs [surahName]="'سورة التكوير'">
+  <div tadabbur>
+  <app-surahs-start></app-surahs-start>
+  <!-- här lägger tafser för du den första part taddabur -->
+   <div class="verse-wrapper">
+      <div class="verse-block" *ngFor="let verse of verses; let i = index">
+        <div class="verse-line" (click)="toggleVerse(i)">
+          <p class="ayah">{{ verse.text }}</p>
+          <div class="ayah-arrow"> 
+            <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+            <span class="arrow" [class.open]="shown.has(i)">▼</span>
+          </div>
+        </div>
+        <div class="tafsir" *ngIf="shown.has(i)" [innerHTML]="verse.tafsir"></div>
+      </div>
+    </div>
+  </div>
+     
+   
+  <div visual>
+   <div class="intro-summary">
+       <h3>ملخص السورة:</h3>
+       <p> </p>
+   </div>
+    <!-- parts i visual delen -->
+    <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
+  <h3 class="section-title">{{ section.title }}</h3>
+  <p class="section-desc">{{ section.description }}</p>
+  
+  <ul class="verse-list">
+    <!-- Huvudvers -->
+    <li class="verse-item verse-main">
+      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+      <button
+        *ngIf="section.verseNumbers.length > 1"
+        class="toggle-btn"
+        (click)="toggleExpanded(i)">
+        {{ expandedSections[i] ? '↑' : '⋮' }}
+      </button>
+    </li>
+
+    <!-- Extra verser -->
+    <li
+      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
+      class="verse-item"
+      [class.extra]="true"
+      [class.show]="expandedSections[i]">
+      {{ getVerseText(num) }}
+    </li>
+  </ul>
+</div>
+
+  </div>
+</app-surah-tabs>
+
+<!--visa var ifrån information-->
+<p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
+    📚 مصدر التفسير: <b>تفسير </b>
+</p>
+
+<!--visa next och prev -->
+<div class="sura-nav">
+  <a class="prev" routerLink="/surah-80" routerLinkActive="active">السورة السابقة</a>
+  <a class="next" routerLink="/surah-82" routerLinkActive="active">السورة التالية</a>
+</div>
+
+
+
+<!--visa frågot om surah-->
+<div class="quiz-section">
+      <app-quix-tafser [questions]="abassaQuestions"></app-quix-tafser>
+</div>
+
+<app-fawaed-of-surah
+  [SurahFaidah]="'التكوير'"
+  [FaidaText]="
+     '<ul class=\'benefit-list\'>
+      
+    </ul>'
+  ">
+</app-fawaed-of-surah>
+
+
+
+<app-footer-info />
