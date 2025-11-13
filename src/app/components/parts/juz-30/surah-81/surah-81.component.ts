@@ -6,7 +6,7 @@ import { SurahTabsComponent } from '../../../surah-tabs/surah-tabs.component';
 import { QuixTafserComponent } from '../../../quix-tafser/quix-tafser.component';
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { FawaedOfSurahComponent } from '../../../fawaed-of-surah/fawaed-of-surah.component';
-import { verses, abassaQuestions, rubtTassweerySections } from './surah81-data';
+import { verses, takwirQuestions, rubtTassweerySections } from './surah81-data';
 import { RouterModule } from '@angular/router';
 
 
@@ -37,7 +37,7 @@ export class Surah81Component {
 
   // ✅ Lägg till importerade data som medlemmar
   verses = verses;
-  abassaQuestions = abassaQuestions;
+  takwirQuestions = takwirQuestions;
   rubtTassweerySections = rubtTassweerySections;
 
   // uppdatera vald flik

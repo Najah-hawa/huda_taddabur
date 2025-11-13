@@ -13,6 +13,7 @@ import { Surah79Component } from './components/parts/juz-30/surah-79/surah-79.co
 import { Surah80Component } from './components/parts/juz-30/surah-80/surah-80.component';
 import { Surah81Component } from './components/parts/juz-30/surah-81/surah-81.component';
 import { Surah82Component } from './components/parts/juz-30/surah-82/surah-82.component';
+import { Surah83Component } from './componentes/parts/juz-30/surah-83/surah-83.component';
 
 import { Component } from '@angular/core';
 export const routes: Routes = [
@@ -30,6 +31,7 @@ export const routes: Routes = [
   {path: 'surah-80', component:Surah80Component},
   {path: 'surah-81', component:Surah81Component},
   {path: 'surah-82', component:Surah82Component},
+  {path: 'surah-83', component:Surah83Component},
   {path: '', redirectTo: '/home', pathMatch: 'full' }  // أي رابط خطأ يرجع لـ home
 ];
 

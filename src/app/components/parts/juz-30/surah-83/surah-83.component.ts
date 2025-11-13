@@ -6,13 +6,13 @@ import { SurahTabsComponent } from '../../../surah-tabs/surah-tabs.component';
 import { QuixTafserComponent } from '../../../quix-tafser/quix-tafser.component';
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { FawaedOfSurahComponent } from '../../../fawaed-of-surah/fawaed-of-surah.component';
-import { verses, InfitarQuestions, rubtTassweerySections } from './surah82-data';
+import { verses, abassaQuestions, rubtTassweerySections } from './surah83-data';
 import { RouterModule } from '@angular/router';
 
 
 
 @Component({
-  selector: 'app-surah-82',
+  selector: 'app-surah-83',
   standalone: true,
   imports: [
     RouterModule,
@@ -24,10 +24,10 @@ import { RouterModule } from '@angular/router';
     FooterInfoComponent,
     FawaedOfSurahComponent
   ],
-   templateUrl: './surah-82.component.html',
-   styleUrls: ['./surah-82.component.css']
+   templateUrl: './surah-83.component.html',
+   styleUrls: ['./surah-83.component.css']
 })
-export class Surah82Component {
+export class Surah83Component {
   // flikstyrning
   selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
   // toggling av tafsir
@@ -37,7 +37,7 @@ export class Surah82Component {
 
   // ✅ Lägg till importerade data som medlemmar
   verses = verses;
-  InfitarQuestions = InfitarQuestions;
+  abassaQuestions = abassaQuestions;
   rubtTassweerySections = rubtTassweerySections;
 
   // uppdatera vald flik
