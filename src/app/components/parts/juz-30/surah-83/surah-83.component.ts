@@ -63,6 +63,22 @@ export class Surah83Component {
   }
   }
 
+
+  // دالة القراءة الصوتية للتفسير
+speakTafseer(text: string) {
+  // إلغاء أي قراءة سابقة لتجنب تداخل الأصوات
+  window.speechSynthesis.cancel();
+
+  // تنظيف النص من أي وسم HTML (لأن التفسير عندك يستخدم innerHTML)
+  const plainText = text.replace(/<[^>]*>/g, '');
+
+  const utterance = new SpeechSynthesisUtterance(plainText);
+  utterance.lang = 'ar-SA'; // اللغة العربية
+  utterance.rate = 0.9;      // السرعة
+
+  window.speechSynthesis.speak(utterance);
+}
+
   //Öppna/stänga en sektion för att visa ayah för varje part i visual.
   toggleExpanded(index: number) {
     this.expandedSections[index] = !this.expandedSections[index];

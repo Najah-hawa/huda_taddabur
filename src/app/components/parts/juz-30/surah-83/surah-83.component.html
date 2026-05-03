@@ -22,7 +22,16 @@
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
-        <div class="tafsir" *ngIf="shown.has(i)" [innerHTML]="verse.tafsir"></div>
+        <div class="tafsir" *ngIf="shown.has(i)">
+  <!-- زر القراءة الصوتية -->
+<!-- التعديل في الـ HTML -->
+<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
+    🔊 استمع للتفسير
+</button>
+  
+  <!-- نص التفسير الأصلي -->
+  <div [innerHTML]="verse.tafsir"></div>
+</div>
       </div>
     </div>
   </div>
