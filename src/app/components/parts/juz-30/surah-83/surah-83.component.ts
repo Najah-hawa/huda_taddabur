@@ -64,21 +64,47 @@ export class Surah83Component {
   }
 
 
-  // دالة القراءة الصوتية للتفسير
-speakTafseer(text: string) {
-  // إلغاء أي قراءة سابقة لتجنب تداخل الأصوات
+speakTafseer(text: string | undefined) {
+  if (!text) return;
+  
+  console.log("النص المراد قراءته:", text); // للتأكد أن النص يصل للدالة
+
   window.speechSynthesis.cancel();
-
-  // تنظيف النص من أي وسم HTML (لأن التفسير عندك يستخدم innerHTML)
   const plainText = text.replace(/<[^>]*>/g, '');
-
   const utterance = new SpeechSynthesisUtterance(plainText);
-  utterance.lang = 'ar-SA'; // اللغة العربية
-  utterance.rate = 0.9;      // السرعة
 
+  // اختبار: ابحثي عن الأصوات المتاحة في متصفحك
+  const voices = window.speechSynthesis.getVoices();
+  console.log("الأصوات المتاحة:", voices);
+
+  utterance.lang = 'ar';
+  utterance.rate = 0.9;
+  
+  // إضافة معالج للأخطاء لنعرف ماذا يحدث
+  utterance.onerror = (event) => {
+    console.error("حدث خطأ في القراءة الصوتية:", event.error);
+  };
   window.speechSynthesis.speak(utterance);
 }
 
+
+// دالة لتشغيل صوت الآية
+playAyah(ayahNum: number) {
+  const surahNum = 83; // رقم سورة المطففين
+  
+  // تنسيق الأرقام لتصبح 3 خانات (مثلاً 1 يصبح 001)
+  const formattedSurah = surahNum.toString().padStart(3, '0');
+  const formattedAyah = ayahNum.toString().padStart(3, '0');
+  
+  // بناء الرابط للقارئ المنشاوي (يمكنكِ تغيير القارئ بتغيير اسم المجلد)
+  const audioUrl = `https://www.everyayah.com/data/Al_Minshawi_Murattal_128kbps/${formattedSurah}${formattedAyah}.mp3`;
+  
+  // إيقاف أي صوت شغال حالياً (تفسير أو آية سابقة)
+  window.speechSynthesis.cancel(); 
+  
+  const audio = new Audio(audioUrl);
+  audio.play().catch(error => console.error("خطأ في تشغيل صوت الآية:", error));
+}
   //Öppna/stänga en sektion för att visa ayah för varje part i visual.
   toggleExpanded(index: number) {
     this.expandedSections[index] = !this.expandedSections[index];

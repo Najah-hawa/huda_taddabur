@@ -16,3 +16,28 @@
 .audio-btn:hover {
   background: #e0e0e0;
 }
+
+
+.play-ayah-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #27ae60; /* لون أخضر هادئ */
+  transition: transform 0.2s;
+}
+
+.play-ayah-btn:hover {
+  transform: scale(1.2);
+}
+
+/* لجعل السطر يحتوي على الزر والنص بشكل متناسق */
+.verse-line {
+  display: flex;
+  align-items: center;
+  direction: rtl; /* للتأكد من الاتجاه العربي */
+}
