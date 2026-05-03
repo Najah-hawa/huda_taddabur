@@ -4,6 +4,11 @@
 </app-surah-hint>
 
 
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/alfatiha'" [SurahBefore]="'الفاتحة'"
+                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'النازعات'"
+></app-next-before-surah-meny>
+
 <app-surah-tabs [surahName]="'سورة النبأ'">
   <div tadabbur>
   <app-surahs-start></app-surahs-start>
@@ -65,11 +70,10 @@
    📚 مصدر التفسير: <b>تفسير ابن كثير</b>
 </p>
 
-<!--visa next och prev -->
-<div class="sura-nav">
-  <a class="prev" routerLink="" routerLinkActive="active">السورة السابقة</a>
-  <a class="next" routerLink="/surah-79" routerLinkActive="active">السورة التالية</a>
-</div>
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/alfatiha'" [SurahBefore]="'الفاتحة'"
+                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'النازعات'"
+></app-next-before-surah-meny>
   
 <!--visa frågot om surah-->
 <div class="quiz-section">
@@ -87,6 +91,8 @@
       <li>قولُه تعالى: <strong>وَجَعَلْنَا النَّهَارَ مَعَاشًا</strong> النَّهارُ: الزَّمانُ الَّذي يكونُ فيه ضَوءُ الشَّمسِ منتشرًا على جزءٍ كبيرٍ مِن الكُرةِ الأرضيَّةِ، وفيه عِبرةٌ بدِقَّةِ الصُّنعِ وإحكامِه؛ إذ جُعِل نِظامانِ مختَلِفانِ مَنشؤُهما سُطوعُ نورِ الشَّمسِ واحتِجابُه فوقَ الأرضِ، وهما نِعمتانِ للبَشرِ مختلِفتانِ في الأسبابِ والآثارِ؛ فنِعمةُ اللَّيلِ راجعةٌ إلى الرَّاحةِ والهدوءِ، ونعمةُ النَّهارِ راجعةٌ إلى العملِ والسَّعيِ.</li>
     </ul>'
   ">
+
+  
 </app-fawaed-of-surah>
 
 

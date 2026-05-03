@@ -8,6 +8,7 @@ import { FooterInfoComponent } from '../../../footer-info/footer-info.component'
 import { FawaedOfSurahComponent } from '../../../fawaed-of-surah/fawaed-of-surah.component';
 import { verses, alnabbaQuestions, rubtTassweerySections } from './surah78-data';
 import { RouterModule } from '@angular/router';
+import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
 @Component({
   selector: 'app-surah-78',
@@ -20,8 +21,9 @@ import { RouterModule } from '@angular/router';
     SurahTabsComponent,
     QuixTafserComponent,
     FooterInfoComponent,
-    FawaedOfSurahComponent
-  ],
+    FawaedOfSurahComponent,
+    NextBeforeSurahMenyComponent
+],
   templateUrl: './surah-78.component.html',
   styleUrl: './surah-78.component.css'
 })

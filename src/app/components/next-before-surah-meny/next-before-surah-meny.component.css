@@ -1,0 +1,74 @@
+.sura-nav-minimal {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e1cfb6; /* خط علوي خفيف جداً لفصل القسم فقط */
+  border-bottom: 1px solid #e1cfb6; /* خط علوي خفيف جداً لفصل القسم فقط */
+  direction: rtl;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.nav-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* زر السابقة - يمين */
+.prev {
+  border-left: 1px solid transparent; /* مساحة وهمية */
+}
+
+/* زر التالية - يسار */
+.next {
+  text-align: left;
+  justify-content: flex-end;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: #a67c52; /* اللون الذهبي الخافت من تصميمك */
+  margin-bottom: 2px;
+}
+
+.name {
+  font-family: 'Lateef', serif;
+  font-size: 1.3rem;
+  color: #5c432c; /* البني الداكن الخاص بك */
+  transition: color 0.3s ease;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: #a67c52;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+
+/* تأثير التمرير - نكتفي بتغيير اللون وتحريك السهم قليلاً */
+.nav-link:hover .name {
+  color: #8B4513; /* يغمق اللون قليلاً */
+}
+
+.nav-link:hover .arrow {
+  transform: translateX(5px); /* تحريك السهم لإعطاء شعور بالتفاعل */
+}
+
+.prev:hover .arrow {
+  transform: translateX(5px); /* للجهة الأخرى */
+}
+
+/* للموبايل */
+@media (max-width: 480px) {
+  .sura-nav-minimal {
+    gap: 1.5rem;
+  }
+}

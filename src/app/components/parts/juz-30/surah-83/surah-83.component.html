@@ -1,7 +1,13 @@
 <app-surah-hint
   [surahName]="'المطففين'"
-  [hintText]="' '">
+  [hintText]="'وفي ذلك فليتنافس المتنافسون'">
 </app-surah-hint>
+
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [SurahBefore]="'الإنفطار'"
+                            [SurahNext]="'الانشقاق'"
+></app-next-before-surah-meny>
+
 
 <app-surah-tabs [surahName]="'سورة المطففين'">
   <div tadabbur>
@@ -60,15 +66,13 @@
 
 <!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
-    📚 مصدر التفسير: <b>تفسير </b>
+    📚 مصدر التفسير: <b> أبو بكر الجزائري (١٤٣٩ هـ) _ تفسير السعدي</b>
 </p>
 
-<!--visa next och prev -->
-<div class="sura-nav">
-  <a class="prev" routerLink="/surah-81" routerLinkActive="active">السورة السابقة</a>
-  <a class="next" routerLink="/surah-83" routerLinkActive="active">السورة التالية</a>
-</div>
-
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [SurahBefore]="'الإنفطار'"
+                            [SurahNext]="'الانشقاق'"
+></app-next-before-surah-meny>
 
 
 <!--visa frågot om surah-->
@@ -76,14 +80,64 @@
       <app-quix-tafser [questions]="abassaQuestions"></app-quix-tafser>
 </div>
 
+
 <app-fawaed-of-surah
   [SurahFaidah]="'المطففين'"
   [FaidaText]="
-     '<ul class=\'benefit-list\'>
-      
-    </ul>'
-  ">
-</app-fawaed-of-surah>
+    '<ul class=\'benefit-list\'>
+      <li>
+        <strong> الوعيد لمغتصبي الأموال:</strong>
+        <br>
+        أنه إذا كان الوعيدُ على الذين يبخسون الناس بالمكيال والميزان، 
+        فالذي يأخذ أموالهم قهراً أو سرقةً، أولى بهذا الوعيد من المطففين.
+      </li>
+      <li>
+        <strong> وجوب أداء الحقوق:</strong>
+        <br>
+        أن الإنسان كما يأخذُ من الناس الذي له، يجبُ عليه أن يعطيَهُم كلَّ ما لهم، 
+        من الأموال والحقوق وغيرها.
+      </li>
+      <li>
+        <strong> الجمع بين الشح والبخل:</strong>
+        <br>
+        أن المطففين جمعوا بين أمرين: 
+        <strong>الشح</strong> في طلب حقهم كاملاً بدون مراعاة، 
+        و<strong>البخل</strong> في منع ما يجب عليهم من إتمام الكيل والوزن.
+        <br>
+        وهذا المثال يقاسُ عليه كلُّ من طلب حقَّه كاملاً ومنع الحقَّ الذي عليه.
+      </li>
+      <li>
+        <strong> معاني الظن في القرآن:</strong>
+        <br>
+        الأصلُ في الظنِّ عدمُ التيقُّنِ، ولكنه يأتي بمعنى <strong>اليقين</strong> في لغة العرب، 
+        كما في قوله تعالى: ﴿الَّذِينَ يَظُنُّونَ أَنَّهُم مُّلَاقُوا رَبِّهِمْ﴾ أي: يوقنون.
+      </li>
+      <li>
+        <strong> بلاغة الإنكار في الآيات:</strong>
+        <br>
+        وصفُ اليوم بالعظيم، وقيامُ الناس فيه لله خاضعين، ووَصْفُ ذاته بـ ﴿رَبِّ الْعَالَمِينَ﴾ 
+        هو بيانٌ بليغٌ لعظيمِ الذنبِ وتفاقُم الإثم في التطفيف والحَيْفِ وترك القسط.
+      </li>
+      <li>
+        <strong> خطورة الران وعقوبات الذنوب:</strong>
+        <br>
+        التحذيرُ من الذنوب، فإنها تَرينُ على القلب وتغطّيه شيئاً فشيئاً، 
+        حتى ينطمس نوره، وتموت بصيرتُه، فتنقلب عليه الحقائقُ، 
+        فـيـرى الباطل حقاً، والحق باطلاً.
+      </li>
+      <li>
+        <strong> إثبات رؤية الله عز وجل:</strong>
+        <br>
+        استدلَّ أهل السنة والجماعة على ثبوت رؤية الله بقوله تعالى: 
+        ﴿كَلَّا إِنَّهُمْ عَن رَّبِّهِمْ يَوْمَئِذٍ لَّمَحْجُوبُونَ﴾.
+        <br>
+        ووجه الدلالة: أنه لما حُجِب الفجار في حال السَّخَط، 
+        دَلَّ على أن الأبرار يَرونه سبحانه في حال الرِّضا.
+      </li>
+    </ul>'"
+></app-fawaed-of-surah>
+
+
 
 
 

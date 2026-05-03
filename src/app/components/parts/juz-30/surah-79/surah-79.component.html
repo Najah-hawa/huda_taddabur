@@ -3,6 +3,13 @@
   [hintText]="'نَزْعُ الأرواح بيد الملائكة دعوةٌ خفيّة لتذكر أن الأمر كلّه بيد الله، وإليه المصير.'">
 </app-surah-hint>
 
+
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
+                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'عبس'"
+></app-next-before-surah-meny>
+
+
 <app-surah-tabs [surahName]="'سورة النازعات'">
   <div tadabbur>
   <app-surahs-start></app-surahs-start>
@@ -63,11 +70,10 @@
     📚 مصدر التفسير: <b>تفسير ابن كثير والسعدي وابن عثيمين</b>
 </p>
 
-<!--visa next och prev -->
-<div class="sura-nav">
-  <a class="prev" routerLink="/surah-78" routerLinkActive="active">السورة السابقة</a>
-  <a class="next" routerLink="/surah-80" routerLinkActive="active">السورة التالية</a>
-</div>
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
+                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'عبس'"
+></app-next-before-surah-meny>
 
 
 

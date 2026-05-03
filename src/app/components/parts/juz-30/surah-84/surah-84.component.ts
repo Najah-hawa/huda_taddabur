@@ -6,14 +6,13 @@ import { SurahTabsComponent } from '../../../surah-tabs/surah-tabs.component';
 import { QuixTafserComponent } from '../../../quix-tafser/quix-tafser.component';
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { FawaedOfSurahComponent } from '../../../fawaed-of-surah/fawaed-of-surah.component';
-import { verses, alnaziatQuestions, rubtTassweerySections } from './surah79-data';
+import { verses, abassaQuestions, rubtTassweerySections } from './surah84-data';
 import { RouterModule } from '@angular/router';
-import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
 
 
 @Component({
-  selector: 'app-surah-79',
+  selector: 'app-surah-84',
   standalone: true,
   imports: [
     RouterModule,
@@ -23,13 +22,12 @@ import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/ne
     SurahTabsComponent,
     QuixTafserComponent,
     FooterInfoComponent,
-    FawaedOfSurahComponent,
-    NextBeforeSurahMenyComponent
-],
-  templateUrl: './surah-79.component.html',
-   styleUrls: ['./surah-79.component.css']
+    FawaedOfSurahComponent
+  ],
+  templateUrl: './surah-84.component.html',
+  styleUrl: './surah-84.component.css'
 })
-export class Surah79Component {
+export class Surah84Component {
   // flikstyrning
   selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
   // toggling av tafsir
@@ -39,7 +37,7 @@ export class Surah79Component {
 
   // ✅ Lägg till importerade data som medlemmar
   verses = verses;
-  alnaziatQuestions = alnaziatQuestions;
+  abassaQuestions = abassaQuestions;
   rubtTassweerySections = rubtTassweerySections;
 
   // uppdatera vald flik

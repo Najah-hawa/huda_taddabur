@@ -3,6 +3,13 @@
   [hintText]="'كل نجم يُسدل وكل شمس تتوارى، شاهدة على قدرة الله المطلقة.'">
 </app-surah-hint>
 
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-80'" [SurahBefore]="'عبس'"
+                            [RoutelinkAfter]="'/surah-82'"  [SurahNext]="'الإنفطار'"
+></app-next-before-surah-meny>
+
+
+
 <app-surah-tabs [surahName]="'سورة التكوير'">
   <div tadabbur>
   <app-surahs-start></app-surahs-start>
@@ -66,11 +73,11 @@
     📚 مصدر التفسير: <b> تفسير ابن القيم _ تفسير السعدي _ تفسير ابن عثيمين _ أيسر التفاسير لابو بكر الجزائري </b>
 </p>
 
-<!--visa next och prev -->
-<div class="sura-nav">
-  <a class="prev" routerLink="/surah-80" routerLinkActive="active">السورة السابقة</a>
-  <a class="next" routerLink="/surah-82" routerLinkActive="active">السورة التالية</a>
-</div>
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-80'" [SurahBefore]="'عبس'"
+                            [RoutelinkAfter]="'/surah-82'"  [SurahNext]="'الإنفطار'"
+></app-next-before-surah-meny>
+
 
 
 

@@ -3,6 +3,13 @@
   [hintText]="'أن ميزان الكرامة عند الله هو الإيمان، وليس المال أو الجاه. والاهتمام بالمستضعفين أحق وأوجب.'">
 </app-surah-hint>
 
+
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-79'" [SurahBefore]="'النازعات'"
+                            [RoutelinkAfter]="'/surah-81'"  [SurahNext]="'التكوير'"
+></app-next-before-surah-meny>
+
+
 <app-surah-tabs [surahName]="'سورة عبس'">
   <div tadabbur>
   <app-surahs-start></app-surahs-start>
@@ -63,12 +70,10 @@
     📚 مصدر التفسير:  <b> تفسيرابن كثير وتفسير السعدي و ابن عثيمين</b>
 </p>
 
-<!--visa next och prev -->
-<div class="sura-nav">
-  <a class="prev" routerLink="/surah-79" routerLinkActive="active">السورة السابقة</a>
-  <a class="next" routerLink="/surah-81" routerLinkActive="active">السورة التالية</a>
-</div>
-
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-79'" [SurahBefore]="'النازعات'"
+                            [RoutelinkAfter]="'/surah-81'"  [SurahNext]="'التكوير'"
+></app-next-before-surah-meny>
 
 
 <!--visa frågot om surah-->

@@ -1,0 +1,19 @@
+<div class="sura-nav-minimal">
+  <a class="nav-link prev" routerLink="{{RoutelinkBefore}}">
+    <span class="arrow">→</span>
+    <div class="nav-info">
+      <span class="label">السورة السابقة</span>
+      <span class="benefit-title"> سورة {{ SurahBefore }}</span>
+    </div>
+  </a>
+
+  <a class="nav-link next" routerLink="{{RoutelinkAfter}}">
+    <div class="nav-info">
+      <span class="label">السورة التالية</span>
+      <span class="benefit-title"> سورة {{ SurahNext }}</span>
+    </div>
+    <span class="arrow">←</span>
+  </a>
+<ng-content></ng-content>
+</div>
+
