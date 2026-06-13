@@ -14,7 +14,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/huda_taddabur/browser",
-            "baseHref": "/huda_taddabur/",
             "index": "src/index.html",
             "main": "src/main.ts",
             
