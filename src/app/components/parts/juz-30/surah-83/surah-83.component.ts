@@ -30,6 +30,9 @@ import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/ne
    styleUrls: ['./surah-83.component.css']
 })
 export class Surah83Component {
+toggleExpanded(_t34: number) {
+throw new Error('Method not implemented.');
+}
   // flikstyrning
   selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
   // toggling av tafsir
@@ -88,26 +91,24 @@ speakTafseer(text: string | undefined) {
 }
 
 
-// دالة لتشغيل صوت الآية
 playAyah(ayahNum: number) {
-  const surahNum = 83; // رقم سورة المطففين
+  const surahNum = 83; // سورة المطففين
   
-  // تنسيق الأرقام لتصبح 3 خانات (مثلاً 1 يصبح 001)
-  const formattedSurah = surahNum.toString().padStart(3, '0');
-  const formattedAyah = ayahNum.toString().padStart(3, '0');
+  // التأكد من تحويل الأرقام إلى 3 خانات (مثلاً: 83 -> 083 و 1 -> 001)
+  const formattedSurah = String(surahNum).padStart(3, '0');
+  const formattedAyah = String(ayahNum).padStart(3, '0');
   
-  // بناء الرابط للقارئ المنشاوي (يمكنكِ تغيير القارئ بتغيير اسم المجلد)
-  const audioUrl = `https://www.everyayah.com/data/Al_Minshawi_Murattal_128kbps/${formattedSurah}${formattedAyah}.mp3`;
+  // بناء الرابط باستخدام المسار الذي جربتِه
+  const audioUrl = `https://www.everyayah.com/data/Ayman_Sowaid_64kbps/${formattedSurah}${formattedAyah}.mp3`;
   
-  // إيقاف أي صوت شغال حالياً (تفسير أو آية سابقة)
+  // إيقاف صوت المتصفح الآلي إذا كان يعمل
   window.speechSynthesis.cancel(); 
-  
+
   const audio = new Audio(audioUrl);
-  audio.play().catch(error => console.error("خطأ في تشغيل صوت الآية:", error));
+  
+  audio.play().catch(error => {
+    console.error("خطأ في التشغيل:", error);
+    // إذا حدث خطأ، قد يكون السبب أن المتصفح يحتاج لتفاعل مباشر
+  });
 }
-  //Öppna/stänga en sektion för att visa ayah för varje part i visual.
-  toggleExpanded(index: number) {
-    this.expandedSections[index] = !this.expandedSections[index];
-  }
- 
 }

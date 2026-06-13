@@ -4,8 +4,8 @@
 </app-surah-hint>
 
 <!--visa en next och before meny-->
-<app-next-before-surah-meny [SurahBefore]="'الإنفطار'"
-                            [SurahNext]="'الانشقاق'"
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-82'" [SurahBefore]="'الإنفطار'"
+                            [RoutelinkAfter]="'/surah-84'"  [SurahNext]="'الانشقاق'"
 ></app-next-before-surah-meny>
 
 
@@ -16,23 +16,24 @@
    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-          <!-- إضافة زر تشغيل الآية هنا -->
         <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
-         ▶️
-        </button>
+  ▶️
+</button>
           <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+                      <!-- lägg till button för start ayah-->
+
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
         <div class="tafsir" *ngIf="shown.has(i)">
-  <!-- زر القراءة الصوتية -->
+        <!-- button för reading tafser text-->
 <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
     🔊 استمع للتفسير
 </button>
   
-  <!-- نص التفسير الأصلي -->
+  <!-- original tafser text -->
   <div [innerHTML]="verse.tafsir"></div>
 </div>
       </div>
@@ -82,8 +83,8 @@
 </p>
 
 <!--visa en next och before meny-->
-<app-next-before-surah-meny [SurahBefore]="'الإنفطار'"
-                            [SurahNext]="'الانشقاق'"
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-82'" [SurahBefore]="'الإنفطار'"
+                            [RoutelinkAfter]="'/surah-84'"  [SurahNext]="'الانشقاق'"
 ></app-next-before-surah-meny>
 
 

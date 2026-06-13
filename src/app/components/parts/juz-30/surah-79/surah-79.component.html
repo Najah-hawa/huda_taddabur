@@ -17,13 +17,26 @@
    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
+        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
+  ▶️
+</button>
           <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+                      <!-- lägg till button för start ayah-->
+
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
-        <div class="tafsir" *ngIf="shown.has(i)" [innerHTML]="verse.tafsir"></div>
+        <div class="tafsir" *ngIf="shown.has(i)">
+        <!-- button för reading tafser text-->
+<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
+    🔊 استمع للتفسير
+</button>
+  
+  <!-- original tafser text -->
+  <div [innerHTML]="verse.tafsir"></div>
+</div>
       </div>
     </div>
   </div>

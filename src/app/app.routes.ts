@@ -40,6 +40,10 @@ export const routes: Routes = [
     path: 'surah-83',
     loadComponent: () => import('./components/parts/juz-30/surah-83/surah-83.component').then(m => m.Surah83Component)
   },
+  {
+    path: 'surah-84',
+    loadComponent: () => import('./components/parts/juz-30/surah-84/surah-84.component').then(m => m.Surah84Component)
+  },
   // ... fortsätt likadant för resten
   
   { path: '', redirectTo: '/home', pathMatch: 'full' }

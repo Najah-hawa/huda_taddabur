@@ -3,6 +3,12 @@
   [hintText]="' '">
 </app-surah-hint>
 
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-83'" [SurahBefore]="'المطففين'"
+                             [RoutelinkAfter]="'/surah-85'" [SurahNext]="'البروج'"
+></app-next-before-surah-meny>
+
+
 <app-surah-tabs [surahName]="'سورة الإنشقاق'">
   <div tadabbur>
   <app-surahs-start></app-surahs-start>
@@ -10,18 +16,31 @@
    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-          <p class="ayah">{{ verse.text }}</p>
+        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
+  ▶️
+</button>
+         <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+<!-- lägg till button för start ayah-->
+
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
-        <div class="tafsir" *ngIf="shown.has(i)" [innerHTML]="verse.tafsir"></div>
+        <div class="tafsir" *ngIf="shown.has(i)">
+        <!-- button för reading tafser text-->
+<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
+    🔊 استمع للتفسير
+</button>
+  
+  <!-- original tafser text -->
+  <div [innerHTML]="verse.tafsir"></div>
+</div>
       </div>
     </div>
   </div>
-     
-   
+
+
   <div visual>
    <div class="intro-summary">
        <h3>ملخص السورة:</h3>
@@ -63,12 +82,10 @@
     📚 مصدر التفسير: <b>تفسير </b>
 </p>
 
-<!--visa next och prev -->
-<div class="sura-nav">
-  <a class="prev" routerLink="/surah-83" routerLinkActive="active">السورة السابقة</a>
-  <a class="next" routerLink="/surah-85" routerLinkActive="active">السورة التالية</a>
-</div>
-
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-83'" [SurahBefore]="'المطففين'"
+                             [RoutelinkAfter]="'/surah-85'" [SurahNext]="'البروج'"
+></app-next-before-surah-meny>
 
 
 <!--visa frågot om surah-->
@@ -77,7 +94,7 @@
 </div>
 
 <app-fawaed-of-surah
-  [SurahFaidah]="'المطففين'"
+  [SurahFaidah]="'الإنشقاق'"
   [FaidaText]="
      '<ul class=\'benefit-list\'>
       

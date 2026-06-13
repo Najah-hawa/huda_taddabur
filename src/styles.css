@@ -79,6 +79,8 @@ body {
   font-size: 1.2rem;
   color: #a67c52;
   transition: transform 0.3s ease;
+  margin-right: 5px;
+  margin-left: 15px;
 }
 .arrow.open {
   transform: rotate(180deg);
@@ -209,6 +211,47 @@ body {
   display: flex; /* Visa som flexbox (samma stil) */
 }
 
+
+
+
+.audio-btn {
+  background: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 14px;
+  color: #2c3e50;
+  cursor: pointer;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.3s;
+}
+
+.audio-btn:hover {
+  background: #e0e0e0;
+}
+
+
+.play-ayah-btn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #27ae60; /* لون أخضر هادئ */
+  transition: transform 0.2s;
+}
+
+.play-ayah-btn:hover {
+  transform: scale(1.2);
+}
+
+
 /* ⬅️ RESPONSIV DESIGN för små skärmar (mobiler) */
 @media (max-width: 600px) {
   .verse-item {
@@ -243,7 +286,7 @@ body {
 
   .ayah {
     font-size: 1.1rem;
-    max-width: 75%;
+    max-width: 60%;
   }
 
   .tafsir {
@@ -255,14 +298,21 @@ body {
     gap: 0.4rem;
   }
 
+
   .arrow {
-    font-size: 1.1rem;
-  }
+  font-size: 1.1rem;
+  margin-right: 3px;
+  margin-left: 5px;
+}
+.ayah-number{
+   font-size: 1rem;
+}
 }
 
 @media (max-width: 400px) {
   .ayah {
     font-size: 1rem;
+    max-width: 50%;
   }
 
   .tafsir {
@@ -276,6 +326,8 @@ body {
 
   .arrow {
     font-size: 1rem;
+     margin-right: 2px;
+  margin-left: 2px;
   }
 }
 
