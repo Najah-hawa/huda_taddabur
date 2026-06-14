@@ -30,9 +30,7 @@ import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/ne
   styleUrl: './surah-84.component.css'
 })
 export class Surah84Component {
-toggleExpanded(_t34: number) {
-throw new Error('Method not implemented.');
-}
+
   // flikstyrning
   selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
   // toggling av tafsir
@@ -45,6 +43,12 @@ throw new Error('Method not implemented.');
   abassaQuestions = abassaQuestions;
   rubtTassweerySections = rubtTassweerySections;
 
+  // ✅ Denna funktion för rubtafser pillarna 
+  toggleExpanded(index: number) {
+    this.expandedSections[index] = !this.expandedSections[index];
+  }
+
+  
   // uppdatera vald flik
   onTabChange(tab: 'tadabbur' | 'visual') {
     this.selectedTab = tab;

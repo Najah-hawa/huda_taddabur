@@ -1,41 +1,98 @@
-<!-- section f;r summary text--> 
- <app-surah-hint
+<app-surah-hint
   [surahName]="'الفاتحة'"
   [hintText]="'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'">
 </app-surah-hint>
 
-<app-surah-tabs [surahName]="'سورة الفاتحة'" >
 
-<!--den första part av väljai meny 📖 تدبر سريع -->
-<div tadabbur>
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
+                            [RoutelinkAfter]="'/surah-79'"  [SurahNext]="'النازعات'"
+></app-next-before-surah-meny>
 
-<!-- lägg till copmonent för app surah start meed bismlla div-->
-<app-surahs-start> </app-surahs-start>
+<app-surah-tabs [surahName]="'سورة الفاتحة'">
+  <div tadabbur>
+  <app-surahs-start></app-surahs-start>
+  <!-- här lägger tafser för du den första part taddabur -->
+   <div class="verse-wrapper">
+      <div class="verse-block" *ngFor="let verse of verses; let i = index">
+        <div class="verse-line" (click)="toggleVerse(i)">
+        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
+  ▶️
+</button>
+          <p class="ayah">{{ verse.text }}</p>
+          <div class="ayah-arrow"> 
+            <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+                      <!-- lägg till button för start ayah-->
 
-<!-- visa ayah från surah-->
-<div class="verse-block" *ngFor="let verse of verses; let i = index">
-  <div class="verse-line" (click)="toggleVerse(i)">
-    <p class="ayah">{{ verse.text }}</p>
-       <!--add ayah-nummer och pillen breddvid varandra-->
-        <div class="ayah-arrow"> 
-        <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-        <span class="arrow" [class.open]="shown[i]">▼</span>
-       </div>
+            <span class="arrow" [class.open]="shown.has(i)">▼</span>
+          </div>
+        </div>
+        <div class="tafsir" *ngIf="shown.has(i)">
+        <!-- button för reading tafser text-->
+<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
+    🔊 استمع للتفسير
+</button>
+  
+  <!-- original tafser text -->
+  <div [innerHTML]="verse.tafsir"></div>
+</div>
+      </div>
+    </div>
   </div>
+    
 
-  <div class="tafsir" *ngIf="shown[i]" [innerHTML]="verse.tafsir"></div>
+  <div visual>
+  <div class="intro-summary">
+    <h3>ملخص السورة:</h3>
+  <p> الثناء على اللَّه →  العبد يعلن عبوديته للَّه → الختم بالدعاء و طلب الهداية. </p>
+  </div>
+    <!-- parts i visual delen -->
+    <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
+  <h3 class="section-title">{{ section.title }}</h3>
+  <p class="section-desc">{{ section.description }}</p>
+  
+  <ul class="verse-list">
+    <!-- Huvudvers -->
+    <li class="verse-item verse-main">
+      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+      <button
+        *ngIf="section.verseNumbers.length > 1"
+        class="toggle-btn"
+        (click)="toggleExpanded(i)">
+        {{ expandedSections[i] ? '↑' : '⋮' }}
+      </button>
+    </li>
+
+    <!-- Extra verser -->
+    <li
+      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
+      class="verse-item"
+      [class.extra]="true"
+      [class.show]="expandedSections[i]">
+      {{ getVerseText(num) }}
+    </li>
+  </ul>
 </div>
 
-<!-- text för källa -->
+  </div>
+</app-surah-tabs>
+
+
+<!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
-    📚 مصدر التفسير: <b>تفسير ابن كثير</b>
+   📚 مصدر التفسير: <b>تفسير ابن كثير</b>
 </p>
+
+<!--visa en next och before meny-->
+<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
+                            [RoutelinkAfter]="'/surah-79'"  [SurahNext]="'النازعات'"
+></app-next-before-surah-meny>
+  
 
 <!-- alfatiha quiz component -->
 <div class="quiz-section">
   <app-quix-tafser [questions]="alfatihaQuestions"></app-quix-tafser>
 </div>
-
 
 <!--div för فائدة text-->
 <div class="benefit-box">
@@ -48,6 +105,9 @@
     <strong>«آمين»</strong>، ومعناها: <em>يا رب استجب</em>.
   </div>
 </div>
+
+
+
 
 <!--div för تذكير text-->
 <div class="benefit-box">
@@ -100,6 +160,7 @@
 </app-nezzol>
 
 
+
 <!-- coponent för faida -->
 <app-fawaed-of-surah
   [SurahFaidah]="'الفاتحة'"
@@ -114,60 +175,5 @@
   ">
 </app-fawaed-of-surah>
 
-<!-- slutet av diven taddabur -->
-</div>
-
-
-
-<!--blrjan av den visualla delen -->
-
-<div visual>
-  
-<div class="map-container">
-
-<div class="intro-summary">
- <h3>ملخص السورة:</h3>
- <p> الثناء على اللَّه →  العبد يعلن عبوديته للَّه → الختم بالدعاء و طلب الهداية. </p>
-</div>
-
-<!--loppa igenom information i ts -->
-  <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">  
-    <!--visa titel med det försst iden-->
-    <h3 class="section-title">{{ section.title }}</h3>
-     <!--visa descrbtion av delen-->
-    <p class="section-desc">{{ section.description }}</p>
-     <!--loppa igenom ayah som handlar om denna del-->
-    <ul class="verse-list">
-      <li class="verse-item verse-main">
-        <span class="verse-text">{{ section.verses[0] }}</span>
-
-        <!-- Toggle-knappen visas till vänster om första ayah -->
-        <button
-          *ngIf="section.verses.length > 1"
-          class="toggle-btn"
-          (click)="toggleExpanded(i)"
-        >
-          {{ expandedSections[i] ? '↑' : '⋮' }}
-        </button>
-      </li>
-
-      <!-- Visa resterande ayat om expanded -->
-      <li
-        *ngFor="let verse of section.verses.slice(1); let j = index"
-        class="verse-item"
-        [class.extra]="true"
-        [class.show]="expandedSections[i]"
-      >
-        {{ verse }}
-      </li>
-    </ul>
-  </div>
-</div>
-
-
-</div>
-
-  
-</app-surah-tabs>
 
 <app-footer-info />

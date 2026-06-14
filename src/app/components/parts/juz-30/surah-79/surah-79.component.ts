@@ -30,9 +30,7 @@ import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/ne
    styleUrls: ['./surah-79.component.css']
 })
 export class Surah79Component {
-toggleExpanded(_t34: number) {
-throw new Error('Method not implemented.');
-}
+
   // flikstyrning
   selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
   // toggling av tafsir
@@ -45,6 +43,13 @@ throw new Error('Method not implemented.');
   alnaziatQuestions = alnaziatQuestions;
   rubtTassweerySections = rubtTassweerySections;
 
+
+
+    // ✅ Denna funktion för rubtafser pillarna 
+   toggleExpanded(index: number) {
+   this.expandedSections[index] = !this.expandedSections[index];
+   }
+   
   // uppdatera vald flik
   onTabChange(tab: 'tadabbur' | 'visual') {
     this.selectedTab = tab;
@@ -92,7 +97,7 @@ speakTafseer(text: string | undefined) {
 
 
 playAyah(ayahNum: number) {
-  const surahNum = 97; // سورة المطففين
+  const surahNum = 79; // سورة المطففين
   
   // التأكد من تحويل الأرقام إلى 3 خانات (مثلاً: 83 -> 083 و 1 -> 001)
   const formattedSurah = String(surahNum).padStart(3, '0');
