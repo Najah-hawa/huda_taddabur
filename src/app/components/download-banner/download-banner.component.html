@@ -1,0 +1,26 @@
+<div class="app-download-wrapper" *ngIf="!isPocketHidden">
+  
+  <!-- 1. الجيب الصغير المطور (يحتوي الآن على زر X للإغلاق التام) -->
+  <div class="small-pocket" *ngIf="!isExpanded" (click)="toggleBanner()">
+    <!-- زر X الصغير الخاص بالجيب -->
+    <span class="pocket-close-btn" (click)="closePocketComplete($event)">&times;</span>
+    <span class="pocket-icon">✨</span>
+    <span class="pocket-text">تطبيق هدى وتدبر</span>
+  </div>
+
+  <!-- 2. النافذة الكبيرة المتناسقة -->
+  <div class="large-card" *ngIf="isExpanded">
+    <!-- زر الإغلاق الذي يعيده إلى جيب صغير -->
+    <span class="close-btn" (click)="toggleBanner()">&times;</span>
+    
+    <div class="card-content">
+      <div class="card-header">
+        <span class="app-icon">📖</span>
+        <h3>تطبيق هدى وتدبر</h3>
+      </div>
+      <p>حمّل التطبيق لتصفح القرآن وتدبّر الآيات بسلاسة أكبر، مع إمكانية الوصول لكل المحتوى في أي وقت حتى بدون إنترنت.</p>
+      <a href="#" class="download-btn">تحميل التطبيق الآن</a>
+    </div>
+  </div>
+
+</div>
