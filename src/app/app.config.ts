@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),  // Här ger vi routerkonfigurationen
     provideHttpClient(),  // HTTP-klienten
     importProvidersFrom(
-      NgxGoogleAnalyticsModule.forRoot('G-TQE5Z130WM'),
+      NgxGoogleAnalyticsModule.forRoot('G-1HHZRQ1K3B'),
       NgxGoogleAnalyticsRouterModule
     )
   ]
