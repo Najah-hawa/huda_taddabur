@@ -1,0 +1,744 @@
+<div class="purity-page-container" dir="rtl">
+  
+  <header class="purity-header">
+    <h1>{{ mainTitle }}</h1>
+    <p class="purity-subtitle">دليل مبسط وشامل للأحكام الفقهية بطريقة تفاعلية وعصرية</p>
+  </header>
+
+  <div class="purity-workspace">
+    
+    <!-- القائمة الجانبية الموسعة شاملة الطهارة والمياه -->
+    <nav class="purity-sidebar">
+      <ul>
+        <!-- تصنيف قسم الطهارة -->
+        <li class="sidebar-category-title">🔹 أولاً: فقه الطهارة</li>
+        <li [class.active-item]="activeTab === 'definition'" (click)="setTab('definition')">
+          <span class="tab-icon">📖</span> مفهوم الطهارة
+        </li>
+        <li [class.active-item]="activeTab === 'conditions'" (click)="setTab('conditions')">
+          <span class="tab-icon">✨</span> شروط الطهارة
+        </li>
+        <li [class.active-item]="activeTab === 'sections'" (click)="setTab('sections')">
+          <span class="tab-icon">🌿</span> أقسام الطهارة
+        </li>
+
+        <!-- تصنيف قسم المياه الجديد -->
+        <li class="sidebar-category-title">💧 ثانياً: أحكام المياه</li>
+        <li [class.active-item]="activeTab === 'water-intro'" (click)="setTab('water-intro')">
+          <span class="tab-icon">💧</span> مقدمة عن المياه
+        </li>
+        <li [class.active-item]="activeTab === 'water-pure-purifier'" (click)="setTab('water-pure-purifier')">
+          <span class="tab-icon">🟢</span> الماء الطاهر المطهر
+        </li>
+        <li [class.active-item]="activeTab === 'water-pure-not-purifier'" (click)="setTab('water-pure-not-purifier')">
+          <span class="tab-icon">🟡</span> الماء الطاهر غير المطهر
+        </li>
+        <li [class.active-item]="activeTab === 'water-impure'" (click)="setTab('water-impure')">
+          <span class="tab-icon">🔴</span> الماء المتنجس
+        </li>
+
+        <!-- تصنيف قسم النجاسات الجديد -->
+        <li class="sidebar-category-title">⚠️ ثالثاً: أحكام النجاسات</li>
+        <li [class.active-item]="activeTab === 'impure-heavy'" (click)="setTab('impure-heavy')">
+          <span class="tab-icon">🐾</span> ١. النجاسة المغلظة
+        </li>
+        <li [class.active-item]="activeTab === 'impure-light'" (click)="setTab('impure-light')">
+          <span class="tab-icon">👶</span> ٢. النجاسة المخففة
+        </li>
+        <li [class.active-item]="activeTab === 'impure-medium'" (click)="setTab('impure-medium')">
+          <span class="tab-icon">🏺</span> ٣. النجاسة المتوسطة
+        </li>
+
+
+        <!-- العنوان الرئيسي الموحد لرابعاً وتحته التبويبات المفصلة -->
+        <li class="sidebar-category-title">🌸 رابعاً: فقه دماء النساء</li>
+        <li [class.active-item]="activeTab === 'haid'" (click)="setTab('haid')">
+          <span class="tab-icon">🩸</span> ١. الحيض
+        </li>
+        <li [class.active-item]="activeTab === 'nifas'" (click)="setTab('nifas')">
+          <span class="tab-icon">🤰</span> ٢. النفاس
+        </li>
+        <li [class.active-item]="activeTab === 'prohibited'" (click)="setTab('prohibited')">
+          <span class="tab-icon">🚫</span> ٣. ما يحرم بالحيض والنفاس
+        </li>
+        <li [class.active-item]="activeTab === 'istihada'" (click)="setTab('istihada')">
+          <span class="tab-icon">🌙</span> ٤. الاستحاضة
+        </li>
+
+
+
+        <!-- العنوان الرئيسي: المستحبات وتحته العناوين الفرعية لكل صورة -->
+        <li class="sidebar-category-title">✨ خامساً: المستحبات</li>
+        <li [class.active-item]="activeTab === 'sunan-fitra'" (click)="setTab('sunan-fitra')">
+          <span class="tab-icon">🍃</span> عشر من الفطرة
+        </li>
+        <li [class.active-item]="activeTab === 'siwak'" (click)="setTab('siwak')">
+          <span class="tab-icon">🪥</span> السواك
+        </li>
+        <li [class.active-item]="activeTab === 'idihan'" (click)="setTab('idihan')">
+          <span class="tab-icon">🧴</span> الادهان غباً
+        </li>
+        <li [class.active-item]="activeTab === 'ikfihal'" (click)="setTab('ikfihal')">
+          <span class="tab-icon">👁️</span> الاكتحال وتراً
+        </li>
+        <li [class.active-item]="activeTab === 'nails'" (click)="setTab('nails')">
+          <span class="tab-icon">💅</span> تقليم الأظافر
+        </li>
+        <li [class.active-item]="activeTab === 'combing'" (click)="setTab('combing')">
+          <span class="tab-icon">💇‍♀️</span> ترجيل الشعر ودهنه
+        </li>
+        <li [class.active-item]="activeTab === 'hair-removal'" (click)="setTab('hair-removal')">
+          <span class="tab-icon">✨</span> إزالة شعر الإبط والعانة
+        </li>
+
+
+        <li class="sidebar-category-title">🧼 سادساً: الآداب اليومية</li>
+        <li [class.active-item]="activeTab === 'istinja-rules'" (click)="setTab('istinja-rules')">
+          <span class="tab-icon">🧻</span> الاستنجاء وآداب قضاء الحاجة
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- منطقة عرض محتوى الـ Tabs التفاعلي -->
+    <main class="purity-main-content">
+
+      <!-- ================= أقسام الطهارة السابقة ================= -->
+      <div *ngIf="activeTab === 'definition'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">الطهارة</h2>
+        <div class="definition-banner"><h3>رفع حدث أو إزالة نجس</h3></div>
+        <div class="definition-flex-cards">
+          <div class="purity-card card-blue-theme">
+            <h4>🔄 رفع حدث</h4>
+            <p>صفة اعتبارية يوصف بها الجسم كله في حال وجود أحد موجبات الغسل، أو بعض أعضاء الجسم في حال وجود أحد نواقض الوضوء.</p>
+          </div>
+          <div class="purity-card card-gold-theme">
+            <h4>🧼 إزالة نجس</h4>
+            <p>هي كل مستقذر يمنع الصلاة، وتنقسم النجاسة إلى نجاسة مغلظة، متوسطة، ومخففة.</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'conditions'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">الطهارة : شرط لكل شيء</h2>
+<!-- شبكة شروط وأهمية الطهارة المطورة مع الصور -->
+        <div class="conditions-grid-layout">
+          
+          <!-- الشرط الأول: صلاة -->
+          <div class="condition-box-item">
+            <div class="condition-image-wrapper">
+              <img src="images/fiqh-1-taharah/girl-praying.jpg" alt="شرط لصحة الصلاة" class="condition-img" />
+            </div>
+            <div class="condition-content-side">
+              <div class="condition-number-badge">١</div>
+              <div class="condition-box-text">
+                <h5>شرط لصحة الصلاة</h5>
+                <p>طهارة الثوب، البدن، والمكان</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- الشرط الثاني: الأطعمة والأشربة -->
+          <div class="condition-box-item">
+            <div class="condition-image-wrapper">
+              <img src="images/fiqh-1-taharah/food.jpg" alt="الأطعمة والأشربة" class="condition-img" />
+            </div>
+            <div class="condition-content-side">
+              <div class="condition-number-badge">٢</div>
+              <div class="condition-box-text">
+                <h5>شرط لاستعمال الأطعمة والأشربة</h5>
+                <p>نظافة المأكل والمشرب من النجاسات</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- الشرط الثالث: الآنية -->
+          <div class="condition-box-item">
+            <div class="condition-image-wrapper">
+              <img src="images/fiqh-1-taharah/cooking.jpg" alt="استعمال الآنية" class="condition-img" />
+            </div>
+            <div class="condition-content-side">
+              <div class="condition-number-badge">٣</div>
+              <div class="condition-box-text">
+                <h5>شرط لاستعمال الآنية</h5>
+                <p>طهارة الأوعية وظروف الطبخ</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- الشرط الرابع: الألبسة -->
+          <div class="condition-box-item">
+            <div class="condition-image-wrapper">
+              <img src="images/fiqh-1-taharah/clothinng.jpg" alt="استعمال الألبسة" class="condition-img" />
+            </div>
+            <div class="condition-content-side">
+              <div class="condition-number-badge">٤</div>
+              <div class="condition-box-text">
+                <h5>شرط لاستعمال الألبسة</h5>
+                <p>نقاوة الثياب ونظافتها لارتدائها</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'sections'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">أقسام الطهارة</h2>
+<!-- حاوية الكتل العمودية المطورة مع الصور -->
+        <div class="sections-vertical-stack">
+          
+          <!-- الكتلة الأولى: طهارة أصلية -->
+          <div class="purity-section-block block-green">
+            <div class="block-image-wrapper">
+              <img src="images/fiqh-1-taharah/real-clean.jpg" alt="طهارة أصلية" class="block-img" />
+            </div>
+            <div class="block-content-side">
+              <h5>🟢 طهارة أصلية</h5>
+              <p>الأصل في الأشياء الطهارة ما لم تثبت نجاستها بدليل.</p>
+            </div>
+          </div>
+
+          <!-- الكتلة الثانية: طهارة عارضة -->
+          <div class="purity-section-block block-orange">
+            <div class="block-image-wrapper">
+              <img src="images/fiqh-1-taharah/secend-clean.jpg" alt="طهارة عارضة" class="block-img" />
+            </div>
+            <div class="block-content-side">
+              <h5>🟡 طهارة عارضة</h5>
+              <p>هي النظافة من النجاسة التي تصيب الأشياء بسبب عروض الخبث وتزول بالمطهرات (كالماء والتراب).</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ================= أقسام المياه الجديدة مأخوذة من الصور ================= -->
+      
+      <!-- 1. مقدمة عن المياه (الصورة الأولى 1000401688.jpg) -->
+     <div *ngIf="activeTab === 'water-intro'" class="purity-tab-body animate-fade">
+  <h2 class="section-main-title">أحكام المياه</h2>
+  
+
+  <p class="lead-text">الماء هو العنصر الأساسي للتطهير في الشريعة الإسلامية وله الميزات التالية:</p>
+  
+  <div class="water-intro-stack">
+    <div class="intro-card">
+      <span class="intro-emoji">💧</span>
+      <p><strong>وسيلة التطهير الوحيدة</strong> الأصلية في باب الطهارة.</p>
+    </div>
+    <div class="intro-card">
+      <span class="intro-emoji">🚰</span>
+      <p>تتميز بـأنها <strong>تتوفر بكثرة</strong> لتسهيل حياة العباد.</p>
+    </div>
+    <div class="intro-card">
+      <span class="intro-emoji">🌱</span>
+      <p><strong>ينوب عنها التراب</strong> في حال فقد الماء أو العجز عن استعماله (التيمم).</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="activeTab === 'water-pure-purifier'" class="purity-tab-body animate-fade">
+  <h2 class="section-main-title">١. الماء الطاهر المطهر (الطهور)</h2>
+  
+
+<div class="water-definition-box clear-blue">
+  <div class="flex-content-wrapper">
+    
+    <!-- القائمة النصية (الـ ul) -->
+    <ul class="water-ul-list">
+      <li>هو الطاهر بنفسه المطهر لغيره.</li>
+      <li>وحده الذي يرفع الحدث ويزيل النجس.</li>
+      <li>لا يجوز الوضوء أو الغسل (المفروضين) بغيره.</li>
+      <li>يشمل كل ما نزل من السماء أو نبع من الأرض.</li>
+    </ul>
+
+    <!-- حاوية الصورة بجانب النص -->
+    <div class="water-side-image-container">
+      <!-- استبدل اسم الصورة 'pure-water.jpg' بالاسم الحقيقي للصورة الموجودة لديك في مجلد bilder -->
+      <img src="images/fiqh-1-taharah/water.jpg"alt="الماء الطاهر المطهر" class="water-side-image">
+    </div>
+
+  </div>
+</div>
+<div class="water-alert-box">
+  <div class="alert-flex-wrapper">
+    
+    <div class="alert-text-content">
+      <h5>⚠️ تنبيهات هامة:</h5>
+      <p>• هو الماء العاري عن كل ما يغير اسمه.</p>
+      <p>• إذا خالطه طاهر فغيّر طعمه أو ريحه أو لونه تغييراً فاحشاً فإنه يفقد قدرته على التطهير ويصبح (طاهراً غير مطهر).</p>
+    </div>
+
+    <div class="alert-image-container">
+      <img src="images/fiqh-1-taharah/orange_water.jpg" alt="تنبيه فقهي" class="alert-side-image">
+    </div>
+
+  </div>
+</div>
+
+  <div class="hate-usage-container">
+    <h5>❄️ يكره استعماله في حالتين:</h5>
+    <div class="hate-grid">
+      <div class="hate-item">❄️ شديد البرودة</div>
+      <div class="hate-item">🔥 شديد السخونة</div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="activeTab === 'water-pure-not-purifier'" class="purity-tab-body animate-fade">
+  <h2 class="section-main-title">٢. الماء الطاهر غير المطهر</h2>
+  <div class="water-definition-box clear-orange">
+    <p><strong>حكمه الفقهي:</strong> هو طاهر بنفسه ولكن <strong>غير مطهر لغيره</strong> (لا يرفع حدثاً ولا يزيل نجساً).</p>
+  </div>
+
+  <h4 class="sub-features-title">📂 أنواعه وأمثلته:</h4>
+  <div class="water-types-grid">
+    <div class="type-card">
+      <h5>💧 الماء القليل المستعمل</h5>
+      <p>هو الماء الذي استُخدم سابقاً في الوضوء أو الغسل.</p>
+    </div>
+    <div class="type-card">
+      <h5>☕ ماء طهور خالطه شيء طاهر</h5>
+      <p>مثل خلط الماء بالشاي أو الزعفران فتغير أحد أوصافه.</p>
+    </div>
+    <div class="type-card">
+      <h5>🧼 غسالة النجاسة</h5>
+      <p>الماء المنفصل عن محل النجاسة بعد تطهيره إذا لم يتغير.</p>
+    </div>
+  </div>
+  <div class="water-note-footer">⚠️ ملاحظة: الماء القليل هو ما كان حجمه أقل من 195 لتر.</div>
+</div>
+
+<div *ngIf="activeTab === 'water-impure'" class="purity-tab-body animate-fade">
+  <h2 class="section-main-title">٣. الماء المتنجس</h2>
+
+
+  <div class="water-definition-box clear-red">
+    <p><strong>حكمه الفقهي:</strong> هو الماء الذي أصابته نجاسة ولم يعد صالحاً للاستعمال مطلقاً.</p>
+  </div>
+
+  <h4 class="sub-features-title">📂 أنواعه بحسب حجم الماء:</h4>
+  <div class="impure-types-container">
+    <div class="impure-row-card border-red">
+      <h5>🛑 ماء قليل</h5>
+      <p>هو الماء الذي حلّت به النجاسة <strong>سواء تغيّر بها أحد أوصاف الماء أم لم يتغيّر</strong>.</p>
+    </div>
+    <div class="impure-row-card border-dark-red">
+      <h5>⚠️ ماء كثير</h5>
+      <p>هو الماء الذي حلّت به نجاسة <strong>فغيّرت أحد أوصافه الثلاثة</strong> (اللون، الطعم، الرائحة).</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ================= أقسام النجاسات الجديدة المستخرجة من الصور ================= -->
+
+      <!-- 1. النجاسة المغلظة (الصورة 1000401704.jpg) -->
+      <div *ngIf="activeTab === 'impure-heavy'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">١- النجاسة المغلظة</h2>
+        
+        <div class="impurity-content-box bg-heavy">
+          <div class="impurity-text-section">
+            <p class="impurity-definition">تشمل هذه النجاسة الفقهية ما يلي:</p>
+            <ul class="impurity-bullet-list">
+              <li>الكلب والخنزير.</li>
+              <li>وما تولد منهما.</li>
+              <li>وكل ما يخرج منهما (كاللعاب).</li>
+            </ul>
+          </div>
+
+          <!-- مكان مخصص لصور الحيوانات لخدمة الشرح والتعليم البصري -->
+          <div class="impurity-image-section">
+            <!-- استبدل مسار src بالمسار الفعلي لصورك في مجلد الـ assets لاحقاً -->
+            <img src="images/fiqh-1-taharah/dog.jpg" alt="الكلب والخنزير" class="figh-illustrative-img" />
+          </div>
+        </div>
+
+        <!-- كيفية التطهير -->
+        <div class="purification-method-card border-heavy">
+          <h5>✨ كيفية الطهارة منها :</h5>
+          <p class="purification-steps">غسل الموضع المتنجس <strong>سبع مرات</strong> مع مزج ماء إحداهن بالتراب.</p>
+        </div>
+      </div>
+
+
+      <!-- 2. النجاسة المخففة (الصورة 1000401706.jpg) -->
+      <div *ngIf="activeTab === 'impure-light'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">٢- النجاسة المخففة</h2>
+
+        <div class="impurity-content-box bg-light">
+          <div class="impurity-text-section">
+            <p class="impurity-definition">تُعنى هذه النجاسة بـ:</p>
+            <ul class="impurity-bullet-list">
+              <li>بول الصبي دون السنتين.</li>
+              <li>الذي لم يأكل الطعام (يعتمد على اللبن فقط).</li>
+            </ul>
+          </div>
+
+          <!-- مكان مخصص لصورة الطفل الصبي لخدمة الشرح والتعليم البصري -->
+          <div class="impurity-image-section">
+            <!-- استبدل مسار src بالمسار الفعلي لصورك في مجلد الـ assets لاحقاً -->
+            <img src="images/fiqh-1-taharah/baby.jpg" alt="الصبي دون السنتين" class="figh-illustrative-img" />
+          </div>
+        </div>
+
+        <!-- كيفية التطهير -->
+        <div class="purification-method-card border-light">
+          <h5>✨ كيفية الطهارة منها :</h5>
+          <p class="purification-steps">ينضح (يرش) بالماء فيطهر <strong>ولا يشترط السيلان</strong>.</p>
+        </div>
+      </div>
+
+
+      <!-- 3. النجاسة المتوسطة (الصورة 1000401708.jpg) -->
+      <div *ngIf="activeTab === 'impure-medium'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">٣- النجاسة المتوسطة</h2>
+        
+        <div class="impurity-medium-grid">
+          <div class="medium-list-card">
+            <h5>📋 أعيان النجاسة المتوسطة:</h5>
+            <ul class="impurity-bullet-list spacing-medium">
+              <li>كل مسكر مائع كالخمر والكحول.</li>
+              <li>الميتة (باستثناء الآدمي والسمك والجراد).</li>
+              <li>العظم والسن والقرن والشعر والوبر من غير المأكول، ومن ميتة المأكول.</li>
+              <li>لبن ما لا يؤكل لحمه (كالحمار).</li>
+              <li>الدم المسفوح.</li>
+              <li>القيح.</li>
+              <li>الأبوال والغائط والأرواث والمذي والودي.</li>
+              <li>القيء.</li>
+            </ul>
+          </div>
+
+          <div class="medium-purification-card">
+            <h5>✨ كيفية الطهارة منها بحسب نوعها:</h5>
+            
+            <div class="sub-purify-block block-eyniya">
+              <h6>🔴 النجاسة العينية</h6>
+              <p>تطهر بـ <strong>إزالة عين النجاسة</strong>.</p>
+            </div>
+
+            <div class="sub-purify-block block-hokmiya">
+              <h6>🔵 النجاسة الحكمية</h6>
+              <p>تطهر بـ <strong>سيلان الماء على الموضع</strong>، ولو من غير فعل فاعل (كالمطر).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= ١. الحيض (الصورة 1000401776.jpg و 1000401778.jpg) ================= -->
+      <div *ngIf="activeTab === 'haid'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">الحيض</h2>
+        
+        <div class="womens-section-card border-pink">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <p class="figh-highlight-text"><strong>تعريف الحيض:</strong> دم غير مَرَضي يخرج من أقصى رحم المرأة بعد بلوغها في أوقات معتادة.</p>
+              <blockquote>قال رسول الله ﷺ: «إن هذا أمر كتبه الله تعالى على بنات آدم»</blockquote>
+            </div>
+            
+            <div class="image-only-container">
+            <img src="images/fiqh-1-taharah/lamp-girl.jpg" alt="أهمية الحيض" class="positive-figh-img" />
+            </div>
+          </div>
+
+          <div class="details-grid-two-columns">
+            <div class="details-sub-box">
+              <h5>💡 أهمية البحث:</h5>
+              <p>لما له من تعلق بأمور الدين والدنيا؛ فمن الناحية الطبية تتعلق به سلامة صحة المرأة الجسدية والنفسية، ومن الناحية الدينية تتعلق به أنواع العبادات كالصلاة، والصوم، والطواف، وقراءة القرآن، ومس المصحف، واللبث في المسجد.</p>
+            </div>
+            <div class="details-sub-box bg-warm">
+              <h5>⏳ السن والمدة الشرعية:</h5>
+              <ul>
+                <li><strong>سن الحيض:</strong> أقل عمر تحيض فيه المرأة تسع سنوات قمرية.</li>
+                <li><strong>أقل الحيض:</strong> يوم وليلة على الاتصال المعتاد دون انقطاع.</li>
+                <li><strong>أكثر الحيض:</strong> خمسة عشر يوماً مع لياليها، فإن زاد عن ذلك فهي مستحاضة.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="purity-duration-box">
+            <div class="duration-text">
+              <h5>✨ مدة الطهر:</h5>
+              <p>• أقل الطهر بين حيضتين خمسة عشر يوماً بلياليها.</p>
+              <p>• ولا حد لأكثره.</p>
+            </div>
+            
+            <div class="interactive-figh-quiz">
+              <div class="quiz-badge">🧠 مسألة تفاعلية وتطبيقية:</div>
+              <p class="quiz-question">امرأة حاضت 7 أيام ونقيت بعدها 12 يوماً ثم رأت الدم في اليوم 13 من النقاء، ماذا تفعل؟</p>
+              <div class="quiz-answer-placeholder">
+                <img src="images/fiqh-1-taharah/girl-qusation.jpg" alt="مسألة فقهية" class="quiz-avatar-img" />
+                <span class="answer-tip">💡 <strong>توجيه فقهي:</strong> تُعرض على القواعد الفقهية المعتمدة لتمييز الاستحاضة عن الحيض الجديد طالما أن النقاء لم يكتمل 15 يوماً.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ٢. النفاس (الصورة 1000401780.jpg) ================= -->
+      <div *ngIf="activeTab === 'nifas'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">النفاس</h2>
+        
+        <div class="womens-section-card border-purple">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <p class="figh-highlight-text"><strong>تعريف النفاس:</strong> هو الدم الخارج عقب الولادة، أو الإسقاط.</p>
+              
+              <h5 class="margin-top-15">⏳ مدة النفاس الشرعية:</h5>
+              <ul class="styled-purity-list">
+                <li><strong>أقل النفاس:</strong> لحظة واحدة.</li>
+                <li><strong>أكثره:</strong> ستون يوماً.</li>
+              </ul>
+            </div>
+
+            <div class="image-only-container">
+            <img src="images/fiqh-1-taharah/motherhood.jpg" alt="النفاس" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ٣. ما يحرم بالحيض والنفاس (الصورة 1000401782.jpg) ================= -->
+      <div *ngIf="activeTab === 'prohibited'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">ما يحرم بالحيض والنفاس</h2>
+        
+        <div class="womens-section-card border-red-accent">
+          <div class="card-flex-header no-wrap-mobile">
+
+
+            <div class="image-only-container flex-order-2">
+            <img src="images/fiqh-1-taharah/girl-praying.jpg" alt="العبادات والمحرمات" class="positive-figh-img image-large-size" />
+            </div>
+
+            <div class="header-text-block flex-order-1">
+              <p class="danger-notice-text">يحرم على الحائض والنفساء القيام بالعبادات والمعاملات الشرعية التالية رعايةً لحكم الشارع وتخفيفاً وتيسيراً:</p>
+              
+              <ol class="numbered-purity-list">
+                <li><span>الطهارة بنية رفع الحدث الأصغر.</span></li>
+                <li><span>الصلاة فرضاً أو نفلاً، والطواف، وسجود الشكر والتلاوة.</span></li>
+                <li><span>الصوم فرضاً أو نفلاً.</span></li>
+                <li><span>قراءة القرآن (التلفظ به) بحيث تسمع نفسها.</span></li>
+                <li><span>مس المصحف أو أي جزء منه أو كل ما كتب عليه كلام الله.</span></li>
+                <li><span>اللبث في المسجد والتردد فيه.</span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ٤. الاستحاضة (الصورة 1000401784.jpg) ================= -->
+      <div *ngIf="activeTab === 'istihada'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">الاستحاضة</h2>
+        
+        <div class="womens-section-card border-teal">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <p class="figh-highlight-text"><strong>تعريف الاستحاضة:</strong> دم علة خارج في غير وقت الحيض والنفاس، وكذلك كل ما يزيد عن أكثر الحيض أو النفاس أو ينقص عنه.</p>
+            </div>
+
+            <div class="image-only-container">
+           <img src="images/fiqh-1-taharah/hajd4.jpg" alt="أحكام الاستحاضة" class="positive-figh-img" />
+            </div>
+          </div>
+          
+
+          <div class="stihada-rules-box">
+            <h5>📋 أحكام المستحاضة الشرعية التفصيلية:</h5>
+            <ul class="styled-purity-list grid-two-columns">
+              <li>لا تمنع عن الصوم والصلاة وغيرهما من العبادات.</li>
+              <li>تتوضأ بعد دخول وقت الصلاة وتصلي بالوضوء الواحد فريضة واحدة وما شاءت من النوافل.</li>
+              <li>يشترط لها الموالاة أثناء الوضوء وكذلك بين الوضوء والصلاة.</li>
+              <li>إذا انقطع عنها الدم لا يجب عليها الغسل وإنما يسن لها ذلك.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 1. محتوى: عشر من الفطرة (الصورة: 1000401795.jpg) -->
+      <div *ngIf="activeTab === 'sunan-fitra'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">عشر من الفطرة</h2>
+        <div class="womens-section-card border-gold">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <p class="figh-highlight-text">عن عائشة رضي الله عنها قالت: قال رسول الله ﷺ:</p>
+              <blockquote class="hadith-box">
+                «عشر من الفطرة: قص الشارب، وإعفاء اللحية، والسواك، واستنشاق الماء، وقص الأظافر، وغسل البراجم، ونتف الإبط، وحلق العانة، وانتقاص الماء»
+              </blockquote>
+              <p class="narrator-note">📝 قال راوي الحديث: ونسيت العاشرة إلا أن تكون <strong>المضمضة</strong>.</p>
+            </div>
+            <div class="illustrative-image-holder">
+              <img src="images/fiqh-1-taharah/happy-girl-blue.jpg" alt="سنن الفطرة" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. محتوى: السواك (الصورة: 1000401797.jpg) -->
+      <div *ngIf="activeTab === 'siwak'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">أحكام السواك</h2>
+        <div class="womens-section-card border-green">
+          <div class="card-flex-header no-wrap-mobile">
+            <div class="header-text-block">
+              <h3>حكمه الشرعي:</h3>
+              <ul class="styled-purity-list font-medium">
+                <li><strong class="color-sunnah">✨ سنة مؤكدة:</strong> للوضوء والصلاة، وعند القيام من النوم ليلاً، وعند تغير رائحة الفم من السكوت، أو من أكل الثوم والبصل.</li>
+                <li><strong class="color-mustahab">🟢 مستحب:</strong> لقراءة القرآن والذكر، وعند اصفرار الأسنان، وقبل النوم، وعند دخول البيت، وعند دخول المسجد.</li>
+                <li><strong class="color-makrooh">🟡 مكروه:</strong> للصائم بعد الزوال.</li>
+              </ul>
+            </div>
+            <div class="illustrative-image-holder flex-order-2">
+              <img src="images/fiqh-1-taharah/brushing-teeth.jpg" alt="العناية بالسواك" class="positive-figh-img img-rounded" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. محتوى: الادهان غباً (الصورة: 1000401799.jpg) -->
+      <div *ngIf="activeTab === 'idihan'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">الادهان غباً</h2>
+        <div class="womens-section-card border-olive">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <ul class="styled-purity-list font-medium">
+                <li>بأن يدَّهن يوماً ويدع يوماً.</li>
+                <li>الزيت أو أي دهن يلين البشرة ويحفظها.</li>
+              </ul>
+            </div>
+            <div class="illustrative-image-holder">
+              <img src="images/fiqh-1-taharah/hand-cream.jpg" alt="الادهان" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. محتوى: الاكتحال وتراً (الصورة: 1000401801.jpg) -->
+      <div *ngIf="activeTab === 'ikfihal'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">الاكتحال وتراً</h2>
+        <div class="womens-section-card border-bronze">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <ul class="styled-purity-list font-medium">
+                <li>يكون كل ثلاثة أيام.</li>
+                <li>بالكحل العربي (الإثمد).</li>
+                <li>له وظيفة طبية لترطيب العين وليس له دور تجميلي.</li>
+              </ul>
+            </div>
+            <div class="illustrative-image-holder">
+              <img src="images/fiqh-1-taharah/quhel.jpg" alt="الكحل" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. محتوى: تقليم الأظافر (الصورة: 1000401803.jpg) -->
+      <div *ngIf="activeTab === 'nails'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">تقليم الأظافر</h2>
+        <div class="womens-section-card border-cyan">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <ul class="styled-purity-list font-medium">
+                <li>كان رسول الله ﷺ يقلم أظافره يوم الجمعة قبل أن يخرج للصلاة.</li>
+                <li>يبدأ باليدين قبل الرجلين.</li>
+                <li>يبدأ بمسبحة اليد اليمنى ثم الوسطى ثم البنصر ثم الخنصر ثم الإبهام.</li>
+                <li>ثم ينتقل إلى اليد اليسرى فيبدأ بخنصرها وينتهي بالإبهام.</li>
+                <li>ثم يبدأ بخنصر القدم اليمنى ثم بالترتيب إلى خنصر اليمنى الشرعية (اليسرى).</li>
+              </ul>
+            </div>
+            <div class="illustrative-image-holder bg-soft-blue">
+              <img src="images/fiqh-1-taharah/nail-clipping.jpg" alt="الأظافر" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. محتوى: ترجيل الشعر ودهنه (الصورة: 1000401805.jpg) -->
+      <div *ngIf="activeTab === 'combing'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">ترجيل الشعر ودهنه</h2>
+        <div class="womens-section-card border-gold">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <p class="figh-highlight-text">لحديث أبي هريرة رضي الله عنه عن رسول الله ﷺ:</p>
+              <blockquote class="hadith-box-alt">«من كان له شعر فليكرمه»</blockquote>
+            </div>
+            <div class="illustrative-image-holder bg-soft-yellow">
+              <img src="images/fiqh-1-taharah/brushing-hear.jpg" alt="ترجيل الشعر" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. محتوى: إزالة شعر الإبط وحلق العانة (الصورة: 1000401807.jpg) -->
+      <div *ngIf="activeTab === 'hair-removal'" class="purity-tab-body animate-fade">
+        <h2 class="section-main-title">إزالة شعر الإبط وحلق العانة</h2>
+        <div class="womens-section-card border-soft-pink">
+          <div class="card-flex-header">
+            <div class="header-text-block">
+              <ul class="styled-purity-list font-medium">
+                <li>إما بالنتف أو بالحلق أو بأي مادة تزيل الشعر.</li>
+                <li>كلما دعت الحاجة إلى ذلك؛ لأنه مكان يكثر فيه التعرق.</li>
+                <li><strong>تنبيه شرعي:</strong> على أن لا يترك ذلك أكثر من أربعين يوماً.</li>
+              </ul>
+            </div>
+            <div class="illustrative-image-holder">
+              <img src="images/fiqh-1-taharah/girl-happy.jpg" alt="النظافة" class="positive-figh-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<!-- ================= سادساً: الاستنجاء وآداب قضاء الحاجة ================= -->
+      <div *ngIf="activeTab === 'istinja-rules'" class="purity-tab-body animate-fade">
+
+          <div class="card-flex-header align-stretch">
+            
+            <!-- الجزء الأيمن: تعريف الاستنجاء (المكتوب باللون الأصفر في الصورة) -->
+            <div class="istinja-definition-block">
+              <h3>الاستنجاء</h3>
+              <p class="def-text">هو إزالة النجاسة عن مخرج البول والغائط بعد قضاء الحاجة.</p>
+              
+              <!-- مساحة الصورة الإيجابية اللطيفة (الفتاة المفكرة) من أسفل الصورة 1000401819.jpg -->
+              <div class="bottom-avatar-container">
+                <img src="images/fiqh-1-taharah/thinking-girl.jpg" alt="آداب قضاء الحاجة" class="positive-figh-img avatar-styled" />
+              </div>
+            </div>
+
+            <!-- الجزء الأيسر: قائمة الآداب الـ 8 (المكتوبة باللون الوردي والأسود في الصورة) -->
+            <div class="etiquette-block">
+              <h4 class="sub-list-title">📋 آداب قضاء الحاجة:</h4>
+              
+              <ol class="fancy-numbered-list">
+                <li><span>أن ينحي ما عليه ذكر الله.</span></li>
+                <li><span>الابتعاد عن أعين الناس.</span></li>
+                <li><span>اجتناب ظل الأشجار وطريق الناس.</span></li>
+                <li><span>استعمال اليد اليسرى في الاستنجاء.</span></li>
+                <li><span>عدم استقبال القبلة أو استدبارها.</span></li>
+                <li><span>الدخول بالرجل اليسرى ويقول: <span class="supplication-text">«اللهم إني أعوذ بك من الخبث والخبائث»</span>.</span></li>
+                <li><span>الخروج بالرجل اليمنى ويقول: <span class="supplication-text">«غفرانك، الحمد لله الذي أذهب عني الأذى وعافاني»</span>.</span></li>
+                <li><span>ألا يتكلم إلا لضرورة.</span></li>
+              </ol>
+            </div>
+
+          </div>
+
+   
+
+        <!-- رسالة نجاح تفاعلية لطيفة تعطي انطباعاً رائعاً للمستخدم عند إنهاء القراءة -->
+        <div class="completion-success-card">
+          <div class="success-icon">🎉</div>
+          <div class="success-text">
+            <h4>تهانينا! لقد أتممت قراءة دليل أحكام فقه الطهارة الميسر</h4>
+            <p>«إن الله يحب التوابين ويحب المتطهرين».. نسأل الله أن ينفعك بما تعلمت وأن يجعله في ميزان حسناتك.</p>
+          </div>
+        </div>
+
+    </div> <!-- Här stängs den nya ngIf-containern ordentligt -->
+   </main>
+</div>
+
+
+
