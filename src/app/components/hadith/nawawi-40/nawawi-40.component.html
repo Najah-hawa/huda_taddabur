@@ -1,0 +1,64 @@
+<div class="hadith-page-container">
+<app-surah-hint
+  [surahName]="hadith.title + ': ' + hadith.name"
+  [hintText]="hadith.hintText">
+</app-surah-hint>
+
+<!-- القائمة العلوية للانتقال بين الأحاديث (مستقبلاً) -->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
+  [RoutelinkAfter]="'/hadith-2'"  [SurahNext]="'الحديث الثاني'"
+></app-next-before-surah-meny>
+
+<!-- الجسم الرئيسي للحديث (نفس تصميم كتلة الآية والتفسير) -->
+<div class="verse-wrapper" style="margin-top: 20px;">
+  <div class="verse-block hadith-main-block">
+    <!-- متن الحديث يفتح ويغلق المفردات والشرح عند الضغط عليه -->
+    <div class="verse-line" (click)="toggleExplanation()" style="cursor: pointer;">
+      <button class="play-ayah-btn" (click)="$event.stopPropagation(); speakText(hadith.text)">
+        🔊
+      </button>
+      <p class="ayah" style="font-size: 1.25rem; line-height: 2;">{{ hadith.text }}</p>
+      <div class="ayah-arrow"> 
+        <span class="arrow" [class.open]="isExplanationShown">▼</span>
+      </div>
+    </div>
+    
+    <!-- مفردات الحديث وسبب الورود (تظهر وتختفي بتأثير التفسير) -->
+    <div class="tafsir" *ngIf="isExplanationShown">
+      <button (click)="speakText(hadith.explanation)" class="audio-btn">
+          🔊 استمع للشرح والمفردات
+      </button>
+      <div [innerHTML]="hadith.explanation"></div>
+    </div>
+  </div>
+</div>
+
+<!-- كرت إضاءات في حياة الراوي (الصورة 3) - مصمم بنفس نمط intro-summary لتوحيد الديزاين -->
+<div class="intro-summary" style="margin-top: 25px;">
+  <h3 style="color: #b88a00; border-bottom: 2px solid #f0e6cc; padding-bottom: 5px;">📜 إضاءات في حياة الراوي:</h3>
+  <ul style="list-style-type: square; padding-right: 20px; line-height: 1.8;">
+    <li *ngFor="let info of rawiInfos" style="margin-bottom: 8px;">{{ info }}</li>
+  </ul>
+</div>
+
+
+<!-- مكون فوائد الحديث الجاهز (الصورة 5) -->
+
+<app-fawaed-of-surah
+  [SurahFaidah]="  'أهمية حديث '+ hadith.name  "
+  [FaidaText]="importanceText">
+</app-fawaed-of-surah>
+
+<app-fawaed-of-surah
+  [SurahFaidah]="'فوائد الحديث الأول' + hadith.name "
+  [FaidaText]="fawaedText">
+</app-fawaed-of-surah>
+<!-- مصدر المعلومات الخارجي السفلي -->
+<p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
+   📚 المصدر: <b>متن الأربعين النووية</b>
+</p>
+
+<app-footer-info />
+
+</div>

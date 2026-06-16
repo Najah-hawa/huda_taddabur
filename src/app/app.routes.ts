@@ -54,7 +54,17 @@ export const routes: Routes = [
     path: 'fiqh/purity',
     loadComponent: () => import('./components/fiqh/purity-fiqh/purity-fiqh.component').then(m => m.PurityFiqhComponent)
   },
-  // ... fortsätt likadant för resten
+
+// ⬇️ هنا نقوم بإضافة مسارات الحديث الجديدة بأسلوب الـ Lazy Loading ⬇️
+  {
+    path: 'hadith',
+    loadComponent: () => import('./components/hadith/hadith-menu/hadith-menu.component').then(m => m.HadithMenuComponent)
+  },
+  {
+    path: 'hadith/nawawi-40',
+    loadComponent: () => import('./components/hadith/nawawi-40/nawawi-40.component').then(m => m.Nawawi40Component)
+  },
+  
   
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

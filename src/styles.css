@@ -7,7 +7,7 @@ body {
   line-height: 1.6; /* bättre läsbarhet */
 }
 
-/* global design för både faidaa box och nezzol box */
+/* global design för både faidaa box och nezzol box 
 .surah-benefits.mini {
   background-color: #fdfaf4;
   border: 1px solid #e0c9a1;
@@ -50,7 +50,7 @@ body {
   font-size: 0.9rem;
   opacity: 0.7;
 }
-
+*/
 /* global design för devar för ayah och tafser för varje surah*/
 
 .verse-block {
@@ -343,5 +343,156 @@ body {
   }
   h3 {
     font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1000px){
+.benefit-title {
+    font-size: 3rem;
+    text-align: center;
+    color: #6d4c41;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+}
+
+
+
+/* ==========================================================================
+   1. التنسيق الأساسي (يطبق تلقائياً على الموبايل والشاشات الصغيرة حتى 1000px)
+   ========================================================================== */
+.surah-benefits.mini {
+  background-color: #fdfaf4;
+  border: 1px solid #e0c9a1;
+  border-top: 4px solid #b89b3f;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem auto;
+  width: 92%;
+  height: auto; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+.benefit-title {
+  font-family: 'Lateef', serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #6d4c41;
+  margin-bottom: 0.8rem;
+}
+
+.benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #5a4631;
+  line-height: 1.6;
+}
+
+.benefit-list li {
+  margin-bottom: 0.5rem;
+  padding-right: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.benefit-list li::before {
+  content: ' 📌 ';
+  position: absolute;
+  right: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+
+/* 
+@media (min-width: 1200px) {
+  .surah-benefits.mini {
+    height: 80vh;       
+    max-width: 1000px;  
+    width: 75%;
+    padding: 4rem 5rem;  
+    margin: 10vh auto; 
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+  }
+
+  .benefit-title {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    margin-top: 6rem;
+  }
+
+  .benefit-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    flex-grow: 1;          
+  }
+
+  
+  .benefit-list li {
+    font-size: 1.8rem;     
+    line-height: 2;   
+    padding-right: 3rem; 
+    margin-bottom: 0;    
+  }
+
+  
+  .benefit-list li::before {
+    font-size: 1.8rem;
+    right: 0px;
+    top: 4px;
+  }
+}
+
+ */
+
+ /* ==========================================================================
+   تنسيق متن الحديث للشاشات الكبيرة (الكمبيوتر) ليكون بالمنتصف وبأرتفاع 40vh
+   ========================================================================== */
+@media (min-width: 1000px) {
+  
+  .hadith-main-block {
+    height: auto;          /* الارتفاع المطلوب من قبلكِ تماماً */
+    max-width: 1000px;     /* العرض الأقصى ليتناسق مع عرض الفوائد */
+    margin: 2rem auto;     /* 👈 لتوسيط الكتلة بالمنتصف تماماً وتوزيع الأبعاد */
+    padding: 3rem !important; /* إعطاء مساحة داخلية فخمة لمتن الحديث */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 👈 تمركز نص الحديث عمودياً في منتصف الـ 40vh */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  /* تنسيق وتكبير خط الحديث ليملأ الـ 40vh بشكل رائع ومقروء */
+  .hadith-main-block .ayah {
+    font-size: 1.7rem !important; /* خط كبير، واضح ومريح جداً للعين على الكمبيوتر */
+    line-height: 2 !important;  /* زيادة المسافة بين السطور ليأخذ الحديث مساحته الفخمة */
+    text-align: center;         /* جعل نص الحديث في المنتصف تماماً */
+    color: #4a3319;             /* لون بني غامق دافئ متناسق مع التصميم */
+    font-weight: 500;           /* خط عريض لإبراز متن الحديث النبوي */
+    width: 100%;
+  }
+
+  /* تكبير أيقونة الصوت والسهم لتتناسب مع ديزاين الـ 40vh الجديد */
+  .hadith-main-block .play-ayah-btn {
+    font-size: 1.8rem;
+    margin-left: 15px;
+  }
+
+  .hadith-main-block .arrow {
+    font-size: 1.8rem;
+  }
+  
+  /* تنسيق صندوق الشرح إذا فتح داخل الـ 40vh ليظهر بشكل منساب */
+  .hadith-main-block .tafsir {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-top: 1.5rem;
   }
 }
