@@ -15,7 +15,7 @@
   <div class="verse-block hadith-main-block">
     <!-- متن الحديث يفتح ويغلق المفردات والشرح عند الضغط عليه -->
     <div class="verse-line" (click)="toggleExplanation()" style="cursor: pointer;">
-      <button class="play-ayah-btn" (click)="$event.stopPropagation(); speakText(hadith.text)">
+      <button class="play-ayah-btn" (click)="$event.stopPropagation(); playHadithAudio(hadith.audioUrl)">
         🔊
       </button>
       <p class="ayah" style="font-size: 1.25rem; line-height: 2;">{{ hadith.text }}</p>

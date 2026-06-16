@@ -16,7 +16,9 @@ export const hadithDetails = {
       🔻 <b>هجرته إلى الله ورسوله:</b> إلى محل رضاه نية وقصداً.<br>
       🔻 <b>لدنيا يصيبها:</b> لغرض دنيوي.
     </div>
-  `
+  `,
+  // 💡 NYTT: Den exakta, stabila direktlänken från Archive.org (färdigkodad och säker)
+  audioUrl: 'https://archive.org/download/40Hadith_Nawawi/01.%20Hadith%201%20-%20Niyyah%20%28Intention%29%20-%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%20%D8%A8%D8%A7%D9%84%D9%86%D9%8A%D8%A7%D8%AA%20-%20Al-Bukhari%20%231%20-%20Muslim%20%231907.mp3'
 };
 
 // إضاءات في حياة الراوي

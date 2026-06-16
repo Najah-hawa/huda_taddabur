@@ -37,7 +37,7 @@ export class Nawawi40Component {
   }
 
   // إعادة استخدام ميزة القراءة الصوتية للنصوص العربية للشرح أو المتن
-  speakText(text: string | undefined) {
+ speakText(text: string | undefined) {
     if (!text) return;
     
     window.speechSynthesis.cancel();
@@ -52,4 +52,23 @@ export class Nawawi40Component {
     };
     window.speechSynthesis.speak(utterance);
   }
+
+// Spela upp hadith-ljud från det angivna URL-fältet i vår data
+playHadithAudio(url: string | undefined) {
+  if (!url) {
+    console.error("Ingen ljudlänk hittades för denna hadith.");
+    return;
+  }
+
+  // Stoppa eventuella tidigare ljud eller webbläsarröster
+  window.speechSynthesis.cancel();
+
+  console.log("Strömmar live-ljud från Archive.org:", url);
+
+  const audio = new Audio(url);
+  
+  audio.play().catch(error => {
+    console.error("Archive.org blockerade inte, men ett fel uppstod vid uppspelning:", error);
+  });
+}
 }
