@@ -64,7 +64,11 @@ export const routes: Routes = [
     path: 'hadith/nawawi-1',
     loadComponent: () => import('./components/hadith/nawawi-1/nawawi-1.component').then(m => m.Nawawi1Component)
   },
-  
-  
+   {
+    path: 'hadith/nawawi-2',
+    loadComponent: () => import('./components/hadith/nawawi-2/nawawi-2.component').then(m => m.Nawawi2Component)
+  },
+ 
+
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

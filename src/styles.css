@@ -7,50 +7,7 @@ body {
   line-height: 1.6; /* bättre läsbarhet */
 }
 
-/* global design för både faidaa box och nezzol box 
-.surah-benefits.mini {
-  background-color: #fdfaf4;
-  border: 1px solid #e0c9a1;
-  border-radius: 12px;
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  max-width: 100%;
-  font-size: 0.95rem;
-  box-shadow: none;
-  margin-bottom:1.5rem;
-}
 
-.benefit-title {
-  font-family: 'Lateef', serif;
-  font-size: 1.4rem;
-  text-align: center;
-  color: #6d4c41;
-  margin-bottom: 0.6rem;
-}
-
-.benefit-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: #5a4631;
-  line-height: 1.6;
-}
-
-.benefit-list li {
-  margin-bottom: 0.4rem;
-  padding-right: 1rem;
-  position: relative;
-  font-size: 0.95rem;
-}
-
-.benefit-list li::before {
-  content: ' 📌 ';
-  position: absolute;
-  right: -5px;
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-*/
 /* global design för devar för ayah och tafser för varje surah*/
 
 .verse-block {
@@ -471,7 +428,7 @@ body {
 
   /* تنسيق وتكبير خط الحديث ليملأ الـ 40vh بشكل رائع ومقروء */
   .hadith-main-block .ayah {
-    font-size: 1.7rem !important; /* خط كبير، واضح ومريح جداً للعين على الكمبيوتر */
+    font-size: 1.5rem !important; /* خط كبير، واضح ومريح جداً للعين على الكمبيوتر */
     line-height: 2 !important;  /* زيادة المسافة بين السطور ليأخذ الحديث مساحته الفخمة */
     text-align: center;         /* جعل نص الحديث في المنتصف تماماً */
     color: #4a3319;             /* لون بني غامق دافئ متناسق مع التصميم */
@@ -494,5 +451,165 @@ body {
     font-size: 1.2rem;
     line-height: 1.8;
     margin-top: 1.5rem;
+  }
+}
+
+
+/* Stilen för frasen som läses just nu */
+.highlighted-phrase {
+  background-color: #fff3cd; /* En mjuk, ljusgul bakgrund bakom ordet */
+  color: #b89b3f;            /* Matchar din guld/bruna färg perfekt */
+  border-radius: 4px;
+  padding: 0 4px;
+  transition: all 0.2s ease; /* Gör övergången mjuk när nästa fras tänds */
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   1. التنسيقات الطبيعية المعتادة (للموبايل والوضع الافتراضي غير المكبر)
+   ========================================================================== */
+.fawaed-box-container.mini {
+  position: relative;
+  background-color: #fdfaf4;
+  border: 1px solid #e0c9a1;
+  border-top: 4px solid #b89b3f;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem auto;
+  width: 92%;
+  height: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.benefit-title {
+  font-family: 'Lateef', serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #6d4c41;
+  margin-bottom: 1rem;
+}
+
+/* التنسيق الموحد لخطوط القوائم في الوضع العادي */
+.custom-presentation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-presentation-list li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a4631;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-right: 1.2rem;
+  text-align: right;
+}
+
+.custom-presentation-list li::before {
+  content: '🔸';
+  position: absolute;
+  right: 0;
+  font-size: 0.8rem;
+}
+
+/* إخفاء زر المكبرة تلقائياً في الشاشات الصغيرة لحماية هواتف الموبايل */
+.fawaed-zoom-control {
+  display: none;
+}
+
+.poetic-phrase {
+  text-align: center;
+  font-family: 'Lateef', serif;   /* يمكنكِ استخدام خط المتن هنا أيضاً ليظهر بشكل تراثي فخم */
+  font-weight: bold;
+  font-size: 1.25rem;             /* حجم خط ممتاز ومريح جداً للقراءة */
+  color: #d63384;                 /* اللون الوردي المميّز الذي اخترتِه */
+  padding: 10px 0;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ==========================================================================
+   2. تأثير وضع ملء الشاشة الفخم 90vh (للكمبيوتر والتلفزيون عند تفعيل المكبرة)
+   ========================================================================== */
+@media (min-width: 1000px) {
+  
+  /* إظهار زر مكبرة ذهبي أنيق في أعلى زاوية كل صندوق */
+  .fawaed-zoom-control {
+    display: inline-flex;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #b89b3f;
+    color: white;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(184, 155, 63, 0.15);
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+
+  .fawaed-zoom-control:hover {
+    background-color: #967d2f;
+    transform: scale(1.05);
+  }
+
+  /* تحويل زر المكبرة تلقائياً إلى زر إغلاق أحمر فخم داخل وضع الـ 90vh */
+  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control {
+    background-color: #d32f2f;
+    top: 25px;
+    left: 40px;
+    font-size: 0.8rem;
+    padding: 8px 18px;
+  }
+  
+  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control:hover {
+    background-color: #c62828;
+  }
+
+  /* هندسة تمدد الصندوق لملء 90vh من الشاشة وعرض القائمة متكاملة وبشكل مريح */
+  .fawaed-box-container.mini.full-presentation {
+    position: fixed;
+    top: 1vh;
+    left: 5%;
+    width: 90%;
+    height: 95vh;
+    z-index: 9999;
+    padding: 2rem 3rem;
+    background-color: #fffdf9;
+    border: 3px solid #b89b3f;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    box-sizing: border-box;
+    overflow-y: auto; /* يسمح بالتمرير لأسفل بسلاسة فائقة إذا كانت النقاط كثيرة */
+  }
+
+  /* تكبير العناوين الرئيسية داخل وضع ملء الشاشة */
+  .full-presentation .benefit-title {
+    font-size: 2rem !important;
+    color: #b89b3f !important;
+    margin-bottom: 3rem !important;
+    margin-top: 3rem !important;
+    text-align: center !important;
+  }
+
+  /* 🎯 التكبير العملاق الموحد لكافة عناصر القوائم داخل الصندوقين ليشاهدها جميع الطلاب بوضوح تام */
+  .full-presentation .custom-presentation-list li {
+    font-size: 1rem !important; /* حجم خط ممتاز للشرح على الـ TV */
+    line-height: 1.7 !important;
+    color: #3e2723 !important;
+    margin-bottom: 2.5rem !important;
+    padding-right: 3.5rem !important;
+    text-align: right !important;
+  }
+
+  .full-presentation .custom-presentation-list li::before {
+    font-size: 1.2rem !important;
+    top: 6px !important;
   }
 }

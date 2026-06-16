@@ -5,11 +5,16 @@ import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 
-// 📥 جلب البيانات بالأسماء المطابقة تماماً لملف الـ data الحالي
-import { hadithDetails, rawiInfos, importanceText, fawaedText } from './hadith-data';
+// 📥 استيراد كل شيء من ملف البيانات الخارجي دفعة واحدة بما فيها المصفوفات الجديدة
+import { 
+  hadithDetails, 
+  poeticText, 
+  hadithImportanceList, 
+  hadithFawaedList 
+} from './hadith2-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-nawawi-2',
   standalone: true,
   imports: [
     CommonModule,
@@ -18,42 +23,33 @@ import { hadithDetails, rawiInfos, importanceText, fawaedText } from './hadith-d
     FooterInfoComponent,
     NextBeforeSurahMenyComponent
   ],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  templateUrl: './nawawi-2.component.html',
+  styleUrl: './nawawi-2.component.css'
 })
-export class Nawawi1Component implements OnDestroy {
-  // إسناد البيانات للمتغيرات الداخلية بكفاءة
+export class Nawawi2Component implements OnDestroy {
+  // ربط المتغيرات المحلية بالبيانات المستوردة
   hadith = hadithDetails;
-  rawiInfos = rawiInfos;
-  fawaedText = fawaedText;
-  importanceText = importanceText; 
+  poeticText = poeticText;
+  box1Items = hadithImportanceList; // 👈 هنا ربطنا أهمية الحديث
+  box2Items = hadithFawaedList;     // 👈 هنا ربطنا الفوائد
 
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false; 
   currentPhraseIndex: number = -1;
 
-  // متغيرات التكبير لعرض الـ 90vh
+  // متغيرات التحكم في الـ 90vh
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
-  isRawiMaximized: boolean = false;
 
-  // 💡 متغيرات جديدة للتحكم في قراءة الشرح الصوتي (التحكم بالتشغيل، الإيقاف المؤقت، والإنهاء)
+  // 💡 متغيرات جديدة للتحكم في قراءة الشرح الصوتي للحديث الثاني (تشغيل، إيقاف مؤقت، إنهاء)
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  // ==========================================
-  // دوال التحكم بتكبير وتصغير صناديق العرض
-  // ==========================================
   toggleBox1Zoom() {
     this.isBox1Maximized = !this.isBox1Maximized;
-    this.cdr.detectChanges();
-  }
-
-  toggleRawiZoom() {
-    this.isRawiMaximized = !this.isRawiMaximized;
     this.cdr.detectChanges();
   }
 
@@ -62,6 +58,9 @@ export class Nawawi1Component implements OnDestroy {
     this.cdr.detectChanges();
   }
 
+  // ==========================================
+  // التحكم بالصوت والحديث
+  // ==========================================
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;
   }
@@ -115,7 +114,7 @@ export class Nawawi1Component implements OnDestroy {
     window.speechSynthesis.speak(utterance);
   }
 
-  // 🛑 دالة إنهاء صوت الشرح تماماً في أي وقت وضغط الإيقاف الكلي
+  // 🛑 دالة إنهاء صوت الشرح تماماً في أي وقت وعودة الأزرار لحالتها الأصلية
   stopSpeakingTafsir() {
     window.speechSynthesis.cancel();
     this.isSpeakingTafsir = false;
@@ -128,55 +127,45 @@ export class Nawawi1Component implements OnDestroy {
   // ==========================================
   playHadithAudio(url: string | undefined) {
     if (!url) return;
-
-    if (this.currentAudio && this.isPlaying) {
-      this.currentAudio.pause();
-      this.isPlaying = false;
-      this.cdr.detectChanges();
-      return;
+    
+    if (this.currentAudio && this.isPlaying) { 
+      this.currentAudio.pause(); 
+      this.isPlaying = false; 
+      this.cdr.detectChanges(); 
+      return; 
     }
-
-    if (this.currentAudio && !this.isPlaying) {
-      this.isPlaying = true;
-      this.cdr.detectChanges();
-      this.currentAudio.play().catch(() => {
-        this.isPlaying = false;
-        this.cdr.detectChanges();
-      });
-      return;
+    
+    if (this.currentAudio && !this.isPlaying) { 
+      this.isPlaying = true; 
+      this.cdr.detectChanges(); 
+      this.currentAudio.play().catch(() => this.isPlaying = false); 
+      return; 
     }
-
+    
     window.speechSynthesis.cancel();
     this.currentAudio = new Audio(url);
     this.isPlaying = true;
     this.cdr.detectChanges();
-
+    
     this.currentAudio.ontimeupdate = () => {
       if (!this.currentAudio) return;
       const currentTime = this.currentAudio.currentTime;
-
-      const index = this.hadith.phrases.findIndex(
-        phrase => currentTime >= phrase.start && currentTime < phrase.end
-      );
-
-      if (index !== this.currentPhraseIndex) {
-        this.currentPhraseIndex = index;
+      const index = this.hadith.phrases.findIndex(p => currentTime >= p.start && currentTime < p.end);
+      if (index !== this.currentPhraseIndex) { 
+        this.currentPhraseIndex = index; 
         this.cdr.detectChanges(); 
       }
     };
-
+    
     this.currentAudio.play()
       .then(() => this.cdr.detectChanges())
-      .catch(() => {
-        this.isPlaying = false;
-        this.cdr.detectChanges();
-      });
-
-    this.currentAudio.onended = () => {
-      this.isPlaying = false;
+      .catch(() => this.isPlaying = false);
+      
+    this.currentAudio.onended = () => { 
+      this.isPlaying = false; 
       this.currentPhraseIndex = -1; 
-      this.currentAudio = null;
-      this.cdr.detectChanges();
+      this.currentAudio = null; 
+      this.cdr.detectChanges(); 
     };
   }
 
