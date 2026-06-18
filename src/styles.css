@@ -215,47 +215,31 @@ body {
     flex-direction: row; /* Liggande layout även på små skärmar */
     align-items: flex-start; /* Justera uppåt för text */
   }
-
   .verse-text {
     text-align: right; /* Behåll högerjusterad text */
     font-size: 0.95rem; /* Lite mindre text för mobil */
   }
-
   .toggle-btn {
     font-size: 1.1rem; /* Mindre ikon */
     padding-left: 0.5rem; /* Mindre avstånd */
     margin-top: 0rem; /* Undvik extra vertikal spacing */
-  }
-}
-
-
-
-
-
-@media (max-width: 600px) {
-  
+  } 
   .verse-block {
     max-width: 95%;
     margin: 1rem auto;
     padding: 0.6rem 1rem;
   }
-
-
   .ayah {
     font-size: 1.1rem;
     max-width: 60%;
   }
-
   .tafsir {
     font-size: 0.9rem;
     padding: 0.5rem 0.8rem;
   }
-
   .verse-line {
     gap: 0.4rem;
   }
-
-
   .arrow {
   font-size: 1.1rem;
   margin-right: 3px;
@@ -265,6 +249,7 @@ body {
    font-size: 1rem;
 }
 }
+
 
 @media (max-width: 400px) {
   .ayah {
@@ -313,8 +298,6 @@ body {
 }
 }
 
-
-
 /* ==========================================================================
    1. التنسيق الأساسي (يطبق تلقائياً على الموبايل والشاشات الصغيرة حتى 1000px)
    ========================================================================== */
@@ -339,6 +322,7 @@ body {
   margin-bottom: 0.8rem;
 }
 
+
 .benefit-list {
   list-style: none;
   padding: 0;
@@ -362,51 +346,6 @@ body {
   opacity: 0.8;
 }
 
-
-/* 
-@media (min-width: 1200px) {
-  .surah-benefits.mini {
-    height: 80vh;       
-    max-width: 1000px;  
-    width: 75%;
-    padding: 4rem 5rem;  
-    margin: 10vh auto; 
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    box-sizing: border-box;
-  }
-
-  .benefit-title {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-    margin-top: 6rem;
-  }
-
-  .benefit-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    flex-grow: 1;          
-  }
-
-  
-  .benefit-list li {
-    font-size: 1.8rem;     
-    line-height: 2;   
-    padding-right: 3rem; 
-    margin-bottom: 0;    
-  }
-
-  
-  .benefit-list li::before {
-    font-size: 1.8rem;
-    right: 0px;
-    top: 4px;
-  }
-}
-
- */
 
  /* ==========================================================================
    تنسيق متن الحديث للشاشات الكبيرة (الكمبيوتر) ليكون بالمنتصف وبأرتفاع 40vh
@@ -436,22 +375,6 @@ body {
     width: 100%;
   }
 
-  /* تكبير أيقونة الصوت والسهم لتتناسب مع ديزاين الـ 40vh الجديد */
-  .hadith-main-block .play-ayah-btn {
-    font-size: 1.8rem;
-    margin-left: 15px;
-  }
-
-  .hadith-main-block .arrow {
-    font-size: 1.8rem;
-  }
-  
-  /* تنسيق صندوق الشرح إذا فتح داخل الـ 40vh ليظهر بشكل منساب */
-  .hadith-main-block .tafsir {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-top: 1.5rem;
-  }
 }
 
 
@@ -483,13 +406,7 @@ body {
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.benefit-title {
-  font-family: 'Lateef', serif;
-  font-size: 1.4rem;
-  text-align: center;
-  color: #6d4c41;
-  margin-bottom: 1rem;
-}
+
 
 /* التنسيق الموحد لخطوط القوائم في الوضع العادي */
 .custom-presentation-list {
@@ -613,3 +530,215 @@ body {
     top: 6px !important;
   }
 }
+
+
+/* القائمة الرئيسية للمفردات - تحويل ذكي لعمودين تلقائياً */
+.vocabulary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  /* تفعيل نظام الشبكة (Grid) */
+  display: grid;
+  /* إنشاء أعمدة مرنة: إذا كانت الشاشة كبيرة تتسع لعمودين (بحد أدنى 300 بكسل لكل عمود) */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* مسافة فاصلة بين الأعمدة والأسطر */
+  gap: 10px 20px; 
+}
+
+/* ستايل كل سطر مفردة (تعديل طفيف ليتناسب مع النظام الجديد) */
+.vocabulary-list li {
+  display: flex;
+  align-items: baseline;
+  padding: 10px 15px;
+  background-color: #faf8f5;
+  border-right: 4px solid #b88a00; /* خط ذهبي جانبي */
+  border-radius: 0 6px 6px 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  
+  /* لمنع خروج العناصر أو تداخلها */
+  box-sizing: border-box; 
+}
+
+/* تأثير خفيف عند تمرير الفأرة */
+.vocabulary-list li:hover {
+  background-color: #f5eedf;
+  transform: translateX(-3px);
+}
+
+/* تنسيق الكلمة الثابت */
+.vocabulary-list li b {
+  color: #5d4a24;
+  font-size: 16px;
+  min-width: 90px; /* توحيد العرض لترتيب الكلمات */
+  display: inline-block;
+}
+
+/* تنسيق نص الشرح والمعنى */
+.vocabulary-list li span {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* السطر المشترك الذي يجمع العنوان والأزرار */
+.tafsir-header-row {
+  display: flex;
+  justify-content: space-between; /* دفع العنوان لليمين والأزرار لليسار */
+  align-items: center;
+  border-bottom: 1px solid #f0e6cc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+/* ستايل العنوان الجديد (بدون خط سفلي لأنه مدمج بالسطر) */
+.explanation-title-modern {
+  font-size: 17px;
+  color: #b88a00;
+  margin: 0;
+}
+
+/* حاوية الأزرار في اليسار */
+.tafsir-audio-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* زر الاستماع الأنيق في جهة اليسار */
+.modern-tafsir-audio-btn {
+  background-color: #f4ede0;
+  color: #5d4a24;
+  border: 1px solid #dcd1b8;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modern-tafsir-audio-btn:hover {
+  background-color: #eae0cb;
+}
+
+/* زر الإيقاف الصغير المربع بجانب زر الاستماع */
+.modern-tafsir-stop-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modern-tafsir-stop-btn:hover {
+  background-color: #c82333;
+}
+
+
+
+
+/* الحاوية الرئيسية المحدثة للحديث */
+.hadith-main-block-modern {
+  padding: 20px;
+  background-color: #fcfbf7;
+  border: 1px solid #e6dfcc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* حاوية زر صوت الحديث العلوي */
+.hadith-audio-trigger-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* ستايل زر صوت الحديث */
+.modern-hadith-audio-btn {
+  background-color:  #f4ede0;
+  color: #5d4a24;
+  border: 1px solid #dcd1b8;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 5px rgba(184, 138, 0, 0.2);
+}
+
+.modern-hadith-audio-btn:hover {
+  background-color: #eae0cb;
+}
+
+.modern-hadith-audio-btn:active {
+  transform: scale(0.98);
+}
+
+/* عرض الحديث بكامل العرض وبشكل مريح للقراءة */
+.hadith-text-full-width {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 2;
+}
+
+/* حاوية زر الشرح السفلي */
+.tafsir-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  border-top: 1px dashed #e6dfcc;
+  padding-top: 15px;
+}
+
+/* ستايل زر فتح وإغلاق الشرح والمفردات */
+.modern-tafsir-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: #f4ede0;
+  color: #5d4a24;
+  border: 1px solid #dcd1b8;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.2s ease;
+}
+
+.modern-tafsir-toggle-btn:hover {
+  background-color: #eae0cb;
+}
+
+/* حركة السهم عند فتح وإغلاق الشرح */
+.modern-tafsir-toggle-btn .arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+
+.modern-tafsir-toggle-btn .arrow.open {
+  transform: rotate(180deg);
+}
+
+/* صندوق الشرح المودرن */
+.tafsir-modern-box {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #eedfc2;
+  border-radius: 6px;
+  text-align: right;
+}
+

@@ -1,0 +1,98 @@
+/* الحاوية الرئيسية المحدثة للحديث */
+.hadith-main-block-modern {
+  padding: 20px;
+  background-color: #fcfbf7;
+  border: 1px solid #e6dfcc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* حاوية زر صوت الحديث العلوي */
+.hadith-audio-trigger-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+/* ستايل زر صوت الحديث */
+.modern-hadith-audio-btn {
+  background-color:  #f4ede0;
+  color: #5d4a24;
+  border: 1px solid #dcd1b8;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 5px rgba(184, 138, 0, 0.2);
+}
+
+.modern-hadith-audio-btn:hover {
+  background-color: #eae0cb;
+}
+
+.modern-hadith-audio-btn:active {
+  transform: scale(0.98);
+}
+
+/* عرض الحديث بكامل العرض وبشكل مريح للقراءة */
+.hadith-text-full-width {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 2;
+}
+
+/* حاوية زر الشرح السفلي */
+.tafsir-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  border-top: 1px dashed #e6dfcc;
+  padding-top: 15px;
+}
+
+/* ستايل زر فتح وإغلاق الشرح والمفردات */
+.modern-tafsir-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: #f4ede0;
+  color: #5d4a24;
+  border: 1px solid #dcd1b8;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.2s ease;
+}
+
+.modern-tafsir-toggle-btn:hover {
+  background-color: #eae0cb;
+}
+
+/* حركة السهم عند فتح وإغلاق الشرح */
+.modern-tafsir-toggle-btn .arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+
+.modern-tafsir-toggle-btn .arrow.open {
+  transform: rotate(180deg);
+}
+
+/* صندوق الشرح المودرن */
+.tafsir-modern-box {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #eedfc2;
+  border-radius: 6px;
+  text-align: right;
+}
+
