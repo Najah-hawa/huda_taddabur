@@ -4,6 +4,13 @@
   [hintText]="hadith.hintText">
 </app-surah-hint>
 
+
+       <!-- Navigering anpassad för Hadith 1 -->
+  <app-next-before-surah-meny 
+    [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
+    [RoutelinkAfter]="'/hadith/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
+  </app-next-before-surah-meny>
+  
   <div class="verse-wrapper" style="margin-top: 20px;">
     <div class="verse-block hadith-main-block-modern">
       
@@ -34,12 +41,7 @@
       </div>
       
 
-      <!-- Navigering anpassad för Hadith 1 -->
-  <app-next-before-surah-meny 
-    [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
-    [RoutelinkAfter]="'/hadith/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
-  </app-next-before-surah-meny>
-  
+
       <!-- Den moderna förklaringsboxen -->
       <div class="tafsir-modern-box" *ngIf="isExplanationShown">
         <div class="tafsir-header-row">
@@ -65,6 +67,8 @@
   <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
       📚 المصدر: <b>متن الأربعين النووية</b>
   </p>
+
+ 
   
   <!-- Box 1: Berättarens liv (Bevaras från datan i Hadith 1) -->
   <div class="fawaed-box-container mini" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px;">
