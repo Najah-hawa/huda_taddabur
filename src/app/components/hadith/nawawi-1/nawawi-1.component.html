@@ -1,108 +1,126 @@
 <div class="hadith-page-container">
-  <app-surah-hint
-    [surahName]="hadith.title + ': ' + hadith.name"
-    [hintText]="hadith.hintText">
-  </app-surah-hint>
-
-  <app-next-before-surah-meny 
-    [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
-    [RoutelinkAfter]="'/hadith/nawawi-2'" [SurahNext]="'الحديث الثاني'">
-  </app-next-before-surah-meny>
+ <app-surah-hint
+  [surahName]="hadith.title + ' ' + hadith.name"
+  [hintText]="hadith.hintText">
+</app-surah-hint>
 
   <div class="verse-wrapper" style="margin-top: 20px;">
-    <div class="verse-block hadith-main-block">
-      <div class="verse-line" (click)="toggleExplanation()" style="cursor: pointer;">
-        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playHadithAudio(hadith.audioUrl)">
-          {{ isPlaying ? '⏸️' : '▶️' }}
+    <div class="verse-block hadith-main-block-modern">
+      
+      <!-- Ljudkontroll för texten i det nya moderna gränssnittet -->
+      <div class="hadith-audio-trigger-wrapper">
+        <button class="modern-hadith-audio-btn" (click)="playHadithAudio(hadith.audioUrl)">
+          {{ isPlaying ? '⏸️ إيقاف مؤقت للحديث' : '▶️ استمع لمتن الحديث' }}
         </button>
+      </div>
 
-        <p class="ayah">
+      <!-- Själva hadith-texten med synkroniserad highlighter -->
+      <div class="hadith-text-full-width">
+        <p class="Hadith">
           @for (phrase of hadith.phrases; track $index) {
             <span [class.highlighted-phrase]="$index === currentPhraseIndex">
               {{ phrase.text }} 
             </span>
           }
         </p>
+      </div>
 
-        <div class="ayah-arrow"> 
+      <!-- Modern toggle-knapp för förklaringen -->
+      <div class="tafsir-toggle-wrapper">
+        <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
+          <span>📚 شرح الحديث والمفردات</span>
           <span class="arrow" [class.open]="isExplanationShown">▼</span>
-        </div>
+        </button>
       </div>
       
- <div class="tafsir" *ngIf="isExplanationShown">
-  <div class="tafsir-audio-controls" style="display: flex; gap: 10px; margin-bottom: 10px;">
-    
-    <button (click)="speakText(hadith.explanation)" class="audio-btn" style="flex: 1;">
-      {{ !isSpeakingTafsir ? '🔊 استمع للشرح والمفردات' : (isTafsirPaused ? '▶️ استئناف القراءة الشرح' : '⏸️ إيقاف مؤقت للشرح') }}
-    </button>
 
-    <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="audio-btn stop-btn" style="background-color: #dc3545; color: white; border: none; padding: 0 15px; cursor: pointer; border-radius: 4px;">
-      🛑 إنهاء
-    </button>
+      <!-- Navigering anpassad för Hadith 1 -->
+  <app-next-before-surah-meny 
+    [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
+    [RoutelinkAfter]="'/hadith/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
+  </app-next-before-surah-meny>
+  
+      <!-- Den moderna förklaringsboxen -->
+      <div class="tafsir-modern-box" *ngIf="isExplanationShown">
+        <div class="tafsir-header-row">
+          <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
+          
+          <div class="tafsir-audio-actions">
+            <button (click)="speakText(hadith.explanation)" class="modern-tafsir-audio-btn">
+              {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
+            </button>
 
-  </div>
+            <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
+              🛑
+            </button>
+          </div>
+        </div>
 
-  <div [innerHTML]="hadith.explanation"></div>
-  </div>
+        <div [innerHTML]="hadith.explanation"></div>
+      </div>
+
     </div>
   </div>
-
 
   <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
       📚 المصدر: <b>متن الأربعين النووية</b>
   </p>
-
-
- <!-- صندوق إضاءات في حياة الراوي المطور مع ميزة التكبير -->
-<div class="fawaed-box-container mini" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px;">
-  <div class="fawaed-zoom-control" (click)="toggleRawiZoom()">
-    <span *ngIf="!isRawiMaximized">🔍 تكبير العرض</span>
-    <span *ngIf="isRawiMaximized" class="close-symbol">✕ إنهاء العرض</span>
-  </div>
-
-  <h3 class="benefit-title">📜 إضاءات في حياة الراوي</h3>
   
-  <div class="box-list-wrapper">
-    <div class="custom-presentation-list">
-      <ul style="list-style-type: none; padding-right: 20px; line-height: 1.8; margin: 0;">
-        <li *ngFor="let info of rawiInfos" style="margin-bottom: 12px; color: #333; font-size: 16px;">
-          {{ info }}
-        </li>
+  <!-- Box 1: Berättarens liv (Bevaras från datan i Hadith 1) -->
+  <div class="fawaed-box-container mini" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px;">
+    <div class="fawaed-zoom-control" (click)="toggleRawiZoom()">
+      <span *ngIf="!isRawiMaximized">🔍 تكبير العرض</span>
+      <span *ngIf="isRawiMaximized" class="close-symbol">✕ إنهاء العرض</span>
+    </div>
+
+    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📜 iضاءات في حياة الراوي</h2>
+    
+    <div class="box-list-wrapper">
+      <ul class="custom-presentation-list">
+        <li *ngFor="let info of rawiInfos">{{ info }}</li>
       </ul>
     </div>
   </div>
-</div>
 
-  <!-- الصندوق الأول: الأهمية -->
+  <!-- Box 2: Hadithets betydelse (mappat till det nya list-systemet) -->
   <div class="fawaed-box-container mini" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px;">
     <div class="fawaed-zoom-control" (click)="toggleBox1Zoom()">
       <span *ngIf="!isBox1Maximized">🔍 تكبير العرض</span>
       <span *ngIf="isBox1Maximized" class="close-symbol">✕ إنهاء العرض</span>
     </div>
 
-    <h3 class="benefit-title">📌 أهمية حديث {{ hadith.name }}</h3>
+    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أهمية حديث {{ hadith.name }}</h2>
     
     <div class="box-list-wrapper">
-      <!-- استخدام innerHTML لقراءة النص المنسق الجاهز من الملف القديم -->
-      <div class="custom-presentation-list" [innerHTML]="importanceText"></div>
+      <ul class="custom-presentation-list">
+        <li *ngFor="let item of box1Items">{{ item }}</li>
+      </ul>
     </div>
   </div>
 
-  <!-- الصندوق الثاني: الفوائد -->
+  <!-- Box 3: Lärdomar & fawaed (mappat till det nya list-systemet) -->
   <div class="fawaed-box-container mini" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px;">
     <div class="fawaed-zoom-control" (click)="toggleBox2Zoom()">
       <span *ngIf="!isBox2Maximized">🔍 تكبير العرض</span>
       <span *ngIf="isBox2Maximized" class="close-symbol">✕ إنهاء العرض</span>
     </div>
 
-    <h3 class="benefit-title">📌 فوائد حديث {{ hadith.name }}</h3>
+    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 من فوائد {{ hadith.name }}</h2>
     
     <div class="box-list-wrapper">
-      <!-- استخدام innerHTML لقراءة النص المنسق الجاهز من الملف القديم -->
-      <div class="custom-presentation-list" [innerHTML]="fawaedText"></div>
+      <ul class="custom-presentation-list">
+        <li *ngFor="let item of box2Items">{{ item }}</li>
+      </ul>
     </div>
   </div>
 
+  <!-- Box 4: Pedagogisk/pedagogiskt spår -->
+  <div class="fawaed-box-container mini" style="margin-top: 25px;">
+    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 توجيه تربوي للحديث</h2>
+    <p class="poetic-phrase">
+      {{ poeticText }}
+    </p>
+  </div>
 
   <app-footer-info />
 </div>

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DownloadBannerComponent } from "./components/download-banner/download-banner.component";  // Import FormsModule
@@ -18,6 +19,14 @@ import { DownloadBannerComponent } from "./components/download-banner/download-b
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'huda_taddabur';
+export class AppComponent implements OnInit {
+  title = 'هدى وتدبر';
+
+  // Vi injicerar Title och Meta i constructorn
+  constructor(private titleService: Title, private metaService: Meta) {}
+
+  ngOnInit() {
+    // Här kan du sätta eller uppdatera titeln och meta-taggar programmatiskt
+    this.titleService.setTitle('هدى وتدبر - الرئيسية');
+  }
 }

@@ -1,179 +1,133 @@
 <app-surah-hint
-  [surahName]="'همسة من سورةالفاتحة'"
+  [surahName]="'همسة من سورة الفاتحة'"
   [hintText]="'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'">
 </app-surah-hint>
 
-
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
-                            [RoutelinkAfter]="'/surah-79'"  [SurahNext]="'النازعات'"
-></app-next-before-surah-meny>
+<h1 class="visually-hidden" style="display:none;">سورة الفاتحة - التفسير والتدبر</h1>
 
 <app-surah-tabs [surahName]="'سورة الفاتحة'">
   <div tadabbur>
-  <app-surahs-start></app-surahs-start>
-  <!-- här lägger tafser för du den första part taddabur -->
-   <div class="verse-wrapper">
+    <app-surahs-start></app-surahs-start>
+    
+    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
-  ▶️
-</button>
+          <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
+            ▶️
+          </button>
           <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-                      <!-- lägg till button för start ayah-->
-
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
+        
         <div class="tafsir" *ngIf="shown.has(i)">
-        <!-- button för reading tafser text-->
-<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
-    🔊 استمع للتفسير
-</button>
-  
-  <!-- original tafser text -->
-  <div [innerHTML]="verse.tafsir"></div>
-</div>
+          <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
+             🔊 استمع للتفسير
+          </button>
+          <div [innerHTML]="verse.tafsir"></div>
+        </div>
       </div>
     </div>
   </div>
     
-
   <div visual>
-  <div class="intro-summary">
-    <h3>ملخص السورة:</h3>
-  <p> الثناء على اللَّه →  العبد يعلن عبوديته للَّه → الختم بالدعاء و طلب الهداية. </p>
-  </div>
-    <!-- parts i visual delen -->
+    <div class="intro-summary">
+      <h3>ملخص السورة:</h3>
+      <p>الثناء على اللَّه ← العبد يعلن عبوديته للَّه ← الختم بالدعاء و طلب الهداية.</p>
+    </div>
+
     <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
-  <h3 class="section-title">{{ section.title }}</h3>
-  <p class="section-desc">{{ section.description }}</p>
-  
-  <ul class="verse-list">
-    <!-- Huvudvers -->
-    <li class="verse-item verse-main">
-      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
-      <button
-        *ngIf="section.verseNumbers.length > 1"
-        class="toggle-btn"
-        (click)="toggleExpanded(i)">
-        {{ expandedSections[i] ? '↑' : '⋮' }}
-      </button>
-    </li>
-
-    <!-- Extra verser -->
-    <li
-      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
-      class="verse-item"
-      [class.extra]="true"
-      [class.show]="expandedSections[i]">
-      {{ getVerseText(num) }}
-    </li>
-  </ul>
-</div>
-
+      <h3 class="section-title">{{ section.title }}</h3>
+      <p class="section-desc">{{ section.description }}</p>
+      
+      <ul class="verse-list">
+        <li class="verse-item verse-main">
+          <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+          <button
+            *ngIf="section.verseNumbers.length > 1"
+            class="toggle-btn"
+            (click)="toggleExpanded(i)">
+            {{ expandedSections[i] ? '↑' : '⋮' }}
+          </button>
+        </li>
+        <li
+          *ngFor="let num of section.verseNumbers.slice(1); let j = index"
+          class="verse-item"
+          [class.extra]="true"
+          [class.show]="expandedSections[i]">
+          {{ getVerseText(num) }}
+        </li>
+      </ul>
+    </div>
   </div>
 </app-surah-tabs>
 
-
-<!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
    📚 مصدر التفسير: <b>تفسير ابن كثير</b>
 </p>
 
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
-                            [RoutelinkAfter]="'/surah-79'"  [SurahNext]="'النازعات'"
-></app-next-before-surah-meny>
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
+  [RoutelinkAfter]="'/surah-79'"  [SurahNext]="'النازعات'">
+</app-next-before-surah-meny>
   
-
-<!-- alfatiha quiz component -->
 <div class="quiz-section">
   <app-quix-tafser [questions]="alfatihaQuestions"></app-quix-tafser>
 </div>
 
-<!--div för فائدة text-->
 <div class="benefit-box">
   <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
   </svg>
-<div class="benefit-text">
+  <div class="benefit-text">
     <strong>فائدة:</strong>
     يستحب للقارئ في الصلاة عند قراءة <span class="highlight">الفاتحة</span> أن يقول
     <strong>«آمين»</strong>، ومعناها: <em>يا رب استجب</em>.
   </div>
 </div>
 
-
-
-
-<!--div för تذكير text-->
 <div class="benefit-box">
   <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
   </svg>
- <div class="benefit-text">
+  <div class="benefit-text">
     <strong class="highlight">تذكير:</strong> <br>
-    <strong> البسملة </strong>إتباعاً للنبي صلى الله عليه وسلم  <br>
-    <strong>وتطبيق لحديث:</strong> كل امر ذي بال لا بيدأ ببسم الله فهو أبتر أو أقطع  <br>
-    <strong> أبتر: </strong><em>المقطوع، الذي لا نسل له، أو الذي انقطع أثره وذِكره.</em><br>
-    <strong> أقطع: </strong><em> مقطوع من الخير، لا يصل إلى تمامه، أو لا يُتمّ بنجاح.</em>
-  <details style="margin-top:5px; font-size:0.85em; color:#444;">
-    <summary style="cursor:pointer; color:#b88a00;">📜 عرض الحديث</summary>
-    <em>
-      أَبِي هُرَيْرَةَ رضي الله عنه قَالَ : قَالَ رَسُولُ اللهِ ﷺ :  
-      (كُلُّ كَلَامٍ أَوْ أَمْرٍ ذِي بَالٍ لَا يُفْتَحُ بِذِكْرِ اللهِ فَهُوَ أَبْتَرُ - أَوْ قَالَ : أَقْطَعُ -)  
-      وقد روي الحديث بألفاظ أخرى نحو هذا.  
-      رواه الإمام أحمد في "المسند" (14/329) طبعة مؤسسة الرسالة. وقد حَسَّن الحديث أو صححه جماعة من العلماء ، فقد حسنه النووي وابن حجر ، وصححه ابن دقيق العبد وابن الملقن .
-    </em>
-  </details>
+    <strong>البسملة</strong> إتباعاً للنبي صلى الله عليه وسلم <br>
+    <strong>وتطبيق لحديث:</strong> كل امر ذي بال لا يبدأ ببسم الله فهو أبتر أو أقطع <br>
+    <strong>أبتر:</strong> <em>المقطوع، الذي لا نسل له، أو الذي انقطع أثره وذِكره.</em><br>
+    <strong>أقطع:</strong> <em>مقطوع من الخير، لا يصل إلى تمامه، أو لا يُتمّ بنجاح.</em>
+    <details style="margin-top:5px; font-size:0.85em; color:#444;">
+      <summary style="cursor:pointer; color:#b88a00;">📜 عرض الحديث</summary>
+      <em>
+        أَبِي هُرَيْرَةَ رضي الله عنه قَالَ : قَالَ رَسُولُ اللهِ ﷺ : 
+        (كُلُّ كَلَامٍ أَوْ أَمْرٍ ذِي بَالٍ لَا يُفْتَحُ بِذِكْرِ اللهِ فَفهُوَ أَبْتَرُ - أَوْ قَالَ : أَقْطَعُ -) 
+        رواه الإمام أحمد في "المسند".
+      </em>
+    </details>
   </div>
 </div>
 
-
-
-<!-- coponent för nezzol-->
 <app-nezzol
-   [dalel]="' علينا ياأحبتي أن نتعلم أن ديننا من القران والسنة وأن لانقبل قولاً في دينناالإ بدليل من القران أو السنة '"
-   [nezoolText]=" 
-   '<ul class=\'benefit-list\'>
-    <li>أنها ركن من أركان الصلاة، لا تصح الصلاة إلا بها. <em> روى البخاري ( 756) ومسلم (394) عَنْ عُبَادَةَ بْنِ الصَّامِتِ رضي الله عنه أَنَّ رَسُولَ اللَّهِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ قَالَ: لَا صَلَاةَ لِمَنْ لَمْ يَقْرَأْ بِفَاتِحَةِ الْكِتَابِ.</em> </li>
+   [dalel]="'علينا ياأحبتي أن نتعلم أن ديننا من القران والسنة وأن لانقبل قولاً في دينناإلا بدليل من القران أو السنة'"
+   [nezoolText]="'
+   <ul class=\'benefit-list\'>
+    <li>أنها ركن من أركان الصلاة، لا تصح الصلاة إلا بها.</li>
     <li>أنها أفضل سورة في القرآن.</li>
-    <li>أنها السبع المثاني <em>  قال الله فيها: وَلَقَدْ آتَيْنَاكَ سَبْعًا مِنْ الْمَثَانِي وَالْقُرْآنَ الْعَظِيمَ الحجر/87</em> </li>
-    <li>
-      انها جمعت بين التوسل إلى الله تعالى بالحمد والثناء على الله تعالى وتمجيده،
-     والتوسل إليه بعبوديته وتوحيده، ثم جاء سؤال الله بالهداية
-    </li>
-    <li>
-      أنها ـ مع قصرها ـ تشتمل على أنواع التوحيد الثلاثة،
-    <strong> توحيد الربوبية </strong> (الحمد لله رب العالمين)(مالك يوم الدين) , <strong> وتوحيد الألوهية </strong>
-    (اياك نعبد واياك نستعين)
-     <strong> توحيد الأسماء والصفات </strong>. (الرحمن الرحيم)
-    </li>
-    <li>أنها تشتمل على شفاء القلوب وشفاء الأبدان.</li>
-    <li>أنها تشتمل على الرد على أهل الضلال جميعا</li>
-    <li>الفاتحة هي رقية لأمراض القلب والروح والبدن.</li>
-  </ul>' 
-  ">
+    <li>أنها السبع المثاني.</li>
+    <li>أنها تشتمل على أنواع التوحيد الثلاثة: توحيد الربوبية، الألوهية، والأسماء والصفات.</li>
+   </ul>'">
 </app-nezzol>
 
-
-
-<!-- coponent för faida -->
 <app-fawaed-of-surah
-  [SurahFaidah]="'الفاتحة '"
-  [FaidaText]="
-    '<ul class=\'benefit-list\'>
-      <li>الفاتحة ركن في كل ركعة من الصلاة.</li>
-      <li>الاستعانة والتوكل واللجوء لله وحده في كل أمر.</li>
-      <li>أهمية سؤال الله الهداية في كل صلاة.</li>
-      <li>عبادة الله أعظم مطلوب، والاستعانة به طريق الوصول.</li>
-      <li>الفاتحة هي رقية لأمراض القلب والروح والبدن.</li>
-    </ul>'
-  ">
+  [SurahFaidah]="'فوائد سورة الفاتحة '"
+  [FaidaText]="'
+   <ul class=\'benefit-list\'>
+     <li>الفاتحة ركن في كل ركعة من الصلاة.</li>
+     <li>الاستعانة والتوكل واللجوء لله وحده في كل أمر.</li>
+     <li>أهمية سؤال الله الهداية في كل صلاة.</li>
+   </ul>'">
 </app-fawaed-of-surah>
 
-
-<app-footer-info />
+<app-footer-info></app-footer-info>

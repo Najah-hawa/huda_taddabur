@@ -1,112 +1,80 @@
 <app-surah-hint
-  [surahName]="'النبأ'"
+  [surahName]="'همسة من سورة النبأ'"
   [hintText]="'سورة النبأ تهز القلوب بمشاهد القيامة، وتلفت الأنظار لآيات الخلق، مذكّرة بمصير الكافرين ونعيم المتقين.'">
 </app-surah-hint>
 
-
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/alfatiha'" [SurahBefore]="'الفاتحة'"
-                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'النازعات'"
-></app-next-before-surah-meny>
-
 <app-surah-tabs [surahName]="'سورة النبأ'">
   <div tadabbur>
-  <app-surahs-start></app-surahs-start>
-  <!-- här lägger tafser för du den första part taddabur -->
-   <div class="verse-wrapper">
+    <app-surahs-start></app-surahs-start>
+    
+    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
-  ▶️
-</button>
+          <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">▶️</button>
           <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-                      <!-- lägg till button för start ayah-->
-
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
+        
         <div class="tafsir" *ngIf="shown.has(i)">
-        <!-- button för reading tafser text-->
-<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
-    🔊 استمع للتفسير
-</button>
-  
-  <!-- original tafser text -->
-  <div [innerHTML]="verse.tafsir"></div>
-</div>
+          <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">🔊 استمع للتفسير</button>
+          <div [innerHTML]="verse.tafsir"></div>
+        </div>
       </div>
     </div>
   </div>
-    
 
   <div visual>
-  <div class="intro-summary">
-    <h3>ملخص السورة:</h3>
-    <p> الناس يتساءلون ويشككون → الله يذكر آيات خلقه → يوم القيامة والعذاب للكافرين → جزاء المتقين → تذكير بعظمة الله والتحذير النهائي. </p>
-  </div>
-    <!-- parts i visual delen -->
+    <div class="intro-summary">
+      <h3>ملخص السورة:</h3>
+      <p>الناس يتساءلون ويشككون ← الله يذكر آيات خلقه ← يوم القيامة والعذاب للكافرين ← جزاء المتقين ← تذكير بعظمة الله والتحذير النهائي.</p>
+    </div>
+    
     <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
-  <h3 class="section-title">{{ section.title }}</h3>
-  <p class="section-desc">{{ section.description }}</p>
-  
-  <ul class="verse-list">
-    <!-- Huvudvers -->
-    <li class="verse-item verse-main">
-      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
-      <button
-        *ngIf="section.verseNumbers.length > 1"
-        class="toggle-btn"
-        (click)="toggleExpanded(i)">
-        {{ expandedSections[i] ? '↑' : '⋮' }}
-      </button>
-    </li>
-
-    <!-- Extra verser -->
-    <li
-      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
-      class="verse-item"
-      [class.extra]="true"
-      [class.show]="expandedSections[i]">
-      {{ getVerseText(num) }}
-    </li>
-  </ul>
-</div>
-
+      <h3 class="section-title">{{ section.title }}</h3>
+      <p class="section-desc">{{ section.description }}</p>
+      
+      <ul class="verse-list">
+        <li class="verse-item verse-main">
+          <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+          <button *ngIf="section.verseNumbers.length > 1" class="toggle-btn" (click)="toggleExpanded(i)">
+            {{ expandedSections[i] ? '↑' : '⋮' }}
+          </button>
+        </li>
+        <li *ngFor="let num of section.verseNumbers.slice(1)" class="verse-item extra" [class.show]="expandedSections[i]">
+          {{ getVerseText(num) }}
+        </li>
+      </ul>
+    </div>
   </div>
 </app-surah-tabs>
 
-
-<!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
    📚 مصدر التفسير: <b>تفسير ابن كثير</b>
 </p>
 
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/alfatiha'" [SurahBefore]="'الفاتحة'"
-                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'النازعات'"
-></app-next-before-surah-meny>
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/alfatiha'" [SurahBefore]="'الفاتحة'"
+  [RoutelinkAfter]="'/surah-79'" [SurahNext]="'النازعات'">
+</app-next-before-surah-meny>
   
-<!--visa frågot om surah-->
 <div class="quiz-section">
-      <app-quix-tafser [questions]="alnabbaQuestions"></app-quix-tafser>
+  <app-quix-tafser [questions]="alnabbaQuestions"></app-quix-tafser>
 </div>
 
 <app-fawaed-of-surah
-  [SurahFaidah]="'النبا'"
+  [SurahFaidah]="'سورة النبأ'"
   [FaidaText]="
     '<ul class=\'benefit-list\'>
-      <li>قولُه تعالى: <strong>أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا</strong> استِدلالٌ يَتضمَّنُ امتِنانًا، وفي ذلك الامتِنانِ إشعارٌ بحِكمةِ اللهِ تعالَى؛ إذ جعَلَ الأرضَ مُلائمةً للمخلوقاتِ الَّتي عليها؛ فإنَّ الَّذي صنَعَ هذا الصُّنعَ لا يُعجِزُه أنْ يخلُقَ الأجسامَ مرَّةً ثانيةً بعدَ بِلاها *أي: فنائها*، والغرضُ مِنَ الامتنانِ هنا تذكيرُهم بفضلِ اللهِ؛ لعلَّهم أنْ يَرْعَوُوا عن المكابَرةِ، ويُقبِلوا على النَّظرِ فيما يَدْعوهم إليه الرَّسولُ صلَّى اللهُ عليه وسلَّم تبليغًا عن اللهِ تعالى.</li>
-      <li>قولُه تعالى: <strong>وَجَعَلْنَا نَوْمَكُمْ سُبَاتًا</strong> فيه امتِنانٌ على النَّاسِ بخلْقِ نظامِ النَّومِ فيهم؛ لتحصُلَ لهم راحةٌ مِن أتعابِ العملِ الَّذي يَكْدَحونَ له في نَهارِهم؛ فاللهُ تعالى جعَلَ النَّومَ حاصلًا للإنسانِ بدونِ اختيارِه.</li>
-      <li>وبهذا الاستِدلالِ والامتنانِ خُتِمَتِ الأدِلَّةُ الَّتي أُقيمَتْ للمشركين على انفرادِ اللهِ تعالى بالإلهيَّةِ، وتَضمَّنَتِ الإيماءَ إلى إمكانِ البعثِ وما أُدمِجَ فيها مِن المِنَنِ عليهم؛ عساهم أنْ يَذكُروا النِّعمةَ فيَشعُروا بواجبِ شُكرِ المُنعِمِ، ولا يَستفظِعوا إبطالَ الشُّركاءِ في الإلهيَّةِ، ويَنظُروا فيما بلَغَهم عنه مِن الإخبارِ بالبعثِ والجزاءِ، فيَ صرِفوا عقولَهم للنَّظرِ في دلائلِ تصديقِ ذلك.</li>
-      <li>في قَولِه تعالى: <strong>وَفُتِحَتِ السَّمَاءُ فَكَانَتْ أَبْوَابًا</strong> دليلٌ على كَمالِ قُدرةِ اللهِ عزَّ وجَلَّ؛ أنَّ هذه السَّبْعَ الشِّدادَ يَجعَلُها اللهُ تعالى يومَ القيامةِ كأنْ لم تكُنْ، فتكونُ أبوابًا.</li>
-      <li>قولُه تعالى: <strong>وَجَعَلْنَا النَّهَارَ مَعَاشًا</strong> النَّهارُ: الزَّمانُ الَّذي يكونُ فيه ضَوءُ الشَّمسِ منتشرًا على جزءٍ كبيرٍ مِن الكُرةِ الأرضيَّةِ، وفيه عِبرةٌ بدِقَّةِ الصُّنعِ وإحكامِه؛ إذ جُعِل نِظامانِ مختَلِفانِ مَنشؤُهما سُطوعُ نورِ الشَّمسِ واحتِجابُه فوقَ الأرضِ، وهما نِعمتانِ للبَشرِ مختلِفتانِ في الأسبابِ والآثارِ؛ فنِعمةُ اللَّيلِ راجعةٌ إلى الرَّاحةِ والهدوءِ، ونعمةُ النَّهارِ راجعةٌ إلى العملِ والسَّعيِ.</li>
+      <li>قولُه تعالى: <strong>أَلَمْ نَجْعَلِ الْأَرْضَ مِهَادًا</strong> استِدلالٌ يَتضمَّنُ امتِنانًا...</li>
+      <li>قولُه تعالى: <strong>وَجَعَلْنَا نَوْمَكُمْ سُبَاتًا</strong> فيه امتِنانٌ على النَّاسِ...</li>
+      <li>وبهذا الاستِدلالِ والامتنانِ خُتِمَتِ الأدِلَّةُ الَّتي أُقيمَتْ للمشركين...</li>
+      <li>في قَولِه تعالى: <strong>وَفُتِحَتِ السَّمَاءُ فَكَانَتْ أَبْوَابًا</strong> دليلٌ...</li>
+      <li>قولُه تعالى: <strong>وَجَعَلْنَا النَّهَارَ مَعَاشًا</strong> النَّهارُ: الزَّمانُ الَّذي يكونُ فيه ضَوءُ الشَّمسِ...</li>
     </ul>'
   ">
-
-  
 </app-fawaed-of-surah>
-
 
 <app-footer-info />

@@ -8,98 +8,154 @@
   <div class="purity-workspace">
     
     <!-- القائمة الجانبية الموسعة شاملة الطهارة والمياه -->
-    <nav class="purity-sidebar">
-      <ul>
-        <!-- تصنيف قسم الطهارة -->
-        <li class="sidebar-category-title">🔹 أولاً: فقه الطهارة</li>
-        <li [class.active-item]="activeTab === 'definition'" (click)="setTab('definition')">
-          <span class="tab-icon">📖</span> مفهوم الطهارة
-        </li>
-        <li [class.active-item]="activeTab === 'conditions'" (click)="setTab('conditions')">
-          <span class="tab-icon">✨</span> شروط الطهارة
-        </li>
-        <li [class.active-item]="activeTab === 'sections'" (click)="setTab('sections')">
-          <span class="tab-icon">🌿</span> أقسام الطهارة
-        </li>
+ <nav class="purity-sidebar">
+  <ul>
+    <li class="sidebar-category-title">🔹 أولاً: فقه الطهارة</li>
+    
+    <li [class.active-item]="activeTab === 'definition'" (click)="setTab('definition')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'definition' }" class="sidebar-seo-link">
+        <span class="tab-icon">📖</span> مفهوم الطهارة
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'conditions'" (click)="setTab('conditions')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'conditions' }" class="sidebar-seo-link">
+        <span class="tab-icon">✨</span> شروط الطهارة
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'sections'" (click)="setTab('sections')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'sections' }" class="sidebar-seo-link">
+        <span class="tab-icon">🌿</span> أقسام الطهارة
+      </a>
+    </li>
 
-        <!-- تصنيف قسم المياه الجديد -->
-        <li class="sidebar-category-title">💧 ثانياً: أحكام المياه</li>
-        <li [class.active-item]="activeTab === 'water-intro'" (click)="setTab('water-intro')">
-          <span class="tab-icon">💧</span> مقدمة عن المياه
-        </li>
-        <li [class.active-item]="activeTab === 'water-pure-purifier'" (click)="setTab('water-pure-purifier')">
-          <span class="tab-icon">🟢</span> الماء الطاهر المطهر
-        </li>
-        <li [class.active-item]="activeTab === 'water-pure-not-purifier'" (click)="setTab('water-pure-not-purifier')">
-          <span class="tab-icon">🟡</span> الماء الطاهر غير المطهر
-        </li>
-        <li [class.active-item]="activeTab === 'water-impure'" (click)="setTab('water-impure')">
-          <span class="tab-icon">🔴</span> الماء المتنجس
-        </li>
+    <li class="sidebar-category-title">💧 ثانياً: أحكام المياه</li>
+    
+    <li [class.active-item]="activeTab === 'water-intro'" (click)="setTab('water-intro')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'water-intro' }" class="sidebar-seo-link">
+        <span class="tab-icon">💧</span> مقدمة عن المياه
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'water-pure-purifier'" (click)="setTab('water-pure-purifier')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'water-pure-purifier' }" class="sidebar-seo-link">
+        <span class="tab-icon">🟢</span> الماء الطاهر المطهر
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'water-pure-not-purifier'" (click)="setTab('water-pure-not-purifier')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'water-pure-not-purifier' }" class="sidebar-seo-link">
+        <span class="tab-icon">🟡</span> الماء الطاهر غير المطهر
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'water-impure'" (click)="setTab('water-impure')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'water-impure' }" class="sidebar-seo-link">
+        <span class="tab-icon">🔴</span> الماء المتنجس
+      </a>
+    </li>
 
-        <!-- تصنيف قسم النجاسات الجديد -->
-        <li class="sidebar-category-title">⚠️ ثالثاً: أحكام النجاسات</li>
-        <li [class.active-item]="activeTab === 'impure-heavy'" (click)="setTab('impure-heavy')">
-          <span class="tab-icon">🐾</span> ١. النجاسة المغلظة
-        </li>
-        <li [class.active-item]="activeTab === 'impure-light'" (click)="setTab('impure-light')">
-          <span class="tab-icon">👶</span> ٢. النجاسة المخففة
-        </li>
-        <li [class.active-item]="activeTab === 'impure-medium'" (click)="setTab('impure-medium')">
-          <span class="tab-icon">🏺</span> ٣. النجاسة المتوسطة
-        </li>
+    <li class="sidebar-category-title">⚠️ ثالثاً: أحكام النجاسات</li>
+    
+    <li [class.active-item]="activeTab === 'impure-heavy'" (click)="setTab('impure-heavy')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'impure-heavy' }" class="sidebar-seo-link">
+        <span class="tab-icon">🐾</span> ١. النجاسة المغلظة
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'impure-light'" (click)="setTab('impure-light')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'impure-light' }" class="sidebar-seo-link">
+        <span class="tab-icon">👶</span> ٢. النجاسة المخففة
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'impure-medium'" (click)="setTab('impure-medium')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'impure-medium' }" class="sidebar-seo-link">
+        <span class="tab-icon">🏺</span> ٣. النجاسة المتوسطة
+      </a>
+    </li>
 
+    <li class="sidebar-category-title">🌸 رابعاً: فقه دماء النساء</li>
+    
+    <li [class.active-item]="activeTab === 'haid'" (click)="setTab('haid')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'haid' }" class="sidebar-seo-link">
+        <span class="tab-icon">🩸</span> ١. الحيض
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'nifas'" (click)="setTab('nifas')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'nifas' }" class="sidebar-seo-link">
+        <span class="tab-icon">🤰</span> ٢. النفاس
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'prohibited'" (click)="setTab('prohibited')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'prohibited' }" class="sidebar-seo-link">
+        <span class="tab-icon">🚫</span> ٣. ما يحرم بالحيض والنفاس
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'istihada'" (click)="setTab('istihada')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'istihada' }" class="sidebar-seo-link">
+        <span class="tab-icon">🌙</span> ٤. الاستحاضة
+      </a>
+    </li>
 
-        <!-- العنوان الرئيسي الموحد لرابعاً وتحته التبويبات المفصلة -->
-        <li class="sidebar-category-title">🌸 رابعاً: فقه دماء النساء</li>
-        <li [class.active-item]="activeTab === 'haid'" (click)="setTab('haid')">
-          <span class="tab-icon">🩸</span> ١. الحيض
-        </li>
-        <li [class.active-item]="activeTab === 'nifas'" (click)="setTab('nifas')">
-          <span class="tab-icon">🤰</span> ٢. النفاس
-        </li>
-        <li [class.active-item]="activeTab === 'prohibited'" (click)="setTab('prohibited')">
-          <span class="tab-icon">🚫</span> ٣. ما يحرم بالحيض والنفاس
-        </li>
-        <li [class.active-item]="activeTab === 'istihada'" (click)="setTab('istihada')">
-          <span class="tab-icon">🌙</span> ٤. الاستحاضة
-        </li>
+    <li class="sidebar-category-title">✨ خامساً: المستحبات</li>
+    
+    <li [class.active-item]="activeTab === 'sunan-fitra'" (click)="setTab('sunan-fitra')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'sunan-fitra' }" class="sidebar-seo-link">
+        <span class="tab-icon">🍃</span> عشر من الفطرة
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'siwak'" (click)="setTab('siwak')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'siwak' }" class="sidebar-seo-link">
+        <span class="tab-icon">🪥</span> السواك
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'idihan'" (click)="setTab('idihan')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'idihan' }" class="sidebar-seo-link">
+        <span class="tab-icon">🧴</span> الادهان غباً
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'ikfihal'" (click)="setTab('ikfihal')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'ikfihal' }" class="sidebar-seo-link">
+        <span class="tab-icon">👁️</span> الاكتحال وتراً
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'nails'" (click)="setTab('nails')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'nails' }" class="sidebar-seo-link">
+        <span class="tab-icon">💅</span> تقليم الأظافر
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'combing'" (click)="setTab('combing')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'combing' }" class="sidebar-seo-link">
+        <span class="tab-icon">💇‍♀️</span> ترجيل الشعر ودهنه
+      </a>
+    </li>
+    
+    <li [class.active-item]="activeTab === 'hair-removal'" (click)="setTab('hair-removal')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'hair-removal' }" class="sidebar-seo-link">
+        <span class="tab-icon">✨</span> إزالة شعر الإبط والعانة
+      </a>
+    </li>
 
+    <li class="sidebar-category-title">🧼 سادساً: الآداب اليومية</li>
+    
+    <li [class.active-item]="activeTab === 'istinja-rules'" (click)="setTab('istinja-rules')">
+      <a [routerLink]="['/fiqh/purity']" [queryParams]="{ tab: 'istinja-rules' }" class="sidebar-seo-link">
+        <span class="tab-icon">🧻</span> الاستنجاء وآداب قضاء الحاجة
+      </a>
+    </li>
 
-
-        <!-- العنوان الرئيسي: المستحبات وتحته العناوين الفرعية لكل صورة -->
-        <li class="sidebar-category-title">✨ خامساً: المستحبات</li>
-        <li [class.active-item]="activeTab === 'sunan-fitra'" (click)="setTab('sunan-fitra')">
-          <span class="tab-icon">🍃</span> عشر من الفطرة
-        </li>
-        <li [class.active-item]="activeTab === 'siwak'" (click)="setTab('siwak')">
-          <span class="tab-icon">🪥</span> السواك
-        </li>
-        <li [class.active-item]="activeTab === 'idihan'" (click)="setTab('idihan')">
-          <span class="tab-icon">🧴</span> الادهان غباً
-        </li>
-        <li [class.active-item]="activeTab === 'ikfihal'" (click)="setTab('ikfihal')">
-          <span class="tab-icon">👁️</span> الاكتحال وتراً
-        </li>
-        <li [class.active-item]="activeTab === 'nails'" (click)="setTab('nails')">
-          <span class="tab-icon">💅</span> تقليم الأظافر
-        </li>
-        <li [class.active-item]="activeTab === 'combing'" (click)="setTab('combing')">
-          <span class="tab-icon">💇‍♀️</span> ترجيل الشعر ودهنه
-        </li>
-        <li [class.active-item]="activeTab === 'hair-removal'" (click)="setTab('hair-removal')">
-          <span class="tab-icon">✨</span> إزالة شعر الإبط والعانة
-        </li>
-
-
-        <li class="sidebar-category-title">🧼 سادساً: الآداب اليومية</li>
-        <li [class.active-item]="activeTab === 'istinja-rules'" (click)="setTab('istinja-rules')">
-          <span class="tab-icon">🧻</span> الاستنجاء وآداب قضاء الحاجة
-        </li>
-
-      </ul>
-    </nav>
-
+  </ul>
+</nav>
     <!-- منطقة عرض محتوى الـ Tabs التفاعلي -->
     <main class="purity-main-content">
 

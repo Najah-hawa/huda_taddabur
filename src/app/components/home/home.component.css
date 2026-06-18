@@ -30,7 +30,7 @@
   font-size: 1.8em;
   color: #4d2828; /* mörkbrun */
   text-shadow: 1px 1px 1px #fff; /* lite mjukare */
-  max-width: 70ch;
+  max-width: 50ch;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -153,9 +153,9 @@
 
  
   .welcome-text {
-    font-size: 0.9em;
+    font-size: 0.7em;
     margin-right: 0px;
-    margin-top: 6px;
+    margin-top: 3px;
  
   }
 

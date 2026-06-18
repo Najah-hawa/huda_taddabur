@@ -987,3 +987,15 @@ blockquote { background: #fff3f5; border-right: 4px solid #f06292; margin: 15px 
     gap: 10px !important;
   }
 }
+
+/* كود لضمان الحفاظ على التصميم الأصلي دون أي تغيير */
+.sidebar-seo-link {
+  text-decoration: none;   /* إزالة الخط السفلي الافتراضي للروابط */
+  color: inherit;          /* جعل الرابط يأخذ نفس لون نص الـ li الافتراضي */
+  display: flex;           /* الحفاظ على المحاذاة المرنة للأيقونات والنصوص */
+  align-items: center;
+  width: 100%;             /* تجعل الرابط يملأ كامل مساحة الزر ليظل قابلاً للنقر بالكامل */
+  height: 100%;
+}
+
+/* إذا كان الـ li الأصلي يحتوي على padding، يفضل نقله إلى الـ .sidebar-seo-link أو تركه كما هو إذا كان التصميم ممتازاً */

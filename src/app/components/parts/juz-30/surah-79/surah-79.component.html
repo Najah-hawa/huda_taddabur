@@ -1,153 +1,96 @@
 <app-surah-hint
-  [surahName]="'النازعات'"
+  [surahName]="'سورة النازعات'"
   [hintText]="'نَزْعُ الأرواح بيد الملائكة دعوةٌ خفيّة لتذكر أن الأمر كلّه بيد الله، وإليه المصير.'">
 </app-surah-hint>
 
-
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
-                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'عبس'"
-></app-next-before-surah-meny>
-
+<!-- 👈 Övre menyn är nu helt borttagen härifrån! -->
 
 <app-surah-tabs [surahName]="'سورة النازعات'">
   <div tadabbur>
-  <app-surahs-start></app-surahs-start>
-  <!-- här lägger tafser för du den första part taddabur -->
-   <div class="verse-wrapper">
+    <app-surahs-start></app-surahs-start>
+    
+    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
-  ▶️
-</button>
+          <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">▶️</button>
           <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-                      <!-- lägg till button för start ayah-->
-
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
         <div class="tafsir" *ngIf="shown.has(i)">
-        <!-- button för reading tafser text-->
-<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
-    🔊 استمع للتفسير
-</button>
-  
-  <!-- original tafser text -->
-  <div [innerHTML]="verse.tafsir"></div>
-</div>
+          <!-- 👈 Här är den rättade raden utan stavfel -->
+          <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">🔊 استمع للتفسير</button>
+          <div [innerHTML]="verse.tafsir"></div>
+        </div>
       </div>
     </div>
   </div>
      
-   
   <div visual>
-   <div class="intro-summary">
-       <h3>ملخص السورة:</h3>
-       <p> أعمال الملائكة ومهامهم → يوم القيامة وخوف الإنسان → إنكار الكافرين البعث وتفاجئهم بوقوعه → قصة موسى وفرعون →  آيات الخلق وعظمة الله → السؤال عن الساعة. </p>
-   </div>
-    <!-- parts i visual delen -->
+    <div class="intro-summary">
+      <h3>ملخص السورة:</h3>
+      <p>أعمال الملائكة ومهامهم ← يوم القيامة وخوف الإنسان ← إنكار الكافرين البعث وتفاجئهم بوقوعه ← قصة موسى وفرعون ← آيات الخلق وعظمة الله ← السؤال عن الساعة.</p>
+    </div>
+
     <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
-  <h3 class="section-title">{{ section.title }}</h3>
-  <p class="section-desc">{{ section.description }}</p>
-  
-  <ul class="verse-list">
-    <!-- Huvudvers -->
-    <li class="verse-item verse-main">
-      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
-      <button
-        *ngIf="section.verseNumbers.length > 1"
-        class="toggle-btn"
-        (click)="toggleExpanded(i)">
-        {{ expandedSections[i] ? '↑' : '⋮' }}
-      </button>
-    </li>
-
-    <!-- Extra verser -->
-    <li
-      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
-      class="verse-item"
-      [class.extra]="true"
-      [class.show]="expandedSections[i]">
-      {{ getVerseText(num) }}
-    </li>
-  </ul>
-</div>
-
+      <h3 class="section-title">{{ section.title }}</h3>
+      <p class="section-desc">{{ section.description }}</p>
+      
+      <ul class="verse-list">
+        <li class="verse-item verse-main">
+          <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+          <button *ngIf="section.verseNumbers.length > 1" class="toggle-btn" (click)="toggleExpanded(i)">
+            {{ expandedSections[i] ? '↑' : '⋮' }}
+          </button>
+        </li>
+        <li *ngFor="let num of section.verseNumbers.slice(1)" class="verse-item extra" [class.show]="expandedSections[i]">
+          {{ getVerseText(num) }}
+        </li>
+      </ul>
+    </div>
   </div>
 </app-surah-tabs>
 
 <!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
-    📚 مصدر التفسير: <b>تفسير ابن كثير والسعدي وابن عثيمين</b>
+   📚 مصدر التفسير: <b>تفسير ابن كثير والسعدي وابن عثيمين</b>
 </p>
 
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
-                            [RoutelinkAfter]="'/surah-80'"  [SurahNext]="'عبس'"
-></app-next-before-surah-meny>
-
-
+<!--visa en next och before meny ENDAST under suran-->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
+  [RoutelinkAfter]="'/surah-80'" [SurahNext]="'عبس'">
+</app-next-before-surah-meny>
 
 <!--visa frågot om surah-->
 <div class="quiz-section">
-      <app-quix-tafser [questions]="alnaziatQuestions"></app-quix-tafser>
+  <app-quix-tafser [questions]="alnaziatQuestions"></app-quix-tafser>
 </div>
 
 <app-fawaed-of-surah
-  [SurahFaidah]="'النازعات'"
+  [SurahFaidah]="'فوائد سورة النازعات'"
   [FaidaText]="
-     '<ul class=\'benefit-list\'>
+    '<ul class=\'benefit-list\'>
       <li>
-        من فوائد السورة: أن الملائكة الْمُوَكَّلة بقبض أرواح المؤمنين تنشطها نشطًا، أي: تَسُلُّها برفق. 
-        <p>وأما الملائكة الْمُوَكَّلة بقبض أرواح الكفار، فإذا دُعيت الروح إلى الخروج نادتها بأقبح الأوصاف، تقول الملائكة لروح الكافر: 
-        <span>اخرجي أيتها النفس الخبيثة، كانت في الجسد الخبيث، اخرجي إلى غضب الله</span>، وما أشبه هذا من الكلام.</p>
-        <p>فتنفر الروح، لا تريد أن تخرج إلى هذا، فتتفرق عن الجسد -والعياذ بالله- حتى يقبضوها بشدة، فينزعونها نزعًا يكاد يتمزق الجسد منه من شدة النزع.</p>
-        <p>أما أرواح المؤمنين -جعلني الله وإياكم منهم- فإن الملائكة إذا نزلت لقبضها تبشرها بقولها:
-        <span>اخرجي أيتها النفس الطيبة، كانت في الجسد الطيب، اخرجي إلى رضوان الله</span>.
-        فيكون هذا الكلام مهوِّنًا عليها فراق الجسد الذي ألفته، فتخرج بسهولة.</p>
-        <p>ولهذا قال النبي ﷺ: <strong>«مَنْ أَحَبَّ لِقَاءَ اللهِ أَحَبَّ اللهُ لِقَاءَهُ، وَمَنْ كَرِهَ لِقَاءَ اللهِ كَرِهَ اللهُ لِقَاءَهُ»</strong>. قالت عائشة: يا رسول الله، كُلُّنَا يكره الموت. فقال: 
-        <strong>« ليس كذلك ولكنَّ المؤمنَ إذا بُشِّر برحمةِ اللهِ ورضوانِه وجنَّتِه أحَبَّ لقاءَ اللهِ وأحَبَّ اللهُ لقاءَه وإنَّ الكافرَ إذا بُشِّر بعذابِ اللهِ وسَخطِه كرِه لقاءَ اللهِ وكرِه اللهُ لقاءَه »</strong>. </p>
-        <em  style=&quot;color: gray; font-size: 0.5em; margin-top: 4px;&quot;>
-          الراوي: عائشة أم المؤمنين | المحدث: ابن حبان | المصدر: صحيح ابن حبان | الصفحة أو الرقم: 3010
-        </em>
-        <p>لأنه في تلك اللحظة يرى أنه سينتقل إلى دار أحسن من الدار التي فارقها، فيفرح كما يفرح أحدنا إذا قيل له: اخرج من بيت الطين إلى قصر مشيد طيّب، فيفرح فيحب لقاء الله.</p>
-        <p>وأما الكافر -والعياذ بالله- فإذا بُشِّرَ بالغضب والعذاب، فإنه يكره أن يموت، فيكره لقاء الله، فيكره الله لقاءه.</p>
-     </li>
-     
-     <li>
-        قوله تعالى: <strong>﴿فَالْمُدَبِّرَاتِ أَمْرًا﴾</strong> أيضًا وصفٌ للملائكة؛ تُدَبِّر أمور الله عز وجل.
-        <p>والواجب على المسلم الإيمان بالملائكة، وهو أحد أركان الإيمان بعد الإيمان بالله، لقول النبي ﷺ في حديث جبريل: <strong>«أن تؤمن بالله وملائكته...»</strong>.</p>
-        <p>ومن الملائكة: جبرائيل مُوَكَّل بالوحي، يتلقاه من الله وينزل به على الرسل. 
-        وإسرافيل مُوَكَّل بنفخ الصور الذي يكون عند يوم القيامة، فيفزع الناس ويموتون، ثم ينفخ فيه أخرى فيُبعثون، وهو أيضًا من حَمَلَة العرش.</p>
-        <p>وميكائيل مُوَكَّل بالقَطْر والنبات (بالمطر والنبات). 
-        وملك الموت مُوَكَّل بالأرواح. 
-        ومالك مُوَكَّل بالنار. 
-        ورضوان مُوَكَّل بالجنة.</p>
-        <p>وعن اليمين وعن الشمال قعيد مُوَكَّل بالأعمال (أي: الحافظ الذي يسجل أعمال العباد).</p>
-        <p>كلٌّ يُدَبِّر ما أمره الله عز وجل به.</p>
+        من فوائد السورة: أن الملائكة الْمُوَكَّلة بقبض أرواح المؤمنين تنشطها نشطًا، أي: تَسُلُّها برفق. 
+        <p>وأما الملائكة الْمُوَكَّلة بقبض أرواح الكفار، فإذا دُعيت الروح إلى الخروج نادتها بأقبح الأوصاف، تقول الملائكة لروح الكافر: <span>اخرجي أيتها النفس الخبيثة، كانت في الجسد الخبيث، اخرجي إلى غضب الله</span>...</p>
+        <p>فتنفر الروح، لا تريد أن تخرج إلى هذا، فتتفرق عن الجسد -والعياذ بالله- حتى يقبضوها بشدة...</p>
+        <p>أما أرواح المؤمنين -جعلني الله وإياكم منهم- فإن الملائكة إذا نزلت لقبضها تبشرها بقولها: <span>اخرجي أيتها النفس الطيبة، كانت في الجسد الطيب، اخرجي إلى رضوان الله</span>.</p>
+        <p>ولهذا قال النبي ﷺ: <strong>«مَنْ أَحَبَّ لِقَاءَ اللهِ أَحَبَّ اللهُ لِقَاءَهُ...»</strong>.</p>
       </li>
       <li>
-        قوله تعالى: <strong>﴿فَتَخْشَى﴾</strong> أي: فتخاف الله عز وجل على علمٍ منك؛ لأن الخشية هي الخوف المقرون بالعلم، فإن لم يكن علم فهو خوف مجرد.
-        <p>وهذا هو الفرق بين الخشية والخوف؛ فالخشية تكون عن علم، كما قال الله تعالى: <strong>﴿إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ﴾ [فاطر: 28]</strong>.</p>
-        <p>أما الخوف فهو خوف مجرد، ذعر يحصل للإنسان ولو بلا علم. 
-        فقد يخاف الإنسان من شيء يتوهمه، كأن يرى في الليلة الظلماء شبحًا لا حقيقة له فيخاف منه، فهذا ذعر مبني على وهم، لكن الخشية تكون عن علم.</p>
+        قوله تعالى: <strong>﴿فَالْمُدَبِّرَاتِ أَمْرًا﴾</strong> أيضًا وصفٌ للملائكة؛ تُدَبِّر أمور الله عز وجل...
       </li>
       <li>
-        ولَمَّا كان البشر لا يؤمنون ولا يقبلون دعوى شخص أنه رسول إلا بآية تدل على صدقه، جعل الله سبحانه وتعالى مع كل رسول آية.
-        <p>وهنا قال تعالى: <strong>﴿فَأَرَاهُ الْآيَةَ الْكُبْرَى﴾</strong>.</p>
-        <p>إن موسى عليه الصلاة والسلام أرى فرعونَ الآية الكبرى، ولكن هل انتفع بالآيات؟ لا. 
-        قال تعالى: <strong>﴿وَمَا تُغْنِي الْآيَاتُ وَالنُّذُرُ عَنْ قَوْمٍ لَا يُؤْمِنُونَ﴾ [يونس: 101]</strong>، 
-        وقال سبحانه: <strong>﴿إِنَّمَا تُنْذِرُ مَنِ اتَّبَعَ الذِّكْرَ وَخَشِيَ الرَّحْمَنَ بِالْغَيْبِ﴾ [يس: 11]</strong>.</p>
-        <p>فالذين ليس في قلوبهم استعداد للهداية لا يهتدون ولو جاءتهم كل آية -والعياذ بالله-. 
-        ولهذا قال تعالى: <strong>﴿فَكَذَّبَ وَعَصَى﴾[عبس: 21]</strong>.</p>
+        قوله تعالى: <strong>﴿فَتَخْشَى﴾</strong> أي: فتخاف الله عز وجل على علمٍ منك؛ لأن الخشية هي الخوف المقرون بالعلم...
       </li>
-  
+      <li>
+        ولَمَّا كان البشر لا يؤمنون ولا يقبلون دعوى شخص أنه رسول إلا بآية تدل على صدقه، جعل الله سبحانه وتعالى مع كل رسول آية. وهنا قال تعالى: <strong>﴿فَأَرَاهُ الْآيَةَ الْكُبْرَى﴾</strong>...
+      </li>
     </ul>'
   ">
 </app-fawaed-of-surah>
-
-
 
 <app-footer-info />

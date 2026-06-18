@@ -1,6 +1,7 @@
-import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
 import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
@@ -26,7 +27,7 @@ import {
   templateUrl: './nawawi-2.component.html',
   styleUrl: './nawawi-2.component.css'
 })
-export class Nawawi2Component implements OnDestroy {
+export class Nawawi2Component implements OnInit, OnDestroy {
   // ربط المتغيرات المحلية بالبيانات المستوردة
   hadith = hadithDetails;
   poeticText = poeticText;
@@ -46,7 +47,31 @@ export class Nawawi2Component implements OnDestroy {
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef, 
+    private titleService: Title, 
+    private metaService: Meta
+  ) {}
+
+  ngOnInit() {
+    // 🏷️ تعيين عنوان الصفحة الديناميكي (Title Tag)
+    this.titleService.setTitle('الحديث الثاني: مراتب الدين (حديث جبريل) - شروح الأربعين النووية');
+
+    // 🌐 تعيين وسوم الميتا الأساسية للسيو (Meta Tags)
+    this.metaService.updateTag({ 
+      name: 'description', 
+      content: 'شرح وتدبر الحديث الثاني من الأربعين النووية (حديث جبريل عليه السلام الطويل)، وفيه بيان مراتب الدين: الإسلام، الإيمان، والإحسان وأماراتها.' 
+    });
+    this.metaService.updateTag({ 
+      name: 'keywords', 
+      content: 'حديث جبريل, مراتب الدين, الإسلام, الإيمان, الإحسان, علامات الساعة, الأربعون النووية, شرح الأربعين النووية' 
+    });
+    
+    // 📱 وسوم الميتا الخاصة بشبكات التواصل الاجتماعي (Open Graph)
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الثاني: مراتب الدين - تدبر تفاعلي متزامن' });
+    this.metaService.updateTag({ property: 'og:description', content: 'استمع إلى متن حديث جبريل عليه السلام مع تظليل النص المتزامن وشرح مفصل لمراتب الدين وأهم الفوائد التربوية.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'article' });
+  }
 
   toggleBox1Zoom() {
     this.isBox1Maximized = !this.isBox1Maximized;

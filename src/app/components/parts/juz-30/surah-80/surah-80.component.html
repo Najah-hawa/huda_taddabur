@@ -1,126 +1,100 @@
 <app-surah-hint
-  [surahName]="'عبس'"
+  [surahName]="'همسة من سورة عبس'"
   [hintText]="'أن ميزان الكرامة عند الله هو الإيمان، وليس المال أو الجاه. والاهتمام بالمستضعفين أحق وأوجب.'">
 </app-surah-hint>
 
-
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-79'" [SurahBefore]="'النازعات'"
-                            [RoutelinkAfter]="'/surah-81'"  [SurahNext]="'التكوير'"
-></app-next-before-surah-meny>
+<!-- 👈 Övre menyn borttagen härifrån för renare layout -->
 
 <app-surah-tabs [surahName]="'سورة عبس'">
   <div tadabbur>
-  <app-surahs-start></app-surahs-start>
-  <!-- här lägger tafser för du den första part taddabur -->
-   <div class="verse-wrapper">
+    <app-surahs-start></app-surahs-start>
+    
+    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
-  ▶️
-</button>
+          <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">▶️</button>
           <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-                      <!-- lägg till button för start ayah-->
-
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
         <div class="tafsir" *ngIf="shown.has(i)">
-        <!-- button för reading tafser text-->
-<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
-    🔊 استمع للتفسير
-</button>
-  
-  <!-- original tafser text -->
-  <div [innerHTML]="verse.tafsir"></div>
-</div>
+          <!-- 👈 Rättad klickfunktion utan syntaxfel -->
+          <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">🔊 استمع للتفسير</button>
+          <div [innerHTML]="verse.tafsir"></div>
+        </div>
       </div>
     </div>
   </div>
      
-   
   <div visual>
-   <div class="intro-summary">
-       <h3>ملخص السورة:</h3>
-       <p>  موقف النبي ﷺ مع الأعمى -> التذكير وحرية الاختيار ->  خلق الإنسان والبعث ->  نعم الله في الخلق والرزق  -> يوم القيامة ->  انقسام الناس يوم القيامة. </p>
-   </div>
-    <!-- parts i visual delen -->
+    <div class="intro-summary">
+      <h3>ملخص السورة:</h3>
+      <p>موقف النبي ﷺ مع الأعمى ← التذكير وحرية الاختيار ← خلق الإنسان والبعث ← نعم الله في الخلق والرزق ← يوم القيامة ← انقسام الناس يوم القيامة.</p>
+    </div>
+
     <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
-  <h3 class="section-title">{{ section.title }}</h3>
-  <p class="section-desc">{{ section.description }}</p>
-  
-  <ul class="verse-list">
-    <!-- Huvudvers -->
-    <li class="verse-item verse-main">
-      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
-      <button
-        *ngIf="section.verseNumbers.length > 1"
-        class="toggle-btn"
-        (click)="toggleExpanded(i)">
-        {{ expandedSections[i] ? '↑' : '⋮' }}
-      </button>
-    </li>
-
-    <!-- Extra verser -->
-    <li
-      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
-      class="verse-item"
-      [class.extra]="true"
-      [class.show]="expandedSections[i]">
-      {{ getVerseText(num) }}
-    </li>
-  </ul>
-</div>
-
+      <h3 class="section-title">{{ section.title }}</h3>
+      <p class="section-desc">{{ section.description }}</p>
+      
+      <ul class="verse-list">
+        <li class="verse-item verse-main">
+          <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+          <button *ngIf="section.verseNumbers.length > 1" class="toggle-btn" (click)="toggleExpanded(i)">
+            {{ expandedSections[i] ? '↑' : '⋮' }}
+          </button>
+        </li>
+        <li *ngFor="let num of section.verseNumbers.slice(1)" class="verse-item extra" [class.show]="expandedSections[i]">
+          {{ getVerseText(num) }}
+        </li>
+      </ul>
+    </div>
   </div>
 </app-surah-tabs>
 
 <!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
-    📚 مصدر التفسير:  <b> تفسيرابن كثير وتفسير السعدي و ابن عثيمين</b>
+   📚 مصدر التفسير: <b>تفسير ابن كثير والسعدي وابن عثيمين</b>
 </p>
 
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-79'" [SurahBefore]="'النازعات'"
-                            [RoutelinkAfter]="'/surah-81'"  [SurahNext]="'التكوير'"
-></app-next-before-surah-meny>
+<!--visa en next och before meny ENDAST under suran-->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/surah-79'" [SurahBefore]="'النازعات'"
+  [RoutelinkAfter]="'/surah-81'" [SurahNext]="'التكوير'">
+</app-next-before-surah-meny>
 
-
-<!--visa frågot om surah-->
+<!--visa frågor om surah-->
 <div class="quiz-section">
-      <app-quix-tafser [questions]="abassaQuestions"></app-quix-tafser>
+  <app-quix-tafser [questions]="abassaQuestions"></app-quix-tafser>
 </div>
 
-
 <app-fawaed-of-surah
-  [SurahFaidah]="'عبس'"
+  [SurahFaidah]="'فوائد سورة عبس'"
   [FaidaText]="
-     '<ul class=\'benefit-list\'>
+    '<ul class=\'benefit-list\'>
       <li>
-        قُتِلَ ٱلۡإِنسَـٰنُ مَاۤ أَكۡفَرَهُۥ<br>
-        والكفر هنا يشمل كل أنواع الكفر، ومنه إنكار البعث، فإن كثيرًا من الكفار كذَّبُوا بالبعث، وقالوا: لا يمكن أن يُبْعَث الناس بعد أن كانت عظامهم رميمًا، كما قال تعالى:
+        <strong>﴿قُتِلَ ٱلۡإِنسَـٰنُ مَاۤ أَكۡفَرَهُۥ﴾</strong><br>
+        والكفر هنا يشمل كل أنواع الكفر، ومنه إنكار البعث، فإن كثيرًا من الكفار كذَّبُوا بالبعث، وقالوا: لا يمكن أن يُبْعَث الناس بعد أن كانت عظامهم رميمًا، كما قال تعالى:
         <br>
         <strong>﴿وَضَرَبَ لَنَا مَثَلًا وَنَسِيَ خَلْقَهُ قَالَ مَنْ يُحْيِي الْعِظَامَ وَهِيَ رَمِيمٌ﴾ [يس 78]</strong>.<br>
-        ولهذا قال: <strong>﴿مِنْ أَيِّ شَيْءٍ خَلَقَهُ﴾</strong>، استفهام تقرير لما يأتي بعده في قوله: <strong>﴿مِنْ نُطْفَةٍ خَلَقَهُ﴾</strong>، أي: أنت أيها الإنسان كيف تكفر بالبعث؟ من أي شيء خُلِقْتَ؟ ألم تُخْلَق من العدم؟ لم تكن شيئًا مذكورًا من قبل فوُجِدْتَ وصِرْتَ إنسانًا، فكيف تكفر بالبعث؟
+        ولهذا قال: <strong>﴿مِنْ أَيِّ شَيْءٍ خَلَقَهُ﴾</strong>، استفهام تقرير لما يأتي بعده في قوله: <strong>﴿مِنْ نُطْفَةٍ خَلَقَهُ﴾</strong>، أي: أنت أيها الإنسان كيف تكفر بالبعث؟ من أي شيء خُلِقْتَ؟ ألم تُخْلَق من العدم؟ لم تكن شيئًا مذكورًا من قبل فوُجِدْتَ وصِرْتَ إنسانًا، فكيف تكفر بالبعث؟
       </li>
-     <li>
-        <strong>﴿أَمَّا مَنِ ٱسۡتَغۡنَىٰ ۝٥ فَأَنتَ لَهُۥ تَصَدَّىٰ ۝٦ وَمَا عَلَیۡكَ أَلَّا یَزَّكَّىٰ ۝٧ وَأَمَّا مَن جَاۤءَكَ یَسۡعَىٰ ۝٨ وَهُوَ یَخۡشَىٰ ۝٩ فَأَنتَ عَنۡهُ تَلَهَّىٰ ۝١٠﴾ [عبس 5-10]</strong><br>
+      <li>
+        <strong>﴿أَمَّا مَنِ ٱسۡتَغۡنَىٰ ۝٥ فَأَنتَ لَهُۥ تَصَدَّىٰ ۝٦ وَمَا عَلَیۡكَ أَلَّا یَزَّكَّىٰ ۝٧ وَأَمَّا مَن جَاۤءَكَ یَسۡعَىٰ ۝٨ وَهُوَ یَخۡشَىٰ ۝٩ فَأَنتَ عَنۡهُ تَلَهَّىٰ ۝١٠﴾ [عبس 5-10]</strong><br>
         وهذه فائدة كبيرة، وهي المقصودة من بعثة الرسل، ووعظ الوعاظ، وتذكير المذكرين، فإقبالك على من جاء بنفسه مفتقرا لذلك منك هو الأليق والواجب.  
         وأما تصديك وتعرضك للغني المستغني الذي لا يسأل ولا يستفتي لعدم رغبته في الخير، مع تركك من هو أهم منه، فإنه لا ينبغي لك، فإنه ليس عليك أن لا يزكى، فلو لم يتزك، فلست بمحاسب على ما عمله من الشر.<br>
         فدل هذا على القاعدة المشهورة: يُترك أمر معلوم لأمر موهوم، ولا مصلحة متحققة لمصلحة متوهمة، وأنه ينبغي الإقبال على طالب العلم، المفتقر إليه، الحريص عليه أزيد من غيره.
       </li>     
-     <li>
+      <li>
         <strong>﴿فَمَنْ شَاءَ ذَكَرَهُ﴾ [عبس ١٢]</strong><br>
-        أي: فمن شاء ذكر ما نزل من الموعظة فاتعظ، ومَن شاء لم يتعظ؛ لقول الله تعالى:  
-        <strong>﴿وَقُلِ الْحَقُّ مِنْ رَبِّكُمْ فَمَنْ شَاءَ فَلْيُؤْمِنْ وَمَنْ شَاءَ فَلْيَكْفُرْ﴾ [الكهف ٢٩]</strong>.<br>
+        Aي: فمن شاء ذكر ما نزل من الموعظة فاتعظ، ومَن شاء لم يتعظ؛ لقول الله تعالى:  
+        <strong>﴿وَقُلِ الْحَقُّ مِنْ رَبِّكُمْ فَمَنْ شَاءَ فَلْيُؤْمِنْ وَمَنْ شَاءَ فَلْيَكْفُرْ﴾ [الكهف ٢٩]</strong>.<br>
         فالله جعل للإنسان الخيار، الخيار قدرًا، وأما شرعًا فلا.  
         جعل له الخيار بين أن يؤمن ويكفر، أما شرعًا فإنه لا يرضى لعباده الكفر.<br>
-        وليس الإنسان مخيرًا شرعًا بين الكفر والإيمان، بل هو مأمور بالإيمان ومفروض عليه الإيمان، لكن من حيث القدر هو مخيَّر، وليس كما يزعم بعض الناس مُسَيَّرًا مُجْبَرًا على عمله.  
-        بل هذا قول مبتدع ابتدعه الجبرية من الجهمية وغيرهم، لأن الإنسان في الحقيقة مُخَيَّر، ولذلك إذا وقع الأمر بغير اختياره، مثل أن يكون مُكْرَهًا، فإنه لا عبرة بفعله.
+        ليس الإنسان مخيرًا شرعًا بين الكفر والإيمان، بل هو مأمور بالإيمان ومفروض عليه الإيمان، لكن من حيث القدر هو مخيَّر، وليس كما يزعم بعض الناس مُسَيَّرًا مُجْبَرًا على عمله.  
+        بل هذا قول مبتدع ابتدعه الجبرية من الجهمية وغيرهم، لأن الإنسان في الحقيقة مُخَيَّر، ولذلك إذا وقع الأمر بغير اختياره، مثل أن يكون مُكْرَهًا، فإنه لا عبرة بفعله.
       </li>
-    
     </ul>'
   ">
 </app-fawaed-of-surah>

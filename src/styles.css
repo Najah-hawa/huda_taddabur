@@ -6,6 +6,16 @@ body {
   padding: 0.6rem;
   line-height: 1.6; /* bättre läsbarhet */
 }
+/* Basmala-stil */
+.basmala {
+  text-align: center;
+  color: #4d2828;
+  font-family: 'Amiri', serif;
+  margin: 40px auto 20px;
+  border-radius: 35px;
+  letter-spacing: 1px; /* mer luft */
+  padding-top: 40px;
+}
 
 
 /* global design för devar för ayah och tafser för varje surah*/
@@ -27,6 +37,12 @@ body {
 
 .ayah {
   font-size: 1.2rem;
+  font-weight: bold;
+  color: #5c432c;
+  margin: 0;
+}
+
+.Hadith {
   font-weight: bold;
   color: #5c432c;
   margin: 0;
@@ -232,6 +248,10 @@ body {
   .ayah {
     font-size: 1.1rem;
     max-width: 60%;
+  }
+  .Hadith{
+    font-size: 0.7rem;
+    max-width: 100%;
   }
   .tafsir {
     font-size: 0.9rem;
@@ -741,4 +761,6 @@ body {
   border-radius: 6px;
   text-align: right;
 }
+
+
 

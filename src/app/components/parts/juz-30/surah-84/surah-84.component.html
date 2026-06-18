@@ -1,108 +1,83 @@
 <app-surah-hint
-  [surahName]="'الإنشقاق'"
-  [hintText]="' '">
+  [surahName]="'همسة من سورة الإنشقاق'"
+  [hintText]="'إذَا السَّمَاءُ انشَقَّتْ'">
 </app-surah-hint>
 
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-83'" [SurahBefore]="'المطففين'"
-                             [RoutelinkAfter]="'/surah-85'" [SurahNext]="'البروج'"
-></app-next-before-surah-meny>
-
+<!-- Övre meny för nästa/föregående surah -->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/surah-83'" [SurahBefore]="'المطففين'"
+  [RoutelinkAfter]="'/surah-85'"  [SurahNext]="'البروج'">
+</app-next-before-surah-meny>
 
 <app-surah-tabs [surahName]="'سورة الإنشقاق'">
   <div tadabbur>
-  <app-surahs-start></app-surahs-start>
-  <!-- här lägger tafser för du den första part taddabur -->
-   <div class="verse-wrapper">
+    <app-surahs-start></app-surahs-start>
+    
+    <div class="verse-wrapper">
       <div class="verse-block" *ngFor="let verse of verses; let i = index">
         <div class="verse-line" (click)="toggleVerse(i)">
-        <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
-  ▶️
-</button>
-         <p class="ayah">{{ verse.text }}</p>
+          <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">▶️</button>
+          <p class="ayah">{{ verse.text }}</p>
           <div class="ayah-arrow"> 
             <span class="ayah-number">﴿{{ verse.number }}﴾</span>
-<!-- lägg till button för start ayah-->
-
             <span class="arrow" [class.open]="shown.has(i)">▼</span>
           </div>
         </div>
+        
         <div class="tafsir" *ngIf="shown.has(i)">
-        <!-- button för reading tafser text-->
-<button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
-    🔊 استمع للتفسير
-</button>
-  
-  <!-- original tafser text -->
-  <div [innerHTML]="verse.tafsir"></div>
-</div>
+          <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">🔊 استمع للتفسير</button>
+          <div [innerHTML]="verse.tafsir"></div>
+        </div>
       </div>
     </div>
   </div>
 
-
   <div visual>
-   <div class="intro-summary">
-       <h3>ملخص السورة:</h3>
-       <p> </p>
-   </div>
-    <!-- parts i visual delen -->
+    <!-- Sektionsrubrik för sammanfattningen enligt samma enhetliga mönster -->
+    <h3 class="section-title">ملخص السورة:</h3>
+    <p class="section-desc">تتحدث السورة عن أهوال قيام الساعة وانشقاق السماء، وانقسام الناس إلى من يؤتى كتابه بيمينه ومن يؤتى كتابه وراء ظهره، والجزاء العادل لكل منهم.</p>
+
     <div *ngFor="let section of rubtTassweerySections; let i = index" class="map-block">
-  <h3 class="section-title">{{ section.title }}</h3>
-  <p class="section-desc">{{ section.description }}</p>
-  
-  <ul class="verse-list">
-    <!-- Huvudvers -->
-    <li class="verse-item verse-main">
-      <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
-      <button
-        *ngIf="section.verseNumbers.length > 1"
-        class="toggle-btn"
-        (click)="toggleExpanded(i)">
-        {{ expandedSections[i] ? '↑' : '⋮' }}
-      </button>
-    </li>
+      <h3 class="section-title">{{ section.title }}</h3>
+      <p class="section-desc">{{ section.description }}</p>
+      
+      <ul class="verse-list">
+        <li class="verse-item verse-main">
+          <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+          <button *ngIf="section.verseNumbers.length > 1" class="toggle-btn" (click)="toggleExpanded(i)">
+            {{ expandedSections[i] ? '↑' : '⋮' }}
+          </button>
+        </li>
 
-    <!-- Extra verser -->
-    <li
-      *ngFor="let num of section.verseNumbers.slice(1); let j = index"
-      class="verse-item"
-      [class.extra]="true"
-      [class.show]="expandedSections[i]">
-      {{ getVerseText(num) }}
-    </li>
-  </ul>
-</div>
-
+        <li *ngFor="let num of section.verseNumbers.slice(1)" class="verse-item extra" [class.show]="expandedSections[i]">
+          {{ getVerseText(num) }}
+        </li>
+      </ul>
+    </div>
   </div>
 </app-surah-tabs>
 
-<!--visa var ifrån information-->
 <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
-    📚 مصدر التفسير: <b>تفسير </b>
+    📚 مصدر التفسير: <b>تفسير السعدي</b>
 </p>
 
-<!--visa en next och before meny-->
-<app-next-before-surah-meny [RoutelinkBefore]="'/surah-83'" [SurahBefore]="'المطففين'"
-                             [RoutelinkAfter]="'/surah-85'" [SurahNext]="'البروج'"
-></app-next-before-surah-meny>
+<!-- Undre meny för nästa/föregående surah -->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/surah-83'" [SurahBefore]="'المطففين'"
+  [RoutelinkAfter]="'/surah-85'"  [SurahNext]="'البروج'">
+</app-next-before-surah-meny>
 
-
-<!--visa frågot om surah-->
 <div class="quiz-section">
-      <app-quix-tafser [questions]="abassaQuestions"></app-quix-tafser>
+  <app-quix-tafser [questions]="abassaQuestions"></app-quix-tafser>
 </div>
 
 <app-fawaed-of-surah
-  [SurahFaidah]="'الإنشقاق'"
+  [SurahFaidah]="'فوائد سورة الإنشقاق'"
   [FaidaText]="
-     '<ul class=\'benefit-list\'>
-      
+    '<ul class=\'benefit-list\'>
+      <!-- Lägg till fawaed här senare när det är dags -->
     </ul>'
   ">
 </app-fawaed-of-surah>
 
-
-
 <app-footer-info />
-
