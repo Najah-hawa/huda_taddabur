@@ -38,6 +38,9 @@
 
   <url><loc>https://huda-taddabur.vercel.app/hadith/nawawi-1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://huda-taddabur.vercel.app/hadith/nawawi-2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://huda-taddabur.vercel.app/hadith/nawawi-3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://huda-taddabur.vercel.app/hadith/nawawi-4</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://huda-taddabur.vercel.app/hadith/nawawi-5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <url>
     <loc>https://huda-taddabur.vercel.app/fiqh/purity?tab=definition</loc>

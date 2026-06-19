@@ -10,10 +10,10 @@ import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-
 import { 
   hadithDetails, 
   hadithImportanceList,
-} from './hadith-data';
+} from './hadith3-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-nawawi-3',
   standalone: true,
   imports: [
     CommonModule,
@@ -22,10 +22,10 @@ import {
     FooterInfoComponent,
     NextBeforeSurahMenyComponent
   ],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  templateUrl: './nawawi-3.component.html',
+  styleUrl: './nawawi-3.component.css'
 })
-export class Nawawi1Component implements OnInit, OnDestroy {
+export class Nawawi3Component implements OnInit, OnDestroy {
   // Koppla lokala variabler till Hadith 1:s datastruktur enligt den nya designen
   hadith = hadithDetails;
   box1Items = hadithImportanceList; 
@@ -47,24 +47,24 @@ export class Nawawi1Component implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 
-  ngOnInit() {
-    // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle('الحديث الأول: إنما الأعمال بالنيات - شروح الأربعين النووية');
+ngOnInit() {
+    // 🎯 الأوسام والـ Meta-tags المخصصة للحديث الثالث
+    this.titleService.setTitle('الحديث الثالث: أركان الإسلام ودعائمه العظام - شروح الأربعين النووية');
 
     this.metaService.updateTag({ 
       name: 'description', 
-      content: 'شرح وتدبر الحديث الأول من الأربعين النووية (الأعمال بالنيات)، مع إضاءات من حياة الراوي عمر بن الخطاب رضي الله عنه وفوائد الحديث.' 
+      content: 'شرح وتدبر الحديث الثالث من الأربعين النووية (بني الإسلام على خمس)، مع بيان مفصل لأركان الإسلام الخمسة وشروط قبول العبادات وعقوبة ترك الصلاة والزكاة.' 
     });
+
     this.metaService.updateTag({ 
       name: 'keywords', 
-      content: 'الأعمال بالنيات, الحديث الأول, الأربعون النووية, عمر بن الخطاب, شرح الحديث, تدبر الحديث نبوي' 
+      content: 'بني الإسلام على خمس, أركان الإسلام, الحديث الثالث, الأربعون النووية, شهادة أن لا إله إلا الله, إقام الصلاة, إيتاء الزكاة, حج البيت, صوم رمضان, شرح الحديث' 
     });
     
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الأول: إنما الأعمال بالنيات - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الأول مع الشرح الصوتي، ترجمة الراوي، وأهم الفوائد المستخرجة.' });
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الثالث: أركان الإسلام ودعائمه العظام - تدبر تفاعلي' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الثالث مع شرح دعائم الإسلام الخمس، أحكام العبادات، وأهم الفوائد التربوية والفقهية المستخرجة.' });
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
-
   // ==========================================
   // Gränssnittskontroller & Zoom
   // ==========================================

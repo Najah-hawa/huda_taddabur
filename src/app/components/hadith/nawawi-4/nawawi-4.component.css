@@ -1,0 +1,5 @@
+/* Gör så att vanliga radbrytningar i JS-strängar visas korrekt på skärmen */
+.custom-presentation-list li, .benefit-list li {
+  white-space: pre-line;
+  line-height: 1.8;
+}

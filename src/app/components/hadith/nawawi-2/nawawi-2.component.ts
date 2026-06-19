@@ -8,8 +8,7 @@ import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-
 
 // 📥 استيراد كل شيء من ملف البيانات الخارجي دفعة واحدة بما فيها المصفوفات الجديدة
 import { 
-  hadithDetails, 
-  poeticText, 
+  hadithDetails,
   hadithImportanceList, 
   hadithFawaedList 
 } from './hadith2-data';
@@ -30,7 +29,6 @@ import {
 export class Nawawi2Component implements OnInit, OnDestroy {
   // ربط المتغيرات المحلية بالبيانات المستوردة
   hadith = hadithDetails;
-  poeticText = poeticText;
   box1Items = hadithImportanceList; // 👈 هنا ربطنا أهمية الحديث
   box2Items = hadithFawaedList;     // 👈 هنا ربطنا الفوائد
 
@@ -42,6 +40,7 @@ export class Nawawi2Component implements OnInit, OnDestroy {
   // متغيرات التحكم في الـ 90vh
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
+  isRawiMaximized: boolean = false;
 
   // 💡 متغيرات جديدة للتحكم في قراءة الشرح الصوتي للحديث الثاني (تشغيل، إيقاف مؤقت، إنهاء)
   isSpeakingTafsir: boolean = false;
@@ -80,6 +79,11 @@ export class Nawawi2Component implements OnInit, OnDestroy {
 
   toggleBox2Zoom() {
     this.isBox2Maximized = !this.isBox2Maximized;
+    this.cdr.detectChanges();
+  }
+
+   toggleRawiZoom() {
+    this.isRawiMaximized = !this.isRawiMaximized;
     this.cdr.detectChanges();
   }
 

@@ -6,14 +6,15 @@ import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 
-// 📥 Hämta strukturerad data specifikt för Hadith 1
+// 📥 استيراد كل شيء من ملف البيانات الخارجي دفعة واحدة بما فيها المصفوفات الجديدة
 import { 
-  hadithDetails, 
-  hadithImportanceList,
-} from './hadith-data';
+  hadithDetails,
+  hadithImportanceList, 
+  hadithFawaedList 
+} from './hadith5-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-nawawi-5',
   standalone: true,
   imports: [
     CommonModule,
@@ -22,52 +23,55 @@ import {
     FooterInfoComponent,
     NextBeforeSurahMenyComponent
   ],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  templateUrl: './nawawi-5.component.html',
+  styleUrl: './nawawi-5.component.css'
 })
-export class Nawawi1Component implements OnInit, OnDestroy {
-  // Koppla lokala variabler till Hadith 1:s datastruktur enligt den nya designen
+export class Nawawi5Component implements OnInit, OnDestroy {
+  // ربط المتغيرات المحلية بالبيانات المستوردة
   hadith = hadithDetails;
-  box1Items = hadithImportanceList; 
-
+  box1Items = hadithImportanceList; // 👈 هنا ربطنا أهمية الحديث
+  box2Items = hadithFawaedList;     // 👈 هنا ربطنا الفوائد
 
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false; 
   currentPhraseIndex: number = -1;
 
-  // Zoomkontroller för helskärmsmoduler (90vh)
+  // متغيرات التحكم في الـ 90vh
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
-  // Kontroller för talsyntesen av förklaringen
+  // 💡 متغيرات جديدة للتحكم في قراءة الشرح الصوتي للحديث الثاني (تشغيل، إيقاف مؤقت، إنهاء)
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
+  constructor(
+    private cdr: ChangeDetectorRef, 
+    private titleService: Title, 
+    private metaService: Meta
+  ) {}
 
-  ngOnInit() {
-    // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle('الحديث الأول: إنما الأعمال بالنيات - شروح الأربعين النووية');
+ngOnInit() {
+  // 🏷️ تعيين عنوان الصفحة الديناميكي (Title Tag)
+  this.titleService.setTitle('الحديث الخامس: إبطال المنكرات والبدع - شروح الأربعين النووية');
 
-    this.metaService.updateTag({ 
-      name: 'description', 
-      content: 'شرح وتدبر الحديث الأول من الأربعين النووية (الأعمال بالنيات)، مع إضاءات من حياة الراوي عمر بن الخطاب رضي الله عنه وفوائد الحديث.' 
-    });
-    this.metaService.updateTag({ 
-      name: 'keywords', 
-      content: 'الأعمال بالنيات, الحديث الأول, الأربعون النووية, عمر بن الخطاب, شرح الحديث, تدبر الحديث نبوي' 
-    });
-    
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الأول: إنما الأعمال بالنيات - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الأول مع الشرح الصوتي، ترجمة الراوي، وأهم الفوائد المستخرجة.' });
-    this.metaService.updateTag({ property: 'og:type', content: 'article' });
-  }
+  // 🌐 تعيين وسوم الميتا الأساسية للسيو (Meta Tags)
+  this.metaService.updateTag({ 
+    name: 'description', 
+    content: 'شرح وتدبر الحديث الخامس من الأربعين النووية (إبطال المنكرات والبدع) عن أم المؤمنين عائشة. ميزان الأعمال الظاهرة وقاعدة الاتباع في الإسلام.' 
+  });
+  this.metaService.updateTag({ 
+    name: 'keywords', 
+    content: 'الحديث الخامس, إبطال المنكرات والبدع, من أحدث في أمرنا, فهو رد, البدعة, الاتباع, عائشة أم المؤمنين, الأربعون النووية, شرح الأربعين النووية' 
+  });
+  
+  // 📱 وسوم الميتا الخاصة بشبكات التواصل الاجتماعي (Open Graph)
+  this.metaService.updateTag({ property: 'og:title', content: 'الحديث الخامس: إبطال المنكرات والبدع - تدبر تفاعلي متزامن' });
+  this.metaService.updateTag({ property: 'og:description', content: 'استمع إلى حديث من أحدث في أمرنا هذا ما ليس منه فهو رد مع تظليل النص المتزامن وشرح وافٍ لقواعد رد المحدثات.' });
+  this.metaService.updateTag({ property: 'og:type', content: 'article' });
+}
 
-  // ==========================================
-  // Gränssnittskontroller & Zoom
-  // ==========================================
   toggleBox1Zoom() {
     this.isBox1Maximized = !this.isBox1Maximized;
     this.cdr.detectChanges();
@@ -78,21 +82,25 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  toggleRawiZoom() {
+   toggleRawiZoom() {
     this.isRawiMaximized = !this.isRawiMaximized;
     this.cdr.detectChanges();
   }
 
+  // ==========================================
+  // التحكم بالصوت والحديث
+  // ==========================================
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;
   }
 
   // ==========================================
-  // Talsyntes för förklaringsboxen
+  // ميزة القراءة الصوتية للشرح (يدعم الإيقاف المؤقت والاستئناف)
   // ==========================================
   speakText(text: string | undefined) {
     if (!text) return;
 
+    // 1. إذا كان الصوت يعمل الآن -> نقوم بعمل إيقاف مؤقت (Pause)
     if (this.isSpeakingTafsir && !this.isTafsirPaused) {
       window.speechSynthesis.pause();
       this.isTafsirPaused = true;
@@ -100,6 +108,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
       return;
     }
 
+    // 2. إذا كان الصوت متوقفاً مؤقتاً -> نقوم بعمل استئناف (Resume)
     if (this.isSpeakingTafsir && this.isTafsirPaused) {
       window.speechSynthesis.resume();
       this.isTafsirPaused = false;
@@ -107,6 +116,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
       return;
     }
 
+    // 3. إذا لم يكن يعمل أبداً -> نبدأ القراءة من البداية
     window.speechSynthesis.cancel(); 
     
     const plainText = text.replace(/<[^>]*>/g, '');
@@ -133,6 +143,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     window.speechSynthesis.speak(utterance);
   }
 
+  // 🛑 دالة إنهاء صوت الشرح تماماً في أي وقت وعودة الأزرار لحالتها الأصلية
   stopSpeakingTafsir() {
     window.speechSynthesis.cancel();
     this.isSpeakingTafsir = false;
@@ -141,7 +152,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // Synkroniserat ljudspår för själva texten
+  // تشغيل وإيقاف صوت متن الحديث المتزامن مع النص
   // ==========================================
   playHadithAudio(url: string | undefined) {
     if (!url) return;
@@ -187,6 +198,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     };
   }
 
+  // 🧹 تنظيف وتدمير الأصوات فور مغادرة الصفحة لمنع التداخل
   ngOnDestroy() {
     if (this.currentAudio) {
       this.currentAudio.pause();

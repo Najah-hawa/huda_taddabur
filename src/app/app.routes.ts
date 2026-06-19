@@ -68,7 +68,18 @@ export const routes: Routes = [
     path: 'hadith/nawawi-2',
     loadComponent: () => import('./components/hadith/nawawi-2/nawawi-2.component').then(m => m.Nawawi2Component)
   },
- 
+  {
+    path: 'hadith/nawawi-3',
+    loadComponent: () => import('./components/hadith/nawawi-3/nawawi-3.component').then(m => m.Nawawi3Component)
+  },
+  {
+    path: 'hadith/nawawi-4',
+    loadComponent: () => import('./components/hadith/nawawi-4/nawawi-4.component').then(m => m.Nawawi4Component)
+  },
+  {
+    path: 'hadith/nawawi-5',
+    loadComponent: () => import('./components/hadith/nawawi-5/nawawi-5.component').then(m => m.Nawawi5Component)
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

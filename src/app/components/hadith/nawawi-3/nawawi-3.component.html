@@ -1,15 +1,13 @@
-  <div class="hadith-page-container">
+<div class="hadith-page-container">
  <app-surah-hint
   [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
   [hintText]="hadith.hintText">
 </app-surah-hint>
 
-<app-next-before-surah-meny 
-    [RoutelinkBefore]="'/hadith/nawawi-1'" [SurahBefore]="'الحديث الأول'"
-    [RoutelinkAfter]="'/hadith/nawawi-3'"  [SurahNext]="'الحديث الثالث'"> 
+  <app-next-before-surah-meny 
+    [RoutelinkBefore]="'/hadith/nawawi-2'" [SurahBefore]="'الحديث الثاني'"
+    [RoutelinkAfter]="'/hadith/nawawi-4'"  [SurahNext]="'الحديث الرابع'"> 
   </app-next-before-surah-meny>
-
- 
   <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
       📚 المصدر: <b>متن الأربعين النووية</b>
   </p>
@@ -22,6 +20,8 @@
       <span *ngIf="!isRawiMaximized">🔍 تكبير العرض</span>
       <span *ngIf="isRawiMaximized" class="close-symbol">✕ إنهاء العرض</span>
     </div>
+
+
 
  
   <div class="verse-wrapper" style="margin-top: 20px;">
@@ -87,27 +87,11 @@
       <span *ngIf="isBox1Maximized" class="close-symbol">✕ إنهاء العرض</span>
     </div>
 
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
+    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أهمية حديث {{ hadith.name }}</h2>
     
     <div class="box-list-wrapper">
       <ul class="custom-presentation-list">
         <li *ngFor="let item of box1Items">{{ item }}</li>
-      </ul>
-    </div>
-  </div>
-
-   <!-- Box 2: Hadithets betydelse (mappat till det nya list-systemet) -->
-  <div class="fawaed-box-container mini" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px;">
-    <div class="fawaed-zoom-control" (click)="toggleBox2Zoom()">
-      <span *ngIf="!isBox2Maximized">🔍 تكبير العرض</span>
-      <span *ngIf="isBox2Maximized" class="close-symbol">✕ إنهاء العرض</span>
-    </div>
-
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أهمية الحديث {{ hadith.name }}</h2>
-    
-    <div class="box-list-wrapper">
-      <ul class="custom-presentation-list">
-        <li *ngFor="let item of box2Items">{{ item }}</li>
       </ul>
     </div>
   </div>

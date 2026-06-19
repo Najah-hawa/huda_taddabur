@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. Grundläggande globala stilar (Body & Basmala)
+   ========================================================================== */
 body {
   font-family: sans-serif;
   background: #fcfaf7; /* lite mjukare, nära vit */
@@ -5,8 +8,13 @@ body {
   direction: rtl;
   padding: 0.6rem;
   line-height: 1.6; /* bättre läsbarhet */
+  box-sizing: border-box;
 }
-/* Basmala-stil */
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 .basmala {
   text-align: center;
   color: #4d2828;
@@ -17,9 +25,9 @@ body {
   padding-top: 40px;
 }
 
-
-/* global design för devar för ayah och tafser för varje surah*/
-
+/* ==========================================================================
+   2. Global design för Verser (Ayah & Tafsir)
+   ========================================================================== */
 .verse-block {
   background: #fdfaf5;
   border: 1px solid #e1cfb6;
@@ -35,17 +43,14 @@ body {
   cursor: pointer;
 }
 
-.ayah {
-  font-size: 1.2rem;
+.ayah, .Hadith {
   font-weight: bold;
   color: #5c432c;
   margin: 0;
 }
 
-.Hadith {
-  font-weight: bold;
-  color: #5c432c;
-  margin: 0;
+.ayah {
+  font-size: 1.2rem;
 }
 
 .arrow {
@@ -55,15 +60,18 @@ body {
   margin-right: 5px;
   margin-left: 15px;
 }
+
 .arrow.open {
   transform: rotate(180deg);
 }
+
 .ayah-number {
   color: green;
   font-weight: bold;
   font-size: 1.2em;
   margin-left: 10px;
 }
+
 .tafsir {
   margin-top: 0.7rem;
   padding: 0.7rem 1rem;
@@ -75,31 +83,28 @@ body {
   line-height: 1.6;
 }
 
-/*design för länkarna för next och before surah */
 .sura-nav {
   display: flex;
-  justify-content: space-between; /* sprider ut länkarna */
+  justify-content: space-between;
   margin: 20px 0;
 }
 
 .sura-nav a {
-  text-decoration: none; /* standard style */
+  text-decoration: none;
   color: black;
   font-size: 16px;
 }
 
-
-/*desgin för visual delen */
-
-/* ⬅️ Container för hela kartan (alla block) */
+/* ==========================================================================
+   3. Visuell Karta & Struktur (Map Containers)
+   ========================================================================== */
 .map-container {
-  padding: 1rem; /* Inre marginal runt hela innehållet */
-  display: flex; /* Flexbox för att stapla blocken */
-  flex-direction: column; /* Stapla blocken vertikalt */
-  gap: 1.5rem; /* Avstånd mellan varje del/block */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-/* ⬅️ Varje avsnitt (rubrik + beskrivning + verser) */
 .map-block {
   background: #fefaf5;
   border: 1px solid #e1cfb6;
@@ -108,85 +113,70 @@ body {
   box-shadow: 0 3px 8px rgba(0,0,0,0.04);
 }
 
-/* ⬅️ Titeln för varje del */
 .section-title {
   color: #8B4513;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-/* ⬅️ Beskrivningen under varje titel */
 .section-desc {
   color: #4b3c28;
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* ⬅️ Listan som innehåller verser */
 .verse-list {
-  list-style: none; /* Tar bort punkter från listan */
-  padding: 0; /* Ingen indragning */
-  margin: 0; /* Ingen marginal */
-  direction: rtl; /* Textinriktning höger-till-vänster för arabiska */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  direction: rtl;
 }
 
-/* ⬅️ Varje enskild versrad (li) */
 .verse-item {
-  display: flex; /* Flex för att kunna placera vers och knapp bredvid varandra */
-  justify-content: space-between; /* Mellanrum mellan text och knapp */
-  align-items: center; /* Centrera vertikalt */
-  font-size: 1.05rem; /* Normalstor text för vers */
-  color: #3e2f1c; /* Mörk brun färg */
-  padding: 0.6rem 0.5rem; /* Inre marginaler top/bottom + höger/vänster */
-  border-bottom: 1px solid #eee; /* Ljus linje mellan verser */
-  transition: all 0.3s ease; /* Mjuk övergång för visuella ändringar */
-  direction: rtl; /* Viktigt: arabisk läsordning */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #3e2f1c;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease;
+  direction: rtl;
 }
 
-/* ⬅️ Första versen (huvudvers) – ges extra stil */
-.verse-main {
-  font-weight: 600; /* Fetare text */
-  background-color: #f9f4ec; /* Ljusare bakgrund än blockets färg */
-  border-radius: 8px; /* Mjuka hörn */
-  padding: 0.5rem; /* Extra luft inuti */
+.verse-main, .extra {
+  font-weight: 600;
+  background-color: #f9f4ec;
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: right;
 }
 
-/* ⬅️ Själva versens text (separat från knappen) */
 .verse-text {
-  flex: 1; /* Tar upp all plats tillgänglig */
-  text-align: right; /* Justera texten till höger (korrekt för arabisk text) */
+  flex: 1;
+  text-align: right;
 }
 
-/* ⬅️ Knappen (⋮ eller ↑) för att visa/dölja extra verser */
 .toggle-btn {
-  background: none; /* Ingen bakgrundsfärg */
-  border: none; /* Ingen ram */
-  cursor: pointer; /* Muspekaren blir en hand */
-  font-size: 1.2rem; /* Lite större storlek */
-  color: #a67c52; /* Mjuk brun färg */
-  padding-left: 0.8rem; /* Avstånd till vänster */
-  line-height: 1; /* Ingen extra vertikal höjd */
-  flex-shrink: 0; /* Förhindrar att knappen krymper när platsen minskar */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #a67c52;
+  padding-left: 0.8rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
-/* ⬅️ Dolda verser (från andra till sista) */
 .extra {
-  display: none; /* Gömda från början */
-  font-weight: 600; /* Samma stil som första */
-  background-color: #f9f4ec; /* Samma bakgrund */
-  border-radius: 8px; /* Mjuka hörn */
-  padding: 0.5rem; /* Luft inuti */
-  text-align: right; /* Text mot höger */
+  display: none;
 }
 
-/* ⬅️ När användaren klickar för att visa extra verser */
 .extra.show {
-  display: flex; /* Visa som flexbox (samma stil) */
+  display: flex;
 }
 
-
-
-
+/* Audio knappar */
 .audio-btn {
   background: #f0f0f0;
   border: none;
@@ -202,10 +192,7 @@ body {
   transition: background 0.3s;
 }
 
-.audio-btn:hover {
-  background: #e0e0e0;
-}
-
+.audio-btn:hover { background: #e0e0e0; }
 
 .play-ayah-btn {
   background: none;
@@ -216,473 +203,32 @@ body {
   padding: 0;
   display: flex;
   align-items: center;
-  color: #27ae60; /* لون أخضر هادئ */
+  color: #27ae60;
   transition: transform 0.2s;
 }
 
-.play-ayah-btn:hover {
-  transform: scale(1.2);
-}
-
-
-/* ⬅️ RESPONSIV DESIGN för små skärmar (mobiler) */
-@media (max-width: 600px) {
-  .verse-item {
-    flex-direction: row; /* Liggande layout även på små skärmar */
-    align-items: flex-start; /* Justera uppåt för text */
-  }
-  .verse-text {
-    text-align: right; /* Behåll högerjusterad text */
-    font-size: 0.95rem; /* Lite mindre text för mobil */
-  }
-  .toggle-btn {
-    font-size: 1.1rem; /* Mindre ikon */
-    padding-left: 0.5rem; /* Mindre avstånd */
-    margin-top: 0rem; /* Undvik extra vertikal spacing */
-  } 
-  .verse-block {
-    max-width: 95%;
-    margin: 1rem auto;
-    padding: 0.6rem 1rem;
-  }
-  .ayah {
-    font-size: 1.1rem;
-    max-width: 60%;
-  }
-  .Hadith{
-    font-size: 0.7rem;
-    max-width: 100%;
-  }
-  .tafsir {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
-  }
-  .verse-line {
-    gap: 0.4rem;
-  }
-  .arrow {
-  font-size: 1.1rem;
-  margin-right: 3px;
-  margin-left: 5px;
-}
-.ayah-number{
-   font-size: 1rem;
-}
-}
-
-
-@media (max-width: 400px) {
-  .ayah {
-    font-size: 1rem;
-    max-width: 50%;
-  }
-
-  .tafsir {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.6rem;
-  }
-
-  .verse-block{
-    padding: 0.4rem 0.8rem;
-  }
-
-  .arrow {
-    font-size: 1rem;
-     margin-right: 2px;
-  margin-left: 2px;
-  }
-}
-
-
-/*  Media query */
-@media (max-width: 768px) {
- 
-  h1 {
-    font-size: 1.6rem;
-  }
-  h2 {
-    font-size: 1.3rem;
-  }
-  h3 {
-    font-size: 1.1rem;
-  }
-}
-
-@media (min-width: 1000px){
-.benefit-title {
-    font-size: 3rem;
-    text-align: center;
-    color: #6d4c41;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-}
-}
+.play-ayah-btn:hover { transform: scale(1.2); }
 
 /* ==========================================================================
-   1. التنسيق الأساسي (يطبق تلقائياً على الموبايل والشاشات الصغيرة حتى 1000px)
+   4. Hadithbox / Tafsir Modern Layout
    ========================================================================== */
-.surah-benefits.mini {
-  background-color: #fdfaf4;
-  border: 1px solid #e0c9a1;
-  border-top: 4px solid #b89b3f;
-  border-radius: 12px;
-  padding: 1.2rem 1.5rem;
-  margin: 1.5rem auto;
-  width: 92%;
-  height: auto; 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  box-sizing: border-box;
-}
-
-.benefit-title {
-  font-family: 'Lateef', serif;
-  font-size: 1.4rem;
-  text-align: center;
-  color: #6d4c41;
-  margin-bottom: 0.8rem;
-}
-
-
-.benefit-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: #5a4631;
-  line-height: 1.6;
-}
-
-.benefit-list li {
-  margin-bottom: 0.5rem;
-  padding-right: 1.5rem;
-  position: relative;
-  font-size: 0.95rem;
-}
-
-.benefit-list li::before {
-  content: ' 📌 ';
-  position: absolute;
-  right: 0;
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-
- /* ==========================================================================
-   تنسيق متن الحديث للشاشات الكبيرة (الكمبيوتر) ليكون بالمنتصف وبأرتفاع 40vh
-   ========================================================================== */
-@media (min-width: 1000px) {
-  
-  .hadith-main-block {
-    height: auto;          /* الارتفاع المطلوب من قبلكِ تماماً */
-    max-width: 1000px;     /* العرض الأقصى ليتناسق مع عرض الفوائد */
-    margin: 2rem auto;     /* 👈 لتوسيط الكتلة بالمنتصف تماماً وتوزيع الأبعاد */
-    padding: 3rem !important; /* إعطاء مساحة داخلية فخمة لمتن الحديث */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* 👈 تمركز نص الحديث عمودياً في منتصف الـ 40vh */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-  }
-
-  /* تنسيق وتكبير خط الحديث ليملأ الـ 40vh بشكل رائع ومقروء */
-  .hadith-main-block .ayah {
-    font-size: 1.5rem !important; /* خط كبير، واضح ومريح جداً للعين على الكمبيوتر */
-    line-height: 2 !important;  /* زيادة المسافة بين السطور ليأخذ الحديث مساحته الفخمة */
-    text-align: center;         /* جعل نص الحديث في المنتصف تماماً */
-    color: #4a3319;             /* لون بني غامق دافئ متناسق مع التصميم */
-    font-weight: 500;           /* خط عريض لإبراز متن الحديث النبوي */
-    width: 100%;
-  }
-
-}
-
-
-/* Stilen för frasen som läses just nu */
-.highlighted-phrase {
-  background-color: #fff3cd; /* En mjuk, ljusgul bakgrund bakom ordet */
-  color: #b89b3f;            /* Matchar din guld/bruna färg perfekt */
-  border-radius: 4px;
-  padding: 0 4px;
-  transition: all 0.2s ease; /* Gör övergången mjuk när nästa fras tänds */
-  font-weight: bold;
-}
-
-/* ==========================================================================
-   1. التنسيقات الطبيعية المعتادة (للموبايل والوضع الافتراضي غير المكبر)
-   ========================================================================== */
-.fawaed-box-container.mini {
-  position: relative;
-  background-color: #fdfaf4;
-  border: 1px solid #e0c9a1;
-  border-top: 4px solid #b89b3f;
-  border-radius: 12px;
-  padding: 1.2rem 1.5rem;
-  margin: 1.5rem auto;
-  width: 92%;
-  height: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-  box-sizing: border-box;
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-
-
-/* التنسيق الموحد لخطوط القوائم في الوضع العادي */
-.custom-presentation-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.custom-presentation-list li {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #5a4631;
-  margin-bottom: 0.8rem;
-  position: relative;
-  padding-right: 1.2rem;
-  text-align: right;
-}
-
-.custom-presentation-list li::before {
-  content: '🔸';
-  position: absolute;
-  right: 0;
-  font-size: 0.8rem;
-}
-
-/* إخفاء زر المكبرة تلقائياً في الشاشات الصغيرة لحماية هواتف الموبايل */
-.fawaed-zoom-control {
-  display: none;
-}
-
-.poetic-phrase {
-  text-align: center;
-  font-family: 'Lateef', serif;   /* يمكنكِ استخدام خط المتن هنا أيضاً ليظهر بشكل تراثي فخم */
-  font-weight: bold;
-  font-size: 1.25rem;             /* حجم خط ممتاز ومريح جداً للقراءة */
-  color: #d63384;                 /* اللون الوردي المميّز الذي اخترتِه */
-  padding: 10px 0;
-  line-height: 1.8;
-  margin: 0;
-}
-
-/* ==========================================================================
-   2. تأثير وضع ملء الشاشة الفخم 90vh (للكمبيوتر والتلفزيون عند تفعيل المكبرة)
-   ========================================================================== */
-@media (min-width: 1000px) {
-  
-  /* إظهار زر مكبرة ذهبي أنيق في أعلى زاوية كل صندوق */
-  .fawaed-zoom-control {
-    display: inline-flex;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #b89b3f;
-    color: white;
-    padding: 6px 14px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(184, 155, 63, 0.15);
-    transition: all 0.2s ease;
-    z-index: 10;
-  }
-
-  .fawaed-zoom-control:hover {
-    background-color: #967d2f;
-    transform: scale(1.05);
-  }
-
-  /* تحويل زر المكبرة تلقائياً إلى زر إغلاق أحمر فخم داخل وضع الـ 90vh */
-  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control {
-    background-color: #d32f2f;
-    top: 25px;
-    left: 40px;
-    font-size: 0.8rem;
-    padding: 8px 18px;
-  }
-  
-  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control:hover {
-    background-color: #c62828;
-  }
-
-  /* هندسة تمدد الصندوق لملء 90vh من الشاشة وعرض القائمة متكاملة وبشكل مريح */
-  .fawaed-box-container.mini.full-presentation {
-    position: fixed;
-    top: 1vh;
-    left: 5%;
-    width: 90%;
-    height: 95vh;
-    z-index: 9999;
-    padding: 2rem 3rem;
-    background-color: #fffdf9;
-    border: 3px solid #b89b3f;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    border-radius: 24px;
-    box-sizing: border-box;
-    overflow-y: auto; /* يسمح بالتمرير لأسفل بسلاسة فائقة إذا كانت النقاط كثيرة */
-  }
-
-  /* تكبير العناوين الرئيسية داخل وضع ملء الشاشة */
-  .full-presentation .benefit-title {
-    font-size: 2rem !important;
-    color: #b89b3f !important;
-    margin-bottom: 3rem !important;
-    margin-top: 3rem !important;
-    text-align: center !important;
-  }
-
-  /* 🎯 التكبير العملاق الموحد لكافة عناصر القوائم داخل الصندوقين ليشاهدها جميع الطلاب بوضوح تام */
-  .full-presentation .custom-presentation-list li {
-    font-size: 1rem !important; /* حجم خط ممتاز للشرح على الـ TV */
-    line-height: 1.7 !important;
-    color: #3e2723 !important;
-    margin-bottom: 2.5rem !important;
-    padding-right: 3.5rem !important;
-    text-align: right !important;
-  }
-
-  .full-presentation .custom-presentation-list li::before {
-    font-size: 1.2rem !important;
-    top: 6px !important;
-  }
-}
-
-
-/* القائمة الرئيسية للمفردات - تحويل ذكي لعمودين تلقائياً */
-.vocabulary-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  
-  /* تفعيل نظام الشبكة (Grid) */
-  display: grid;
-  /* إنشاء أعمدة مرنة: إذا كانت الشاشة كبيرة تتسع لعمودين (بحد أدنى 300 بكسل لكل عمود) */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /* مسافة فاصلة بين الأعمدة والأسطر */
-  gap: 10px 20px; 
-}
-
-/* ستايل كل سطر مفردة (تعديل طفيف ليتناسب مع النظام الجديد) */
-.vocabulary-list li {
-  display: flex;
-  align-items: baseline;
-  padding: 10px 15px;
-  background-color: #faf8f5;
-  border-right: 4px solid #b88a00; /* خط ذهبي جانبي */
-  border-radius: 0 6px 6px 0;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  
-  /* لمنع خروج العناصر أو تداخلها */
-  box-sizing: border-box; 
-}
-
-/* تأثير خفيف عند تمرير الفأرة */
-.vocabulary-list li:hover {
-  background-color: #f5eedf;
-  transform: translateX(-3px);
-}
-
-/* تنسيق الكلمة الثابت */
-.vocabulary-list li b {
-  color: #5d4a24;
-  font-size: 16px;
-  min-width: 90px; /* توحيد العرض لترتيب الكلمات */
-  display: inline-block;
-}
-
-/* تنسيق نص الشرح والمعنى */
-.vocabulary-list li span {
-  color: #444;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-
-/* السطر المشترك الذي يجمع العنوان والأزرار */
-.tafsir-header-row {
-  display: flex;
-  justify-content: space-between; /* دفع العنوان لليمين والأزرار لليسار */
-  align-items: center;
-  border-bottom: 1px solid #f0e6cc;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-}
-
-/* ستايل العنوان الجديد (بدون خط سفلي لأنه مدمج بالسطر) */
-.explanation-title-modern {
-  font-size: 17px;
-  color: #b88a00;
-  margin: 0;
-}
-
-/* حاوية الأزرار في اليسار */
-.tafsir-audio-actions {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-/* زر الاستماع الأنيق في جهة اليسار */
-.modern-tafsir-audio-btn {
-  background-color: #f4ede0;
-  color: #5d4a24;
-  border: 1px solid #dcd1b8;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.modern-tafsir-audio-btn:hover {
-  background-color: #eae0cb;
-}
-
-/* زر الإيقاف الصغير المربع بجانب زر الاستماع */
-.modern-tafsir-stop-btn {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  font-size: 13px;
-  cursor: pointer;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modern-tafsir-stop-btn:hover {
-  background-color: #c82333;
-}
-
-
-
-
-/* الحاوية الرئيسية المحدثة للحديث */
 .hadith-main-block-modern {
   padding: 20px;
   background-color: #fcfbf7;
   border: 1px solid #e6dfcc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  width: 100%;
 }
 
-/* حاوية زر صوت الحديث العلوي */
 .hadith-audio-trigger-wrapper {
   display: flex;
   justify-content: center;
   margin-bottom: 15px;
 }
 
-/* ستايل زر صوت الحديث */
 .modern-hadith-audio-btn {
-  background-color:  #f4ede0;
+  background-color: #f4ede0;
   color: #5d4a24;
   border: 1px solid #dcd1b8;
   padding: 10px 20px;
@@ -694,15 +240,9 @@ body {
   box-shadow: 0 2px 5px rgba(184, 138, 0, 0.2);
 }
 
-.modern-hadith-audio-btn:hover {
-  background-color: #eae0cb;
-}
+.modern-hadith-audio-btn:hover { background-color: #eae0cb; }
+.modern-hadith-audio-btn:active { transform: scale(0.98); }
 
-.modern-hadith-audio-btn:active {
-  transform: scale(0.98);
-}
-
-/* عرض الحديث بكامل العرض وبشكل مريح للقراءة */
 .hadith-text-full-width {
   width: 100%;
   text-align: center;
@@ -710,7 +250,6 @@ body {
   line-height: 2;
 }
 
-/* حاوية زر الشرح السفلي */
 .tafsir-toggle-wrapper {
   display: flex;
   justify-content: center;
@@ -719,7 +258,6 @@ body {
   padding-top: 15px;
 }
 
-/* ستايل زر فتح وإغلاق الشرح والمفردات */
 .modern-tafsir-toggle-btn {
   display: flex;
   align-items: center;
@@ -738,21 +276,11 @@ body {
   transition: background-color 0.2s ease;
 }
 
-.modern-tafsir-toggle-btn:hover {
-  background-color: #eae0cb;
-}
+.modern-tafsir-toggle-btn:hover { background-color: #eae0cb; }
+.modern-tafsir-toggle-btn .arrow { transition: transform 0.3s ease; font-size: 12px; }
+.modern-tafsir-toggle-btn .arrow.open { transform: rotate(180deg); }
 
-/* حركة السهم عند فتح وإغلاق الشرح */
-.modern-tafsir-toggle-btn .arrow {
-  transition: transform 0.3s ease;
-  font-size: 12px;
-}
-
-.modern-tafsir-toggle-btn .arrow.open {
-  transform: rotate(180deg);
-}
-
-/* صندوق الشرح المودرن */
+/* 💥 Denna container rymmer förklaringen och listan */
 .tafsir-modern-box {
   margin-top: 15px;
   padding: 15px;
@@ -760,7 +288,320 @@ body {
   border: 1px solid #eedfc2;
   border-radius: 6px;
   text-align: right;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.tafsir-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0e6cc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.explanation-title-modern {
+  font-size: 17px;
+  color: #b88a00;
+  margin: 0;
+}
+
+.tafsir-audio-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.modern-tafsir-audio-btn {
+  background-color: #f4ede0;
+  color: #5d4a24;
+  border: 1px solid #dcd1b8;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modern-tafsir-audio-btn:hover { background-color: #eae0cb; }
+
+.modern-tafsir-stop-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modern-tafsir-stop-btn:hover { background-color: #c82333; }
+
+/* ==========================================================================
+   5. Listan för Ordförklaringar (Vocabulary List) - Desktop Standard
+   ========================================================================== */
+.vocabulary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px 20px;
+  width: 100%;
+  grid-template-columns: 1fr !important; /* Tvingar till en enda kolumn */
+}
+
+.vocabulary-list li {
+  display: flex;
+  align-items: baseline;
+  padding: 10px 15px;
+  background-color: #faf8f5;
+  border-right: 4px solid #b88a00;
+  border-radius: 0 6px 6px 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.vocabulary-list li:hover {
+  background-color: #f5eedf;
+  transform: translateX(-3px);
+}
+
+.vocabulary-list li b {
+  color: #5d4a24;
+  font-size: 16px;
+  display: inline;      /* Ändrat från inline-block för att inte ta upp extra plats */
+  flex-shrink: 0;
+  margin-left: 8px;     /* Lägger till ett litet fast, snyggt avstånd till efterföljande span */
+}
+
+.vocabulary-list li span {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+  word-break: break-word;
+  display: inline;      /* Ser till att texten flyter på naturligt direkt efter b */
+}
+
+/* Fawaed & Highlighted */
+.highlighted-phrase {
+  background-color: #fff3cd;
+  color: #b89b3f;
+  border-radius: 4px;
+  padding: 0 4px;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+.fawaed-box-container.mini, .surah-benefits.mini {
+  position: relative;
+  background-color: #fdfaf4;
+  border: 1px solid #e0c9a1;
+  border-top: 4px solid #b89b3f;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem auto;
+  width: 92%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  box-sizing: border-box;
+}
+
+.benefit-title {
+  font-family: 'Lateef', serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #6d4c41;
+  margin-bottom: 0.8rem;
+}
+
+.custom-presentation-list, .benefit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-presentation-list li, .benefit-list li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a4631;
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-right: 1.5rem;
+  text-align: right;
+}
+
+.custom-presentation-list li::before { content: '🔸'; position: absolute; right: 0; font-size: 0.8rem; }
+.benefit-list li::before { content: '📌'; position: absolute; right: 0; font-size: 0.9rem; opacity: 0.8; }
+
+.fawaed-zoom-control { display: none; }
+.poetic-phrase { text-align: center; font-family: 'Lateef', serif; font-weight: bold; font-size: 1.25rem; color: #d63384; padding: 10px 0; line-height: 1.8; margin: 0; }
+
+/* ==========================================================================
+   6. RESPONSIV DESIGN (Enbart för Mobiler och mindre skärmar)
+   ========================================================================== */
+@media (max-width: 600px) {
+  /* Fixar så att b och span hamnar under varandra istället för bredvid */
 
 
+  .vocabulary-list li {
+    flex-direction: column !important; /* Lägger span under b */
+    align-items: flex-start !important;
+    gap: 6px;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .vocabulary-list li b {
+    min-width: unset !important;
+    width: 100%;
+    border-bottom: 1px dashed #e2d7c5;
+    padding-bottom: 4px;
+  }
+
+  /* Justering för den gråa/vita tafsirboxen så den inte flyter över */
+  .tafsir-modern-box {
+    padding: 10px;
+    width: 100% !important;
+    float: none !important;
+    clear: both !important;
+  }
+
+  /* Övriga mobilfixar */
+  .verse-item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .verse-text {
+    font-size: 0.95rem;
+  }
+  .toggle-btn {
+    font-size: 1.1rem;
+    padding-left: 0.5rem;
+  } 
+  .verse-block {
+    max-width: 100%;
+    margin: 1rem 0;
+    padding: 0.6rem 1rem;
+  }
+  .ayah { font-size: 1.1rem; max-width: 100%; }
+  .Hadith { font-size: 0.9rem; max-width: 100%; }
+  .tafsir { font-size: 0.9rem; padding: 0.5rem 0.8rem; }
+  .arrow { font-size: 1.1rem; margin-right: 3px; margin-left: 5px; }
+  .ayah-number { font-size: 1rem; }
+  .fawaed-box-container.mini, .surah-benefits.mini { width: 100%; padding: 1rem; }
+}
+
+@media (max-width: 400px) {
+  .ayah { font-size: 1rem; }
+  .tafsir { font-size: 0.85rem; padding: 0.4rem 0.6rem; }
+  .verse-block { padding: 0.4rem 0.8rem; }
+  .arrow { font-size: 1rem; margin-right: 2px; margin-left: 2px; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+}
+
+/* ==========================================================================
+   7. SKÄRMAR FÖR DATOR / TV (Stora skärmar)
+   ========================================================================== */
+@media (min-width: 1000px) {
+  .benefit-title {
+    font-size: 1.3rem;
+    text-align: center;
+    color: #6d4c41;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  .hadith-main-block {
+    height: auto;
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 3rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+  }
+
+  .hadith-main-block .ayah {
+    font-size: 1.5rem !important;
+    line-height: 2 !important;
+    text-align: center;
+    color: #4a3319;
+    font-weight: 500;
+    width: 100%;
+  }
+
+  .fawaed-zoom-control {
+    display: inline-flex;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #b89b3f;
+    color: white;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(184, 155, 63, 0.15);
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+
+  .fawaed-zoom-control:hover { background-color: #967d2f; transform: scale(1.05); }
+
+  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control {
+    background-color: #d32f2f;
+    top: 25px;
+    left: 40px;
+    font-size: 0.8rem;
+    padding: 8px 18px;
+  }
+  
+  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control:hover { background-color: #c62828; }
+
+  .fawaed-box-container.mini.full-presentation {
+    position: fixed;
+    top: 1vh;
+    left: 5%;
+    width: 90%;
+    height: 95vh;
+    z-index: 9999;
+    padding: 2rem 3rem;
+    background-color: #fffdf9;
+    border: 3px solid #b89b3f;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    overflow-y: auto;
+  }
+
+  .full-presentation .benefit-title {
+    font-size: 2rem !important;
+    color: #b89b3f !important;
+    margin-bottom: 3rem !important;
+    margin-top: 3rem !important;
+  }
+
+  .full-presentation .custom-presentation-list li {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+    color: #3e2723 !important;
+    margin-bottom: 2.5rem !important;
+    padding-right: 3.5rem !important;
+  }
+
+  .full-presentation .custom-presentation-list li::before {
+    font-size: 1.2rem !important;
+    top: 6px !important;
+  }
+}

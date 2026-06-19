@@ -1,6 +1,6 @@
 <div class="hadith-page-container">
  <app-surah-hint
-  [surahName]="hadith.title + ' ' + hadith.name"
+  [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
   [hintText]="hadith.hintText">
 </app-surah-hint>
 
@@ -10,7 +10,23 @@
     [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
     [RoutelinkAfter]="'/hadith/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
   </app-next-before-surah-meny>
+ 
+  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
+      📚 المصدر: <b>متن الأربعين النووية</b>
+  </p>
+
+ 
   
+  <!-- Box 1: Berättarens liv (Bevaras från datan i Hadith 1) -->
+  <div class="fawaed-box-container mini" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px;">
+    <div class="fawaed-zoom-control" (click)="toggleRawiZoom()">
+      <span *ngIf="!isRawiMaximized">🔍 تكبير العرض</span>
+      <span *ngIf="isRawiMaximized" class="close-symbol">✕ إنهاء العرض</span>
+    </div>
+
+
+
+ 
   <div class="verse-wrapper" style="margin-top: 20px;">
     <div class="verse-block hadith-main-block-modern">
       
@@ -64,26 +80,7 @@
     </div>
   </div>
 
-  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
-      📚 المصدر: <b>متن الأربعين النووية</b>
-  </p>
 
- 
-  
-  <!-- Box 1: Berättarens liv (Bevaras från datan i Hadith 1) -->
-  <div class="fawaed-box-container mini" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px;">
-    <div class="fawaed-zoom-control" (click)="toggleRawiZoom()">
-      <span *ngIf="!isRawiMaximized">🔍 تكبير العرض</span>
-      <span *ngIf="isRawiMaximized" class="close-symbol">✕ إنهاء العرض</span>
-    </div>
-
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📜 iضاءات في حياة الراوي</h2>
-    
-    <div class="box-list-wrapper">
-      <ul class="custom-presentation-list">
-        <li *ngFor="let info of rawiInfos">{{ info }}</li>
-      </ul>
-    </div>
   </div>
 
   <!-- Box 2: Hadithets betydelse (mappat till det nya list-systemet) -->
@@ -102,29 +99,6 @@
     </div>
   </div>
 
-  <!-- Box 3: Lärdomar & fawaed (mappat till det nya list-systemet) -->
-  <div class="fawaed-box-container mini" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px;">
-    <div class="fawaed-zoom-control" (click)="toggleBox2Zoom()">
-      <span *ngIf="!isBox2Maximized">🔍 تكبير العرض</span>
-      <span *ngIf="isBox2Maximized" class="close-symbol">✕ إنهاء العرض</span>
-    </div>
+ 
 
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 من فوائد {{ hadith.name }}</h2>
-    
-    <div class="box-list-wrapper">
-      <ul class="custom-presentation-list">
-        <li *ngFor="let item of box2Items">{{ item }}</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Box 4: Pedagogisk/pedagogiskt spår -->
-  <div class="fawaed-box-container mini" style="margin-top: 25px;">
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 توجيه تربوي للحديث</h2>
-    <p class="poetic-phrase">
-      {{ poeticText }}
-    </p>
-  </div>
-
-  <app-footer-info />
-</div>
+<app-footer-info />
