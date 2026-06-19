@@ -25,6 +25,31 @@
           "icons/android-chrome-512x512.png"
         ]
       }
+    },
+    {
+      "name": "local-audios",
+      "installMode": "lazy", 
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/audios/**/*.mpeg",
+          "/audios/**/*.mp3"
+        ]
+      }
+    }
+  ],
+"dataGroups": [
+    {
+      "name": "api-audios",
+      "urls": [
+        "https://www.everyayah.com/data/Ayman_Sowaid_64kbps/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 150,        
+        "maxAge": "30d",        
+        "timeout": "5s",
+        "strategy": "cacheFirst"
+      }
     }
   ]
 }
