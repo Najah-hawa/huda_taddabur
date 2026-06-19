@@ -48,7 +48,7 @@
         "maxSize": 150,        
         "maxAge": "30d",        
         "timeout": "5s",
-        "strategy": "cacheFirst"
+        "strategy": "performance"
       }
     }
   ]
