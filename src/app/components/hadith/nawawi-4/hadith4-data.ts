@@ -49,7 +49,7 @@ explanation: `
   `,
 
   // رابط الصوت من أرشيف
-  audioUrl: 'audio/hadith/05.mpeg'
+  audioUrl: 'audio/hadith/04.mpeg'
 };
 
 

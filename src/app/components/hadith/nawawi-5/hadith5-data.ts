@@ -35,7 +35,7 @@ export const hadithDetails = {
     </div>
   `,
 
-  audioUrl: 'audio/hadith/04.mpeg' // Kom ihåg att matcha din filstruktur!
+  audioUrl: 'audio/hadith/05.mpeg' // Kom ihåg att matcha din filstruktur!
 };
 
 // 📝 الصندوق الأول: أهمية الحديث الشريف

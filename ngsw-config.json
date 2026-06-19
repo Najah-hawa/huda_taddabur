@@ -27,20 +27,20 @@
       }
     },
     {
-      "name": "local-audios",
+      "name": "local-audio",
       "installMode": "lazy", 
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/audios/**/*.mpeg",
-          "/audios/**/*.mp3"
+          "/audio/hadith/**/*.mpeg",
+          "/audio/hadith/**/*.mp3"
         ]
       }
     }
   ],
 "dataGroups": [
     {
-      "name": "api-audios",
+      "name": "api-audio",
       "urls": [
         "https://www.everyayah.com/data/Ayman_Sowaid_64kbps/**"
       ],
