@@ -1,25 +1,33 @@
 <div class="app-download-wrapper" *ngIf="!isPocketHidden">
   
-  <!-- 1. الجيب الصغير المطور (يحتوي الآن على زر X للإغلاق التام) -->
-  <div class="small-pocket" *ngIf="!isExpanded" (click)="toggleBanner()">
-    <!-- زر X الصغير الخاص بالجيب -->
+  <div class="small-pocket" *ngIf="!isExpanded" (click)="triggerBannerToggle()">
     <span class="pocket-close-btn" (click)="closePocketComplete($event)">&times;</span>
     <span class="pocket-icon">✨</span>
-    <span class="pocket-text">تطبيق هدى وتدبر</span>
+    <span class="pocket-text">
+      {{ isAlreadyInstalled ? 'تطبيق هدى وتدبر مثبت بالفعل' : 'تطبيق هدى وتدبر' }}
+    </span>
   </div>
 
-  <!-- 2. النافذة الكبيرة المتناسقة -->
   <div class="large-card" *ngIf="isExpanded">
-    <!-- زر الإغلاق الذي يعيده إلى جيب صغير -->
-    <span class="close-btn" (click)="toggleBanner()">&times;</span>
+    <span class="close-btn" (click)="triggerBannerToggle()">&times;</span>
     
     <div class="card-content">
       <div class="card-header">
         <span class="app-icon">📖</span>
         <h3>تطبيق هدى وتدبر</h3>
       </div>
-      <p>حمّل التطبيق لتصفح القرآن وتدبّر الآيات بسلاسة أكبر، مع إمكانية الوصول لكل المحتوى في أي وقت حتى بدون إنترنت.</p>
-      <a href="#" class="download-btn" (click)="downloadApp($event)">تحميل التطبيق الآن</a>
+      
+      <ng-container *ngIf="!isAlreadyInstalled; else installedMessage">
+        <p>حمّل التطبيق لتصفح القرآن وتدبّر الآيات بسلاسة أكبر، مع إمكانية الوصول لكل المحتوى في أي وقت حتى بدون إنترنت.</p>
+        <a href="#" class="download-btn" (click)="downloadApp($event)">تحميل التطبيق الآن</a>
+      </ng-container>
+
+      <ng-template #installedMessage>
+        <p style="color: #2e7d32; font-weight: bold;">✨ التطبيق مثبت بالفعل على جهازك ومتاح للاستخدام أوف لاين في أي وقت!</p>
+        <div class="download-btn already-installed" style="background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; cursor: default; text-align: center;">
+          ✓ تم التثبيت بنجاح
+        </div>
+      </ng-template>
     </div>
   </div>
 
