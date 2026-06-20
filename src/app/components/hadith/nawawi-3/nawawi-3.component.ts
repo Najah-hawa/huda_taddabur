@@ -1,7 +1,8 @@
-import { Component, ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http'; // 👈 1. استيراد HttpClient لتنزيل الملف بالكامل
 import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
@@ -26,6 +27,9 @@ import {
   styleUrl: './nawawi-3.component.css'
 })
 export class Nawawi3Component implements OnInit, OnDestroy {
+  // 👈 2. حقن خدمة HttpClient باستخدام inject
+  private http = inject(HttpClient);
+
   // Koppla lokala variabler till Hadith 1:s datastruktur enligt den nya designen
   hadith = hadithDetails;
   box1Items = hadithImportanceList; 
@@ -141,11 +145,12 @@ ngOnInit() {
   }
 
   // ==========================================
-  // Synkroniserat ljudspår för själva texten
+  // Synkroniserat ljudspår för själva texten (يدعم الكاش بالخلفية)
   // ==========================================
   playHadithAudio(url: string | undefined) {
     if (!url) return;
     
+    // 1. إذا كان الصوت يعمل وحالته مشغل -> نقوم بعمل إيقاف مؤقت
     if (this.currentAudio && this.isPlaying) { 
       this.currentAudio.pause(); 
       this.isPlaying = false; 
@@ -153,6 +158,7 @@ ngOnInit() {
       return; 
     }
     
+    // 2. إذا كان الملف الصوتي مجهز مسبقاً ومتوقف -> نستأنف تشغيله مباشرة
     if (this.currentAudio && !this.isPlaying) { 
       this.isPlaying = true; 
       this.cdr.detectChanges(); 
@@ -161,32 +167,48 @@ ngOnInit() {
     }
     
     window.speechSynthesis.cancel();
-    this.currentAudio = new Audio(url);
-    this.isPlaying = true;
-    this.cdr.detectChanges();
-    
-    this.currentAudio.ontimeupdate = () => {
-      if (!this.currentAudio) return;
-      const currentTime = this.currentAudio.currentTime;
-      const index = this.hadith.phrases.findIndex(p => currentTime >= p.start && currentTime < p.end);
-      if (index !== this.currentPhraseIndex) { 
-        this.currentPhraseIndex = index; 
-        this.cdr.detectChanges(); 
+
+    // 3. إذا كانت المرة الأولى لتشغيل هذا الملف الصوتي:
+    // نقوم بجلب الملف كاملاً كـ Blob لضمان إجبار الـ Service Worker على تخزينه للأوف لاين
+    this.http.get(url, { responseType: 'blob' }).subscribe({
+      next: (blob) => {
+        const localBlobUrl = URL.createObjectURL(blob);
+        
+        this.currentAudio = new Audio(localBlobUrl);
+        this.isPlaying = true;
+        this.cdr.detectChanges();
+        
+        // ربط التزامن الزمني مع الكلمات والتظليل
+        this.currentAudio.ontimeupdate = () => {
+          if (!this.currentAudio) return;
+          const currentTime = this.currentAudio.currentTime;
+          const index = this.hadith.phrases.findIndex(p => currentTime >= p.start && currentTime < p.end);
+          if (index !== this.currentPhraseIndex) { 
+            this.currentPhraseIndex = index; 
+            this.cdr.detectChanges(); 
+          }
+        };
+        
+        this.currentAudio.play()
+          .then(() => this.cdr.detectChanges())
+          .catch(() => this.isPlaying = false);
+          
+        this.currentAudio.onended = () => { 
+          this.isPlaying = false; 
+          this.currentPhraseIndex = -1; 
+          this.currentAudio = null; 
+          this.cdr.detectChanges(); 
+        };
+      },
+      error: (err) => {
+        console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين ولم يخزن هذا الملف مسبقاً:", err);
+        this.isPlaying = false;
+        this.cdr.detectChanges();
       }
-    };
-    
-    this.currentAudio.play()
-      .then(() => this.cdr.detectChanges())
-      .catch(() => this.isPlaying = false);
-      
-    this.currentAudio.onended = () => { 
-      this.isPlaying = false; 
-      this.currentPhraseIndex = -1; 
-      this.currentAudio = null; 
-      this.cdr.detectChanges(); 
-    };
+    });
   }
 
+  // 🧹 تنظيف وتدمير الأصوات فور مغادرة الصفحة لمنع التداخل
   ngOnDestroy() {
     if (this.currentAudio) {
       this.currentAudio.pause();

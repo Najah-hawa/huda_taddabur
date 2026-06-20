@@ -28,13 +28,16 @@
     },
     {
       "name": "local-audio",
-      "installMode": "lazy", 
+      "installMode": "prefetch", 
       "updateMode": "prefetch",
       "resources": {
         "files": [
           "/audio/hadith/**/*.mpeg",
           "/audio/hadith/**/*.mp3"
         ]
+      },
+      "cacheQueryOptions": {
+        "ignoreSearch": true
       }
     }
   ],
