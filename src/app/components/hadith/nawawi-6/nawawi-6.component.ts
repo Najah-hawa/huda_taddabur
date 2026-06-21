@@ -2,19 +2,22 @@ import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject } from '@angula
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http'; // 👈 1. استيراد HttpClient لتنزيل الملف بالكامل
+import { HttpClient } from '@angular/common/http'; // 👈 استيراد HttpClient لتنزيل الملف بالكامل
 import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 
-// 📥 Hämta strukturerad data specifikt för Hadith 1
+// 📥 Hämta strukturerad data specifikt för Hadith 6
 import { 
   hadithDetails, 
   hadithImportanceList,
-} from './hadith-data';
+  hadithFawaedList,
+  hadithFawaed1,
+  hadithFawaed2
+} from './hadith6-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-nawawi-6',
   standalone: true,
   imports: [
     CommonModule,
@@ -23,26 +26,30 @@ import {
     FooterInfoComponent,
     NextBeforeSurahMenyComponent
   ],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  templateUrl: './nawawi-6.component.html',
+  styleUrl: './nawawi-6.component.css'
 })
-export class Nawawi1Component implements OnInit, OnDestroy {
-  // 👈 2. حقن خدمة HttpClient باستخدام inject
+export class Nawawi6Component implements OnInit, OnDestroy {
+  // 👈 حقن خدمة HttpClient باستخدام inject
   private http = inject(HttpClient);
 
-  // Koppla lokala variabler till Hadith 1:s datastruktur enligt den nya designen
+  // Koppla lokala variabler till Hadith 6:s datastruktur
   hadith = hadithDetails;
   box1Items = hadithImportanceList; 
-
+  box2Items = hadithFawaedList;    
+  box3Items =  hadithFawaed1;
+  box4Items = hadithFawaed2;  
 
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false; 
   currentPhraseIndex: number = -1;
 
-  // Zoomkontroller för helskärmsmoduler (90vh)
+  // Zoomkontroller för helskärmsmoduler
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
+  isBox3Maximized: boolean = false;
+  isBox4Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   // Kontroller för talsyntesen av förklaringen
@@ -52,20 +59,20 @@ export class Nawawi1Component implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 
   ngOnInit() {
-    // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle('الحديث الأول: إنما الأعمال بالنيات - شروح الأربعين النووية');
+    // 🎯 الأوزان الفريدة وعناوين Meta المقترحة والمتوافقة مع السيو للحديث السادس
+    this.titleService.setTitle('الحديث السادس: إن الحلال بين وإن الحرام بين - شروح الأربعين النووية');
 
     this.metaService.updateTag({ 
       name: 'description', 
-      content: 'شرح وتدبر الحديث الأول من الأربعين النووية (الأعمال بالنيات)، مع إضاءات من حياة الراوي عمر بن الخطاب رضي الله عنه وفوائد الحديث.' 
+      content: 'شرح وتدبر الحديث السادس من الأربعين النووية (الحلال والحرام والمشتبهات)، مع بيان أثر أكل الحلال على صلاح القلب وأقوال الفقهاء في الشبهات.' 
     });
     this.metaService.updateTag({ 
       name: 'keywords', 
-      content: 'الأعمال بالنيات, الحديث الأول, الأربعون النووية, عمر بن الخطاب, شرح الحديث, تدبر الحديث نبوي' 
+      content: 'الحلال والحرام, المشتبهات, الحديث السادس, الأربعون النووية, النعمان بن بشير, صلاح القلب, اتقاء الشبهات, شرح الحديث' 
     });
     
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الأول: إنما الأعمال بالنيات - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الأول مع الشرح الصوتي، ترجمة الراوي، وأهم الفوائد المستخرجة.' });
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث السادس: إن الحلال بين وإن الحرام بين - تدبر تفاعلي' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث السادس مع الشرح الصوتي، تفسير المفردات الغامضة، وأبرز الفوائد عن مغذيات القلب وصلاحه.' });
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
 
@@ -82,6 +89,14 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
+   toggleBox3Zoom() {
+    this.isBox3Maximized = !this.isBox3Maximized;
+    this.cdr.detectChanges();
+  }
+   toggleBox4Zoom() {
+    this.isBox4Maximized = !this.isBox4Maximized;
+    this.cdr.detectChanges();
+  }
   toggleRawiZoom() {
     this.isRawiMaximized = !this.isRawiMaximized;
     this.cdr.detectChanges();
@@ -145,12 +160,11 @@ export class Nawawi1Component implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // Synkroniserat ljudspår för själva texten (يدعم الكاش بالخلفية)
+  // Synkroniserat ljudspår för själva texten
   // ==========================================
   playHadithAudio(url: string | undefined) {
     if (!url) return;
     
-    // 1. إذا كان الصوت يعمل وحالته مشغل -> نقوم بعمل إيقاف مؤقت
     if (this.currentAudio && this.isPlaying) { 
       this.currentAudio.pause(); 
       this.isPlaying = false; 
@@ -158,7 +172,6 @@ export class Nawawi1Component implements OnInit, OnDestroy {
       return; 
     }
     
-    // 2. إذا كان الملف الصوتي مجهز مسبقاً ومتوقف -> نستأنف تشغيله مباشرة
     if (this.currentAudio && !this.isPlaying) { 
       this.isPlaying = true; 
       this.cdr.detectChanges(); 
@@ -168,8 +181,6 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     
     window.speechSynthesis.cancel();
 
-    // 3. إذا كانت المرة الأولى لتشغيل هذا الملف الصوتي:
-    // نقوم بجلب الملف كاملاً كـ Blob لضمان إجبار الـ Service Worker على تخزينه للأوف لاين
     this.http.get(url, { responseType: 'blob' }).subscribe({
       next: (blob) => {
         const localBlobUrl = URL.createObjectURL(blob);
@@ -178,7 +189,6 @@ export class Nawawi1Component implements OnInit, OnDestroy {
         this.isPlaying = true;
         this.cdr.detectChanges();
         
-        // ربط التزامن الزمني مع الكلمات والتظليل
         this.currentAudio.ontimeupdate = () => {
           if (!this.currentAudio) return;
           const currentTime = this.currentAudio.currentTime;

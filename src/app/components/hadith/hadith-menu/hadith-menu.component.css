@@ -1,20 +1,3 @@
-/* Basmala-stil */
-.basmala {
-  text-align: center;
-  font-size: 2rem; /* lite större */
-  color: #4d2828;
-  font-family: 'Amiri', serif;
-  margin: 40px auto 25px;
-
-  padding: 18px 25px;
-  border-radius: 35px;
- 
-  width: 85%;
-  max-width: 650px;
- 
-  letter-spacing: 1px; /* mer luft */
-}
-
 
 
 /* Container för parts */
@@ -26,48 +9,44 @@
   padding: 30px 15px;
 }
 
-/* Titeltext för korten*/
+/* Titeltext */
 .choose-text {
+  color: #4d2828;
+  font-family: 'Amiri', serif;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.choose-text-1 {
   font-size: 1.5rem;
   color: #4d2828;
   font-family: 'Amiri', serif;
   font-weight: bold;
   text-align: center;
-  margin: 0;
-  position: relative;
-}
-/*lägg en style under text*/
-.part-box::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 2px;
-  background-color: #c5a880;
-  margin: 6px auto 0;
-  border-radius: 2px;
+  margin-top: 0px;
 }
 
 /* Box för varje part */
 .part-box {
-  background: linear-gradient(#fcfaf7, #f4eadf);
+  background: linear-gradient(#F8F5F0, #ece6d9);
   color: #4d2828;
   border: 2px solid #e1cfb6;
   border-radius: 50px;
-  padding: 18px 35px;
+  padding: 15px 30px;
   width: 70%;
   max-width: 400px;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 4px 12px rgba(77, 40, 24, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .part-box:hover {
-  background: linear-gradient(#f4eadf, #fcfaf7);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(77, 40, 24, 0.25);
+  background: linear-gradient(#ece6d9, #F8F5F0);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
-
 
 /* Aktivt val – om du använder routerLinkActive */
 .active {

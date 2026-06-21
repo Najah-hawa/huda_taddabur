@@ -80,6 +80,10 @@ export const routes: Routes = [
     path: 'hadith/nawawi-5',
     loadComponent: () => import('./components/hadith/nawawi-5/nawawi-5.component').then(m => m.Nawawi5Component)
   },
+  {
+    path: 'hadith/nawawi-6',
+    loadComponent: () => import('./components/hadith/nawawi-6/nawawi-6.component').then(m => m.Nawawi6Component)
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
