@@ -9,17 +9,17 @@ import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component'
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 
 // 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1,hadithFawaed2} from './hadith6-data';
+import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith7-data';
 
 @Component({
-  selector: 'app-nawawi-6',
+  selector: 'app-nawawi-7',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './nawawi-6.component.html',
-  styleUrl: './nawawi-6.component.css'
+  templateUrl: './nawawi-7.component.html',
+  styleUrl: './nawawi-7.component.css'
 })
 
-export class Nawawi6Component implements OnInit, OnDestroy {
+export class Nawawi7Component implements OnInit, OnDestroy {
 
   // 👈 حقن خدمة HttpClient باستخدام inject
   private http = inject(HttpClient);
@@ -28,15 +28,12 @@ export class Nawawi6Component implements OnInit, OnDestroy {
   hadith = hadithDetails;
   box1Items = hadithImportanceList;
   box2Items = hadithFawaedList;    
-  box3Items =  hadithFawaed1;
-  box4Items = hadithFawaed2;  
+ 
 
   // 🔎 تتبع أحجام الخطوط لكل حاوية وصندوق بشكل مستقل لمنع التداخل
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
   fontSizeBox2: number = 16;
-  fontSizeBox3: number = 16;
-  fontSizeBox4: number = 16;
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
@@ -45,8 +42,6 @@ export class Nawawi6Component implements OnInit, OnDestroy {
   // Zoomkontroller för helskärmsmoduler
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
-  isBox3Maximized: boolean = false;
-  isBox4Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   // Kontroller för talsyntesen av förklaringen
@@ -55,23 +50,21 @@ export class Nawawi6Component implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 
-  ngOnInit() {
-    // 🎯 الأوزان الفريدة وعناوين Meta المقترحة والمتوافقة مع السيو للحديث السادس
-    this.titleService.setTitle('الحديث السادس: إن الحلال بين وإن الحرام بين - شروح الأربعين النووية');
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'شرح وتدبر الحديث السادس من الأربعين النووية (الحلال والحرام والمشتبهات)، مع بيان أثر أكل الحلال على صلاح القلب وأقوال الفقهاء في الشبهات.'
-    });
-    this.metaService.updateTag({
-      name: 'keywords',
-      content: 'الحلال والحرام, المشتبهات, الحديث السادس, الأربعون النووية, النعمان بن بشير, صلاح القلب, اتقاء الشبهات, شرح الحديث'
-    });
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث السادس: إن الحلال بين وإن الحرام بين - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث السادس مع الشرح الصوتي، تفسير المفردات الغامضة، وأبرز الفوائد عن مغذيات القلب وصلاحه.' });
-    this.metaService.updateTag({ property: 'og:type', content: 'article' });
-  }
-
-
+ngOnInit() {
+  // 🎯 الأوزان الفريدة وعناوين Meta المقترحة والمتوافقة مع السيو للحديث السابع
+  this.titleService.setTitle('الحديث السابع: الدين النصيحة - شروح الأربعين النووية');
+  this.metaService.updateTag({
+    name: 'description',
+    content: 'شرح وتدبر الحديث السابع من الأربعين النووية (الدين النصيحة)، مع بيان حكم النصيحة وآدابها وكيف تكون لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم.'
+  });
+  this.metaService.updateTag({
+    name: 'keywords',
+    content: 'الدين النصيحة, الحديث السابع, الأربعون النووية, تميم بن أوس الداري, حكم النصيحة, آداب النصيحة, النصيحة لله ولكتابه, شرح الحديث'
+  });
+  this.metaService.updateTag({ property: 'og:title', content: 'الحديث السابع: الدين النصيحة - تدبر تفاعلي' });
+  this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث السابع مع الشرح الصوتي، تفسير المفردات، وأبرز الفوائد عن كون النصيحة فرض كفاية ومن أعظم الأعمال.' });
+  this.metaService.updateTag({ property: 'og:type', content: 'article' });
+}
   // Gränssnittskontroller & Zoom (الحاوية الشاملة/الراوي)
 
 toggleRawiZoom(boxElement: HTMLElement) {
@@ -203,84 +196,6 @@ toggleBox2Zoom(boxElement: HTMLElement) {
   }
  
 
-
-toggleBox3Zoom(boxElement: HTMLElement) {
-    this.isBox3Maximized = !this.isBox3Maximized;
-
-    if (this.isBox3Maximized) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto'; 
-      // Återställ fonten stabilt utan att krocka med vh-designen
-      this.fontSizeBox3 = 16;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-
-    this.cdr.detectChanges();
-
-    setTimeout(() => {
-      if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',  
-          inline: 'center'
-        });
-      }
-    }, 100);
-  }
-
-  zoomInBox3(boxElement: HTMLElement) {
-    if (this.fontSizeBox3 < 36) {
-      this.fontSizeBox3 += 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-  }
-
-  zoomOutBox3(boxElement: HTMLElement) {
-    if (this.fontSizeBox3 > 14) {
-      this.fontSizeBox3 -= 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-  }
-
- toggleBox4Zoom(boxElement: HTMLElement) {
-    this.isBox4Maximized = !this.isBox4Maximized;
-
-    if (this.isBox4Maximized) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto'; 
-      // Återställ fonten stabilt utan att krocka med vh-designen
-      this.fontSizeBox4 = 16;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
-    }
-
-    this.cdr.detectChanges();
-
-    setTimeout(() => {
-      if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',  
-          inline: 'center'
-        });
-      }
-    }, 100);
-  }
-
-  zoomInBox4(boxElement: HTMLElement) {
-    if (this.fontSizeBox4 < 36) {
-      this.fontSizeBox4 += 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
-    }
-  }
-
-  zoomOutBox4(boxElement: HTMLElement) {
-    if (this.fontSizeBox4 > 14) {
-      this.fontSizeBox4 -= 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
-    }
-  }
 
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;

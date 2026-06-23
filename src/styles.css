@@ -219,6 +219,8 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   width: 100%;
+  /* 💡 هذا المتغير السحري الذي سنحركه بالأزرار */
+  --dynamic-font-size: 16px;
 }
 
 .hadith-audio-trigger-wrapper {
@@ -248,6 +250,7 @@ body {
   text-align: center;
   margin: 20px 0;
   line-height: 2;
+  font-size: calc(var(--dynamic-font-size) + 1px) !important; /* الكلمة */
 }
 
 .tafsir-toggle-wrapper {
@@ -373,7 +376,7 @@ body {
 
 .vocabulary-list li b {
   color: #5d4a24;
-  font-size: 16px;
+  font-size: calc(var(--dynamic-font-size) + 1px) !important; /* الكلمة */
   display: inline;      /* Ändrat från inline-block för att inte ta upp extra plats */
   flex-shrink: 0;
   margin-left: 8px;     /* Lägger till ett litet fast, snyggt avstånd till efterföljande span */
@@ -381,7 +384,7 @@ body {
 
 .vocabulary-list li span {
   color: #444;
-  font-size: 15px;
+  font-size: var(--dynamic-font-size) !important; /* الشرح */
   line-height: 1.6;
   word-break: break-word;
   display: inline;      /* Ser till att texten flyter på naturligt direkt efter b */
@@ -425,7 +428,7 @@ body {
 }
 
 .custom-presentation-list li, .benefit-list li {
-  font-size: 1rem;
+  font-size: var(--dynamic-font-size) !important; /* نص الفائدة */
   line-height: 1.6;
   color: #5a4631;
   margin-bottom: 0.8rem;
@@ -437,9 +440,20 @@ body {
 
 .custom-presentation-list li::before { content: '🔸'; position: absolute; right: 0; font-size: 0.8rem; }
 .benefit-list li::before { content: '📌'; position: absolute; right: 0; font-size: 0.9rem; opacity: 0.8; }
+.poetic-phrase { text-align: center; font-family: 'Lateef', serif; font-weight: bold; font-size: 1.25rem; color: #d63384; padding: 10px 0; line-height: 1.8; margin: 0; }
+
+
 
 .fawaed-zoom-control { display: none; }
-.poetic-phrase { text-align: center; font-family: 'Lateef', serif; font-weight: bold; font-size: 1.25rem; color: #d63384; padding: 10px 0; line-height: 1.8; margin: 0; }
+
+
+
+/* تحول الزر الرئيسي للون الأحمر عند التكبير */
+.fawaed-box-container.mini.full-presentation {
+  font-size: 0.8rem;
+  padding: 8px 18px;
+}
+
 
 
 /* يُوضع في ملف styles.css العالمي ليتخطى حظر الأنجولار تماماً */
@@ -525,6 +539,7 @@ body {
    7. SKÄRMAR FÖR DATOR / TV (Stora skärmar)
    ========================================================================== */
 @media (min-width: 1000px) {
+
   .benefit-title {
     font-size: 1.3rem;
     text-align: center;
@@ -554,41 +569,21 @@ body {
     width: 100%;
   }
 
-  .fawaed-zoom-control {
-    display: inline-flex;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #b89b3f;
-    color: white;
-    padding: 6px 14px;
-    font-size: 0.7rem;
-    font-weight: bold;
-    border-radius: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(184, 155, 63, 0.15);
-    transition: all 0.2s ease;
-    z-index: 10;
-  }
+ 
 
-  .fawaed-zoom-control:hover { background-color: #967d2f; transform: scale(1.05); }
 
-  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control {
+  .fawaed-box-container.mini.full-presentation {
     background-color: #d32f2f;
-    top: 25px;
-    left: 40px;
+    top: 10px;
     font-size: 0.8rem;
     padding: 8px 18px;
   }
   
-  .fawaed-box-container.mini.full-presentation .fawaed-zoom-control:hover { background-color: #c62828; }
 
   .fawaed-box-container.mini.full-presentation {
     position: fixed;
-    top: 1vh;
-    left: 5%;
-    width: 90%;
-    height: 95vh;
+    width: 100%;
+    height: 99vh;
     z-index: 9999;
     padding: 2rem 3rem;
     background-color: #fffdf9;
@@ -618,3 +613,18 @@ body {
     top: 6px !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,64 @@
+/* الحاوية المطلقة التي تجمع الأزرار في أعلى اليسار */
+.fawaed-controls-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+}
+
+/* الستايل الموحد الذهبي لجميع الأزرار */
+.fawaed-btn-action {
+  background-color: #b89b3f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(184, 155, 63, 0.15);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-zoom-btn {
+  padding: 6px 14px;
+  font-size: 0.7rem;
+}
+
+.fawaed-btn-action:hover {
+  background-color: #967d2f;
+  transform: scale(1.05);
+}
+
+/* ==========================================================
+   🔴 الستايل التلقائي عند الانتقال لوضع ملء الشاشة (In Full Presentation)
+   ========================================================== */
+.fawaed-controls-group.in-full-presentation {
+  top: 25px;
+  left: 40px;
+}
+
+/* تحويل الأزرار للون الأحمر المتناسق */
+.fawaed-controls-group.in-full-presentation .fawaed-btn-action {
+  font-size: 0.8rem;
+  padding: 8px 14px;
+  background-color: #b89b3f; 
+  box-shadow: 0 4px 8px rgba(184, 155, 63, 0.2);
+}
+
+.fawaed-controls-group.in-full-presentation .main-zoom-btn {
+  background-color: #d32f2f !important; /* فرض اللون الأحمر على زر الإغلاق فقط */
+  padding: 8px 18px;
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.2);
+}
+
+.fawaed-controls-group.in-full-presentation .fawaed-btn-action:hover {
+  background-color: #967d2f; /* هوفر ذهبي غامق للأزرار العادية */
+  transform: scale(1.05);
+}

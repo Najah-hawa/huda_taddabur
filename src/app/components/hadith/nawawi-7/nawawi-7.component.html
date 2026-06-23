@@ -5,8 +5,8 @@
   </app-surah-hint>
 
   <app-next-before-surah-meny
-    [RoutelinkBefore]="'/hadith/nawawi-5'" [SurahBefore]="'الحديث الخامس'"
-    [RoutelinkAfter]="'/hadith/nawawi-7'" [SurahNext]="'الحديث السابع'">
+    [RoutelinkBefore]="'/hadith/nawawi-6'" [SurahBefore]="'الحديث السادس'"
+    [RoutelinkAfter]="'/hadith/nawawi-8'" [SurahNext]="'الحديث الثامن'">
   </app-next-before-surah-meny>
 
 
@@ -77,7 +77,7 @@
     (onZoomOut)="zoomOutBox1(box1)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 حكم و أداب النصيحة </h2>
 
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -97,7 +97,7 @@
     (onZoomOut)="zoomOutBox1(box2)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أهمية الحديث {{ hadith.name }}</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
 
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -106,53 +106,7 @@
   </div>
 </div>
 
-  <!-- الحاوية 4: فائدة 1 (Box 3) -->
 
- <div #box3 class="fawaed-box-container mini box3-container" [class.full-presentation]="isBox3Maximized" style="margin-top: 25px; position: relative;">
-
-  <app-zoom-controls
-    [isMaximized]="isBox3Maximized"  
-    (onToggle)="toggleBox3Zoom(box3)" 
-    (onZoomIn)="zoomInBox3(box3)" 
-    (onZoomOut)="zoomOutBox3(box3)">
-  </app-zoom-controls>
-
-
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فائدة 1  {{ hadith.name }}</h2>
-
-  <div class="box-list-wrapper">
-    <ul class="custom-presentation-list">
-      <li *ngFor="let item of box3Items" [innerHTML]="item"></li>
-    </ul>
-  </div>
-</div>
-
-  <!-- الحاوية 5: فائدة 2 (Box 4) -->
-
- 
-   <div #box4 class="fawaed-box-container mini box4-container" [class.full-presentation]="isBox4Maximized" style="margin-top: 25px; position: relative;">
-
-  <app-zoom-controls
-    [isMaximized]="isBox4Maximized"  
-    (onToggle)="toggleBox4Zoom(box4)" 
-    (onZoomIn)="zoomInBox4(box4)" 
-    (onZoomOut)="zoomOutBox4(box4)">
-  </app-zoom-controls>
-
-
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فائدة 2  {{ hadith.name }}</h2>
-
-  <div class="box-list-wrapper">
-    <ul class="custom-presentation-list">
-      <li *ngFor="let item of box4Items" [innerHTML]="item"></li>
-    </ul>
-  </div>
-</div>
-
-
-  <div class="pink-hadith-highlight">
-    " نحصل على القلب السليم بسلامته من الأمراض الباطنة كالحقد و الحسد "  
-  </div>
 </div>
 
 <app-footer-info />
