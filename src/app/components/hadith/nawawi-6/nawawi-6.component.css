@@ -85,7 +85,7 @@
  
 /* إخفاء حاوية الأزرار بالكامل من الشاشة */
   app-zoom-controls,
-  .box1-container {
+  .box-container {
     display: none !important;
   }
 
