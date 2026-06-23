@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, ChangeDetectorRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SwUpdate } from '@angular/service-worker'; // Fixar PWA-cache
 
 @Component({
   selector: 'app-download-banner',
@@ -10,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class DownloadBannerComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
+  private swUpdate = inject(SwUpdate); // Fixar PWA-cache
 
   isExpanded: boolean = false;      
   isPocketHidden: boolean = false;  
@@ -21,6 +23,17 @@ export class DownloadBannerComponent implements OnInit {
   private static wasClosedInThisSession = false;
 
   ngOnInit() {
+    // Tvinga fram uppdatering om en ny version finns på Vercel
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.checkForUpdate().then(hasUpdate => {
+        if (hasUpdate) {
+          this.swUpdate.activateUpdate().then(() => {
+            window.location.reload(); 
+          });
+        }
+      });
+    }
+
     if (this.isAppInStandaloneMode()) {
       this.isPocketHidden = true;
       return;
@@ -57,7 +70,7 @@ export class DownloadBannerComponent implements OnInit {
   }
 
   @HostListener('window:appinstalled', ['$event'])
-  onAppInstalled() {
+  onAppInstalled(event: Event) {
     this.isAlreadyInstalled = true;
     this.isPocketHidden = true;
     this.isExpanded = false;
@@ -66,6 +79,7 @@ export class DownloadBannerComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  
   downloadApp(event: Event) {
     event.preventDefault();
     if (this.isAlreadyInstalled) return; 
@@ -85,11 +99,16 @@ export class DownloadBannerComponent implements OnInit {
     });
   }
 
-  // 👈 Här har vi bytt namn på funktionen till triggerBannerToggle
-  triggerBannerToggle() {
-    this.isExpanded = !this.isExpanded;
-    this.cdr.detectChanges();
+triggerBannerToggle() {
+  // Hämtar det aktuella klick-eventet automatiskt och stoppar bubbling
+  const event = window.event;
+  if (event) {
+    event.stopPropagation();
   }
+  
+  this.isExpanded = !this.isExpanded;
+  this.cdr.detectChanges();
+}
 
   closePocketComplete(event: Event) {
     event.stopPropagation();
