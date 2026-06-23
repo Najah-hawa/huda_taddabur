@@ -79,14 +79,12 @@
 
   <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
 
- <div class="box-list-wrapper">
-  <ul class="custom-presentation-list">
-    <!-- استخدام الطريقة العادية ومسح innerHTML يضمن ظهورها 100% على Vercel -->
-    <li *ngFor="let item of box1Items">
-      <span [textContent]="item"></span>
-    </li>
-  </ul>
- </div>
+   <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
+
 </div>
 
   <!-- الحاوية 3: أهمية الحديث (Box 2) -->
