@@ -632,3 +632,200 @@ body {
 
 
 
+
+
+
+/* ==========================================================================
+   lagt till audio playier kedja med att llysnna på hadith
+   ========================================================================== */
+
+/* ==========================================================================
+  lagt till audio playier kedja med att llysnna på hadith
+   ========================================================================== */
+/* ==========================================================================
+   lagt till audio playier kedja med att llysnna på hadith
+   ========================================================================== */
+
+   
+
+/* Container الكلي للمشغل الصوتي */
+.hadith-audio-player-wrapper {
+  background-color: #fcf8f2; /* لون بيج ناعم متناسق مع الخلفية */
+  border: 1px solid #e6d3ba; /* إطار خفيف جداً دافئ */
+  border-radius: 16px;
+  padding: 15px 20px;
+  margin: 20px auto;
+  max-width: 550px; /* ليطلع متناسق في المنتصف */
+  box-shadow: 0 4px 12px rgba(139, 92, 26, 0.05); /* ظل ناعم */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  direction: rtl; /* ليدعم اللغة العربية بشكل صحيح */
+}
+
+/* حاوية أزرار التحكم */
+.hadith-player-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+/* زر الاستماع والايقاف الأساسي (الموسع) */
+.modern-hadith-audio-btn-expanded {
+  background-color: #e6d3ba; /* نفس لون الأزرار الحالية عندك */
+  color: #5c3e21; /* لون النص البني الدافئ */
+  border: 1px solid #d1bfa7;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.modern-hadith-audio-btn-expanded:hover {
+  background-color: #dbcaa0; /* تغميق خفيف عند الحوم */
+  transform: translateY(-1px);
+}
+
+/* أزرار التقديم والترجيع للجمل الذكية */
+.player-nav-btn {
+  background: none;
+  border: none;
+  font-size: 22px; /* حجم الإيموجي مناسب للضغط */
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.player-nav-btn:active {
+  transform: scale(0.9); /* تأثير ضغط لطيف */
+}
+
+/* حاوية السلايدر والوقت */
+.hadith-player-slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* مؤشرات الثواني */
+.time-indicator {
+  font-size: 13px;
+  color: #7a6048; /* لون بني متوسط متناسق مع نصوص المصدر */
+  font-weight: 500;
+  min-width: 35px;
+}
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* تصميم شريط التمرير (The Input Range Slider) */
+.hadith-audio-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #eedecc; /* لون الخط غير المستمع له بعد */
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* الدائرة المتحركة في الشريط (للـ Chrome و Safari) */
+.hadith-audio-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8b5c1a; /* نفس لون الـ Icon البني الغامق بالتطبيق */
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s;
+}
+
+.hadith-audio-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2); /* تكبير الدائرة قليلاً عند السحب لمظهر تفاعلي */
+}
+
+/* الدائرة المتحركة في الشريط (للـ Firefox) */
+.hadith-audio-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8b5c1a;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s;
+}
+
+.hadith-audio-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+
+/* ==========================================================================
+   📱 شاشات الموبايل والأجهزة الصغيرة (أصغر من 600 بكسل)
+   ========================================================================== */
+@media (max-width: 600px) {
+  
+  /* تقليل المساحات الداخلية والخارجية للمشغل */
+  .hadith-audio-player-wrapper {
+    padding: 10px 12px;
+    margin: 15px auto;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  /* تقليل الفراغات بين الأزرار */
+  .hadith-player-buttons {
+    gap: 10px;
+  }
+
+  /* تصغير زر الاستماع الأساسي ليناسب عرض الشاشة */
+  .modern-hadith-audio-btn-expanded {
+    padding: 6px 16px;
+    font-size: 14px;
+    border-radius: 16px;
+  }
+
+  /* تصغير أيقونات الانتقال بين الجمل */
+  .player-nav-btn {
+    font-size: 18px;
+    padding: 4px 6px;
+  }
+
+  /* تصغير نصوص مؤشرات الثواني وشريط السحب */
+  .hadith-player-slider-container {
+    gap: 6px;
+  }
+
+  .time-indicator {
+    font-size: 11px;
+    min-width: 28px;
+  }
+
+  .hadith-audio-slider {
+    height: 5px;
+  }
+
+  /* تصغير الدائرة الخاصة بالسحب لتسهيل التحكم بالإصبع دون تضخيم الشكل */
+  .hadith-audio-slider::-webkit-slider-thumb {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .hadith-audio-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+  }
+}

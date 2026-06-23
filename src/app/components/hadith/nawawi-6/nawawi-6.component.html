@@ -20,9 +20,51 @@
   <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
     <div class="verse-block hadith-main-block-modern">
       <div class="hadith-audio-trigger-wrapper">
-        <button class="modern-hadith-audio-btn" (click)="playHadithAudio(hadith.audioUrl)">
-          {{ isPlaying ? '⏸️ إيقاف مؤقت للحديث' : '▶️ استمع لمتن الحديث' }}
-        </button>
+  
+
+        
+ <!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
+<!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
+<div class="hadith-audio-player-wrapper">
+  
+  <!-- أزرار التحكم الذكية بالحديث (جملة جملة) -->
+  <div class="hadith-player-buttons">
+    
+  
+        <!-- ⏩ الزر اللي على اليمين بيرجع للجملة السابقة -->
+    <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
+      ⏭️
+    </button>
+    
+    <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
+      {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+    </button>
+    
+  <!-- ⏪ الزر اللي على اليسار بيقدم للجملة التالية -->
+    <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
+      ⏮️
+    </button>
+  </div>
+
+  <!-- شريط التحكم بالوقت (Progress Slider) -->
+  <div class="hadith-player-slider-container">
+    <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
+    
+    <input 
+      type="range" 
+      [min]="0" 
+      [max]="duration" 
+      [value]="currentTime" 
+      (input)="onSliderChange($event)"
+      class="hadith-audio-slider" />
+      
+    <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
+  </div>
+
+</div>
+
+
+
       </div>
       <div class="hadith-text-full-width">
         <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">

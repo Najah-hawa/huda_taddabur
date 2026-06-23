@@ -1,57 +1,52 @@
-import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { Title, Meta } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http'; // 👈 1. استيراد HttpClient لتنزيل الملف بالكامل
-import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
-import { FooterInfoComponent } from '../../footer-info/footer-info.component';
-import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
-
-// 📥 Hämta strukturerad data specifikt för Hadith 1
-import { 
-  hadithDetails, 
-  hadithImportanceList,
-} from './hadith3-data';
-
-@Component({
-  selector: 'app-nawawi-3',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    SurahHintComponent,
-    FooterInfoComponent,
-    NextBeforeSurahMenyComponent
-  ],
-  templateUrl: './nawawi-3.component.html',
-  styleUrl: './nawawi-3.component.css'
-})
-export class Nawawi3Component implements OnInit, OnDestroy {
-  // 👈 2. حقن خدمة HttpClient باستخدام inject
-  private http = inject(HttpClient);
-
-  // Koppla lokala variabler till Hadith 1:s datastruktur enligt den nya designen
-  hadith = hadithDetails;
-  box1Items = hadithImportanceList; 
-
-
-  isExplanationShown: boolean = false;
-  currentAudio: HTMLAudioElement | null = null;
-  isPlaying: boolean = false; 
-  currentPhraseIndex: number = -1;
-
-  // Zoomkontroller för helskärmsmoduler (90vh)
-  isBox1Maximized: boolean = false;
-  isBox2Maximized: boolean = false;
-  isRawiMaximized: boolean = false;
-
-  // Kontroller för talsyntesen av förklaringen
-  isSpeakingTafsir: boolean = false;
-  isTafsirPaused: boolean = false;
-
-  constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
-
-ngOnInit() {
+  import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject} from '@angular/core';
+  import { CommonModule } from '@angular/common';
+  import { RouterModule } from '@angular/router';
+  import { Title, Meta } from '@angular/platform-browser';
+  import { HttpClient } from '@angular/common/http'; 
+  import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
+  import { FooterInfoComponent } from '../../footer-info/footer-info.component';
+  import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component';
+  import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
+  
+  // 📥 Hämta strukturerad data specifikt för Hadith 7
+  import { hadithDetails, hadithImportanceList} from './hadith3-data';
+  
+  @Component({
+    selector: 'app-nawawi-3',
+    standalone: true,
+    imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+    templateUrl: './nawawi-3.component.html',
+    styleUrl: './nawawi-3.component.css'
+  })
+  
+  export class Nawawi3Component implements OnInit, OnDestroy {
+  
+    
+    private http = inject(HttpClient);
+  
+    hadith = hadithDetails;
+    box1Items = hadithImportanceList;
+  
+    fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
+    fontSizeBox1: number = 16;
+    isExplanationShown: boolean = false;
+    currentAudio: HTMLAudioElement | null = null;
+    isPlaying: boolean = false;
+    currentPhraseIndex: number = -1;
+  
+    // 🎵 متغيرات المشغل الصوتي المطور (Audio Player)
+    currentTime: number = 0;
+    duration: number = 0;
+  
+    isBox1Maximized: boolean = false;
+    isRawiMaximized: boolean = false;
+  
+    isSpeakingTafsir: boolean = false;
+    isTafsirPaused: boolean = false;
+  
+    constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
+  
+   ngOnInit() {
     // 🎯 الأوسام والـ Meta-tags المخصصة للحديث الثالث
     this.titleService.setTitle('الحديث الثالث: أركان الإسلام ودعائمه العظام - شروح الأربعين النووية');
 
@@ -69,151 +64,279 @@ ngOnInit() {
     this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الثالث مع شرح دعائم الإسلام الخمس، أحكام العبادات، وأهم الفوائد التربوية والفقهية المستخرجة.' });
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
-  // ==========================================
-  // Gränssnittskontroller & Zoom
-  // ==========================================
-  toggleBox1Zoom() {
-    this.isBox1Maximized = !this.isBox1Maximized;
-    this.cdr.detectChanges();
-  }
-
-  toggleBox2Zoom() {
-    this.isBox2Maximized = !this.isBox2Maximized;
-    this.cdr.detectChanges();
-  }
-
-  toggleRawiZoom() {
-    this.isRawiMaximized = !this.isRawiMaximized;
-    this.cdr.detectChanges();
-  }
-
-  toggleExplanation() {
-    this.isExplanationShown = !this.isExplanationShown;
-  }
-
-  // ==========================================
-  // Talsyntes för förklaringsboxen
-  // ==========================================
-  speakText(text: string | undefined) {
-    if (!text) return;
-
-    if (this.isSpeakingTafsir && !this.isTafsirPaused) {
-      window.speechSynthesis.pause();
-      this.isTafsirPaused = true;
+    toggleRawiZoom(boxElement: HTMLElement) {
+      this.isRawiMaximized = !this.isRawiMaximized;
+      if (!this.isRawiMaximized) {
+        this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
+            this.isExplanationShown = false;
+      }
+      if (this.isRawiMaximized) {
+        document.body.style.overflow = 'hidden'; 
+      } else {
+        document.body.style.overflow = 'auto';   
+      }
       this.cdr.detectChanges();
-      return;
+      setTimeout(() => {
+        if (boxElement) {
+          boxElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',   
+            inline: 'nearest'
+          });
+        }
+      }, 100); 
     }
-
-    if (this.isSpeakingTafsir && this.isTafsirPaused) {
-      window.speechSynthesis.resume();
-      this.isTafsirPaused = false;
-      this.cdr.detectChanges();
-      return;
-    }
-
-    window.speechSynthesis.cancel(); 
-    
-    const plainText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(plainText);
-
-    utterance.lang = 'ar';
-    utterance.rate = 0.9;
-
-    utterance.onstart = () => {
-      this.isSpeakingTafsir = true;
-      this.isTafsirPaused = false;
-      this.cdr.detectChanges();
-    };
-
-    utterance.onend = () => {
-      this.stopSpeakingTafsir();
-    };
-
-    utterance.onerror = (event) => {
-      console.error("حدث خطأ في القراءة الصوتية:", event.error);
-      this.stopSpeakingTafsir();
-    };
-
-    window.speechSynthesis.speak(utterance);
-  }
-
-  stopSpeakingTafsir() {
-    window.speechSynthesis.cancel();
-    this.isSpeakingTafsir = false;
-    this.isTafsirPaused = false;
-    this.cdr.detectChanges();
-  }
-
-  // ==========================================
-  // Synkroniserat ljudspår för själva texten (يدعم الكاش بالخلفية)
-  // ==========================================
-  playHadithAudio(url: string | undefined) {
-    if (!url) return;
-    
-    // 1. إذا كان الصوت يعمل وحالته مشغل -> نقوم بعمل إيقاف مؤقت
-    if (this.currentAudio && this.isPlaying) { 
-      this.currentAudio.pause(); 
-      this.isPlaying = false; 
-      this.cdr.detectChanges(); 
-      return; 
-    }
-    
-    // 2. إذا كان الملف الصوتي مجهز مسبقاً ومتوقف -> نستأنف تشغيله مباشرة
-    if (this.currentAudio && !this.isPlaying) { 
-      this.isPlaying = true; 
-      this.cdr.detectChanges(); 
-      this.currentAudio.play().catch(() => this.isPlaying = false); 
-      return; 
-    }
-    
-    window.speechSynthesis.cancel();
-
-    // 3. إذا كانت المرة الأولى لتشغيل هذا الملف الصوتي:
-    // نقوم بجلب الملف كاملاً كـ Blob لضمان إجبار الـ Service Worker على تخزينه للأوف لاين
-    this.http.get(url, { responseType: 'blob' }).subscribe({
-      next: (blob) => {
-        const localBlobUrl = URL.createObjectURL(blob);
-        
-        this.currentAudio = new Audio(localBlobUrl);
-        this.isPlaying = true;
-        this.cdr.detectChanges();
-        
-        // ربط التزامن الزمني مع الكلمات والتظليل
-        this.currentAudio.ontimeupdate = () => {
-          if (!this.currentAudio) return;
-          const currentTime = this.currentAudio.currentTime;
-          const index = this.hadith.phrases.findIndex(p => currentTime >= p.start && currentTime < p.end);
-          if (index !== this.currentPhraseIndex) { 
-            this.currentPhraseIndex = index; 
-            this.cdr.detectChanges(); 
-          }
-        };
-        
-        this.currentAudio.play()
-          .then(() => this.cdr.detectChanges())
-          .catch(() => this.isPlaying = false);
-          
-        this.currentAudio.onended = () => { 
-          this.isPlaying = false; 
-          this.currentPhraseIndex = -1; 
-          this.currentAudio = null; 
-          this.cdr.detectChanges(); 
-        };
-      },
-      error: (err) => {
-        console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين ولم يخزن هذا الملف مسبقاً:", err);
-        this.isPlaying = false;
+  
+    zoomInRawi() {
+      if (this.fontSizeRawi < 36) {
+        this.fontSizeRawi += 2;
         this.cdr.detectChanges();
       }
-    });
-  }
-
-  // 🧹 تنظيف وتدمير الأصوات فور مغادرة الصفحة لمنع التداخل
-  ngOnDestroy() {
-    if (this.currentAudio) {
-      this.currentAudio.pause();
-      this.currentAudio = null;
     }
-    window.speechSynthesis.cancel();
+    zoomOutRawi() {
+      if (this.fontSizeRawi > 12) {
+        this.fontSizeRawi -= 2;
+        this.cdr.detectChanges();
+      }
+    }
+  
+    toggleBox1Zoom(boxElement: HTMLElement) {
+      this.isBox1Maximized = !this.isBox1Maximized;
+  
+      if (this.isBox1Maximized) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto'; 
+        this.fontSizeBox1 = 16;
+        this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+      }
+  
+      this.cdr.detectChanges();
+  
+      setTimeout(() => {
+        if (boxElement) {
+          boxElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',  
+            inline: 'center'
+          });
+        }
+      }, 100);
+    }
+  
+    zoomInBox1(boxElement: HTMLElement) {
+      if (this.fontSizeBox1 < 36) {
+        this.fontSizeBox1 += 2;
+        this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+      }
+    }
+  
+    zoomOutBox1(boxElement: HTMLElement) {
+      if (this.fontSizeBox1 > 14) {
+        this.fontSizeBox1 -= 2;
+        this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+      }
+    }
+  
+    private applyFontChangeDirect(element: HTMLElement, size: number) {
+      if (element) {
+        element.style.setProperty('--dynamic-font-size', `${size}px`);
+        this.cdr.detectChanges();
+      }
+    }
+  
+    toggleExplanation() {
+      this.isExplanationShown = !this.isExplanationShown;
+    }
+  
+    private applyFontChange(selector: string, size: number) {
+      const element = document.querySelector(selector) as HTMLElement;
+      if (element) {
+        element.style.setProperty('--dynamic-font-size', `${size}px`);
+        this.cdr.detectChanges();
+      }
+    }
+  
+    // ==========================================
+    // Talsyntes för förklaringsboxen
+    // ==========================================
+  
+    speakText(text: string | undefined) {
+      if (!text) return;
+      if (this.isSpeakingTafsir && !this.isTafsirPaused) {
+        window.speechSynthesis.pause();
+        this.isTafsirPaused = true;
+        this.cdr.detectChanges();
+        return;
+      }
+      if (this.isSpeakingTafsir && this.isTafsirPaused) {
+        window.speechSynthesis.resume();
+        this.isTafsirPaused = false;
+        this.cdr.detectChanges();
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const plainText = text.replace(/<[^>]*>/g, '');
+      const utterance = new SpeechSynthesisUtterance(plainText);
+      utterance.lang = 'ar';
+      utterance.rate = 0.9;
+      utterance.onstart = () => {
+        this.isSpeakingTafsir = true;
+        this.isTafsirPaused = false;
+        this.cdr.detectChanges();
+      };
+      utterance.onend = () => {
+        this.stopSpeakingTafsir();
+      };
+      utterance.onerror = (event) => {
+        console.error("حدث خطأ في القراءة الصوتية:", event.error);
+        this.stopSpeakingTafsir();
+      };
+      window.speechSynthesis.speak(utterance);
+    }
+  
+    stopSpeakingTafsir() {
+      window.speechSynthesis.cancel();
+      this.isSpeakingTafsir = false;
+      this.isTafsirPaused = false;
+      this.cdr.detectChanges();
+    }
+  
+    // ==========================================
+    // Synkroniserat ljudspår för själva texten (Mappat till Slider)
+    // ==========================================
+  
+    playHadithAudio(url: string | undefined) {
+      if (!url) return;
+  
+      if (this.currentAudio && this.isPlaying) {
+        this.currentAudio.pause();
+        this.isPlaying = false;
+        this.cdr.detectChanges();
+        return;
+      }
+  
+      if (this.currentAudio && !this.isPlaying) {
+        this.isPlaying = true;
+        this.cdr.detectChanges();
+        this.currentAudio.play().catch(() => this.isPlaying = false);
+        return;
+      }
+  
+      window.speechSynthesis.cancel();
+  
+      this.http.get(url, { responseType: 'blob' }).subscribe({
+        next: (blob) => {
+          const localBlobUrl = URL.createObjectURL(blob);
+          
+          this.currentAudio = new Audio(localBlobUrl);
+          this.isPlaying = true;
+          this.cdr.detectChanges();
+  
+          // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
+          this.currentAudio.onloadedmetadata = () => {
+            if (this.currentAudio) {
+              this.duration = this.currentAudio.duration;
+              this.cdr.detectChanges();
+            }
+          };
+          
+          // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
+          this.currentAudio.ontimeupdate = () => {
+            if (!this.currentAudio) return;
+            this.currentTime = this.currentAudio.currentTime;
+  
+            // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
+            const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
+            if (index !== this.currentPhraseIndex) {
+              this.currentPhraseIndex = index;
+            }
+            this.cdr.detectChanges();
+          };
+          
+          this.currentAudio.play()
+            .then(() => this.cdr.detectChanges())
+            .catch(() => this.isPlaying = false);
+            
+          this.currentAudio.onended = () => {
+            this.isPlaying = false;
+            this.currentTime = 0;
+            this.currentPhraseIndex = -1;
+            this.currentAudio = null;
+            this.cdr.detectChanges();
+          };
+        },
+        error: (err) => {
+          console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين ولم يخزن هذا الملف مسبقاً:", err);
+          this.isPlaying = false;
+          this.cdr.detectChanges();
+        }
+      });
+    }
+  
+    // ⏭️ القفز الذكي للجملة التالية
+    skipToNextPhrase() {
+      if (!this.currentAudio || !this.hadith?.phrases) return;
+      const nextIndex = this.currentPhraseIndex + 1;
+      if (nextIndex >= 0 && nextIndex < this.hadith.phrases.length) {
+        this.currentAudio.currentTime = this.hadith.phrases[nextIndex].start;
+        this.currentTime = this.currentAudio.currentTime;
+        this.cdr.detectChanges();
+      }
+    }
+  
+    // ⏮️ الترجيع الذكي للجملة السابقة (بحسب الاستهلاك الزمني للجملة الحالية)
+    skipToPreviousPhrase() {
+      if (!this.currentAudio || !this.hadith?.phrases) return;
+      
+      // إذا لم يعثر على أي جملة، نرجعه لبداية الصوت
+      if (this.currentPhraseIndex === -1) {
+        this.currentAudio.currentTime = 0;
+        return;
+      }
+  
+      const currentPhrase = this.hadith.phrases[this.currentPhraseIndex];
+      const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
+  
+      // إذا استمع لأكثر من ثانيتين من الجملة، يعود لبدايتها، وإلا يعود للجملة السابقة تماماً
+      if (progressInPhrase > 2) {
+        this.currentAudio.currentTime = currentPhrase.start;
+      } else if (this.currentPhraseIndex > 0) {
+        const prevPhrase = this.hadith.phrases[this.currentPhraseIndex - 1];
+        this.currentAudio.currentTime = prevPhrase.start;
+      } else {
+        this.currentAudio.currentTime = 0;
+      }
+      this.currentTime = this.currentAudio.currentTime;
+      this.cdr.detectChanges();
+    }
+  
+    // 🎚️ السحب اليدوي للمؤشر الشريطي من قبل المستخدم
+    onSliderChange(event: any) {
+      if (this.currentAudio) {
+        this.currentAudio.currentTime = Number(event.target.value);
+        this.currentTime = this.currentAudio.currentTime;
+        this.cdr.detectChanges();
+      }
+    }
+  
+    ngOnDestroy() {
+      document.body.style.overflow = 'auto';
+      if (this.currentAudio) {
+        this.currentAudio.pause();
+        this.currentAudio = null;
+      }
+      window.speechSynthesis.cancel();
+    }
+  
+    closeExplanationAndScroll(targetElement: HTMLElement) {
+      this.isExplanationShown = false;
+      this.cdr.detectChanges();
+      setTimeout(() => {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 50); 
+    }
   }
-}

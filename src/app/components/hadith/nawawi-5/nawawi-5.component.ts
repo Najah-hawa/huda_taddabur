@@ -1,67 +1,53 @@
-import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http'; // 👈 استيراد HttpClient لتنزيل الملف بالكامل
+import { HttpClient } from '@angular/common/http'; 
 import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 
-// 📥 استيراد كل شيء من ملف البيانات الخارجي دفعة واحدة بما فيها المصفوفات الجديدة
-import { 
-  hadithDetails,
-  hadithImportanceList, 
-  hadithFawaedList 
-} from './hadith5-data';
+// 📥 Hämta strukturerad data specifikt för Hadith 7
+import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith5-data';
 
 @Component({
   selector: 'app-nawawi-5',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    SurahHintComponent,
-    FooterInfoComponent,
-    NextBeforeSurahMenyComponent,
-    ZoomControlsComponent
-  ],
+  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
   templateUrl: './nawawi-5.component.html',
   styleUrl: './nawawi-5.component.css'
 })
+
 export class Nawawi5Component implements OnInit, OnDestroy {
-  // 👈 حقن خدمة HttpClient باستخدام inject
+
+  
   private http = inject(HttpClient);
 
-  // ربط المتغيرات المحلية بالبيانات المستوردة
   hadith = hadithDetails;
-  box1Items = hadithImportanceList; // 👈 هنا ربطنا أهمية الحديث
-  box2Items = hadithFawaedList;     // 👈 هنا ربطنا الفوائد
+  box1Items = hadithImportanceList;
+  box2Items = hadithFawaedList;    
 
-  // 🔎 تتبع أحجام الخطوط لكل حاوية وصندوق بشكل مستقل لمنع التداخل (طبقاً للمعيار الجديد)
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
   fontSizeBox2: number = 16;
-
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
-  isPlaying: boolean = false; 
+  isPlaying: boolean = false;
   currentPhraseIndex: number = -1;
 
-  // Zoomkontroller för helskärmsmoduler enligt standard
-  isRawiMaximized: boolean = false;
+  // 🎵 متغيرات المشغل الصوتي المطور (Audio Player)
+  currentTime: number = 0;
+  duration: number = 0;
+
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
+  isRawiMaximized: boolean = false;
 
-  // Kontroller för talsyntesen av förklaringen
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
-  constructor(
-    private cdr: ChangeDetectorRef, 
-    private titleService: Title, 
-    private metaService: Meta
-  ) {}
+  constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 
   ngOnInit() {
     // 🏷️ تعيين عنوان الصفحة الديناميكي (Title Tag) Bevarat exakt
@@ -83,34 +69,28 @@ export class Nawawi5Component implements OnInit, OnDestroy {
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
 
-  // ==========================================
-  // Gränssnittskontroller & Zoom (الحاوية الشاملة/الراوي)
-  // ==========================================
+
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
       this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
+          this.isExplanationShown = false;
     }
-
-    // 🔒 قفل أو فتح سكرول الصفحة بناءً على حالة التكبير
     if (this.isRawiMaximized) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'; 
     } else {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto';   
     }
-
     this.cdr.detectChanges();
-    
-    // انتظام السكرول في منتصف الشاشة تماماً بعد أن تأخذ الديف حجمها الجديد
     setTimeout(() => {
       if (boxElement) {
-        boxElement.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start',
-          inline: 'nearest' 
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',   
+          inline: 'nearest'
         });
       }
-    }, 100);
+    }, 100); 
   }
 
   zoomInRawi() {
@@ -119,7 +99,6 @@ export class Nawawi5Component implements OnInit, OnDestroy {
       this.cdr.detectChanges();
     }
   }
-
   zoomOutRawi() {
     if (this.fontSizeRawi > 12) {
       this.fontSizeRawi -= 2;
@@ -127,72 +106,86 @@ export class Nawawi5Component implements OnInit, OnDestroy {
     }
   }
 
-  // ==========================================
-  // التحكم في الفوائد (Box 1 & Box 2) طبقاً للمعيار الذكي الجديد
-  // ==========================================
   toggleBox1Zoom(boxElement: HTMLElement) {
     this.isBox1Maximized = !this.isBox1Maximized;
+
     if (this.isBox1Maximized) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';  
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox1 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
     }
+
     this.cdr.detectChanges();
+
     setTimeout(() => {
       if (boxElement) {
-        boxElement.scrollIntoView({ 
-          behavior: 'smooth', 
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
           block: 'center',  
-          inline: 'center' 
+          inline: 'center'
         });
       }
-    }, 100); 
+    }, 100);
   }
 
-  zoomInBox1() {
+  zoomInBox1(boxElement: HTMLElement) {
     if (this.fontSizeBox1 < 36) {
       this.fontSizeBox1 += 2;
-      this.applyFontChange('.box1-container', this.fontSizeBox1);
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
     }
   }
 
-  zoomOutBox1() {
+  zoomOutBox1(boxElement: HTMLElement) {
     if (this.fontSizeBox1 > 14) {
       this.fontSizeBox1 -= 2;
-      this.applyFontChange('.box1-container', this.fontSizeBox1);
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+    }
+  }
+
+  private applyFontChangeDirect(element: HTMLElement, size: number) {
+    if (element) {
+      element.style.setProperty('--dynamic-font-size', `${size}px`);
+      this.cdr.detectChanges();
     }
   }
 
   toggleBox2Zoom(boxElement: HTMLElement) {
     this.isBox2Maximized = !this.isBox2Maximized;
+
     if (this.isBox2Maximized) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'auto';  
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox2 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
     }
+
     this.cdr.detectChanges();
+
     setTimeout(() => {
       if (boxElement) {
-        boxElement.scrollIntoView({ 
-          behavior: 'smooth', 
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
           block: 'center',  
-          inline: 'center' 
+          inline: 'center'
         });
       }
-    }, 100); 
+    }, 100);
   }
 
-  zoomInBox2() {
+  zoomInBox2(boxElement: HTMLElement) {
     if (this.fontSizeBox2 < 36) {
       this.fontSizeBox2 += 2;
-      this.applyFontChange('.box2-container', this.fontSizeBox2);
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
     }
   }
 
-  zoomOutBox2() {
+  zoomOutBox2(boxElement: HTMLElement) {
     if (this.fontSizeBox2 > 14) {
       this.fontSizeBox2 -= 2;
-      this.applyFontChange('.box2-container', this.fontSizeBox2);
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
     }
   }
 
@@ -200,7 +193,6 @@ export class Nawawi5Component implements OnInit, OnDestroy {
     this.isExplanationShown = !this.isExplanationShown;
   }
 
-  // 🛠️ الدالة المحدثة الذكية لتغيير حجم نصوص حاويات الفوائد ديناميكياً
   private applyFontChange(selector: string, size: number) {
     const element = document.querySelector(selector) as HTMLElement;
     if (element) {
@@ -210,48 +202,40 @@ export class Nawawi5Component implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // ميزة القراءة الصوتية للشرح (TTS)
+  // Talsyntes för förklaringsboxen
   // ==========================================
+
   speakText(text: string | undefined) {
     if (!text) return;
-
     if (this.isSpeakingTafsir && !this.isTafsirPaused) {
       window.speechSynthesis.pause();
       this.isTafsirPaused = true;
       this.cdr.detectChanges();
       return;
     }
-
     if (this.isSpeakingTafsir && this.isTafsirPaused) {
       window.speechSynthesis.resume();
       this.isTafsirPaused = false;
       this.cdr.detectChanges();
       return;
     }
-
-    window.speechSynthesis.cancel(); 
-    
+    window.speechSynthesis.cancel();
     const plainText = text.replace(/<[^>]*>/g, '');
     const utterance = new SpeechSynthesisUtterance(plainText);
-
     utterance.lang = 'ar';
     utterance.rate = 0.9;
-
     utterance.onstart = () => {
       this.isSpeakingTafsir = true;
       this.isTafsirPaused = false;
       this.cdr.detectChanges();
     };
-
     utterance.onend = () => {
       this.stopSpeakingTafsir();
     };
-
     utterance.onerror = (event) => {
       console.error("حدث خطأ في القراءة الصوتية:", event.error);
       this.stopSpeakingTafsir();
     };
-
     window.speechSynthesis.speak(utterance);
   }
 
@@ -263,25 +247,26 @@ export class Nawawi5Component implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // تشغيل وإيقاف صوت متن الحديث المتزامن مع النص
+  // Synkroniserat ljudspår för själva texten (Mappat till Slider)
   // ==========================================
+
   playHadithAudio(url: string | undefined) {
     if (!url) return;
-    
-    if (this.currentAudio && this.isPlaying) { 
-      this.currentAudio.pause(); 
-      this.isPlaying = false; 
-      this.cdr.detectChanges(); 
-      return; 
+
+    if (this.currentAudio && this.isPlaying) {
+      this.currentAudio.pause();
+      this.isPlaying = false;
+      this.cdr.detectChanges();
+      return;
     }
-    
-    if (this.currentAudio && !this.isPlaying) { 
-      this.isPlaying = true; 
-      this.cdr.detectChanges(); 
-      this.currentAudio.play().catch(() => this.isPlaying = false); 
-      return; 
+
+    if (this.currentAudio && !this.isPlaying) {
+      this.isPlaying = true;
+      this.cdr.detectChanges();
+      this.currentAudio.play().catch(() => this.isPlaying = false);
+      return;
     }
-    
+
     window.speechSynthesis.cancel();
 
     this.http.get(url, { responseType: 'blob' }).subscribe({
@@ -291,26 +276,38 @@ export class Nawawi5Component implements OnInit, OnDestroy {
         this.currentAudio = new Audio(localBlobUrl);
         this.isPlaying = true;
         this.cdr.detectChanges();
+
+        // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
+        this.currentAudio.onloadedmetadata = () => {
+          if (this.currentAudio) {
+            this.duration = this.currentAudio.duration;
+            this.cdr.detectChanges();
+          }
+        };
         
+        // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
         this.currentAudio.ontimeupdate = () => {
           if (!this.currentAudio) return;
-          const currentTime = this.currentAudio.currentTime;
-          const index = this.hadith.phrases.findIndex(p => currentTime >= p.start && currentTime < p.end);
-          if (index !== this.currentPhraseIndex) { 
-            this.currentPhraseIndex = index; 
-            this.cdr.detectChanges(); 
+          this.currentTime = this.currentAudio.currentTime;
+
+          // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
+          const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
+          if (index !== this.currentPhraseIndex) {
+            this.currentPhraseIndex = index;
           }
+          this.cdr.detectChanges();
         };
         
         this.currentAudio.play()
           .then(() => this.cdr.detectChanges())
           .catch(() => this.isPlaying = false);
           
-        this.currentAudio.onended = () => { 
-          this.isPlaying = false; 
-          this.currentPhraseIndex = -1; 
-          this.currentAudio = null; 
-          this.cdr.detectChanges(); 
+        this.currentAudio.onended = () => {
+          this.isPlaying = false;
+          this.currentTime = 0;
+          this.currentPhraseIndex = -1;
+          this.currentAudio = null;
+          this.cdr.detectChanges();
         };
       },
       error: (err) => {
@@ -321,7 +318,52 @@ export class Nawawi5Component implements OnInit, OnDestroy {
     });
   }
 
-  // 🧹 تنظيف وتدمير الأصوات فور مغادرة الصفحة لمنع التداخل
+  // ⏭️ القفز الذكي للجملة التالية
+  skipToNextPhrase() {
+    if (!this.currentAudio || !this.hadith?.phrases) return;
+    const nextIndex = this.currentPhraseIndex + 1;
+    if (nextIndex >= 0 && nextIndex < this.hadith.phrases.length) {
+      this.currentAudio.currentTime = this.hadith.phrases[nextIndex].start;
+      this.currentTime = this.currentAudio.currentTime;
+      this.cdr.detectChanges();
+    }
+  }
+
+  // ⏮️ الترجيع الذكي للجملة السابقة (بحسب الاستهلاك الزمني للجملة الحالية)
+  skipToPreviousPhrase() {
+    if (!this.currentAudio || !this.hadith?.phrases) return;
+    
+    // إذا لم يعثر على أي جملة، نرجعه لبداية الصوت
+    if (this.currentPhraseIndex === -1) {
+      this.currentAudio.currentTime = 0;
+      return;
+    }
+
+    const currentPhrase = this.hadith.phrases[this.currentPhraseIndex];
+    const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
+
+    // إذا استمع لأكثر من ثانيتين من الجملة، يعود لبدايتها، وإلا يعود للجملة السابقة تماماً
+    if (progressInPhrase > 2) {
+      this.currentAudio.currentTime = currentPhrase.start;
+    } else if (this.currentPhraseIndex > 0) {
+      const prevPhrase = this.hadith.phrases[this.currentPhraseIndex - 1];
+      this.currentAudio.currentTime = prevPhrase.start;
+    } else {
+      this.currentAudio.currentTime = 0;
+    }
+    this.currentTime = this.currentAudio.currentTime;
+    this.cdr.detectChanges();
+  }
+
+  // 🎚️ السحب اليدوي للمؤشر الشريطي من قبل المستخدم
+  onSliderChange(event: any) {
+    if (this.currentAudio) {
+      this.currentAudio.currentTime = Number(event.target.value);
+      this.currentTime = this.currentAudio.currentTime;
+      this.cdr.detectChanges();
+    }
+  }
+
   ngOnDestroy() {
     document.body.style.overflow = 'auto';
     if (this.currentAudio) {
@@ -331,16 +373,14 @@ export class Nawawi5Component implements OnInit, OnDestroy {
     window.speechSynthesis.cancel();
   }
 
-  // دالة إغلاق صندوق الشرح والسكرول المرن لأعلى صندوق الحديث
   closeExplanationAndScroll(targetElement: HTMLElement) {
     this.isExplanationShown = false;
     this.cdr.detectChanges();
-    
     setTimeout(() => {
-      targetElement.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
-    }, 50);
+    }, 50); 
   }
 }

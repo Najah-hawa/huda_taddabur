@@ -9,104 +9,150 @@
     [RoutelinkAfter]="'/hadith/nawawi-6'" [SurahNext]="'الحديث السادس'"> 
   </app-next-before-surah-meny>
 
-  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;">
-      📚 المصدر: <b>متن الأربعين النووية</b>
-  </p>
 
-  <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
+<div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
 
-    <div class="box1-container ">
-      <app-zoom-controls 
-        [isMaximized]="isRawiMaximized" (onToggle)="toggleRawiZoom(hadithBox)" (onZoomIn)="zoomInRawi()" (onZoomOut)="zoomOutRawi()">
-      </app-zoom-controls>
-    </div>
-
-    <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
-      <div class="verse-block hadith-main-block-modern">
+  <div class="box-container ">
+    <app-zoom-controls
+      [isMaximized]="isRawiMaximized" (onToggle)="toggleRawiZoom(hadithBox)" (onZoomIn)="zoomInRawi()" (onZoomOut)="zoomOutRawi()">
+    </app-zoom-controls>
+  </div>
+  <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
+    <div class="verse-block hadith-main-block-modern">
+      <div class="hadith-audio-trigger-wrapper">
         
-        <div class="hadith-audio-trigger-wrapper">
-          <button class="modern-hadith-audio-btn" (click)="playHadithAudio(hadith.audioUrl)">
-            {{ isPlaying ? '⏸️ إيقاف مؤقت للحديث' : '▶️ استمع لمتن الحديث' }}
-          </button>
-        </div>
 
-        <div class="hadith-text-full-width">
-          <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
-            @for (phrase of hadith.phrases; track $index) {
-              <span [class.highlighted-phrase]="$index === currentPhraseIndex">
-                {{ phrase.text }} 
-              </span>
-            }
-          </p>
-        </div>
+ <!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
+<!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
+<div class="hadith-audio-player-wrapper">
+  
+  <!-- أزرار التحكم الذكية بالحديث (جملة جملة) -->
+  <div class="hadith-player-buttons">
+    
+  
+        <!-- ⏩ الزر اللي على اليمين بيرجع للجملة السابقة -->
+    <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
+      ⏭️
+    </button>
+    
+    <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
+      {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+    </button>
+    
+  <!-- ⏪ الزر اللي على اليسار بيقدم للجملة التالية -->
+    <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
+      ⏮️
+    </button>
+  </div>
 
-        <div class="tafsir-toggle-wrapper">
-          <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
-            <span>📚 شرح الحديث والمفردات</span>
-            <span class="arrow" [class.open]="isExplanationShown">▼</span>
-          </button>
-        </div>
+  <!-- شريط التحكم بالوقت (Progress Slider) -->
+  <div class="hadith-player-slider-container">
+    <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
+    
+    <input 
+      type="range" 
+      [min]="0" 
+      [max]="duration" 
+      [value]="currentTime" 
+      (input)="onSliderChange($event)"
+      class="hadith-audio-slider" />
+      
+    <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
+  </div>
 
-        <div class="tafsir-modern-box" *ngIf="isExplanationShown" 
-             [style.font-size.px]="fontSizeRawi"
-             [style.--current-zoom.px]="fontSizeRawi">
-          
-          <div class="tafsir-header-row">
-            <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
-            
-            <div class="tafsir-audio-actions">
-              <button (click)="speakText(hadith.explanation)" class="modern-tafsir-audio-btn">
-                {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
-              </button>
+</div>
 
-              <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
-                🛑
-              </button>
-            </div>
-          </div>
 
-          <div [innerHTML]="hadith.explanation" class="tafsir-content-inner"></div>
-          
-          <div class="bottom-close-wrapper">
-            <button class="modern-tafsir-close-btn-bottom" (click)="closeExplanationAndScroll(hadithBox)">
-              ❌ إغلاق شرح المفردات
+
+      </div>
+      <div class="hadith-text-full-width">
+        <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
+          @for (phrase of hadith.phrases; track $index) {
+            <span [class.highlighted-phrase]="$index === currentPhraseIndex">
+              {{ phrase.text }}
+            </span>
+          }
+        </p>
+      </div>
+      <div class="tafsir-toggle-wrapper">
+        <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
+          <span>📚 شرح الحديث والمفردات</span>
+          <span class="arrow" [class.open]="isExplanationShown">▼</span>
+        </button>
+      </div>
+
+      <div class="tafsir-modern-box" *ngIf="isExplanationShown"
+           [style.font-size.px]="fontSizeRawi"
+           [style.--current-zoom.px]="fontSizeRawi">
+        <div class="tafsir-header-row">
+          <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
+          <div class="tafsir-audio-actions">
+            <button (click)="speakText(hadith.explanation)" class="modern-tafsir-audio-btn">
+              {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
             </button>
-          </div> 
+            <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
+              🛑
+            </button>
+          </div>
         </div>
 
+        <div [innerHTML]="hadith.explanation" class="tafsir-content-inner"></div>
+        <div class="bottom-close-wrapper">
+          <button class="modern-tafsir-close-btn-bottom" (click)="closeExplanationAndScroll(hadithBox)">
+            ❌ إغلاق شرح المفردات
+          </button>
+        </div>
       </div>
     </div>
   </div>
+  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;"> 📚 المصدر: <b>متن الأربعين النووية</b></p>
+</div>
 
-  <div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
+  <!-- الحاوية 2: فوائد الحديث (Box 1) -->
+<div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
 
-    <app-zoom-controls 
-      [isMaximized]="isBox1Maximized" (onToggle)="toggleBox1Zoom(box1)" (onZoomIn)="zoomInBox1()" (onZoomOut)="zoomOutBox1()">
-    </app-zoom-controls>
 
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
-    
-    <div class="box-list-wrapper">
-      <ul class="custom-presentation-list">
-        <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
-      </ul>
-    </div>
-  </div>
+  <app-zoom-controls
+    [isMaximized]="isBox1Maximized"  
+    (onToggle)="toggleBox1Zoom(box1)" 
+    (onZoomIn)="zoomInBox1(box1)" 
+    (onZoomOut)="zoomOutBox1(box1)">
+  </app-zoom-controls>
+
+  
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 حكم و أداب النصيحة  </h2>
+
+  <div class="box-list-wrapper">
+  <ul class="custom-presentation-list">
+    <!-- استخدام الطريقة العادية ومسح innerHTML يضمن ظهورها 100% على Vercel -->
+    <li *ngFor="let item of box1Items">
+      <span [textContent]="item"></span>
+    </li>
+  </ul>
+ </div>
+</div>
+
+
+  <!-- الحاوية 3: أهمية الحديث (Box 2) -->
 
   <div #box2 class="fawaed-box-container mini box2-container" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px; position: relative;">
 
-    <app-zoom-controls 
-      [isMaximized]="isBox2Maximized" (onToggle)="toggleBox2Zoom(box2)" (onZoomIn)="zoomInBox2()" (onZoomOut)="zoomOutBox2()">
-    </app-zoom-controls>
+  <app-zoom-controls
+    [isMaximized]="isBox2Maximized"  
+    (onToggle)="toggleBox2Zoom(box2)" 
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
+  </app-zoom-controls>
 
-    <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أهمية الحديث {{ hadith.name }}</h2>
-    
-    <div class="box-list-wrapper">
-      <ul class="custom-presentation-list">
-        <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
-      </ul>
-    </div>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
+    </ul>
   </div>
+</div>
+
 
 </div>
 
