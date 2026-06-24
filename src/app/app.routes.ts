@@ -55,38 +55,51 @@ export const routes: Routes = [
     loadComponent: () => import('./components/fiqh/purity-fiqh/purity-fiqh.component').then(m => m.PurityFiqhComponent)
   },
 
+  // ⬇️ هنا نقوم بإضافة مسارات المسابقات الجديدة بأسلوب الـ Lazy Loading ⬇️
+  {
+    path: 'quiz',
+    loadComponent: () => import('./components/quiz/quiz-menu/quiz-menu.component').then(m => m.QuizMenuComponent)
+  },
+  {
+    path: 'quiz/mohamad-family',
+    loadComponent: () => import('./components/quiz/mohamad-family/mohamad-family.component').then(m => m.MohamadFamilyComponent)
+  },
 // ⬇️ هنا نقوم بإضافة مسارات الحديث الجديدة بأسلوب الـ Lazy Loading ⬇️
   {
     path: 'hadith',
     loadComponent: () => import('./components/hadith/hadith-menu/hadith-menu.component').then(m => m.HadithMenuComponent)
   },
   {
-    path: 'hadith/nawawi-1',
-    loadComponent: () => import('./components/hadith/nawawi-1/nawawi-1.component').then(m => m.Nawawi1Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-1',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-1/nawawi-1.component').then(m => m.Nawawi1Component)
   },
    {
-    path: 'hadith/nawawi-2',
-    loadComponent: () => import('./components/hadith/nawawi-2/nawawi-2.component').then(m => m.Nawawi2Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-2',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-2/nawawi-2.component').then(m => m.Nawawi2Component)
   },
   {
-    path: 'hadith/nawawi-3',
-    loadComponent: () => import('./components/hadith/nawawi-3/nawawi-3.component').then(m => m.Nawawi3Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-3',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-3/nawawi-3.component').then(m => m.Nawawi3Component)
   },
   {
-    path: 'hadith/nawawi-4',
-    loadComponent: () => import('./components/hadith/nawawi-4/nawawi-4.component').then(m => m.Nawawi4Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-4',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-4/nawawi-4.component').then(m => m.Nawawi4Component)
   },
   {
-    path: 'hadith/nawawi-5',
-    loadComponent: () => import('./components/hadith/nawawi-5/nawawi-5.component').then(m => m.Nawawi5Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-5',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-5/nawawi-5.component').then(m => m.Nawawi5Component)
   },
   {
-    path: 'hadith/nawawi-6',
-    loadComponent: () => import('./components/hadith/nawawi-6/nawawi-6.component').then(m => m.Nawawi6Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-6',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-6/nawawi-6.component').then(m => m.Nawawi6Component)
   },
   {
-    path: 'hadith/nawawi-7',
-    loadComponent: () => import('./components/hadith/nawawi-7/nawawi-7.component').then(m => m.Nawawi7Component)
+    path: 'hadith/hadith-nawawi-40/nawawi-7',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-7/nawawi-7.component').then(m => m.Nawawi7Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-8',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-8/nawawi-8.component').then(m => m.Nawawi8Component)
   },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' }

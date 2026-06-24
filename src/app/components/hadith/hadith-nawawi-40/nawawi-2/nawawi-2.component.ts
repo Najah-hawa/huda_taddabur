@@ -3,37 +3,34 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
-import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
-import { FooterInfoComponent } from '../../footer-info/footer-info.component';
-import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component';
-import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
+import { SurahHintComponent } from "../../../surah-hint/surah-hint.component";
+import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
+import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
+import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
-// 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1, hadithFawaed2} from './hadith6-data';
+// 📥 Hämta strukturerad data specifikt för Hadith 7
+import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith2-data';
 
 @Component({
-  selector: 'app-nawawi-6',
+  selector: 'app-nawawi-7',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './nawawi-6.component.html',
-  styleUrl: './nawawi-6.component.css'
+  templateUrl: './nawawi-2.component.html',
+  styleUrl: './nawawi-2.component.css'
 })
 
-export class Nawawi6Component implements OnInit, OnDestroy {
+export class Nawawi2Component implements OnInit, OnDestroy {
 
+  
   private http = inject(HttpClient);
 
   hadith = hadithDetails;
   box1Items = hadithImportanceList;
   box2Items = hadithFawaedList;    
-  box3Items = hadithFawaed1;
-  box4Items = hadithFawaed2;  
 
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
   fontSizeBox2: number = 16;
-  fontSizeBox3: number = 16;
-  fontSizeBox4: number = 16;
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
@@ -45,8 +42,6 @@ export class Nawawi6Component implements OnInit, OnDestroy {
 
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
-  isBox3Maximized: boolean = false;
-  isBox4Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   isSpeakingTafsir: boolean = false;
@@ -55,17 +50,17 @@ export class Nawawi6Component implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 
   ngOnInit() {
-    this.titleService.setTitle('الحديث السادس: إن الحلال بين وإن الحرام بين - شروح الأربعين النووية');
+    this.titleService.setTitle('الحديث السابع: الدين النصيحة - شروح الأربعين النووية');
     this.metaService.updateTag({
       name: 'description',
-      content: 'شرح وتدبر الحديث السادس من الأربعين النووية (الحلال والحرام والمشتبهات)، مع بيان أثر أكل الحلال على صلاح القلب وأقوال الفقهاء في الشبهات.'
+      content: 'شرح وتدبر الحديث السابع من الأربعين النووية (الدين النصيحة)، مع بيان حكم النصيحة وآدابها وكيف تكون لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم.'
     });
     this.metaService.updateTag({
       name: 'keywords',
-      content: 'الحلال والحرام, المشتبهات, الحديث السادس, الأربعون النووية, النعمان بن بشير, صلاح القلب, اتقاء الشبهات, شرح الحديث'
+      content: 'الدين النصيحة, الحديث السابع, الأربعون النووية, تميم بن أوس الداري, حكم النصيحة, آداب النصيحة, النصيحة لله ولكتابه, شرح الحديث'
     });
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث السادس: إن الحلال بين وإن الحرام بين - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث السادس مع الشرح الصوتي، تفسير المفردات الغامضة، وأبرز الفوائد عن مغذيات القلب وصلاحه.' });
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث السابع: الدين النصيحة - تدبر تفاعلي' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث السابع مع الشرح الصوتي، تفسير المفردات، وأبرز الفوائد عن كون النصيحة فرض كفاية ومن أعظم الأعمال.' });
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
 
@@ -73,7 +68,8 @@ export class Nawawi6Component implements OnInit, OnDestroy {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
       this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
-          this.isExplanationShown = false;
+      // 💡 هذا هو السطر السحري الناقص! عندما يغلق المستخدم العرض، نغلق الشرح تلقائياً
+    this.isExplanationShown = false;
     }
     if (this.isRawiMaximized) {
       document.body.style.overflow = 'hidden'; 
@@ -188,82 +184,6 @@ export class Nawawi6Component implements OnInit, OnDestroy {
     }
   }
 
-  toggleBox3Zoom(boxElement: HTMLElement) {
-    this.isBox3Maximized = !this.isBox3Maximized;
-
-    if (this.isBox3Maximized) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto'; 
-      this.fontSizeBox3 = 16;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-
-    this.cdr.detectChanges();
-
-    setTimeout(() => {
-      if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',  
-          inline: 'center'
-        });
-      }
-    }, 100);
-  }
-
-  zoomInBox3(boxElement: HTMLElement) {
-    if (this.fontSizeBox3 < 36) {
-      this.fontSizeBox3 += 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-  }
-
-  zoomOutBox3(boxElement: HTMLElement) {
-    if (this.fontSizeBox3 > 14) {
-      this.fontSizeBox3 -= 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-  }
-
-  toggleBox4Zoom(boxElement: HTMLElement) {
-    this.isBox4Maximized = !this.isBox4Maximized;
-
-    if (this.isBox4Maximized) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto'; 
-      this.fontSizeBox4 = 16;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
-    }
-
-    this.cdr.detectChanges();
-
-    setTimeout(() => {
-      if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',  
-          inline: 'center'
-        });
-      }
-    }, 100);
-  }
-
-  zoomInBox4(boxElement: HTMLElement) {
-    if (this.fontSizeBox4 < 36) {
-      this.fontSizeBox4 += 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
-    }
-  }
-
-  zoomOutBox4(boxElement: HTMLElement) {
-    if (this.fontSizeBox4 > 14) {
-      this.fontSizeBox4 -= 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
-    }
-  }
-
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;
   }
@@ -322,7 +242,7 @@ export class Nawawi6Component implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // المشغل الصوتي المطور والمزامن للسلايدر (Hadith 6)
+  // Synkroniserat ljudspår för själva texten (Mappat till Slider)
   // ==========================================
 
   playHadithAudio(url: string | undefined) {
@@ -352,6 +272,7 @@ export class Nawawi6Component implements OnInit, OnDestroy {
         this.isPlaying = true;
         this.cdr.detectChanges();
 
+        // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
         this.currentAudio.onloadedmetadata = () => {
           if (this.currentAudio) {
             this.duration = this.currentAudio.duration;
@@ -359,10 +280,12 @@ export class Nawawi6Component implements OnInit, OnDestroy {
           }
         };
         
+        // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
         this.currentAudio.ontimeupdate = () => {
           if (!this.currentAudio) return;
           this.currentTime = this.currentAudio.currentTime;
 
+          // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
           const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
           if (index !== this.currentPhraseIndex) {
             this.currentPhraseIndex = index;
@@ -401,10 +324,11 @@ export class Nawawi6Component implements OnInit, OnDestroy {
     }
   }
 
-  // ⏮️ الترجيع الذكي للجملة السابقة
+  // ⏮️ الترجيع الذكي للجملة السابقة (بحسب الاستهلاك الزمني للجملة الحالية)
   skipToPreviousPhrase() {
     if (!this.currentAudio || !this.hadith?.phrases) return;
     
+    // إذا لم يعثر على أي جملة، نرجعه لبداية الصوت
     if (this.currentPhraseIndex === -1) {
       this.currentAudio.currentTime = 0;
       return;
@@ -413,6 +337,7 @@ export class Nawawi6Component implements OnInit, OnDestroy {
     const currentPhrase = this.hadith.phrases[this.currentPhraseIndex];
     const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
 
+    // إذا استمع لأكثر من ثانيتين من الجملة، يعود لبدايتها، وإلا يعود للجملة السابقة تماماً
     if (progressInPhrase > 2) {
       this.currentAudio.currentTime = currentPhrase.start;
     } else if (this.currentPhraseIndex > 0) {
@@ -425,7 +350,7 @@ export class Nawawi6Component implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  // 🎚️ السحب اليدوي للمؤشر من قبل المستخدم
+  // 🎚️ السحب اليدوي للمؤشر الشريطي من قبل المستخدم
   onSliderChange(event: any) {
     if (this.currentAudio) {
       this.currentAudio.currentTime = Number(event.target.value);

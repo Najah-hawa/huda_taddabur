@@ -1,12 +1,12 @@
-  <div class="hadith-page-container">
+<div class="hadith-page-container">
  <app-surah-hint
   [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
   [hintText]="hadith.hintText">
 </app-surah-hint>
 
-<app-next-before-surah-meny 
-    [RoutelinkBefore]="'/hadith/nawawi-1'" [SurahBefore]="'الحديث الأول'"
-    [RoutelinkAfter]="'/hadith/nawawi-3'"  [SurahNext]="'الحديث الثالث'"> 
+  <app-next-before-surah-meny 
+    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-2'" [SurahBefore]="'الحديث الثاني'"
+    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-4'"  [SurahNext]="'الحديث الرابع'"> 
   </app-next-before-surah-meny>
 
 <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
@@ -131,26 +131,6 @@
  </div>
 </div>
 
-
-  <!-- الحاوية 3: أهمية الحديث (Box 2) -->
-
-  <div #box2 class="fawaed-box-container mini box2-container" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px; position: relative;">
-
-  <app-zoom-controls
-    [isMaximized]="isBox2Maximized"  
-    (onToggle)="toggleBox2Zoom(box2)" 
-    (onZoomIn)="zoomInBox2(box2)" 
-    (onZoomOut)="zoomOutBox2(box2)">
-  </app-zoom-controls>
-
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
-
-  <div class="box-list-wrapper">
-    <ul class="custom-presentation-list">
-      <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
-    </ul>
-  </div>
-</div>
 
 
 </div>

@@ -5,21 +5,21 @@ import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
 import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
-import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component';
+import { ZoomControlsComponent } from '../../hadith/zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 
 // 📥 Hämta strukturerad data specifikt för Hadith 7
-import { hadithDetails, hadithImportanceList} from './hadith-data';
+import { hadithDetails, hadithImportanceList} from './quiz-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-mohamad-family',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  templateUrl: './mohamad-family.component.html',
+  styleUrl: './mohamad-family.component.css'
 })
 
-export class Nawawi1Component implements OnInit, OnDestroy {
+export class MohamadFamilyComponent implements OnInit, OnDestroy {
 
   
   private http = inject(HttpClient);
@@ -48,7 +48,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
 
    ngOnInit() {
     // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle('الحديث الأول: إنما الأعمال بالنيات - شروح الأربعين النووية');
+    this.titleService.setTitle(' نسب الرسول محمد ﷺ');
 
     this.metaService.updateTag({ 
       name: 'description', 
