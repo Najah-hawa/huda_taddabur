@@ -101,6 +101,22 @@ export const routes: Routes = [
     path: 'hadith/hadith-nawawi-40/nawawi-8',
     loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-8/nawawi-8.component').then(m => m.Nawawi8Component)
   },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-9',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-9/nawawi-9.component').then(m => m.Nawawi9Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-10',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-10/nawawi-10.component').then(m => m.Nawawi10Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-11',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-11/nawawi-11.component').then(m => m.Nawawi11Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-12',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-12/nawawi-12.component').then(m => m.Nawawi12Component)
+  },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

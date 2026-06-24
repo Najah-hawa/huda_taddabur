@@ -1,3 +1,9 @@
+/* Gör så att vanliga radbrytningar i JS-strängar visas korrekt på skärmen */
+.custom-presentation-list li, .benefit-list li {
+  white-space: pre-line;
+  line-height: 1.8;
+}
+
 /* ==========================================================================
    📦 التنسيق الأساسي الموحد لحاوية الحديث والفوائد
    ========================================================================== */
@@ -141,4 +147,6 @@
 .modern-tafsir-close-btn-bottom {
   font-size: var(--current-zoom, 14px);
 }
+
+
 

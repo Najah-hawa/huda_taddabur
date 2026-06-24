@@ -9,17 +9,17 @@ import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.compone
 import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
 // 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1} from './hadith8-data';
+import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1, hadithFawaed2} from './hadith9-data';
 
 @Component({
-  selector: 'app-nawawi-8',
+  selector: 'app-nawawi-9',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './nawawi-8.component.html',
-  styleUrl: './nawawi-8.component.css'
+  templateUrl: './nawawi-9.component.html',
+  styleUrl: './nawawi-9.component.css'
 })
 
-export class Nawawi8Component implements OnInit, OnDestroy {
+export class Nawawi9Component implements OnInit, OnDestroy {
 
   private http = inject(HttpClient);
 
@@ -27,12 +27,13 @@ export class Nawawi8Component implements OnInit, OnDestroy {
   box1Items = hadithImportanceList;
   box2Items = hadithFawaedList;    
   box3Items = hadithFawaed1;
+  box4Items = hadithFawaed2;  
 
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
   fontSizeBox2: number = 16;
   fontSizeBox3: number = 16;
-
+  fontSizeBox4: number = 16;
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
@@ -45,6 +46,7 @@ export class Nawawi8Component implements OnInit, OnDestroy {
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
   isBox3Maximized: boolean = false;
+  isBox4Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   isSpeakingTafsir: boolean = false;
@@ -52,33 +54,19 @@ export class Nawawi8Component implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
-  this.titleService.setTitle('الحديث الثامن: حرمة المسلم - شروح الأربعين النووية');
-  
-  this.metaService.updateTag({
-    name: 'description',
-    content: 'شرح وتدبر الحديث الثامن من الأربعين النووية (حرمة المسلم)، مع بيان أحكام الصلاة والزكاة وعصمة دماء وأموال المسلمين وحساب السرائر.'
-  });
-  
-  this.metaService.updateTag({
-    name: 'keywords',
-    content: 'حرمة المسلم, الحديث الثامن, الأربعون النووية, ابن عمر, عصموا دماءهم, أقم الصلاة, آتوا الزكاة, شرح الحديث, الأربعين النووية'
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:title', 
-    content: 'الحديث الثامن: حرمة المسلم - تدبر تفاعلي' 
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:description', 
-    content: 'اقرأ واستمع إلى متن الحديث الثامن مع الشرح الصوتي، تفسير المفردات، وبيان سبب عدم ذكر الحج والصيام وأحكام تارك الصلاة والزكاة.' 
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:type', 
-    content: 'article' 
-  });
-}
+    this.titleService.setTitle('الحديث التاسع: ما نهيتكم عنه فاجتنبوه - شروح الأربعين النووية');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'شرح وتدبر الحديث التاسع من الأربعين النووية (الأخذ بالتيسير وترك التعسير)، مع بيان سيرة الراوي أبي هريرة والقواعد الفقهية كالضرورات تبيح المحظورات.'
+    });
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'الأخذ بالتيسير, ترك التعسير, الحديث التاسع, الأربعون النووية, أبو هريرة, الضرورات تبيح المحظورات, الميسور لا يسقط بالمعسور, كثرة المسائل, شرح الحديث'
+    });
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث التاسع: الأخذ بالتيسير وترك التعسير - تدبر تفاعلي' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث التاسع مع الشرح الصوتي، تفسير المفردات والقواعد الفقهية، وأبرز الفوائد عن أنواع الأسئلة في الشريعة.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'article' });
+  }
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
@@ -236,6 +224,43 @@ ngOnInit() {
     }
   }
 
+  toggleBox4Zoom(boxElement: HTMLElement) {
+    this.isBox4Maximized = !this.isBox4Maximized;
+
+    if (this.isBox4Maximized) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox4 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
+    }
+
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      if (boxElement) {
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',  
+          inline: 'center'
+        });
+      }
+    }, 100);
+  }
+
+  zoomInBox4(boxElement: HTMLElement) {
+    if (this.fontSizeBox4 < 36) {
+      this.fontSizeBox4 += 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
+    }
+  }
+
+  zoomOutBox4(boxElement: HTMLElement) {
+    if (this.fontSizeBox4 > 14) {
+      this.fontSizeBox4 -= 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox4);
+    }
+  }
 
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;

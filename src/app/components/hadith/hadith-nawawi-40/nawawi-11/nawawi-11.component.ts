@@ -9,17 +9,17 @@ import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.compone
 import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
 // 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1} from './hadith8-data';
+import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1} from './hadith11-data';
 
 @Component({
-  selector: 'app-nawawi-8',
+  selector: 'app-nawawi-11',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './nawawi-8.component.html',
-  styleUrl: './nawawi-8.component.css'
+  templateUrl: './nawawi-11.component.html',
+  styleUrl: './nawawi-11.component.css'
 })
 
-export class Nawawi8Component implements OnInit, OnDestroy {
+export class Nawawi11Component implements OnInit, OnDestroy {
 
   private http = inject(HttpClient);
 
@@ -52,33 +52,19 @@ export class Nawawi8Component implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
-  this.titleService.setTitle('الحديث الثامن: حرمة المسلم - شروح الأربعين النووية');
-  
-  this.metaService.updateTag({
-    name: 'description',
-    content: 'شرح وتدبر الحديث الثامن من الأربعين النووية (حرمة المسلم)، مع بيان أحكام الصلاة والزكاة وعصمة دماء وأموال المسلمين وحساب السرائر.'
-  });
-  
-  this.metaService.updateTag({
-    name: 'keywords',
-    content: 'حرمة المسلم, الحديث الثامن, الأربعون النووية, ابن عمر, عصموا دماءهم, أقم الصلاة, آتوا الزكاة, شرح الحديث, الأربعين النووية'
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:title', 
-    content: 'الحديث الثامن: حرمة المسلم - تدبر تفاعلي' 
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:description', 
-    content: 'اقرأ واستمع إلى متن الحديث الثامن مع الشرح الصوتي، تفسير المفردات، وبيان سبب عدم ذكر الحج والصيام وأحكام تارك الصلاة والزكاة.' 
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:type', 
-    content: 'article' 
-  });
-}
+    this.titleService.setTitle('الحديث الحادي عشر: دع ما يريبك إلى ما لا يريبك - شروح الأربعين النووية');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'شرح وتدبر الحديث الحادي عشر من الأربعين النووية، مع نبذة شاملة عن سبط رسول الله الحسن بن علي، وبيان قاعدة بناء الحياة على اليقين وترك الشك.'
+    });
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'الحديث الحادي عشر, الأربعون النووية, دع ما يريبك, الحسن بن علي, الأخذ باليقين, ترك الشبهات, ريحانة رسول الله, شرح الحديث'
+    });
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الحادي عشر: دع ما يريبك - تدبر تفاعلي' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع للحديث الحادي عشر بتزامن صوتي تفاعلي، وتعرف على سيرة الحسن بن علي وكيف يتولد القلق من الحرام والطمأنينة من الحلال.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'article' });
+  }
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {

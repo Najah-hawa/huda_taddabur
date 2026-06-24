@@ -8,31 +8,29 @@ import { FooterInfoComponent } from '../../../footer-info/footer-info.component'
 import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
-// 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1} from './hadith8-data';
+// 📥 Hämta strukturerad data specifikt för Hadith 7
+import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith10-data';
 
 @Component({
-  selector: 'app-nawawi-8',
+  selector: 'app-nawawi-10',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './nawawi-8.component.html',
-  styleUrl: './nawawi-8.component.css'
+  templateUrl: './nawawi-10.component.html',
+  styleUrl: './nawawi-10.component.css'
 })
 
-export class Nawawi8Component implements OnInit, OnDestroy {
+export class Nawawi10Component implements OnInit, OnDestroy {
 
+  
   private http = inject(HttpClient);
 
   hadith = hadithDetails;
   box1Items = hadithImportanceList;
   box2Items = hadithFawaedList;    
-  box3Items = hadithFawaed1;
 
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
   fontSizeBox2: number = 16;
-  fontSizeBox3: number = 16;
-
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
@@ -44,41 +42,29 @@ export class Nawawi8Component implements OnInit, OnDestroy {
 
   isBox1Maximized: boolean = false;
   isBox2Maximized: boolean = false;
-  isBox3Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
-ngOnInit() {
-  this.titleService.setTitle('الحديث الثامن: حرمة المسلم - شروح الأربعين النووية');
-  
-  this.metaService.updateTag({
-    name: 'description',
-    content: 'شرح وتدبر الحديث الثامن من الأربعين النووية (حرمة المسلم)، مع بيان أحكام الصلاة والزكاة وعصمة دماء وأموال المسلمين وحساب السرائر.'
-  });
-  
-  this.metaService.updateTag({
-    name: 'keywords',
-    content: 'حرمة المسلم, الحديث الثامن, الأربعون النووية, ابن عمر, عصموا دماءهم, أقم الصلاة, آتوا الزكاة, شرح الحديث, الأربعين النووية'
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:title', 
-    content: 'الحديث الثامن: حرمة المسلم - تدبر تفاعلي' 
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:description', 
-    content: 'اقرأ واستمع إلى متن الحديث الثامن مع الشرح الصوتي، تفسير المفردات، وبيان سبب عدم ذكر الحج والصيام وأحكام تارك الصلاة والزكاة.' 
-  });
-  
-  this.metaService.updateTag({ 
-    property: 'og:type', 
-    content: 'article' 
-  });
-}
+
+  ngOnInit() {
+    this.titleService.setTitle('الحديث العاشر: إن الله طيب لا يقبل إلا طيبا - شروح الأربعين النووية');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'شرح وتدبر الحديث العاشر من الأربعين النووية، مع بيان مفردات الحديث وشروط قبول الدعاء، وأثر كسب الحلال على استجابة المناجاة وفضل تحري الطيب.'
+    });
+    this.metaService.updateTag({
+      name: 'keywords',
+      content: 'الحديث العاشر, الأربعون النووية, إن الله طيب, كسب الحلال, شروط قبول الدعاء, أكل الطيبات, أداب الدعاء, شرح الحديث العاشر'
+    });
+    this.metaService.updateTag({ property: 'og:title', content: 'الحديث العاشر: الحلال الطيب شرط القبول - تدبر تفاعلي' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اكتشف موانع استجابة الدعاء وأثر المال الحرام، واطلع على تفسير الآيات الواردة في الخطاب الإلهي للرسل والمؤمنين.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'article' });
+  }
+
+
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
@@ -198,45 +184,6 @@ ngOnInit() {
     }
   }
 
-  toggleBox3Zoom(boxElement: HTMLElement) {
-    this.isBox3Maximized = !this.isBox3Maximized;
-
-    if (this.isBox3Maximized) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto'; 
-      this.fontSizeBox3 = 16;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-
-    this.cdr.detectChanges();
-
-    setTimeout(() => {
-      if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',  
-          inline: 'center'
-        });
-      }
-    }, 100);
-  }
-
-  zoomInBox3(boxElement: HTMLElement) {
-    if (this.fontSizeBox3 < 36) {
-      this.fontSizeBox3 += 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-  }
-
-  zoomOutBox3(boxElement: HTMLElement) {
-    if (this.fontSizeBox3 > 14) {
-      this.fontSizeBox3 -= 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
-    }
-  }
-
-
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;
   }
@@ -295,7 +242,7 @@ ngOnInit() {
   }
 
   // ==========================================
-  // المشغل الصوتي المطور والمزامن للسلايدر (Hadith 6)
+  // Synkroniserat ljudspår för själva texten (Mappat till Slider)
   // ==========================================
 
   playHadithAudio(url: string | undefined) {
@@ -325,6 +272,7 @@ ngOnInit() {
         this.isPlaying = true;
         this.cdr.detectChanges();
 
+        // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
         this.currentAudio.onloadedmetadata = () => {
           if (this.currentAudio) {
             this.duration = this.currentAudio.duration;
@@ -332,10 +280,12 @@ ngOnInit() {
           }
         };
         
+        // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
         this.currentAudio.ontimeupdate = () => {
           if (!this.currentAudio) return;
           this.currentTime = this.currentAudio.currentTime;
 
+          // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
           const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
           if (index !== this.currentPhraseIndex) {
             this.currentPhraseIndex = index;
@@ -374,10 +324,11 @@ ngOnInit() {
     }
   }
 
-  // ⏮️ الترجيع الذكي للجملة السابقة
+  // ⏮️ الترجيع الذكي للجملة السابقة (بحسب الاستهلاك الزمني للجملة الحالية)
   skipToPreviousPhrase() {
     if (!this.currentAudio || !this.hadith?.phrases) return;
     
+    // إذا لم يعثر على أي جملة، نرجعه لبداية الصوت
     if (this.currentPhraseIndex === -1) {
       this.currentAudio.currentTime = 0;
       return;
@@ -386,6 +337,7 @@ ngOnInit() {
     const currentPhrase = this.hadith.phrases[this.currentPhraseIndex];
     const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
 
+    // إذا استمع لأكثر من ثانيتين من الجملة، يعود لبدايتها، وإلا يعود للجملة السابقة تماماً
     if (progressInPhrase > 2) {
       this.currentAudio.currentTime = currentPhrase.start;
     } else if (this.currentPhraseIndex > 0) {
@@ -398,7 +350,7 @@ ngOnInit() {
     this.cdr.detectChanges();
   }
 
-  // 🎚️ السحب اليدوي للمؤشر من قبل المستخدم
+  // 🎚️ السحب اليدوي للمؤشر الشريطي من قبل المستخدم
   onSliderChange(event: any) {
     if (this.currentAudio) {
       this.currentAudio.currentTime = Number(event.target.value);

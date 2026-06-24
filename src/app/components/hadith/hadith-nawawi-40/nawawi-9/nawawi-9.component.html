@@ -5,8 +5,8 @@
   </app-surah-hint>
 
   <app-next-before-surah-meny
-    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-7'" [SurahBefore]="'الحديث السابع'"
-    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-9'" [SurahNext]="'الحديث التاسع'">
+    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-8'" [SurahBefore]="'الحديث الثامن'"
+    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-10'" [SurahNext]="'الحديث العاشر'">
   </app-next-before-surah-meny>
 
 
@@ -119,7 +119,7 @@
     (onZoomOut)="zoomOutBox1(box1)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 لماذا لم يذكر الحج والصيام في الحديث؟ {{ hadith.name }}</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌نبذة عن راوي الحديث</h2>
 
    <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -140,7 +140,7 @@
     (onZoomOut)="zoomOutBox1(box2)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌سبب ورود الحديث:{{ hadith.name }}</h2>
 
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -161,7 +161,7 @@
   </app-zoom-controls>
 
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فائدة </h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
 
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -170,6 +170,28 @@
   </div>
 </div>
 
+  <!-- الحاوية 5: فائدة 2 (Box 4) -->
+
  
+   <div #box4 class="fawaed-box-container mini box4-container" [class.full-presentation]="isBox4Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox4Maximized"  
+    (onToggle)="toggleBox4Zoom(box4)" 
+    (onZoomIn)="zoomInBox4(box4)" 
+    (onZoomOut)="zoomOutBox4(box4)">
+  </app-zoom-controls>
+
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فائدة: أنواع السؤال</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box4Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
+</div>
+
+
 
 <app-footer-info />

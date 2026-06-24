@@ -5,8 +5,8 @@
   </app-surah-hint>
 
   <app-next-before-surah-meny
-    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-7'" [SurahBefore]="'الحديث السابع'"
-    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-9'" [SurahNext]="'الحديث التاسع'">
+    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-9'" [SurahBefore]="'الحديث التاسع'"
+    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-11'" [SurahNext]="'الحديث الحادي عشر'">
   </app-next-before-surah-meny>
 
 
@@ -119,7 +119,7 @@
     (onZoomOut)="zoomOutBox1(box1)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 لماذا لم يذكر الحج والصيام في الحديث؟ {{ hadith.name }}</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 شروط قبول الدعاء</h2>
 
    <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -149,27 +149,7 @@
   </div>
 </div>
 
-  <!-- الحاوية 4: فائدة 1 (Box 3) -->
 
- <div #box3 class="fawaed-box-container mini box3-container" [class.full-presentation]="isBox3Maximized" style="margin-top: 25px; position: relative;">
-
-  <app-zoom-controls
-    [isMaximized]="isBox3Maximized"  
-    (onToggle)="toggleBox3Zoom(box3)" 
-    (onZoomIn)="zoomInBox3(box3)" 
-    (onZoomOut)="zoomOutBox3(box3)">
-  </app-zoom-controls>
-
-
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فائدة </h2>
-
-  <div class="box-list-wrapper">
-    <ul class="custom-presentation-list">
-      <li *ngFor="let item of box3Items" [innerHTML]="item"></li>
-    </ul>
-  </div>
 </div>
-
- 
 
 <app-footer-info />
