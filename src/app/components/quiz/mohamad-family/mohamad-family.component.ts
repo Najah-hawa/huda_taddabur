@@ -65,8 +65,8 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
 
 
 currentLevel: number = 1;
-leftSideNames: string[] = [];
-rightSideNames: string[] = [];
+allGameNames: string[] = [];
+treeSlots: { correctName: string, currentPlacedName: string | null, top: string, left: string }[] = [];
 // تحديث المصفوفة في ملف الـ TS لتشمل الإحداثيات النسبية لكل جد
 levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   1: [
@@ -82,27 +82,73 @@ levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   2: [
     // هنا سنضع إحداثيات الـ 16 غصناً للمستوى الثاني متوزعة يميناً ويساراً صعوداً
     { name: 'محمد', top: '71%', left: '43%' },
-    { name: 'عَبْد الله', top: '63%', left: '53%' },
-    { name: 'عَبْد المطلب', top: '63%', left: '31%' },
-    { name: 'هَاشِم', top: '54%', left: '53%' },
-    { name: 'عَبْد مَنَاف', top: '54%', left: '31%' },
-    { name: 'قُصَي',top: '45%', left: '53%'  },
+
+    { name: 'عَبْد الله', top: '63%', left: '59%' },
+    { name: 'عَبْد المطلب', top: '63%', left: '29%' },
+    { name: 'هَاشِم', top: '54%', left: '59%' },
+    { name: 'عَبْد مَنَاف', top: '54%', left: '29%' },
+    { name: 'قُصَي',top: '45%', left: '59%'  },
     { name: 'كِلَاب', top: '45%', left: '29%' },
 
-    { name: 'مُرَّة',top: '36%', left: '53%' },
-    { name: 'كَعْب',  top: '36%', left: '31%' },
+    { name: 'مُرَّة',top: '36%', left: '59%' },
+    { name: 'كَعْب',  top: '36%', left: '29%' },
 
-    { name: 'لُؤَي',top: '26%', left: '53%'  },
-    { name: 'غَالِب', top: '26%', left: '31%' },
+    { name: 'لُؤَي',top: '26%', left: '59%'  },
+    { name: 'غَالِب', top: '26%', left: '29%' },
 
-    { name: 'فِهْر', top: '18%', left: '53%'  },
-    { name: 'مَالِك', top: '18%', left: '31%'},
+    { name: 'فِهْر', top: '18%', left: '59%'  },
+    { name: 'مَالِك', top: '18%', left: '29%'},
 
     { name: 'النَّضْر', top: '10%', left: '53%' },
-    { name: 'كِنَانَة', top:  '10%', left: '31%'  },
+    { name: 'كِنَانَة', top:  '10%', left: '29%'  },
     { name: 'خُزَيْمَة', top: '2%', left: '43%' }
   ],
-  3: [] // سنملأه لاحقاً بنفس الطريقة التراكمية كاملة حتى عدنان
+3: [
+  // 1. المربع الأول الثابت في الأسفل (اسم النبي محمد ﷺ)
+  { name: 'محمد', top: '79%', left: '43%' }, 
+
+  // 2. الصف الثاني (بداية التفرع الثنائي للأجداد)
+  { name: 'عَبْد الله' , top: '72%', left: '56%' },
+  { name: 'عَبْد المطلب' , top: '72%', left: '30.5%' },
+
+  // 3. الصف الثالث
+  { name: 'هَاشِم' , top: '64%', left: '59%' },
+  { name: 'عَبْد مَنَاف' , top: '64%', left: '27%' },
+
+  // 4. الصف الرابع
+  { name:  'قُصَي' , top: '57%', left: '59%' },
+  { name: 'كِلَاب' , top: '57%', left: '27%' },
+
+  // 5. الصف الخامس
+  { name:'مُرَّة'  , top: '50%', left: '59%' },
+  { name: 'كَعْب' , top: '50%', left: '27%' },
+
+  // 6. الصف السادس
+  { name: 'لُؤَي' , top: '43%', left: '58%' },
+  { name: 'غَالِب' , top: '43%', left: '27%' },
+
+  // 7. الصف السابع
+  { name: 'فِهْر' , top: '35%', left: '58%' },
+  { name: 'مَالِك' , top: '35%', left: '27%' },
+
+  // 8. الصف الثامن
+  { name: 'النَّضْر' , top: '29%', left: '58' },
+  { name: 'كِنَانَة' , top: '29%', left: '29%' },
+
+  // 9. الصف التاسع
+  { name: 'خُزَيْمَة' , top: '21%', left: '58%' },
+  { name: 'مُدْرِكَة' , top: '21%', left: '27%' },
+
+  // 10. الصف العاشر
+  { name: 'إِلْيَاس' , top: '14%', left: '58%' },
+  { name: 'مُضَر' , top: '14%', left: '30%' },
+
+  // 11. الصف الحادي عشر
+  { name: 'نِزَار',  top: '7%', left: '53%' },
+  { name:  'مَعَدّ',  top: '7%', left: '34%' },
+  
+  { name: 'عَدْنَان',top: '2%', left: '42%' }, 
+]
 };
 
 
@@ -113,37 +159,26 @@ selectLevel(level: number) {
 }
 
 
-// مصفوفة المربعات الفارغة على الشجرة (سيتم ملؤها برمجياً حسب المستوى)
-// كل مربع يمثل كائن يحتوي على الاسم الصحيح، وهل تمت الإجابة عليه أم لا
-treeSlots: { 
-  correctName: string, 
-  currentPlacedName: string | null, 
-  top: string, 
-  left: string 
-}[] = [];
-// تحديث دالة loadLevel لتهيئ المربعات الفارغة أيضاً
 loadLevel(level: number) {
   const originalSlots = [...this.levelData[level]];
 
-  // 1. بناء المربعات على الشجرة مع الاحتفاظ بإحداثياتها
+  // 1. بناء المربعات على الشجرة
   this.treeSlots = originalSlots.map(slot => ({
     correctName: slot.name,
-    currentPlacedName: slot.name === 'محمد' ? 'محمد ﷺ' : null, // جعل اسم النبي ظاهراً وثابتاً تلقائياً
+    currentPlacedName: slot.name === 'محمد' ? 'محمد ﷺ' : null,
     top: slot.top,
     left: slot.left
   }));
 
-  // 2. تصفية الأسماء المبعثرة (بدون اسم محمد) وعمل Shuffle لها
+  // 2. تصفية الأسماء مبعثرة في مصفوفة واحدة مدمجة وعمل خلط (Shuffle) لها
   let gameNames = originalSlots.filter(s => s.name !== 'محمد').map(s => s.name);
   gameNames.sort(() => Math.random() - 0.5);
 
-  const half = Math.ceil(gameNames.length / 2);
-  this.leftSideNames = gameNames.slice(0, half);
-  this.rightSideNames = gameNames.slice(half);
+  // 3. إسناد الأسماء للمصفوفة الموحدة
+  this.allGameNames = gameNames;
 
   this.cdr.detectChanges();
 }
-
 // 🎚️ الدالة بعد التحديث لمنع الإسقاط العشوائي وفرض الترتيب من الأسفل للأعلى
 onNameDropped(event: CdkDragDrop<string[]>, slotIndex: number) {
   const draggedName = event.previousContainer.data[event.previousIndex];

@@ -44,16 +44,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* ==========================================================================
-   🎮 ساحة اللعبة الرئيسية والشجرة المتجاوبة
-   ========================================================================== */
-.game-playground {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  direction: ltr; /* لتوزيع القوائم يميناً ويساراً بالتساوي في الشاشات الكبيرة */
-}
 
 .tree-display-zone {
   position: relative;
@@ -75,23 +65,7 @@
   direction: rtl; /* لكي تظل نصوص الأسماء العربية مرتبة بشكل صحيح */
 }
 
-.draggable-name-card {
-  background: #fdfbf7;
-  border: 2px solid #e5cc7e;
-  padding: 10px;
-  text-align: center;
-  border-radius: 8px;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  cursor: grab;
-  user-select: none;
-  transition: transform 0.2s;
-}
 
-.draggable-name-card:active {
-  cursor: grabbing;
-  transform: scale(1.05);
-}
 
 /* ==========================================================================
    📱 حماية الميديا وتنسيقات الشاشات (الكمبيوتر والجوال)
@@ -107,10 +81,7 @@
 
 /* شاشات الجوال الذكية (أقل من 768 بكسل) */
 @media (max-width: 768px) {
-  .game-playground {
-    flex-direction: column; /* تحويل القوائم الجانبية لتصبح فوق وتحت الشجرة */
-  }
-  
+
   .names-sidebar {
     flex-direction: row; /* جعل الأسماء تترتب أفقياً بجانب بعضها لتوفر مساحة */
     flex-wrap: wrap;
@@ -245,4 +216,100 @@
   /* 16: خُزَيْمَة */
   .lvl-2 .tree-drop-slot:nth-child(16) { top: 2.5% !important; left: 45% !important; }
 
+}
+
+
+/* 🖥️ التنسيق الافتراضي للشاشات الكبيرة */
+.game-playground {
+  display: flex;
+  flex-direction: column; /* ترتيب عمودي بشكل عام */
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* حاوية الأسماء الموحدة في الشاشات الكبيرة تفرش الكروت بشكل متناسق */
+.names-pool-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.draggable-name-card {
+  padding: 8px 16px;
+  background: #fff;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  cursor: grab;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  user-select: none;
+}
+
+.draggable-name-card:active {
+  cursor: grabbing;
+}
+
+/* ---------------------------------------------------- */
+/* 📐 التغيير الذكي عند شاشات 900 بكسل وأقل (الموبايل والتابلت) */
+/* ---------------------------------------------------- */
+@media (max-width: 900px) {
+  
+  .game-playground {
+    flex-direction: column; /* يضمن بقاء القائمة فوق والشجرة تحت */
+  }
+
+  .names-pool-container {
+    order: -1; /* ⬅️ هذا السحر يجبر قائمة الأسماء أن تطير وتصبح أول عنصر في الأعلى دائماً */
+    position: sticky;
+    top: 10px; /* تظل مثبتة في الأعلى أثناء التمرير لو كانت الشجرة طويلة */
+    zIndex: 100;
+    max-height: 150px;
+    overflow-y: auto; /* إذا كانت الكروت كثيرة في المستوى الثاني تظهر سكرول صغير مريح */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .draggable-name-card {
+    padding: 6px 12px;
+    font-size: 12px; /* تصغير الكروت قليلاً لتناسب أصابع الأطفال */
+  }
+}
+
+@media (max-width: 900px) {
+
+  /* 1️⃣ تصغير أزرار اختيار المستويات (Level Selection) */
+  /* استبدلي .level-btn بالاسم الفعلي لكلاس الأزرار لديكِ إذا كان مختلفاً */
+  .level-btn { 
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    min-width: auto !important;
+    border-radius: 15px !important;
+  }
+
+  /* 2️⃣ تصغير كروت الأسماء المبعثرة في الأعلى لتقليل المساحة العمودية */
+  .names-pool-container {
+    padding: 10px !important; /* تقليل الحشو الداخلي للحاوية البيضاء */
+    gap: 8px !important;       /* تقليل المسافة بين الكروت */
+  }
+
+  .draggable-name-card {
+    padding: 4px 10px !important; /* جعل الكرت أنحف */
+    font-size: 11px !important;    /* تصغير الخط ليناسب الحجم الجديد */
+    border-radius: 12px !important;
+  }
+  
+}
+@media (max-width: 900px) {
+  .lvl-3 .tree-drop-slot {
+    width: 14% !important;   /* العرض المثالي للمستطيل */
+    height: 2.8% !important; /* الارتفاع المثالي ليصبح نحيفاً */
+    border-radius: 6px !important;
+  }
 }

@@ -69,50 +69,40 @@
     </app-zoom-controls>
 
     <div class="game-zone-wrapper" cdkDropListGroup> <div class="levels-container">
-    <button [class.active-lvl]="currentLevel === 1" (click)="selectLevel(1)">المستوى الأول (سهل)</button>
-    <button [class.active-lvl]="currentLevel === 2" (click)="selectLevel(2)">المستوى الثاني (متوسط)</button>
-    <button [class.active-lvl]="currentLevel === 3" (click)="selectLevel(3)">المستوى الثالث (متقدم)</button>
+    <button [class.active-lvl]="currentLevel === 1" (click)="selectLevel(1)">المستوى الأول</button>
+    <button [class.active-lvl]="currentLevel === 2" (click)="selectLevel(2)">المستوى الثاني</button>
+    <button [class.active-lvl]="currentLevel === 3" (click)="selectLevel(3)">المستوى الثالث</button>
   </div>
 
  <div class="game-playground" [class.lvl-2]="currentLevel === 2">
+  
+  <div class="names-pool-container" cdkDropList [cdkDropListData]="allGameNames">
+    <div class="draggable-name-card" *ngFor="let name of allGameNames" cdkDrag>
+      {{ name }}
+    </div>
+  </div>
+
+  <div class="tree-display-zone">
+    <img [src]="'images/play-images/mohamad-family-level-' + currentLevel + '.png'" class="tree-bg-image" alt="شجرة النسب">
     
-    <div class="names-sidebar right-sidebar" 
-         cdkDropList 
-         [cdkDropListData]="leftSideNames">
-      <div class="draggable-name-card" *ngFor="let name of leftSideNames" cdkDrag>
-        {{ name }}
+    <div class="absolute-slots-container">
+      <div class="tree-drop-slot" 
+           *ngFor="let slot of treeSlots; let i = index"
+           [style.top]="slot.top"
+           [style.left]="slot.left"
+           [class.static-prophet]="slot.correctName === 'محمد'"
+           cdkDropList
+           [cdkDropListDisabled]="slot.correctName === 'محمد'"
+           (cdkDropListDropped)="onNameDropped($event, i)">
+        
+        <span class="placed-name">
+          {{ slot.correctName === 'محمد' ? slot.currentPlacedName : (slot.currentPlacedName || '') }}
+        </span>
       </div>
     </div>
-
-    <div class="tree-display-zone">
-      <img [src]="'images/play-images/mohamad-family-level-' + currentLevel + '.png'" class="tree-bg-image" alt="شجرة النسب">
-      
-     <div class="absolute-slots-container">
-  <div class="tree-drop-slot" 
-       *ngFor="let slot of treeSlots; let i = index"
-       [style.top]="slot.top"
-       [style.left]="slot.left"
-       [class.static-prophet]="slot.correctName === 'محمد'"
-       cdkDropList
-       [cdkDropListDisabled]="slot.correctName === 'محمد'"
-       (cdkDropListDropped)="onNameDropped($event, i)">
-    
-    <span class="placed-name">
-      {{ slot.correctName === 'محمد' ? slot.currentPlacedName : (slot.currentPlacedName || '') }}
-    </span>
   </div>
+
 </div>
-    </div>
-
-    <div class="names-sidebar left-sidebar" 
-         cdkDropList 
-         [cdkDropListData]="rightSideNames">
-      <div class="draggable-name-card" *ngFor="let name of rightSideNames" cdkDrag>
-        {{ name }}
-      </div>
-    </div>
-
-  </div>
 </div>
 
 </div>
