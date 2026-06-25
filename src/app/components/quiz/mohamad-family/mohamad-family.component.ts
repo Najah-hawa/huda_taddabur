@@ -62,46 +62,52 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
 
-
-
-currentLevel: number = 1;
-allGameNames: string[] = [];
+// 🕹️ متغيرات التحكم باللعبة والمستويات
+  currentLevel: number = 1;
+  allGameNames: string[] = []; // مصفوفة واحدة تجمع كل الأسماء المبعثرة للمستوى الحالي
+  showSuccessModal: boolean = false; // التحكم في ظهور نافذة التهنئة المنبثقة
+ maxUnlockedLevel: number = 1; // يبدأ اللعب والمستوى الأول فقط هو المفتوح
+wrongSlotIndex: number | null = null; // لمتابعة أي مربع تم الإسقاط فيه بشكل خاطئ
 treeSlots: { correctName: string, currentPlacedName: string | null, top: string, left: string }[] = [];
 // تحديث المصفوفة في ملف الـ TS لتشمل الإحداثيات النسبية لكل جد
 levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   1: [
     { name: 'محمد', top: '49%', left: '38%' }, // الجذع الأساسي الثابت
-    { name: 'عَبْد الله', top: '38%', left: '19%' },
-    { name: 'عَبْد المطلب', top: '38%', left: '57%' },
-    { name: 'هَاشِم', top: '27%', left: '24%' },
-    { name: 'عَبْد مَنَاف', top: '27%', left: '52%' },
-    { name: 'قُصَي', top: '16%', left: '33%' },
-    { name: 'كِلَاب', top: '16%', left: '46%' },
+    { name: 'عَبْد الله',top: '38%', left: '57%'  },
+    { name: 'عَبْد المطلب',  top: '38%', left: '19%'  },
+
+    { name: 'هَاشِم',  top: '27%', left: '52%' },
+    { name: 'عَبْد مَنَاف',top: '27%', left: '24%'  },
+
+    { name: 'قُصَي', top: '16%', left: '46%'  },
+    { name: 'كِلَاب',   top: '16%', left: '33%'},
+
     { name: 'مُرَّة', top: '4%', left: '40%' }
   ],
   2: [
     // هنا سنضع إحداثيات الـ 16 غصناً للمستوى الثاني متوزعة يميناً ويساراً صعوداً
-    { name: 'محمد', top: '71%', left: '43%' },
+  
+    { name: 'عَبْد الله', top: '65%', left: '63%' },
+    { name: 'عَبْد المطلب', top: '65%', left: '21%' },
 
-    { name: 'عَبْد الله', top: '63%', left: '59%' },
-    { name: 'عَبْد المطلب', top: '63%', left: '29%' },
-    { name: 'هَاشِم', top: '54%', left: '59%' },
-    { name: 'عَبْد مَنَاف', top: '54%', left: '29%' },
-    { name: 'قُصَي',top: '45%', left: '59%'  },
-    { name: 'كِلَاب', top: '45%', left: '29%' },
+    { name: 'هَاشِم', top: '55%', left: '68%' },
+    { name: 'عَبْد مَنَاف', top: '55%', left: '17%' },
 
-    { name: 'مُرَّة',top: '36%', left: '59%' },
-    { name: 'كَعْب',  top: '36%', left: '29%' },
+    { name: 'قُصَي',top: '46%', left: '68%'  },
+    { name: 'كِلَاب', top: '46%', left: '16%' },
 
-    { name: 'لُؤَي',top: '26%', left: '59%'  },
-    { name: 'غَالِب', top: '26%', left: '29%' },
+    { name: 'مُرَّة',top: '36%', left: '68%' },
+    { name: 'كَعْب',  top: '36%', left: '16%' },
 
-    { name: 'فِهْر', top: '18%', left: '59%'  },
-    { name: 'مَالِك', top: '18%', left: '29%'},
+    { name: 'لُؤَي',top: '27%', left: '68%'  },
+    { name: 'غَالِب', top: '27%', left: '17%' },
 
-    { name: 'النَّضْر', top: '10%', left: '53%' },
-    { name: 'كِنَانَة', top:  '10%', left: '29%'  },
-    { name: 'خُزَيْمَة', top: '2%', left: '43%' }
+    { name: 'فِهْر', top: '18%', left: '64%'  },
+    { name: 'مَالِك', top: '18%', left: '20%'},
+
+    { name: 'النَّضْر', top: '9%', left: '59%' },
+    { name: 'كِنَانَة', top:  '9%', left: '25%'  },
+    { name: 'خُزَيْمَة', top: '2%', left: '42%' }
   ],
 3: [
   // 1. المربع الأول الثابت في الأسفل (اسم النبي محمد ﷺ)
@@ -132,7 +138,7 @@ levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   { name: 'مَالِك' , top: '35%', left: '27%' },
 
   // 8. الصف الثامن
-  { name: 'النَّضْر' , top: '29%', left: '58' },
+  { name: 'النَّضْر' , top: '29%', left: '58%' },
   { name: 'كِنَانَة' , top: '29%', left: '29%' },
 
   // 9. الصف التاسع
@@ -152,64 +158,138 @@ levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
 };
 
 
-// دالة اختيار وتبديل المستوى
 selectLevel(level: number) {
-  this.currentLevel = level;
-  this.loadLevel(level);
-}
+    this.showSuccessModal = false;
+    this.loadLevel(level);
+  }
 
+// 📥 دالة بناء المرحلة وتجهيز الكروت العشوائية في الأعلى
+  loadLevel(level: number) {
+    this.currentLevel = level;
+    const originalSlots = [...this.levelData[level]];
 
-loadLevel(level: number) {
-  const originalSlots = [...this.levelData[level]];
+    // 1. بناء المربعات (الـ Slots) على الشجرة وتثبيت اسم النبي محمد ﷺ تلقائياً
+    this.treeSlots = originalSlots.map(slot => ({
+      correctName: slot.name,
+      currentPlacedName: slot.name === 'محمد' ? 'محمد ﷺ' : null,
+      top: slot.top,
+      left: slot.left
+    }));
 
-  // 1. بناء المربعات على الشجرة
-  this.treeSlots = originalSlots.map(slot => ({
-    correctName: slot.name,
-    currentPlacedName: slot.name === 'محمد' ? 'محمد ﷺ' : null,
-    top: slot.top,
-    left: slot.left
-  }));
+    // 2. تصفية الأسماء المبعثرة (كل الأسماء عدا اسم محمد الثابت)
+    let gameNames = originalSlots.filter(s => s.name !== 'محمد').map(s => s.name);
+    
+    // 3. عمل خلط (Shuffle) عشوائي فخم للكروت
+    gameNames.sort(() => Math.random() - 0.5);
 
-  // 2. تصفية الأسماء مبعثرة في مصفوفة واحدة مدمجة وعمل خلط (Shuffle) لها
-  let gameNames = originalSlots.filter(s => s.name !== 'محمد').map(s => s.name);
-  gameNames.sort(() => Math.random() - 0.5);
+    // 4. إسناد الأسماء المخلومة للمصفوفة الموحدة العلوية
+    this.allGameNames = gameNames;
 
-  // 3. إسناد الأسماء للمصفوفة الموحدة
-  this.allGameNames = gameNames;
+    this.cdr.detectChanges();
+  }
 
-  this.cdr.detectChanges();
-}
-// 🎚️ الدالة بعد التحديث لمنع الإسقاط العشوائي وفرض الترتيب من الأسفل للأعلى
+// 🔄 دالة السحب والإفلات عند إسقاط الكرت
 onNameDropped(event: CdkDragDrop<string[]>, slotIndex: number) {
   const draggedName = event.previousContainer.data[event.previousIndex];
   const targetSlot = this.treeSlots[slotIndex];
 
-  // 🛑 الشرط السحري: التحقق من الترتيب
-  // إذا كان هذا ليس المربع الأول (index > 0)، نتحقق هل المربع الذي قبله (index - 1) ممتلئ؟
+  // 🛑 1. فحص الترتيب الصارم (من الأسفل للأعلى)
   if (slotIndex > 0) {
     const previousSlot = this.treeSlots[slotIndex - 1];
     if (!previousSlot.currentPlacedName) {
-      console.log('يجب حل المربع السابق أولاً لترتيب النسب صعوداً!');
-      // يمكنكِ هنا تشغيل صوت تنبيه قصير أو حركة اهتزاز
-      return; // نوقف الدالة فوراً ولا نقبل الإسقاط
+      console.log('يجب وضع الاسم السابق أولاً في الشجرة بالترتيب المتسلسل!');
+      return;
     }
   }
 
-  // ✅ إذا مر من الشرط، نتحقق الآن هل الاسم صحيح؟
+  // ✅ 2. إذا كانت الإجابة صحيحة ومطابقة للجد
   if (targetSlot.correctName === draggedName) {
-    // 1. تثبيت الاسم في المربع على الشجرة
+    // تثبيت الاسم على غصن الشجرة فوراً
     targetSlot.currentPlacedName = draggedName;
 
-    // 2. حظر وحذف الاسم من القائمة الجانبية
-    event.previousContainer.data.splice(event.previousIndex, 1);
+    // 🔄 3. حذف الكرت من المصفوفة العلوية بشكل صريح ومباشر لضمان التحديث
+    this.allGameNames = this.allGameNames.filter(name => name !== draggedName);
 
-    console.log('إجابة صحيحة ممتاز! صعدنا خطوة في الشجرة 🎉');
+    this.cdr.detectChanges();
+
+    // 🏆 4. الطريقة المضمونة لفحص الفوز
+    const isLevelComplete = this.treeSlots.every(slot => slot.currentPlacedName !== null);
+
+    if (isLevelComplete) {
+      // نفتح قفل المستوى التالي فوراً هنا لضمان فتح القفل قبل ظهور النافذة
+      if (this.currentLevel < 3) {
+        const nextLevel = this.currentLevel + 1;
+        if (nextLevel > this.maxUnlockedLevel) {
+          this.maxUnlockedLevel = nextLevel;
+        }
+      }
+      
+      this.cdr.detectChanges();
+
+      // إطلاق الاحتفالات وظهور النافذة
+      setTimeout(() => {
+        this.celebrateWin();
+      }, 100);
+    }
+
   } else {
-    // إجابة خاطئة
-    console.log('إجابة خاطئة، حاول مجدداً!');
+    // ❌ 5. إذا كانت الإجابة خاطئة: نقوم بتفعيل تأثير التنبيه البصري (الوميض والاهتزاز)
+    this.wrongSlotIndex = slotIndex;
+    this.cdr.detectChanges();
+
+    // إزالة تأثير الخطأ بعد 800 ملي ثانية لتهيئة المربع للمحاولة القادمة
+    setTimeout(() => {
+      this.wrongSlotIndex = null;
+      this.cdr.detectChanges();
+    }, 600);
+  }
+
+} // 👈 هذا هو القوس الأساسي الذي كان مفقوداً وتسبب في الـ 38 خطأ!
+
+// 🎵 دالة تشغيل الاحتفالات والكونفيتي عند اكتمال المرحلة
+  celebrateWin() {
+    this.showSuccessModal = true;
+
+    // 1. تشغيل صوت التصفيق من ملفات الـ Assets
+    const audio = new Audio('audio/play-game/klapping.mpeg');
+    audio.play().catch(err => console.log('بانتظار تفاعل المستخدم الصوتي الأول في المتصفح'));
+
+    // 2. إطلاق تأثير القصاصات المتطايرة (Confetti) عبر المكتبة المدمجة في الـ index.html
+    try {
+      const confetti = (window as any).confetti;
+      if (confetti) {
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
+      }
+    } catch (e) {
+      console.log('مكتبة canvas-confetti غير معرفة بالـ global window');
+    }
+    
+    this.cdr.detectChanges();
+  }
+
+// ⏭️ زر الانتقال السريع للمستوى التالي من داخل كرت الفوز المنبثق
+goToNextLevel() {
+  this.showSuccessModal = false;
+  
+  if (this.currentLevel < 3) {
+    this.currentLevel++;
+    
+    // 🔓 إذا كان المستوى الجديد أكبر من أقصى مستوى مفتوح، نقوم بفتحه!
+    if (this.currentLevel > this.maxUnlockedLevel) {
+      this.maxUnlockedLevel = this.currentLevel;
+    }
+    
+    this.loadLevel(this.currentLevel);
+  } else {
+    // في حال إنهاء المستوى الثالث والأخير بالكامل
+    this.currentLevel = 1;
+    this.loadLevel(1);
   }
 }
-
   // ==========================================
   // التحكم في تكبير/تصغير صندوق العرض الأول (النسب)
   // ==========================================

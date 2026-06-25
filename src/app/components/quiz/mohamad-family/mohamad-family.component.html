@@ -28,6 +28,7 @@
               </button>
             </div>
 
+
             <div class="hadith-player-slider-container">
               <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
               
@@ -63,16 +64,32 @@
     
     <app-zoom-controls
       [isMaximized]="isBox1Maximized"  
-      (onToggle)="toggleBox1Zoom(box1)" 
+      (onToggle)="toggleBox1Zoom(box1)"  
       (onZoomIn)="zoomInBox1(box1)" 
       (onZoomOut)="zoomOutBox1(box1)">
     </app-zoom-controls>
 
-    <div class="game-zone-wrapper" cdkDropListGroup> <div class="levels-container">
-    <button [class.active-lvl]="currentLevel === 1" (click)="selectLevel(1)">المستوى الأول</button>
-    <button [class.active-lvl]="currentLevel === 2" (click)="selectLevel(2)">المستوى الثاني</button>
-    <button [class.active-lvl]="currentLevel === 3" (click)="selectLevel(3)">المستوى الثالث</button>
-  </div>
+  <div class="game-zone-wrapper" cdkDropListGroup> 
+  <div class="levels-container"> 
+  <button class="level-btn" [class.active-lvl]="currentLevel === 1" (click)="selectLevel(1)">
+    المستوى الأول (سهل)
+  </button>
+
+  <button class="level-btn" 
+          [class.active-lvl]="currentLevel === 2" 
+          [disabled]="maxUnlockedLevel < 2"
+          (click)="selectLevel(2)">
+    المستوى الثاني (متوسط) {{ maxUnlockedLevel < 2 ? '🔒' : '' }}
+  </button>
+
+  <button class="level-btn" 
+          [class.active-lvl]="currentLevel === 3" 
+          [disabled]="maxUnlockedLevel < 3"
+          (click)="selectLevel(3)">
+    المستوى الثالث (متقدم) {{ maxUnlockedLevel < 3 ? '🔒' : '' }}
+  </button>
+</div>
+
 
  <div class="game-playground" [class.lvl-2]="currentLevel === 2">
   
@@ -86,15 +103,15 @@
     <img [src]="'images/play-images/mohamad-family-level-' + currentLevel + '.png'" class="tree-bg-image" alt="شجرة النسب">
     
     <div class="absolute-slots-container">
-      <div class="tree-drop-slot" 
-           *ngFor="let slot of treeSlots; let i = index"
-           [style.top]="slot.top"
-           [style.left]="slot.left"
-           [class.static-prophet]="slot.correctName === 'محمد'"
-           cdkDropList
-           [cdkDropListDisabled]="slot.correctName === 'محمد'"
-           (cdkDropListDropped)="onNameDropped($event, i)">
-        
+   <div class="tree-drop-slot" 
+     *ngFor="let slot of treeSlots; let i = index"
+     [style.top]="slot.top"
+     [style.left]="slot.left"
+     [class.static-prophet]="slot.correctName === 'محمد'"
+     [class.wrong-shake]="wrongSlotIndex === i" 
+     cdkDropList
+     [cdkDropListDisabled]="slot.correctName === 'محمد'"
+     (cdkDropListDropped)="onNameDropped($event, i)">
         <span class="placed-name">
           {{ slot.correctName === 'محمد' ? slot.currentPlacedName : (slot.currentPlacedName || '') }}
         </span>
