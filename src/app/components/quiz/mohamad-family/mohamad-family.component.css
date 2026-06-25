@@ -127,7 +127,6 @@
 .tree-drop-slot {
   position: absolute;
   pointer-events: auto; /* إعادة تفعيل الضغط والسحب للمربع نفسه */
-  border: 2px dashed #d4af37; /* إطار متقطع لمعرفة مكان الإسقاط أثناء البرمجة */
   background: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   width: 15%;  /* حجم مرن يتناسب مع المربع في الصورة */
