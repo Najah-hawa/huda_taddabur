@@ -1,6 +1,6 @@
 export const hadithDetails = {
   // هنا تضعين رابط ملف الصوت الخاص بقراءة النسب (يمكن رفعه على الـ Assets أو السيرفر)
-  audioUrl: 'audio/play-game/mohamad-family-audio.mpeg', 
+  audioUrl: 'audio/play-game/mohamad-family.mpeg', 
   
   // تقسيم النسب إلى عبارات متتالية مع تحديد وقت البداية والنهاية بالثواني (مثال تقريبي)
   phrases: [
