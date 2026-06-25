@@ -1,144 +1,248 @@
 /* ==========================================================================
-   📦 التنسيق الأساسي الموحد لحاوية الحديث والفوائد
+   📦 التنسيق الأساسي الموحد لحاوية النسب واللعبة
    ========================================================================== */
 .fawaed-box-container {
   --dynamic-font-size: 16px;
   position: relative;
 }
 
-/* ربط الصناديق الجانبية الأخرى بالمتغير */
-.custom-presentation-list li, 
-.benefit-list li {
-  font-size: var(--dynamic-font-size) !important;
-  line-height: 1.6;
-}
-
-.box1-container .benefit-title,
-.box2-container .benefit-title,
-.box3-container .benefit-title,
-.box4-container .benefit-title {
+.box1-container .benefit-title {
   font-size: calc(var(--dynamic-font-size) + 4px) !important;
 }
 
-/* ==========================================================================
-   🚨 التنسيق الهيكلي لصندوق الحديث (تم تفريغه من أحجام الخطوط الثابتة)
-   ========================================================================== */
 .hadith-main-box {
   position: relative;
 }
 
-/* نضمن فقط التنسيقات الجمالية دون فرض حجم خط يصطدم مع الأنغولار */
 .hadith-main-box .Hadith {
   line-height: 2 !important;
 }
 
 /* ==========================================================================
-   ⚠️ حماية الميديا المخصصة للشاشات (600 بكسل وما فوق)
+   🎛️ أزرار التحكم بالمستويات (سهل - متوسط - متقدم)
    ========================================================================== */
-@media (min-width: 600px) {
-  .ayah { font-size: 1.1rem; max-width: 100%; }
-  .tafsir { font-size: 0.9rem; padding: 0.5rem 0.8rem; }
-  .arrow { font-size: 1.1rem; margin-right: 3px; margin-left: 5px; }
-  .ayah-number { font-size: 1rem; }
-  .fawaed-box-container.mini, .surah-benefits.mini { width: 100%; padding: 1rem; }
+.levels-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.levels-container button {
+  padding: 8px 16px;
+  border: 1px solid #d4af37;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.levels-container button.active-lvl {
+  background: #004d40;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* ==========================================================================
-   🚀 الحل القاطع لاختراق نصوص innerHTML وقائمة شرح المفردات لتعمل مع الأزرار
+   🎮 ساحة اللعبة الرئيسية والشجرة المتجاوبة
    ========================================================================== */
-/* إجبار علبة التفسير وكل محتوياتها العميقة على الوراثة الكاملة */
-::ng-deep .tafsir-modern-box, 
-::ng-deep .tafsir-modern-box * {
-  font-size: inherit !important; 
-  line-height: 1.8 !important;
+.game-playground {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  direction: ltr; /* لتوزيع القوائم يميناً ويساراً بالتساوي في الشاشات الكبيرة */
 }
 
-/* زيادة تأكيد على العلبة الداخلية المحقونة */
-.tafsir-content-inner, 
-.tafsir-content-inner * {
-  font-size: inherit !important;
+.tree-display-zone {
+  position: relative;
+  flex: 2;
+  text-align: center;
 }
 
-
-/* 🚀 التنسيق النهائي: كسر عناد الـ CSS القديم وإجبار القائمة على التكبير */
-::ng-deep .tafsir-modern-box .explanation-content,
-::ng-deep .tafsir-modern-box .vocabulary-list,
-::ng-deep .tafsir-modern-box .vocabulary-list li,
-::ng-deep .tafsir-modern-box .vocabulary-list li b,
-::ng-deep .tafsir-modern-box .vocabulary-list li span {
-  font-size: inherit !important; /* تجبر القائمة وعناصرها على الوراثة من الأب المربوط بالأنجولار */
-  /* نجبر العناصر على أخذ القيمة الديناميكية الممررة مباشرة من الأنجولار */
-  font-size: var(--current-zoom) !important; 
-  line-height: 1.8 !important;   
+.tree-bg-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 70vh;
 }
 
-/* مسافة جمالية مريحة بين الأسطر والمفردات عند التكبير والتصغير */
-::ng-deep .tafsir-modern-box .vocabulary-list li {
-  margin-bottom: 12px !important;
+.names-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  direction: rtl; /* لكي تظل نصوص الأسماء العربية مرتبة بشكل صحيح */
 }
 
-/* تنسيقات إضافية ذكية للشاشات الصغيرة (أقل من 600 بكسل) */
+.draggable-name-card {
+  background: #fdfbf7;
+  border: 2px solid #e5cc7e;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.2s;
+}
+
+.draggable-name-card:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   📱 حماية الميديا وتنسيقات الشاشات (الكمبيوتر والجوال)
+   ========================================================================== */
+
+/* الشاشات الكبيرة والمتوسطة (أكبر من 600 بكسل) */
+@media (min-width: 600px) {
+  .fawaed-box-container.mini {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* شاشات الجوال الذكية (أقل من 768 بكسل) */
+@media (max-width: 768px) {
+  .game-playground {
+    flex-direction: column; /* تحويل القوائم الجانبية لتصبح فوق وتحت الشجرة */
+  }
+  
+  .names-sidebar {
+    flex-direction: row; /* جعل الأسماء تترتب أفقياً بجانب بعضها لتوفر مساحة */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* شاشات الموبايل الصغيرة جداً (أقل من 600 بكسل) */
 @media (max-width: 600px) {
   .hadith-main-box {
     padding: 10px !important;
   }
- 
-/* إخفاء حاوية الأزرار بالكامل من الشاشة */
+  
+  /* إخفاء أزرار الزوم الخاصة بالحديث من الجوال الصغير لزيادة مساحة العرض للطفل */
   app-zoom-controls,
   .box-container {
     display: none !important;
   }
 
-  /* إلغاء الهامش العلوي الذي تركناه للأزرار، لترتفع النصوص بشكل أنيق */
   .verse-wrapper {
     margin-top: 15px !important;
   }
 
-  /* تنسيق ناعم ومريح لمتن الحديث على الموبايل */
   .hadith-text-full-width .Hadith {
     line-height: 1.8 !important;
     text-align: justify;
     text-justify: inter-word;
   }
-
-  /* مسافة مريحة بين عناصر قائمة المفردات في الشاشات الصغيرة */
-  ::ng-deep .tafsir-modern-box .vocabulary-list li {
-    margin-bottom: 8px !important;
-  }
-  
 }
 
-/* ==========================================================================
-   🔻 تنسيق زر الإغلاق السفلي لشرح المفردات
-   ========================================================================== */
-.bottom-close-wrapper {
+
+
+
+.absolute-slots-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* تجعل الحاوية شفافة للضغط ليظهر ما خلفها */
+}
+
+.tree-drop-slot {
+  position: absolute;
+  pointer-events: auto; /* إعادة تفعيل الضغط والسحب للمربع نفسه */
+  border: 2px dashed #d4af37; /* إطار متقطع لمعرفة مكان الإسقاط أثناء البرمجة */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  width: 15%;  /* حجم مرن يتناسب مع المربع في الصورة */
+  height: 6%;  /* حجم مرن يتناسب مع المربع في الصورة */
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px dashed #e0e0e0; /* خط فاصل ناعم قبل الزر */
 }
 
-.modern-tafsir-close-btn-bottom {
-  background-color: #f8d7da;     /* لون خلفية هادئ مائل للاحمرار للإغلاق */
-  color: #721c24;                 /* لون نص متناسق */
-  border: 1px solid #f5c6cb;
-  padding: 8px 20px;
-  font-size: 14px;
+.placed-name {
+  color: #004d40;
   font-weight: bold;
-  border-radius: 20px;            /* حواف دائرية أنيقة */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-size: 10px;
+  animation: popIn 0.3s ease-in-out;
 }
 
-.modern-tafsir-close-btn-bottom:hover {
-  background-color: #f5c6cb;     /* تغميق اللون قليلاً عند مرور الماوس */
-  transform: translateY(-1px);    /* تأثير حركة بسيط */
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* التأكد من وراثة حجم الخط إذا قام المستخدم بتكبير الخط عبر الأزرار بالشاشات الكبيرة */
-.modern-tafsir-close-btn-bottom {
-  font-size: var(--current-zoom, 14px);
-}
 
+
+
+/* 📐 ميديا كويري مخصصة فقط لشاشات 900px وأقل وفقط عندما يكون المستوى الثاني نشطاً */
+@media (max-width: 900px) {
+  
+  .lvl-2 .tree-drop-slot {
+    width: 10.5% !important; /* تصغير حجم المربع قليلاً ليناسب الشجرة المنكمشة */
+    height: 4.5% !important;
+  }
+
+  .lvl-2 .placed-name {
+    font-size: 10px !important; /* تصغير الخط ليتسع بشكل ممتاز */
+  }
+
+  /* ---------------------------------------------------- */
+  /* 🎯 إعادة ضبط مواقع المربعات الـ 16 للمستوى الثاني فقط */
+  /* ---------------------------------------------------- */
+
+  /* 1: محمد */
+  .lvl-2 .tree-drop-slot:nth-child(1) { top: 71% !important; left: 43% !important; }
+  
+  /* 2: عَبْد الله */
+  .lvl-2 .tree-drop-slot:nth-child(2) { top: 63.5% !important; left: 59% !important; }
+  
+  /* 3: عَبْد المطلب */
+  .lvl-2 .tree-drop-slot:nth-child(3) { top: 63.5% !important; left: 29% !important; }
+  
+  /* 4: هَاشِم */
+  .lvl-2 .tree-drop-slot:nth-child(4) { top: 54.5% !important; left: 59% !important; }
+  
+  /* 5: عَبْد مَنَاف */
+  .lvl-2 .tree-drop-slot:nth-child(5) { top: 54.5% !important; left: 29% !important; }
+  
+  /* 6: قُصَي */
+  .lvl-2 .tree-drop-slot:nth-child(6) { top: 45.5% !important; left: 59% !important; }
+  
+  /* 7: كِلَاب */
+  .lvl-2 .tree-drop-slot:nth-child(7) { top: 45.5% !important; left: 29% !important; }
+
+  /* 8: مُرَّة */
+  .lvl-2 .tree-drop-slot:nth-child(8) { top: 36.5% !important; left: 59% !important; }
+  
+  /* 9: كَعْب */
+  .lvl-2 .tree-drop-slot:nth-child(9) { top: 36.5% !important; left: 29% !important; }
+
+  /* 10: لُؤَي */
+  .lvl-2 .tree-drop-slot:nth-child(10) { top: 26.5% !important; left: 59% !important; }
+  
+  /* 11: غَالِب */
+  .lvl-2 .tree-drop-slot:nth-child(11) { top: 26.5% !important; left: 29% !important; }
+
+  /* 12: فِهْر */
+  .lvl-2 .tree-drop-slot:nth-child(12) { top: 18.5% !important; left: 59% !important; }
+  
+  /* 13: مَالِك */
+  .lvl-2 .tree-drop-slot:nth-child(13) { top: 18.5% !important; left: 29% !important; }
+
+  /* 14: النَّضْر */
+  .lvl-2 .tree-drop-slot:nth-child(14) { top: 10.5% !important; left: 59% !important; }
+  
+  /* 15: كِنَانَة */
+  .lvl-2 .tree-drop-slot:nth-child(15) { top: 10.5% !important; left: 29% !important; }
+  
+  /* 16: خُزَيْمَة */
+  .lvl-2 .tree-drop-slot:nth-child(16) { top: 2.5% !important; left: 45% !important; }
+
+}

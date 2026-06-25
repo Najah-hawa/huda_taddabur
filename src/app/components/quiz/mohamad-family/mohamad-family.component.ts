@@ -1,88 +1,194 @@
-import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject} from '@angular/core';
+import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
-import { SurahHintComponent } from "../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../hadith/zoom-controls/zoom-controls.component';
-import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
-
-// 📥 Hämta strukturerad data specifikt för Hadith 7
-import { hadithDetails, hadithImportanceList} from './quiz-data';
+import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+// 📥 استيراد بيانات نسب الرسول المحدثة (تأكدي من تعديل محتوى هذا الملف ليطابق النسب)
+import { hadithDetails } from './quiz-data';
 
 @Component({
   selector: 'app-mohamad-family',
   standalone: true,
-  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+  imports: [ 
+    CommonModule, 
+    RouterModule, 
+    FooterInfoComponent, 
+    ZoomControlsComponent,
+    DragDropModule
+  ],
   templateUrl: './mohamad-family.component.html',
   styleUrl: './mohamad-family.component.css'
 })
-
 export class MohamadFamilyComponent implements OnInit, OnDestroy {
-
   
   private http = inject(HttpClient);
+  private cdr = inject(ChangeDetectorRef);
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
 
+  // بيانات نسب الرسول والصوت المقسم عبارات
   hadith = hadithDetails;
-  box1Items = hadithImportanceList;
 
+  // إعدادات واجهة العرض والزوم
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
-  fontSizeBox1: number = 16;
-  isExplanationShown: boolean = false;
+  isRawiMaximized: boolean = false;
+  isBox1Maximized: boolean = false;
+
+  // 🎵 متغيرات المشغل الصوتي المطور لنسب الرسول ﷺ
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
   currentPhraseIndex: number = -1;
-
-  // 🎵 متغيرات المشغل الصوتي المطور (Audio Player)
   currentTime: number = 0;
   duration: number = 0;
 
-  isBox1Maximized: boolean = false;
-  isRawiMaximized: boolean = false;
-
-  isSpeakingTafsir: boolean = false;
-  isTafsirPaused: boolean = false;
-
-  constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
-
-   ngOnInit() {
-    // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle(' نسب الرسول محمد ﷺ');
-
+  ngOnInit() {
+    // 🎯 تحديث عناوين الصفحة والـ Meta Tags لتناسب ميزة نسب الرسول ﷺ
+    this.titleService.setTitle('نسب الرسول محمد ﷺ - مسابقات تفاعلية');
+    this.loadLevel(1);
     this.metaService.updateTag({ 
       name: 'description', 
-      content: 'شرح وتدبر الحديث الأول من الأربعين النووية (الأعمال بالنيات)، مع إضاءات من حياة الراوي عمر بن الخطاب رضي الله عنه وفوائد الحديث.' 
+      content: 'تعلم واستمع إلى نسب الرسول محمد ﷺ الشريف صعوداً إلى أجداده، واختبر حفظك من خلال شجرة العائلة التفاعلية للأطفال والكبار.' 
     });
     this.metaService.updateTag({ 
       name: 'keywords', 
-      content: 'الأعمال بالنيات, الحديث الأول, الأربعون النووية, عمر بن الخطاب, شرح الحديث, تدبر الحديث نبوي' 
+      content: 'نسب الرسول, شجرة عائلة النبي, نسب محمد بن عبد الله, أجداد الرسول, مسابقات إسلامية للأطفال, PWA' 
     });
     
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الأول: إنما الأعمال بالنيات - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الأول مع الشرح الصوتي، ترجمة الراوي، وأهم الفوائد المستخرجة.' });
+    this.metaService.updateTag({ property: 'og:title', content: 'نسب الرسول محمد ﷺ - شجرة العائلة التفاعلية' });
+    this.metaService.updateTag({ property: 'og:description', content: 'استمع إلى نسب النبي الشريف مع ميزة التظليل التلقائي واختبر نفسك مع لعبة سحب الأسماء المسلية.' });
     this.metaService.updateTag({ property: 'og:type', content: 'article' });
   }
 
+
+
+currentLevel: number = 1;
+leftSideNames: string[] = [];
+rightSideNames: string[] = [];
+// تحديث المصفوفة في ملف الـ TS لتشمل الإحداثيات النسبية لكل جد
+levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
+  1: [
+    { name: 'محمد', top: '49%', left: '38%' }, // الجذع الأساسي الثابت
+    { name: 'عَبْد الله', top: '38%', left: '19%' },
+    { name: 'عَبْد المطلب', top: '38%', left: '57%' },
+    { name: 'هَاشِم', top: '27%', left: '24%' },
+    { name: 'عَبْد مَنَاف', top: '27%', left: '52%' },
+    { name: 'قُصَي', top: '16%', left: '33%' },
+    { name: 'كِلَاب', top: '16%', left: '46%' },
+    { name: 'مُرَّة', top: '4%', left: '40%' }
+  ],
+  2: [
+    // هنا سنضع إحداثيات الـ 16 غصناً للمستوى الثاني متوزعة يميناً ويساراً صعوداً
+    { name: 'محمد', top: '71%', left: '43%' },
+    { name: 'عَبْد الله', top: '63%', left: '53%' },
+    { name: 'عَبْد المطلب', top: '63%', left: '31%' },
+    { name: 'هَاشِم', top: '54%', left: '53%' },
+    { name: 'عَبْد مَنَاف', top: '54%', left: '31%' },
+    { name: 'قُصَي',top: '45%', left: '53%'  },
+    { name: 'كِلَاب', top: '45%', left: '29%' },
+
+    { name: 'مُرَّة',top: '36%', left: '53%' },
+    { name: 'كَعْب',  top: '36%', left: '31%' },
+
+    { name: 'لُؤَي',top: '26%', left: '53%'  },
+    { name: 'غَالِب', top: '26%', left: '31%' },
+
+    { name: 'فِهْر', top: '18%', left: '53%'  },
+    { name: 'مَالِك', top: '18%', left: '31%'},
+
+    { name: 'النَّضْر', top: '10%', left: '53%' },
+    { name: 'كِنَانَة', top:  '10%', left: '31%'  },
+    { name: 'خُزَيْمَة', top: '2%', left: '43%' }
+  ],
+  3: [] // سنملأه لاحقاً بنفس الطريقة التراكمية كاملة حتى عدنان
+};
+
+
+// دالة اختيار وتبديل المستوى
+selectLevel(level: number) {
+  this.currentLevel = level;
+  this.loadLevel(level);
+}
+
+
+// مصفوفة المربعات الفارغة على الشجرة (سيتم ملؤها برمجياً حسب المستوى)
+// كل مربع يمثل كائن يحتوي على الاسم الصحيح، وهل تمت الإجابة عليه أم لا
+treeSlots: { 
+  correctName: string, 
+  currentPlacedName: string | null, 
+  top: string, 
+  left: string 
+}[] = [];
+// تحديث دالة loadLevel لتهيئ المربعات الفارغة أيضاً
+loadLevel(level: number) {
+  const originalSlots = [...this.levelData[level]];
+
+  // 1. بناء المربعات على الشجرة مع الاحتفاظ بإحداثياتها
+  this.treeSlots = originalSlots.map(slot => ({
+    correctName: slot.name,
+    currentPlacedName: slot.name === 'محمد' ? 'محمد ﷺ' : null, // جعل اسم النبي ظاهراً وثابتاً تلقائياً
+    top: slot.top,
+    left: slot.left
+  }));
+
+  // 2. تصفية الأسماء المبعثرة (بدون اسم محمد) وعمل Shuffle لها
+  let gameNames = originalSlots.filter(s => s.name !== 'محمد').map(s => s.name);
+  gameNames.sort(() => Math.random() - 0.5);
+
+  const half = Math.ceil(gameNames.length / 2);
+  this.leftSideNames = gameNames.slice(0, half);
+  this.rightSideNames = gameNames.slice(half);
+
+  this.cdr.detectChanges();
+}
+
+// 🎚️ الدالة بعد التحديث لمنع الإسقاط العشوائي وفرض الترتيب من الأسفل للأعلى
+onNameDropped(event: CdkDragDrop<string[]>, slotIndex: number) {
+  const draggedName = event.previousContainer.data[event.previousIndex];
+  const targetSlot = this.treeSlots[slotIndex];
+
+  // 🛑 الشرط السحري: التحقق من الترتيب
+  // إذا كان هذا ليس المربع الأول (index > 0)، نتحقق هل المربع الذي قبله (index - 1) ممتلئ؟
+  if (slotIndex > 0) {
+    const previousSlot = this.treeSlots[slotIndex - 1];
+    if (!previousSlot.currentPlacedName) {
+      console.log('يجب حل المربع السابق أولاً لترتيب النسب صعوداً!');
+      // يمكنكِ هنا تشغيل صوت تنبيه قصير أو حركة اهتزاز
+      return; // نوقف الدالة فوراً ولا نقبل الإسقاط
+    }
+  }
+
+  // ✅ إذا مر من الشرط، نتحقق الآن هل الاسم صحيح؟
+  if (targetSlot.correctName === draggedName) {
+    // 1. تثبيت الاسم في المربع على الشجرة
+    targetSlot.currentPlacedName = draggedName;
+
+    // 2. حظر وحذف الاسم من القائمة الجانبية
+    event.previousContainer.data.splice(event.previousIndex, 1);
+
+    console.log('إجابة صحيحة ممتاز! صعدنا خطوة في الشجرة 🎉');
+  } else {
+    // إجابة خاطئة
+    console.log('إجابة خاطئة، حاول مجدداً!');
+  }
+}
+
+  // ==========================================
+  // التحكم في تكبير/تصغير صندوق العرض الأول (النسب)
+  // ==========================================
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
       this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
-      this.isExplanationShown = false;
     }
-    if (this.isRawiMaximized) {
-      document.body.style.overflow = 'hidden'; 
-    } else {
-      document.body.style.overflow = 'auto';   
-    }
+    document.body.style.overflow = this.isRawiMaximized ? 'hidden' : 'auto'; 
+    
     this.cdr.detectChanges();
     setTimeout(() => {
       if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',   
-          inline: 'nearest'
-        });
+        boxElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }, 100); 
   }
@@ -93,6 +199,7 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
       this.cdr.detectChanges();
     }
   }
+
   zoomOutRawi() {
     if (this.fontSizeRawi > 12) {
       this.fontSizeRawi -= 2;
@@ -100,112 +207,43 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
     }
   }
 
+  // ==========================================
+  // التحكم في تكبير/تصغير صندوق اللعبة الثاني (الشجرة)
+  // ==========================================
   toggleBox1Zoom(boxElement: HTMLElement) {
     this.isBox1Maximized = !this.isBox1Maximized;
-
-    if (this.isBox1Maximized) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto'; 
-      this.fontSizeBox1 = 16;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
-    }
+    document.body.style.overflow = this.isBox1Maximized ? 'hidden' : 'auto';
 
     this.cdr.detectChanges();
-
     setTimeout(() => {
       if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',  
-          inline: 'center'
-        });
+        boxElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }, 100);
   }
 
   zoomInBox1(boxElement: HTMLElement) {
-    if (this.fontSizeBox1 < 36) {
-      this.fontSizeBox1 += 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
-    }
+    this.applyFontChangeDirect(boxElement, 2);
   }
 
   zoomOutBox1(boxElement: HTMLElement) {
-    if (this.fontSizeBox1 > 14) {
-      this.fontSizeBox1 -= 2;
-      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
-    }
+    this.applyFontChangeDirect(boxElement, -2);
   }
 
-  private applyFontChangeDirect(element: HTMLElement, size: number) {
+  private applyFontChangeDirect(element: HTMLElement, amount: number) {
     if (element) {
-      element.style.setProperty('--dynamic-font-size', `${size}px`);
-      this.cdr.detectChanges();
-    }
-  }
-
-  toggleExplanation() {
-    this.isExplanationShown = !this.isExplanationShown;
-  }
-
-  private applyFontChange(selector: string, size: number) {
-    const element = document.querySelector(selector) as HTMLElement;
-    if (element) {
-      element.style.setProperty('--dynamic-font-size', `${size}px`);
-      this.cdr.detectChanges();
+      const currentSize = parseInt(element.style.getPropertyValue('--dynamic-font-size') || '15');
+      const newSize = currentSize + amount;
+      if (newSize >= 14 && newSize <= 36) {
+        element.style.setProperty('--dynamic-font-size', `${newSize}px`);
+        this.cdr.detectChanges();
+      }
     }
   }
 
   // ==========================================
-  // Talsyntes för förklaringsboxen
+  // مشغل الصوت المتزامن لنسب الرسول ﷺ
   // ==========================================
-
-  speakText(text: string | undefined) {
-    if (!text) return;
-    if (this.isSpeakingTafsir && !this.isTafsirPaused) {
-      window.speechSynthesis.pause();
-      this.isTafsirPaused = true;
-      this.cdr.detectChanges();
-      return;
-    }
-    if (this.isSpeakingTafsir && this.isTafsirPaused) {
-      window.speechSynthesis.resume();
-      this.isTafsirPaused = false;
-      this.cdr.detectChanges();
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const plainText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(plainText);
-    utterance.lang = 'ar';
-    utterance.rate = 0.9;
-    utterance.onstart = () => {
-      this.isSpeakingTafsir = true;
-      this.isTafsirPaused = false;
-      this.cdr.detectChanges();
-    };
-    utterance.onend = () => {
-      this.stopSpeakingTafsir();
-    };
-    utterance.onerror = (event) => {
-      console.error("حدث خطأ في القراءة الصوتية:", event.error);
-      this.stopSpeakingTafsir();
-    };
-    window.speechSynthesis.speak(utterance);
-  }
-
-  stopSpeakingTafsir() {
-    window.speechSynthesis.cancel();
-    this.isSpeakingTafsir = false;
-    this.isTafsirPaused = false;
-    this.cdr.detectChanges();
-  }
-
-  // ==========================================
-  // Synkroniserat ljudspår för själva texten (Mappat till Slider)
-  // ==========================================
-
   playHadithAudio(url: string | undefined) {
     if (!url) return;
 
@@ -223,8 +261,6 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
       return;
     }
 
-    window.speechSynthesis.cancel();
-
     this.http.get(url, { responseType: 'blob' }).subscribe({
       next: (blob) => {
         const localBlobUrl = URL.createObjectURL(blob);
@@ -233,7 +269,6 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
         this.isPlaying = true;
         this.cdr.detectChanges();
 
-        // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
         this.currentAudio.onloadedmetadata = () => {
           if (this.currentAudio) {
             this.duration = this.currentAudio.duration;
@@ -241,12 +276,11 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
           }
         };
         
-        // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
         this.currentAudio.ontimeupdate = () => {
           if (!this.currentAudio) return;
           this.currentTime = this.currentAudio.currentTime;
 
-          // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
+          // البحث عن جملة النسب الحالية لتظليلها
           const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
           if (index !== this.currentPhraseIndex) {
             this.currentPhraseIndex = index;
@@ -259,22 +293,17 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
           .catch(() => this.isPlaying = false);
           
         this.currentAudio.onended = () => {
-          this.isPlaying = false;
-          this.currentTime = 0;
-          this.currentPhraseIndex = -1;
-          this.currentAudio = null;
-          this.cdr.detectChanges();
+          this.resetAudioPlayer();
         };
       },
       error: (err) => {
-        console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين ولم يخزن هذا الملف مسبقاً:", err);
+        console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين:", err);
         this.isPlaying = false;
         this.cdr.detectChanges();
       }
     });
   }
 
-  // ⏭️ القفز الذكي للجملة التالية
   skipToNextPhrase() {
     if (!this.currentAudio || !this.hadith?.phrases) return;
     const nextIndex = this.currentPhraseIndex + 1;
@@ -285,11 +314,8 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
     }
   }
 
-  // ⏮️ الترجيع الذكي للجملة السابقة (بحسب الاستهلاك الزمني للجملة الحالية)
   skipToPreviousPhrase() {
     if (!this.currentAudio || !this.hadith?.phrases) return;
-    
-    // إذا لم يعثر على أي جملة، نرجعه لبداية الصوت
     if (this.currentPhraseIndex === -1) {
       this.currentAudio.currentTime = 0;
       return;
@@ -298,12 +324,10 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
     const currentPhrase = this.hadith.phrases[this.currentPhraseIndex];
     const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
 
-    // إذا استمع لأكثر من ثانيتين من الجملة، يعود لبدايتها، وإلا يعود للجملة السابقة تماماً
     if (progressInPhrase > 2) {
       this.currentAudio.currentTime = currentPhrase.start;
     } else if (this.currentPhraseIndex > 0) {
-      const prevPhrase = this.hadith.phrases[this.currentPhraseIndex - 1];
-      this.currentAudio.currentTime = prevPhrase.start;
+      this.currentAudio.currentTime = this.hadith.phrases[this.currentPhraseIndex - 1].start;
     } else {
       this.currentAudio.currentTime = 0;
     }
@@ -311,7 +335,6 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  // 🎚️ السحب اليدوي للمؤشر الشريطي من قبل المستخدم
   onSliderChange(event: any) {
     if (this.currentAudio) {
       this.currentAudio.currentTime = Number(event.target.value);
@@ -320,23 +343,19 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
     }
   }
 
+  private resetAudioPlayer() {
+    this.isPlaying = false;
+    this.currentTime = 0;
+    this.currentPhraseIndex = -1;
+    this.currentAudio = null;
+    this.cdr.detectChanges();
+  }
+
   ngOnDestroy() {
     document.body.style.overflow = 'auto';
     if (this.currentAudio) {
       this.currentAudio.pause();
       this.currentAudio = null;
     }
-    window.speechSynthesis.cancel();
-  }
-
-  closeExplanationAndScroll(targetElement: HTMLElement) {
-    this.isExplanationShown = false;
-    this.cdr.detectChanges();
-    setTimeout(() => {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }, 50); 
   }
 }

@@ -1,101 +1,119 @@
 <div class="hadith-page-container">
 
-   <div class="hadith-page-container">
-
-<div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
-
-  <div class="box-container ">
-    <app-zoom-controls
-      [isMaximized]="isRawiMaximized" (onToggle)="toggleRawiZoom(hadithBox)" (onZoomIn)="zoomInRawi()" (onZoomOut)="zoomOutRawi()">
-    </app-zoom-controls>
-  </div>
-  <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
-    <div class="verse-block hadith-main-block-modern">
-      <div class="hadith-audio-trigger-wrapper">
-        
-
- <!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
-<!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
-<div class="hadith-audio-player-wrapper">
-  
-  <!-- أزرار التحكم الذكية بالحديث (جملة جملة) -->
-  <div class="hadith-player-buttons">
+  <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
     
-  
-        <!-- ⏩ الزر اللي على اليمين بيرجع للجملة السابقة -->
-    <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
-      ⏭️
-    </button>
-    
-    <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
-      {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع لنسب الرسول محمد ﷺ' }}
-    </button>
-    
-  <!-- ⏪ الزر اللي على اليسار بيقدم للجملة التالية -->
-    <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
-      ⏮️
-    </button>
-  </div>
+    <div class="box-container ">
+      <app-zoom-controls
+        [isMaximized]="isRawiMaximized" (onToggle)="toggleRawiZoom(hadithBox)" (onZoomIn)="zoomInRawi()" (onZoomOut)="zoomOutRawi()">
+      </app-zoom-controls>
+    </div>
 
-  <!-- شريط التحكم بالوقت (Progress Slider) -->
-  <div class="hadith-player-slider-container">
-    <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
-    
-    <input 
-      type="range" 
-      [min]="0" 
-      [max]="duration" 
-      [value]="currentTime" 
-      (input)="onSliderChange($event)"
-      class="hadith-audio-slider" />
-      
-    <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
-  </div>
+    <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
+      <div class="verse-block hadith-main-block-modern">
+        <div class="hadith-audio-trigger-wrapper">
+          
+          <div class="hadith-audio-player-wrapper">
+            
+            <div class="hadith-player-buttons">
+              <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
+                ⏭️
+              </button>
+              
+              <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
+                {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع لنسب الرسول محمد ﷺ' }}
+              </button>
+              
+              <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
+                &nbsp;⏮️
+              </button>
+            </div>
 
-</div>
+            <div class="hadith-player-slider-container">
+              <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
+              
+              <input 
+                type="range" 
+                [min]="0" 
+                [max]="duration" 
+                [value]="currentTime" 
+                (input)="onSliderChange($event)"
+                class="hadith-audio-slider" />
+                
+              <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
+            </div>
 
+          </div>
+        </div>
 
-
+        <div class="hadith-text-full-width">
+          <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
+            @for (phrase of hadith.phrases; track $index) {
+              <span [class.highlighted-phrase]="$index === currentPhraseIndex">
+                {{ phrase.text }}
+              </span>
+            }
+          </p>
+        </div>
+     
       </div>
-      <div class="hadith-text-full-width">
-        <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
-          @for (phrase of hadith.phrases; track $index) {
-            <span [class.highlighted-phrase]="$index === currentPhraseIndex">
-              {{ phrase.text }}
-            </span>
-          }
-        </p>
-      </div>
-   
     </div>
   </div>
+
+  <div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
+    
+    <app-zoom-controls
+      [isMaximized]="isBox1Maximized"  
+      (onToggle)="toggleBox1Zoom(box1)" 
+      (onZoomIn)="zoomInBox1(box1)" 
+      (onZoomOut)="zoomOutBox1(box1)">
+    </app-zoom-controls>
+
+    <div class="game-zone-wrapper" cdkDropListGroup> <div class="levels-container">
+    <button [class.active-lvl]="currentLevel === 1" (click)="selectLevel(1)">المستوى الأول (سهل)</button>
+    <button [class.active-lvl]="currentLevel === 2" (click)="selectLevel(2)">المستوى الثاني (متوسط)</button>
+    <button [class.active-lvl]="currentLevel === 3" (click)="selectLevel(3)">المستوى الثالث (متقدم)</button>
+  </div>
+
+ <div class="game-playground" [class.lvl-2]="currentLevel === 2">
+    
+    <div class="names-sidebar right-sidebar" 
+         cdkDropList 
+         [cdkDropListData]="leftSideNames">
+      <div class="draggable-name-card" *ngFor="let name of leftSideNames" cdkDrag>
+        {{ name }}
+      </div>
+    </div>
+
+    <div class="tree-display-zone">
+      <img [src]="'images/play-images/mohamad-family-level-' + currentLevel + '.png'" class="tree-bg-image" alt="شجرة النسب">
+      
+     <div class="absolute-slots-container">
+  <div class="tree-drop-slot" 
+       *ngFor="let slot of treeSlots; let i = index"
+       [style.top]="slot.top"
+       [style.left]="slot.left"
+       [class.static-prophet]="slot.correctName === 'محمد'"
+       cdkDropList
+       [cdkDropListDisabled]="slot.correctName === 'محمد'"
+       (cdkDropListDropped)="onNameDropped($event, i)">
+    
+    <span class="placed-name">
+      {{ slot.correctName === 'محمد' ? slot.currentPlacedName : (slot.currentPlacedName || '') }}
+    </span>
+  </div>
 </div>
+    </div>
 
-  <!-- الحاوية 2: فوائد الحديث (Box 1) -->
-<div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
+    <div class="names-sidebar left-sidebar" 
+         cdkDropList 
+         [cdkDropListData]="rightSideNames">
+      <div class="draggable-name-card" *ngFor="let name of rightSideNames" cdkDrag>
+        {{ name }}
+      </div>
+    </div>
 
-
-  <app-zoom-controls
-    [isMaximized]="isBox1Maximized"  
-    (onToggle)="toggleBox1Zoom(box1)" 
-    (onZoomIn)="zoomInBox1(box1)" 
-    (onZoomOut)="zoomOutBox1(box1)">
-  </app-zoom-controls>
-
-  
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 حكم و أداب النصيحة  </h2>
-
-  <div class="box-list-wrapper">
-  <ul class="custom-presentation-list">
-    <!-- استخدام الطريقة العادية ومسح innerHTML يضمن ظهورها 100% على Vercel -->
-    <li *ngFor="let item of box1Items">
-      <span [textContent]="item"></span>
-    </li>
-  </ul>
- </div>
+  </div>
 </div>
-
-
 
 </div>
 
