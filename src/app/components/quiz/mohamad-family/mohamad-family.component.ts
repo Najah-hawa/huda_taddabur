@@ -153,7 +153,7 @@ levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   { name: 'نِزَار',  top: '7%', left: '53%' },
   { name:  'مَعَدّ',  top: '7%', left: '34%' },
   
-  { name: 'عَدْنَان',top: '2%', left: '42%' }, 
+  { name: 'عَدْنَان',top: '1%', left: '42%' }, 
 ]
 };
 
