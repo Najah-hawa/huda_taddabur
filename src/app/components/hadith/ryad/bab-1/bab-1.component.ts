@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core'; // Importera OnInit
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser'; // Importera Title och Meta för SEO
+
+@Component({
+  selector: 'app-bab-1',
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive],
+   templateUrl: './bab-1.component.html',
+  styleUrl: './bab-1.component.css'
+})
+export class Bab1Component implements OnInit { // Implementera OnInit
+
+  constructor(private titleService: Title, private metaService: Meta) {}
+
+  ngOnInit() {
+    // Sätt sidans huvudtitel för hadith-menyn
+    this.titleService.setTitle('الأربعون النووية - شرح وتدبر أحاديث النبي ﷺ');
+
+    // Sätt meta-taggar för sökmotorer
+    this.metaService.updateTag({ 
+      name: 'description', 
+      content: 'تصفح وقرأ شرح الأربعون النووية كاملة مع الفوائد والتدبر الإيماني لأحاديث النبي صلى الله عليه وسلم.' 
+    });
+    this.metaService.updateTag({ 
+      name: 'keywords', 
+      content: 'الأربعون النووية, أحاديث نبوية, شرح الحديث, الأعمال بالنيات, مراتب الدين, هدى وتدبر' 
+    });
+
+    // Open Graph för sociala medier och WhatsApp-delning
+    this.metaService.updateTag({ property: 'og:title', content: 'الأربعون النووية - منصة هدى وتدبر التفاعلية' });
+    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الأربعين النووية مع شروحات مبسطة وفوائد مستخرجة لكل حديث.' });
+    this.metaService.updateTag({ property: 'og:type', content: 'website' });
+  }
+
+}
