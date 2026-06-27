@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
-import { SurahHintComponent } from "../../../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../../../next-before-surah-meny/next-before-surah-meny.component";
@@ -14,7 +13,7 @@ import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith6-
 @Component({
    selector: 'app-hadith-6',
   standalone: true,
-  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+  imports: [ CommonModule, RouterModule, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
   templateUrl: './hadith-6.component.html',
   styleUrl: './hadith-6.component.css'
 })
@@ -52,26 +51,26 @@ export class Hadith6Component implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
-  this.titleService.setTitle('الحديث الثامن: حرمة المسلم - شروح الأربعين النووية');
+  this.titleService.setTitle('الحديث السادس: أحكام الوصية وأجر النفقة - شروح الأربعين النووية');
   
   this.metaService.updateTag({
     name: 'description',
-    content: 'شرح وتدبر الحديث الثامن من الأربعين النووية (حرمة المسلم)، مع بيان أحكام الصلاة والزكاة وعصمة دماء وأموال المسلمين وحساب السرائر.'
+    content: 'شرح وتدبر الحديث السادس عن سعد بن أبي وقاص (الثلث والثلث كثير)، وبيان حدود الوصية والصدقة للمريض، وعظم أجر النفقة على الأهل ابتغاء وجه الله.'
   });
   
   this.metaService.updateTag({
     name: 'keywords',
-    content: 'حرمة المسلم, الحديث الثامن, الأربعون النووية, ابن عمر, عصموا دماءهم, أقم الصلاة, آتوا الزكاة, شرح الحديث, الأربعين النووية'
+    content: 'الحديث السادس, سعد بن أبي وقاص, الثلث والثلث كثير, أحكام الوصية, النفقة على الأهل, عيادة المريض, يبتغي وجه الله, شرح الحديث, الأربعون النووية'
   });
   
   this.metaService.updateTag({ 
     property: 'og:title', 
-    content: 'الحديث الثامن: حرمة المسلم - تدبر تفاعلي' 
+    content: 'الحديث السادس: حدود الوصية وأجر النفقة - تدبر تفاعلي' 
   });
   
   this.metaService.updateTag({ 
     property: 'og:description', 
-    content: 'اقرأ واستمع إلى متن الحديث الثامن مع الشرح الصوتي، تفسير المفردات، وبيان سبب عدم ذكر الحج والصيام وأحكام تارك الصلاة والزكاة.' 
+    content: 'اقرأ واستمع إلى الحديث الشريف بالتظليل التزامني، وتعرّف على سيرة فاتح العراق سعد بن أبي وقاص ومجابة دعوته، والدروس المستفادة في الشفقة على الورثة.' 
   });
   
   this.metaService.updateTag({ 

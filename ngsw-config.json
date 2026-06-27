@@ -35,7 +35,8 @@
       "resources": {
         "files": [
           "/audio/hadith/**/*.mpeg",
-          "/audio/hadith/**/*.mp3"
+          "/audio/hadith/**/*.mp3",
+          "/audio/hadith/**/*.m4a"
         ]
       },
       "cacheQueryOptions": {

@@ -142,3 +142,32 @@
   font-size: var(--current-zoom, 14px);
 }
 
+/* تفعيل خاصية الـ Grid لتوزيع عناصر القائمة في عمودين */
+.importance-grid-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* عمودين متساويين بنسبة 50% لكل منهما */
+  gap: 12px 25px; /* مسافة 12px بين الأسطر و 25px بين العمود الأيمن والأيسر */
+  padding: 0;
+  margin: 0;
+  list-style-type: none; /* إخفاء نقاط القائمة الافتراضية */
+  direction: rtl; /* ترتيب العناصر يبدأ من اليمين إلى اليسار */
+}
+
+/* تنسيق الأسطر الفردية ليصبح مظهرها مريح للعين ومستقر */
+.importance-grid-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: right;
+  padding: 10px 14px;
+  background-color: rgba(0, 0, 0, 0.02); /* خلفية خفيفة جداً لتمييز الأسطر المتجاورة */
+  border-radius: 6px;
+  border-right: 3px solid #dfb76c; /* خط جمالي اختياري على اليمين (يمكنكِ تغيير اللون ليناسب تصميمكِ) */
+}
+
+/* 📱 شاشات الهواتف المحمولة (Responsive Design) */
+@media (max-width: 768px) {
+  .importance-grid-list {
+    grid-template-columns: 1fr; /* إلغاء العمودين وتحويلهما لعمود واحد كامل العرض على الموبايل لتفادي حشر النصوص */
+    gap: 8px; /* تقليل المسافات على الموبايل لاستغلال المساحة */
+  }
+}

@@ -1,8 +1,4 @@
 <div class="hadith-page-container">
-  <app-surah-hint
-    [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
-    [hintText]="hadith.hintText">
-  </app-surah-hint>
 
   <app-next-before-surah-meny
    [RoutelinkBefore]="'/hadith/ryad/bab-1'" [SurahBefore]="'رجوع للقائمة'" 
@@ -106,7 +102,7 @@
       </div>
     </div>
   </div>
-  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;"> 📚 المصدر: <b>متن الأربعين النووية</b></p>
+
 </div>
 
   <!-- الحاوية 2: فوائد الحديث (Box 1) -->
@@ -121,11 +117,11 @@
 
   <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;"> 📌 راوي الحديث </h2>
 
-   <div class="box-list-wrapper">
-    <ul class="custom-presentation-list">
-      <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
-    </ul>
-  </div>
+  <div class="box-list-wrapper">
+  <ul class="custom-presentation-list importance-grid-list">
+    <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
+  </ul>
+</div>
 
 </div>
 
@@ -136,8 +132,8 @@
   <app-zoom-controls
     [isMaximized]="isBox2Maximized"  
     (onToggle)="toggleBox2Zoom(box2)" 
-    (onZoomIn)="zoomInBox1(box2)" 
-    (onZoomOut)="zoomOutBox1(box2)">
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
   </app-zoom-controls>
 
   <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد و سبب النزول</h2>
@@ -170,13 +166,13 @@
   </div>
 </div>
 
- <div #box3 class="fawaed-box-container mini box3-container" [class.full-presentation]="isBox3Maximized" style="margin-top: 25px; position: relative;">
+ <div #box4 class="fawaed-box-container mini box4-container" [class.full-presentation]="isBox4Maximized" style="margin-top: 25px; position: relative;">
 
   <app-zoom-controls
-    [isMaximized]="isBox3Maximized"  
-    (onToggle)="toggleBox3Zoom(box3)" 
-    (onZoomIn)="zoomInBox3(box3)" 
-    (onZoomOut)="zoomOutBox3(box3)">
+    [isMaximized]="isBox4Maximized"  
+    (onToggle)="toggleBox4Zoom(box4)" 
+    (onZoomIn)="zoomInBox4(box4)" 
+    (onZoomOut)="zoomOutBox4(box4)">
   </app-zoom-controls>
 
 

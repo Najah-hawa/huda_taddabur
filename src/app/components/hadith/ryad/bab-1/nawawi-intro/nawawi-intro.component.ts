@@ -9,17 +9,17 @@ import { ZoomControlsComponent } from '../../../zoom-controls/zoom-controls.comp
 import { NextBeforeSurahMenyComponent } from "../../../../next-before-surah-meny/next-before-surah-meny.component";
 
 // 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, } from './hadith-intro-data';
+import { hadithDetails, hadithImportanceList, } from './nawawi-intro-data';
 
 @Component({
-  selector: 'app-intro',
+  selector: 'app-nawawi-intro',
   standalone: true,
   imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './intro.component.html',
-  styleUrl: './intro.component.css'
+    templateUrl: './nawawi-intro.component.html',
+  styleUrl: './nawawi-intro.component.css'
 })
 
-export class IntroComponent implements OnInit, OnDestroy {
+export class NawawiIntroComponent implements OnInit, OnDestroy {
 
   private http = inject(HttpClient);
 
@@ -48,26 +48,26 @@ export class IntroComponent implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
-  this.titleService.setTitle('مقدمة: باب الإخلاص وإحضار النية - شروح الأربعين النووية');
+  this.titleService.setTitle('سيرة الإمام النووي ومؤلفاته - شروح الأربعين النووية');
   
   this.metaService.updateTag({
     name: 'description',
-    content: 'مقدمة في باب الإخلاص وإحضار النية في جميع الأعمال والأحوال، وبيان مفهوم إفراد الحق سبحانه وتعالى بالقصد في الطاعات، ولماذا لا يحب الله العمل المشترك والقلب المشترك.'
+    content: 'تعرف على سيرة ومؤلفات الإمام النووي (يحيى بن شرف الخزامي) ومحيي الدين أبو زكريا، من ولادته في قرية نوى التابعة لدرعا السورية حتى وفاته برئاسة دار الحديث الأشرفية بدمشق، وصفاته في الورع والزهد والمذهب الشافعي.'
   });
   
   this.metaService.updateTag({
     name: 'keywords',
-    content: 'مقدمة باب الإخلاص, إحضار النية, إفراد الحق بالقصد, أعمال القلوب, ابن عطاء, العمل المشترك, القلب المشترك, شروح الأربعين النووية'
+    content: 'الإمام النووي, يحيى بن شرف بن مري, محيي الدين أبو زكريا, قرية نوى, درعا السورية, الأربعين النووية, رياض الصالحين, الأذكار, المذهب الشافعي, الشيخ ياسين المراكشي, دار الحديث الأشرفية'
   });
   
   this.metaService.updateTag({ 
     property: 'og:title', 
-    content: 'مقدمة: باب الإخلاص وإحضار النية في جميع الأعمال' 
+    content: 'سيرة ومؤلفات الإمام النووي ومحيي الدين أبو زكريا' 
   });
   
   this.metaService.updateTag({ 
     property: 'og:description', 
-    content: 'شرح وتدبر في الإخلاص الذي بين الله وبين العبد، حيث لا يعلمه ملك فيكتبه ولا شيطان فيفسده، وأثر النية الصافية في قبول الطاعات.' 
+    content: 'حياة الإمام النووي من صغره وابتعاده عن اللعب، ودراسته بدمشق في مدرسة الحديث الرواحية، وأبرز مؤلفاته مثل الأربعين النووية ورياض الصالحين وزهده في الدنيا.' 
   });
   
   this.metaService.updateTag({ 

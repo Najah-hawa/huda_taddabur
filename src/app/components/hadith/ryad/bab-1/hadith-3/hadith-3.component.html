@@ -1,11 +1,7 @@
 <div class="hadith-page-container">
-  <app-surah-hint
-    [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
-    [hintText]="hadith.hintText">
-  </app-surah-hint>
 
   <app-next-before-surah-meny
-     [RoutelinkAfter]="'/hadith/ryad/hadith-2'" [SurahBefore]="'الحديث الثاني'"
+     [RoutelinkBefore]="'/hadith/ryad/hadith-2'" [SurahBefore]="'الحديث الثاني'"
      [RoutelinkAfter]="'/hadith/ryad/hadith-4'" [SurahNext]="'الحديث الرابع'">
   </app-next-before-surah-meny>
 
@@ -107,7 +103,6 @@
       </div>
     </div>
   </div>
-  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;"> 📚 المصدر: <b>متن الأربعين النووية</b></p>
 </div>
 
   <!-- الحاوية 2: فوائد الحديث (Box 1) -->

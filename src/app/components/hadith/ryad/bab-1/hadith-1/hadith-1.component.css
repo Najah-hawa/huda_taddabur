@@ -141,4 +141,31 @@
 .modern-tafsir-close-btn-bottom {
   font-size: var(--current-zoom, 14px);
 }
+/* تنسيق الحاوية الرئيسية للقائمة لتعمل كـ Grid */
+.importance-grid-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* تقسيم المساحة إلى عمودين متساويين بنسبة 50% لكل منهما */
+  gap: 15px 30px; /* مسافة 15px بين السطور و 30px بين العمودين */
+  padding: 0;
+  margin: 0;
+  list-style-type: none; /* إلغاء النقاط الافتراضية للقائمة */
+  direction: rtl; /* لكي يبدأ الترتيب من اليمين إلى اليسار بشكل صحيح */
+}
 
+/* تنسيق العناصر الداخلية (الأسطر) داخل القائمة */
+.importance-grid-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: right;
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.02); /* خلفية خفيفة جداً اختيارية لإعطاء جمالية للعناصر */
+  border-radius: 6px;
+}
+
+/* 📱 شاشات الهواتف المحمولة (Responsive) */
+@media (max-width: 768px) {
+  .importance-grid-list {
+    grid-template-columns: 1fr; /* تحويل القائمة لعمود واحد كامل العرض على الموبايل لتفادي الازدحام */
+    gap: 10px; /* تقليل المسافات على الشاشات الصغيرة */
+  }
+}

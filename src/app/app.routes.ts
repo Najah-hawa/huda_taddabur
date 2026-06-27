@@ -134,6 +134,11 @@ export const routes: Routes = [
     loadComponent: () => import('./components/hadith/ryad/bab-1/intro/intro.component').then(m => m.IntroComponent)
   },
   {
+    path: 'hadith/ryad/nawawi-intro',
+    loadComponent: () => import('./components/hadith/ryad/bab-1/nawawi-intro/nawawi-intro.component').then(m => m.NawawiIntroComponent)
+  },
+  
+  {
     path: 'hadith/ryad/hadith-1',
     loadComponent: () => import('./components/hadith/ryad/bab-1/hadith-1/hadith-1.component').then(m => m.Hadith1Component)
   },

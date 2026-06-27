@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
-import { SurahHintComponent } from "../../../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../../../next-before-surah-meny/next-before-surah-meny.component";
@@ -14,7 +13,7 @@ import { hadithDetails, hadithImportanceList} from './hadith3-data';
 @Component({
   selector: 'app-hadith-3',
   standalone: true,
-  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+  imports: [ CommonModule, RouterModule, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
   templateUrl: './hadith-3.component.html',
   styleUrl: './hadith-3.component.css'
 })
@@ -47,27 +46,28 @@ export class Hadith3Component implements OnInit, OnDestroy {
   isTafsirPaused: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
-ngOnInit() {
-  this.titleService.setTitle('الحديث الثامن: حرمة المسلم - شروح الأربعين النووية');
+
+  ngOnInit() {
+  this.titleService.setTitle('الحديث الثالث: انقطاع الهجرة بعد الفتح وفضل الجهاد والنية - شروح الأربعين النووية');
   
   this.metaService.updateTag({
     name: 'description',
-    content: 'شرح وتدبر الحديث الثامن من الأربعين النووية (حرمة المسلم)، مع بيان أحكام الصلاة والزكاة وعصمة دماء وأموال المسلمين وحساب السرائر.'
+    content: 'شرح وتدبر الحديث الثالث عن أم المؤمنين عائشة (لا هجرة بعد الفتح ولكن جهاد ونية)، وبيان بشارة بقاء مكة دار إسلام، ووجوب طاعة ولي الأمر عند النفير.'
   });
   
   this.metaService.updateTag({
     name: 'keywords',
-    content: 'حرمة المسلم, الحديث الثامن, الأربعون النووية, ابن عمر, عصموا دماءهم, أقم الصلاة, آتوا الزكاة, شرح الحديث, الأربعين النووية'
+    content: 'الحديث الثالث, عائشة رضي الله عنها, لا هجرة بعد الفتح, جهاد ونية, وإذا استنفرتم فانفروا, النية الصالحة, النفير العام, شرح الحديث, الأربعون النووية'
   });
   
   this.metaService.updateTag({ 
     property: 'og:title', 
-    content: 'الحديث الثامن: حرمة المسلم - تدبر تفاعلي' 
+    content: 'الحديث الثالث: حكم الهجرة وفضل نية الجهاد - تدبر تفاعلي' 
   });
   
   this.metaService.updateTag({ 
     property: 'og:description', 
-    content: 'اقرأ واستمع إلى متن الحديث الثامن مع الشرح الصوتي، تفسير المفردات، وبيان سبب عدم ذكر الحج والصيام وأحكام تارك الصلاة والزكاة.' 
+    content: 'اقرأ واستمع إلى الحديث الشريف بالتظليل التزامني، وتعرّف على المعاني الدقيقة لـ (النفير والجهاد)، وكيفية تحصيل أجر الهجرة بالنية الصالحة.' 
   });
   
   this.metaService.updateTag({ 

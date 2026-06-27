@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
-import { SurahHintComponent } from "../../../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../../../next-before-surah-meny/next-before-surah-meny.component";
@@ -14,7 +13,7 @@ import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith4-
 @Component({
    selector: 'app-hadith-4',
   standalone: true,
-  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+  imports: [ CommonModule, RouterModule, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
   templateUrl: './hadith-4.component.html',
   styleUrl: './hadith-4.component.css'
 })
@@ -52,26 +51,26 @@ export class Hadith4Component implements OnInit, OnDestroy {
 
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
-  this.titleService.setTitle('الحديث الثامن: حرمة المسلم - شروح الأربعين النووية');
+  this.titleService.setTitle('الحديث الرابع: فضل النية وأجر المعذور - شروح الأربعين النووية');
   
   this.metaService.updateTag({
     name: 'description',
-    content: 'شرح وتدبر الحديث الثامن من الأربعين النووية (حرمة المسلم)، مع بيان أحكام الصلاة والزكاة وعصمة دماء وأموال المسلمين وحساب السرائر.'
+    content: 'شرح وتدبر الحديث الرابع عن جابر بن عبد الله وأنس بن مالك (إلا شركوكم في الأجر / حبسهم العذر)، وبيان أن العبد يبلغ بنيته الصالحة أجر العامل إذا منعه العذر.'
   });
   
   this.metaService.updateTag({
     name: 'keywords',
-    content: 'حرمة المسلم, الحديث الثامن, الأربعون النووية, ابن عمر, عصموا دماءهم, أقم الصلاة, آتوا الزكاة, شرح الحديث, الأربعين النووية'
+    content: 'الحديث الرابع, جابر بن عبد الله, أنس بن مالك, حبسهم العذر, شركوكم في الأجر, فضل النية, غزوة تبوك, نية المعذور, شرح الحديث, الأربعون النووية'
   });
   
   this.metaService.updateTag({ 
     property: 'og:title', 
-    content: 'الحديث الثامن: حرمة المسلم - تدبر تفاعلي' 
+    content: 'الحديث الرابع: نية المرء وأجر المعذور - تدبر تفاعلي' 
   });
   
   this.metaService.updateTag({ 
     property: 'og:description', 
-    content: 'اقرأ واستمع إلى متن الحديث الثامن مع الشرح الصوتي، تفسير المفردات، وبيان سبب عدم ذكر الحج والصيام وأحكام تارك الصلاة والزكاة.' 
+    content: 'اقرأ واستمع إلى الحديث الشريف بالتظليل التزامني، وتعرّف على سيرة الصحابي جابر بن عبد الله الأنصاري، والدروس النبوية البليغة في فضل المنة لله واطلاعه على القلوب.' 
   });
   
   this.metaService.updateTag({ 

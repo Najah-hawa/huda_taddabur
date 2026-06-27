@@ -1,11 +1,7 @@
 <div class="hadith-page-container">
-  <app-surah-hint
-    [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
-    [hintText]="hadith.hintText">
-  </app-surah-hint>
 
   <app-next-before-surah-meny
-     [RoutelinkAfter]="'/hadith/ryad/hadith-5'" [SurahBefore]="'الحديث الخامس'"
+     [RoutelinkBefore]="'/hadith/ryad/hadith-5'" [SurahBefore]="'الحديث الخامس'"
      [RoutelinkAfter]="'/hadith/ryad/hadith-7'" [SurahNext]="'الحديث السابع'">
   </app-next-before-surah-meny>
 
@@ -106,7 +102,6 @@
       </div>
     </div>
   </div>
-  <p style="text-align:center; font-size:12px; color:#666; margin-top:20px;"> 📚 المصدر: <b>متن الأربعين النووية</b></p>
 </div>
 
   <!-- الحاوية 2: فوائد الحديث (Box 1) -->
@@ -136,11 +131,11 @@
   <app-zoom-controls
     [isMaximized]="isBox2Maximized"  
     (onToggle)="toggleBox2Zoom(box2)" 
-    (onZoomIn)="zoomInBox1(box2)" 
-    (onZoomOut)="zoomOutBox1(box2)">
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد و سبب النزول</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث</h2>
 
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
