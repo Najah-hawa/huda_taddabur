@@ -36,7 +36,10 @@
         "files": [
           "/audio/hadith/**/*.mpeg",
           "/audio/hadith/**/*.mp3",
-          "/audio/hadith/**/*.m4a"
+          "/audio/hadith/**/*.m4a",
+          "/audio/ryad-bab-1/**/*.m4a",
+          "/audio/ryad-bab-1/**/*.mp3",
+          "/audio/ryad-bab-1/**/*.mpeg"
         ]
       },
       "cacheQueryOptions": {
