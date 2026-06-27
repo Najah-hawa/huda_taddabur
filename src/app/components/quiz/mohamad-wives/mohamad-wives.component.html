@@ -1,0 +1,141 @@
+<div class="hadith-page-container">
+
+  <!-- المشغل الصوتي المحدث للأنشودة وكلماتها الكاريوكي -->
+  <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
+    
+    <div class="box-container ">
+      <app-zoom-controls
+        [isMaximized]="isRawiMaximized" (onToggle)="toggleRawiZoom(hadithBox)" (onZoomIn)="zoomInRawi()" (onZoomOut)="zoomOutRawi()">
+      </app-zoom-controls>
+    </div>
+
+    <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
+
+        <div class="hadith-audio-trigger-wrapper">
+          
+          <div class="hadith-audio-player-wrapper">
+            
+            <div class="hadith-player-buttons">
+              <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
+                ⏭️
+              </button>
+              
+              <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
+                {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع لأنشودة أمهات المؤمنين ﷺ' }}
+              </button>
+              
+              <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
+                &nbsp;⏮️
+              </button>
+            </div>
+
+            <div class="hadith-player-slider-container">
+              <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
+              
+              <input 
+                type="range" 
+                [min]="0" 
+                [max]="duration" 
+                [value]="currentTime" 
+                (input)="onSliderChange($event)"
+                class="hadith-audio-slider" />
+                
+              <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
+            </div>
+
+          </div>
+        </div>
+
+<div class="hadith-text-full-width">
+  <div class="lyrics-container" #lyricsContainer>
+    @for (phrase of hadith.phrases; track $index) {
+      <div 
+        #lyricLine
+        class="lyric-line" 
+        [class.highlighted-line]="$index === currentPhraseIndex">
+        {{ phrase.text }}
+      </div>
+    }
+  </div>
+</div>
+
+
+    </div>
+  </div>
+
+  <!-- منطقة اللعبة (البيوت والمستويات) -->
+  <div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
+    
+    <app-zoom-controls
+      [isMaximized]="isBox1Maximized"  
+      (onToggle)="toggleBox1Zoom(box1)"  
+      (onZoomIn)="zoomInBox1(box1)" 
+      (onZoomOut)="zoomOutBox1(box1)">
+    </app-zoom-controls>
+
+    <div class="game-zone-wrapper" cdkDropListGroup> 
+      
+      <!-- أزرار اختيار المستويات لـ أمهات المؤمنين -->
+      <div class="levels-container"> 
+        <button class="level-btn" [class.active-lvl]="currentLevel === 1" (click)="selectLevel(1)">
+          المستوى الأول (سهل)
+        </button>
+
+        <button class="level-btn" 
+                [class.active-lvl]="currentLevel === 2" 
+                [disabled]="maxUnlockedLevel < 2"
+                (click)="selectLevel(2)">
+          المستوى الثاني (متوسط) {{ maxUnlockedLevel < 2 ? '🔒' : '' }}
+        </button>
+
+        <button class="level-btn" 
+                [class.active-lvl]="currentLevel === 3" 
+                [disabled]="maxUnlockedLevel < 3"
+                (click)="selectLevel(3)">
+          المستوى الثالث (متقدم) {{ maxUnlockedLevel < 3 ? '🔒' : '' }}
+        </button>
+      </div>
+
+      <!-- ساحة اللعب التفاعلية -->
+      <div class="game-playground" [class.lvl-2]="currentLevel === 2">
+        
+        <!-- قائمة الأسماء القابلة للسحب (كروت أمهات المؤمنين) -->
+        <div class="names-pool-container" cdkDropList [cdkDropListData]="allGameNames">
+          <div class="draggable-name-card" *ngFor="let name of allGameNames" cdkDrag>
+            {{ name }}
+          </div>
+        </div>
+
+        <!-- منطقة عرض القرية والبيوت (الخلفية المستمدة من صورتك الجديدة) -->
+        <div class="tree-display-zone">
+          <img [src]="'images/play-images/mothers-level-' + currentLevel + '.png'" class="tree-bg-image" alt="بيوت أمهات المؤمنين">
+          
+          <!-- إسقاط الأسماء فوق البيوت حسب التوزيع المطلق -->
+          <div class="absolute-slots-container">
+            <div class="tree-drop-slot" 
+                 *ngFor="let slot of houseSlots; let i = index"
+                 [style.top]="slot.top"
+                 [style.left]="slot.left"
+                 [class.wrong-shake]="wrongSlotIndex === i" 
+                 cdkDropList
+                 (cdkDropListDropped)="onNameDropped($event, i)">
+                 
+              <!-- لافتة صغيرة لعرض الرقم الثابت والاسم المسقط بالداخل -->
+              <div class="house-badge-wrapper">
+                <span class="house-fixed-number">{{ i + 1 }}</span>
+                <span class="placed-name" *ngIf="slot.currentPlacedName">
+                  {{ slot.currentPlacedName }}
+                </span>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-footer-info />

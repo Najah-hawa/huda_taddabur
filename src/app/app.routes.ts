@@ -64,6 +64,10 @@ export const routes: Routes = [
     path: 'quiz/mohamad-family',
     loadComponent: () => import('./components/quiz/mohamad-family/mohamad-family.component').then(m => m.MohamadFamilyComponent)
   },
+    {
+    path: 'quiz/mohamad-wives',
+    loadComponent: () => import('./components/quiz/mohamad-wives/mohamad-wives.component').then(m => m.MohamadWivesComponent)
+  },
 // ⬇️ هنا نقوم بإضافة مسارات الحديث الجديدة بأسلوب الـ Lazy Loading ⬇️
   {
     path: 'hadith',
