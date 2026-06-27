@@ -1,0 +1,8 @@
+/* تنسيقات إضافية ذكية للشاشات الصغيرة (أقل من 600 بكسل) */
+@media (max-width: 600px) {
+
+/* إخفاء حاوية الأزرار بالكامل من الشاشة */
+  app-zoom-controls,
+  .box-container {
+    display: none !important;
+  }}
