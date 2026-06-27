@@ -46,24 +46,40 @@ export class MohamadWivesComponent implements OnInit, OnDestroy {
   currentTime: number = 0;
   duration: number = 0;
 
-  ngOnInit() {
-    // 🎯 تحديث عناوين الصفحة والـ Meta Tags لتناسب ميزة نسب الرسول ﷺ
-    this.titleService.setTitle('نسب الرسول محمد ﷺ - مسابقات تفاعلية');
-    this.loadLevel(1);
-    this.metaService.updateTag({ 
-      name: 'description', 
-      content: 'تعلم واستمع إلى نسب الرسول محمد ﷺ الشريف صعوداً إلى أجداده، واختبر حفظك من خلال شجرة العائلة التفاعلية للأطفال والكبار.' 
-    });
-    this.metaService.updateTag({ 
-      name: 'keywords', 
-      content: 'نسب الرسول, شجرة عائلة النبي, نسب محمد بن عبد الله, أجداد الرسول, مسابقات إسلامية للأطفال, PWA' 
-    });
-    
-    this.metaService.updateTag({ property: 'og:title', content: 'نسب الرسول محمد ﷺ - شجرة العائلة التفاعلية' });
-    this.metaService.updateTag({ property: 'og:description', content: 'استمع إلى نسب النبي الشريف مع ميزة التظليل التلقائي واختبر نفسك مع لعبة سحب الأسماء المسلية.' });
-    this.metaService.updateTag({ property: 'og:type', content: 'article' });
-  }
-
+ngOnInit() {
+  // 🎯 تحديث عنوان الصفحة والـ Meta Tags لتناسب لعبة أمهات المؤمنين رضي الله عنهن
+  this.titleService.setTitle('أمهات المؤمنين رضي الله عنهن - مسابقات تفاعلية');
+  
+  // تحميل المستوى الأول من بيوت أمهات المؤمنين
+  this.loadLevel(1);
+  
+  // الكلمات الدلالية والوصف لمحركات البحث (SEO)
+  this.metaService.updateTag({ 
+    name: 'description', 
+    content: 'تعلم واستمع إلى أنشودة أمهات المؤمنين رضي الله عنهن، واكتشف صفاتهن العذبة واختبر حفظك من خلال لعبة بيوت الحجرات التفاعلية المسلية للأطفال والكبار.' 
+  });
+  
+  this.metaService.updateTag({ 
+    name: 'keywords', 
+    content: 'أمهات المؤمنين, زوجات الرسول, مسابقات إسلامية للأطفال, أنشودة أمهات المؤمنين, خديجة وعائشة, ألعاب تفاعلية إسلامية, PWA, سحب وإفلات' 
+  });
+  
+  // تحسين الظهور على وسائل التواصل الاجتماعي (Open Graph Meta Tags)
+  this.metaService.updateTag({ 
+    property: 'og:title', 
+    content: 'أمهات المؤمنين رضي الله عنهن - لعبة البيوت التفاعلية' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:description', 
+    content: 'استمع إلى أنشودة زوجات النبي ﷺ مع ميزة الكاريوكي والتظليل التلقائي، واختبر مهاراتك في ترتيب أسماء أمهات المؤمنين فوق بيوتهن.' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:type', 
+    content: 'article' 
+  });
+}
   scrollToCurrentLyric() {
     // Hitta det HTML-element som matchar det aktuella indexet
     const activeLineArray = this.lyricLines.toArray();
