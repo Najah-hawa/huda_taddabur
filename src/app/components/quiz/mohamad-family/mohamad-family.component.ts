@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { FooterInfoComponent } from '../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../hadith/zoom-controls/zoom-controls.component';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 // 📥 استيراد بيانات نسب الرسول المحدثة (تأكدي من تعديل محتوى هذا الملف ليطابق النسب)
 import { hadithDetails } from './quiz-data';
 
@@ -17,7 +18,8 @@ import { hadithDetails } from './quiz-data';
     RouterModule, 
     FooterInfoComponent, 
     ZoomControlsComponent,
-    DragDropModule
+    DragDropModule,
+    NextBeforeSurahMenyComponent
   ],
   templateUrl: './mohamad-family.component.html',
   styleUrl: './mohamad-family.component.css'

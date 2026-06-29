@@ -1,4 +1,8 @@
 <div class="hadith-page-container">
+  <app-next-before-surah-meny
+    [RoutelinkBefore]="'/quiz'" [SurahBefore]="'الرجوع للقائمة'"
+    [RoutelinkAfter]="'/quiz/mohamad-wives'" [SurahNext]="'امهات المؤمنين'">
+  </app-next-before-surah-meny>
 
   <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
     

@@ -1,5 +1,8 @@
 <div class="hadith-page-container">
-
+  <app-next-before-surah-meny
+    [RoutelinkBefore]="'/quiz'" [SurahBefore]="'الرجوع للقائمة'"
+    [RoutelinkAfter]="'/quiz/mohamad-family'" [SurahNext]="' نسب الرسول محمد ﷺ'">
+  </app-next-before-surah-meny>
   <!-- المشغل الصوتي المحدث للأنشودة وكلماتها الكاريوكي -->
   <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
     
