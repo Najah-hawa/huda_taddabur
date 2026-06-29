@@ -1,20 +1,19 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // ✅ التعديل الصحيح هنا من core
+import { CommonModule } from '@angular/common'; // ✅ الـ CommonModule يأتي من common
 import { Title, Meta } from '@angular/platform-browser';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DownloadBannerComponent } from "./components/download-banner/download-banner.component"; 
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker'; // 1. استيراد خدمة السيرفس وركر
-import { filter } from 'rxjs/operators'; // 2. استيراد الفلتر لمراقبة التحديثات
-
+import { SwUpdate } from '@angular/service-worker'; 
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink, // ✅ behövs för routerLinkActive
-    FormsModule, // Add FormsModule here to enable ngModel
+    RouterLink, 
+    FormsModule, 
     DownloadBannerComponent
   ],
   templateUrl: './app.component.html',
@@ -23,25 +22,57 @@ import { filter } from 'rxjs/operators'; // 2. استيراد الفلتر لم�
 export class AppComponent implements OnInit {
   title = 'هدى وتدبر';
 
-  // 3. قمنا بحقن swUpdate داخل الـ constructor بجانب الخدمات الأخرى
   constructor(
     private titleService: Title, 
     private metaService: Meta,
     private swUpdate: SwUpdate 
   ) {}
 
-  ngOnInit() {
-    // الكود القديم لعنوان الصفحة
-    this.titleService.setTitle('هدى وتدبر - الرئيسية');
+ ngOnInit() {
+  // 1. تحديث العنوان الخاص بالصفحة الرئيسية
+  this.titleService.setTitle('هدى وتدبر - الرئيسية');
 
-    // 4. كود مراقبة التحديثات وإعادة تحميل الصفحة فوراً عند وجود نسخة جديدة
+  // 2. استخدام الـ metaService لتحديث الأوسمة (هنا يتأكد المحرر أنها مستخدمة!)
+  this.metaService.updateTag({ 
+    name: 'description', 
+    content: 'تطبيق هدى وتدبر - تفسير جزء عم بطريقة تفاعليه, عرض أحاديث رسول الله عليه الصلاة والسلام, مسابقات إسلامية تفاعلية للأطفال والكبار.' 
+  });
+  
+  this.metaService.updateTag({ 
+    name: 'keywords', 
+    content: 'هدى وتدبر, مسابقات إسلامية, أمهات المؤمنين, نسب الرسول, ألعاب أطفال تفاعلية, جزء عم تفسيرو أحاديث الأربعين النووية' 
+  });
+
+  // 3. تفعيل منظومة الفحص التلقائي للتحديثات في الخلفية
+  this.initAutoUpdateCheck();
+}
+  private initAutoUpdateCheck() {
     if (this.swUpdate.isEnabled) {
-      this.swUpdate.versionUpdates.pipe(
-        filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY')
-      ).subscribe(() => {
-        // إعادة تحميل تلقائية لتطبيق التحديث فوراً للأصوات والملفات الجديدة
-        window.location.reload();
+      
+      // أ- فحص فوري ونشط بمجرد إقلاع التطبيق على جوال المستخدم
+      this.swUpdate.checkForUpdate().then(hasUpdate => {
+        if (hasUpdate) {
+          this.activateNewVersion();
+        }
+      });
+
+      // ب- فحص دوري تلقائي صامت في الخلفية كل 5 دقائق (300000 مللي ثانية)
+      // هذا يضمن تحديث التطبيق حتى لو تركه المستخدم مفتوحاً بالخلفية
+      interval(300000).subscribe(() => {
+        this.swUpdate.checkForUpdate().then(hasUpdate => {
+          if (hasUpdate) {
+            this.activateNewVersion();
+          }
+        });
       });
     }
+  }
+
+  // دالة لتنشيط الكاش الجديد وعمل إنعاش للموقع فوراً
+  private activateNewVersion() {
+    this.swUpdate.activateUpdate().then(() => {
+      console.log('✨ تم اكتشاف تحديث جديد وتثبيته بنجاح! جاري إنعاش التطبيق...');
+      window.location.reload(); // تحديث الشاشة لتظهر اللعبة أو التعديلات الجديدة فوراً
+    });
   }
 }

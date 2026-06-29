@@ -126,6 +126,7 @@
 
 .tree-drop-slot {
   position: absolute;
+  width: 60px;
   pointer-events: auto; /* إعادة تفعيل الضغط والسحب للمربع نفسه */
   background: rgba(255, 255, 255, 0.2);
   border-radius: 8px;/* حجم مرن يتناسب مع المربع في الصورة */
@@ -133,6 +134,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 20px;
 }
 
 .placed-name {
