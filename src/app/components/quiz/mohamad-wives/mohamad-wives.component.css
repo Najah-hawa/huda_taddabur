@@ -1,0 +1,392 @@
+/* ==========================================================================
+   📦 التنسيق الأساسي الموحد لحاوية النسب واللعبة
+   ========================================================================== */
+.fawaed-box-container {
+  --dynamic-font-size: 16px;
+  position: relative;
+}
+
+.box1-container .benefit-title {
+  font-size: calc(var(--dynamic-font-size) + 4px) !important;
+}
+
+.hadith-main-box {
+  position: relative;
+}
+
+.hadith-main-box .Hadith {
+  line-height: 2 !important;
+}
+
+/* ==========================================================================
+   🎛️ أزرار التحكم بالمستويات (سهل - متوسط - متقدم)
+   ========================================================================== */
+.levels-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.levels-container button {
+  padding: 8px 16px;
+  border: 1px solid #d4af37;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.levels-container button.active-lvl {
+  background: #004d40;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.tree-display-zone {
+  position: relative;
+  flex: 2;
+  text-align: center;
+}
+
+.tree-bg-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 70vh;
+}
+
+.names-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  direction: rtl; /* لكي تظل نصوص الأسماء العربية مرتبة بشكل صحيح */
+}
+
+
+
+/* ==========================================================================
+   📱 حماية الميديا وتنسيقات الشاشات (الكمبيوتر والجوال)
+   ========================================================================== */
+
+/* الشاشات الكبيرة والمتوسطة (أكبر من 600 بكسل) */
+@media (min-width: 600px) {
+  .fawaed-box-container.mini {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* شاشات الجوال الذكية (أقل من 768 بكسل) */
+@media (max-width: 768px) {
+
+  .names-sidebar {
+    flex-direction: row; /* جعل الأسماء تترتب أفقياً بجانب بعضها لتوفر مساحة */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* شاشات الموبايل الصغيرة جداً (أقل من 600 بكسل) */
+@media (max-width: 800px) {
+  .hadith-main-box {
+    padding: 10px !important;
+  }
+  
+  /* إخفاء أزرار الزوم الخاصة بالحديث من الجوال الصغير لزيادة مساحة العرض للطفل */
+  app-zoom-controls,
+  .box-container {
+    display: none !important;
+  }
+
+  .verse-wrapper {
+    margin-top: 15px !important;
+  }
+
+  .hadith-text-full-width .Hadith {
+    line-height: 1.8 !important;
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+
+
+
+.absolute-slots-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* تجعل الحاوية شفافة للضغط ليظهر ما خلفها */
+}
+
+.tree-drop-slot {
+  position: absolute;
+  width: 60px;
+  pointer-events: auto; /* إعادة تفعيل الضغط والسحب للمربع نفسه */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;/* حجم مرن يتناسب مع المربع في الصورة */
+  height: 6%;  /* حجم مرن يتناسب مع المربع في الصورة */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.placed-name {
+  color: #004d40;
+  font-weight:bolder;
+  font-size: 10px;
+  animation: popIn 0.3s ease-in-out;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+
+
+
+
+/* 🖥️ التنسيق الافتراضي للشاشات الكبيرة */
+.game-playground {
+  display: flex;
+  flex-direction: column; /* ترتيب عمودي بشكل عام */
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* حاوية الأسماء الموحدة في الشاشات الكبيرة تفرش الكروت بشكل متناسق */
+.names-pool-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.draggable-name-card {
+  padding: 8px 16px;
+  background: #fff;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  cursor: grab;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  user-select: none;
+}
+
+.draggable-name-card:active {
+  cursor: grabbing;
+}
+
+/* ---------------------------------------------------- */
+/* 📐 التغيير الذكي عند شاشات 900 بكسل وأقل (الموبايل والتابلت) */
+/* ---------------------------------------------------- */
+@media (max-width: 900px) {
+  
+  .game-playground {
+    flex-direction: column; /* يضمن بقاء القائمة فوق والشجرة تحت */
+  }
+
+  .names-pool-container {
+    order: -1; /* ⬅️ هذا السحر يجبر قائمة الأسماء أن تطير وتصبح أول عنصر في الأعلى دائماً */
+    position: sticky;
+    top: 10px; /* تظل مثبتة في الأعلى أثناء التمرير لو كانت الشجرة طويلة */
+    z-index: 100;
+    max-height: 150px;
+    overflow-y: auto; /* إذا كانت الكروت كثيرة في المستوى الثاني تظهر سكرول صغير مريح */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .draggable-name-card {
+    padding: 6px 12px;
+    font-size: 12px; /* تصغير الكروت قليلاً لتناسب أصابع الأطفال */
+  }
+}
+
+@media (max-width: 900px) {
+
+  /* 1️⃣ تصغير أزرار اختيار المستويات (Level Selection) */
+  /* استبدلي .level-btn بالاسم الفعلي لكلاس الأزرار لديكِ إذا كان مختلفاً */
+  .level-btn { 
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    min-width: auto !important;
+    border-radius: 15px !important;
+  }
+
+  /* 2️⃣ تصغير كروت الأسماء المبعثرة في الأعلى لتقليل المساحة العمودية */
+  .names-pool-container {
+    padding: 10px !important; /* تقليل الحشو الداخلي للحاوية البيضاء */
+    gap: 8px !important;       /* تقليل المسافة بين الكروت */
+  }
+
+  .draggable-name-card {
+    padding: 4px 10px !important; /* جعل الكرت أنحف */
+    font-size: 11px !important;    /* تصغير الخط ليناسب الحجم الجديد */
+    border-radius: 12px !important;
+  }
+  
+}
+@media (max-width: 900px) {
+  .lvl-3 .tree-drop-slot {
+    width: 14% !important;   /* العرض المثالي للمستطيل */
+    height: 2.8% !important; /* الارتفاع المثالي ليصبح نحيفاً */
+    border-radius: 6px !important;
+  }
+}
+
+
+
+/* الخلفية المظلمة الشفافة التي تغطي اللعبة */
+.success-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px); /* تأثير ضبابي خلفي فخم */
+}
+
+/* كرت التهنئة */
+.success-card {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 3px solid #d4af37;
+  max-width: 90% ;
+  width: 350px;
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.trophy-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+  animation: bounce 1s infinite alternate;
+}
+
+.success-card h2 {
+  color: #1b4d3e; /* اللون الأخضر الجميل للتطبيق */
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.level-highlight {
+  font-weight: bold;
+  color: #d4af37; /* الذهبي */
+  font-size: 18px;
+}
+
+/* زر الانتقال الفخم */
+.next-level-action-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #1b4d3e, #2c7a63);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(44, 122, 99, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.next-level-action-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 7px 20px rgba(44, 122, 99, 0.6);
+}
+
+/* 🎬 حركات الانيميشن للظهور المفاجئ السعيد */
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+/* تنسيق الأزرار عندما تكون مقفلة (Disabled) */
+.level-btn:disabled {
+  background: #f0f0f0 !important;
+  color: #999 !important;
+  border-color: #ccc !important;
+  cursor: not-allowed !important; /* يتحول الماوس لعلامة المنع */
+  box-shadow: none !important;
+  transform: none !important;
+  opacity: 0.7;
+}
+
+/* ⚠️ تأثير الوميض الأحمر والاهتزاز عند الإجابة الخاطئة */
+.wrong-shake {
+  background-color: rgba(255, 61, 0, 0.35) !important; /* زيادة وضوح اللون الأحمر */
+  border: 3px solid #ff3b30 !important; /* خط أحمر عريض وثابت */
+  box-shadow: 0 0 15px rgba(255, 59, 48, 0.6) !important; /* توهج أحمر خارجي */
+  animation: shakeAndFlash 0.4s ease-in-out !important; /* إجبار الـ Animation على العمل */
+}
+
+/* 🎬 حركة الاهتزاز الأفقي السريع */
+@keyframes shakeAndFlash {
+  0%, 100% { transform: translateX(0) !important; }
+  20%, 60% { transform: translateX(-8px) !important; }
+  40%, 80% { transform: translateX(8px) !important; }
+}
+
+
+
+/* الحاوية الرئيسية لأسطر الأنشودة */
+.lyrics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* مسافة مريحة بين كل بيت وبيت */
+  padding: 15px;
+  max-height: 250px; /* طول مناسب مع إمكانية التمرير إذا زادت الأسطر */
+  overflow-y: auto;
+  direction: rtl; /* لضمان القراءة الصحيحة من اليمين لليسار */
+}
+
+/* التصميم الافتراضي للسطر (البيت الشعري) */
+.lyric-line {
+  background-color: #fdfbf7; /* لون بيج ناعم جداً متناسق مع الخلفية */
+  border: 1px solid #eaddca;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-family: 'Cairo', 'Traditional Arabic', sans-serif;
+  font-size: 18px;
+  color: #5d4037; /* لون بني خشبي دافئ */
+  text-align: center;
+  transition: all 0.4s ease-in-out; /* حركة سلسة جداً عند التظليل */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* التصميم السحري للسطر النشط (الذي يقرأه المنشد الآن) ✨ */
+.lyric-line.highlighted-line {
+  background-color: #8da47e; /* لون أخضر عشبي هادئ يطابق مرج الصورة */
+  color: #ffffff; /* تحويل الخط للأبيض ليكون واضحاً */
+  border-color: #7a916b;
+  transform: scale(1.02); /* تكبير خفيف جداً لجذب انتباه الطفل */
+  box-shadow: 0 4px 12px rgba(141, 164, 126, 0.3); /* توهج ناعم خلف السطر */
+  font-weight: bold;
+}
