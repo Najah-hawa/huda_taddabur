@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; // Importera OnInit
 import { CommonModule } from '@angular/common'; 
+import { RouterModule } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser'; // Importera Title och Meta för SEO
+
 import { SurahHintComponent } from '../../../surah-hint/surah-hint.component';
 import { SurahsStartComponent } from '../../../surahs-start/surahs-start.component';
 import { SurahTabsComponent } from '../../../surah-tabs/surah-tabs.component';
 import { QuixTafserComponent } from '../../../quix-tafser/quix-tafser.component';
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { FawaedOfSurahComponent } from '../../../fawaed-of-surah/fawaed-of-surah.component';
-import { NextBeforeSurahMenyComponent } from '../../../next-before-surah-meny/next-before-surah-meny.component'; 
-import { verses, burujQuestions, rubtTassweerySections } from './surah85-data'
-import { RouterModule } from '@angular/router';
+import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
 
-
+// Importera data specifikt för Surah 84
+import { verses, burujQuestions, rubtTassweerySections } from './surah85-data';
 
 @Component({
-  selector: 'app-surah-85',
+  selector: 'app-surah-84',
   standalone: true,
   imports: [
     RouterModule,
@@ -29,90 +31,113 @@ import { RouterModule } from '@angular/router';
   templateUrl: './surah-85.component.html',
   styleUrl: './surah-85.component.css'
 })
-export class Surah85Component {
+export class Surah85Component implements OnInit { // Implementera OnInit
+
+  // Flikstyrning
+  selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
   
-    // flikstyrning
-        selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
-        // toggling av tafsir
-        shown = new Set<number>();
-        //skapar ett objekt där nycklarna är siffror (number) och värdena är boolean (true eller false).
-        expandedSections: { [key: number]: boolean } = {};
-      
-        // ✅ Lägg till importerade data som medlemmar
-        verses = verses;
-        burujQuestions = burujQuestions;
-        rubtTassweerySections = rubtTassweerySections;
+  // Toggling av tafsir (lagrar index för öppna verser)
+  shown = new Set<number>();
   
-        // ✅ Denna funktion för rubtafser pillarna 
-       toggleExpanded(index: number) {
-         this.expandedSections[index] = !this.expandedSections[index];
-       }
-      
-        // uppdatera vald flik
-        onTabChange(tab: 'tadabbur' | 'visual') {
-          this.selectedTab = tab;
-        }
-      
-        //Hitta texten för en viss vers baserat på versens nummer. visa ayah
-        getVerseText(number: number): string {
-        const verse = this.verses.find(v => v.number === number);
-        return verse ? verse.text : '';
-        }
-        
-        //visa eller dölja tafsir för varje vers.
-       toggleVerse(index: number) {
-        if (this.shown.has(index)) {
-          this.shown.clear(); // stäng allt
-        } else {
-          this.shown.clear(); // stäng allt
-          this.shown.add(index); // öppna bara den klickade
-        }
-        }
-      
-    
-    speakTafseer(text: string | undefined) {
-      if (!text) return;
-      
-      console.log("النص المراد قراءته:", text); // للتأكد أن النص يصل للدالة
-    
-      window.speechSynthesis.cancel();
-      const plainText = text.replace(/<[^>]*>/g, '');
-      const utterance = new SpeechSynthesisUtterance(plainText);
-    
-      // اختبار: ابحثي عن الأصوات المتاحة في متصفحك
-      const voices = window.speechSynthesis.getVoices();
-      console.log("الأصوات المتاحة:", voices);
-    
-      utterance.lang = 'ar';
-      utterance.rate = 0.9;
-      
-      // إضافة معالج للأخطاء لنعرف ماذا يحدث
-      utterance.onerror = (event) => {
-        console.error("حدث خطأ في القراءة الصوتية:", event.error);
-      };
-      window.speechSynthesis.speak(utterance);
+  // Håller koll på vilka sektioner som är utfällda
+  expandedSections: { [key: number]: boolean } = {};
+
+  // Bind exporterade data till klassmedlemmar för HTML-användning
+  verses = verses;
+  burujQuestions = burujQuestions;
+  rubtTassweerySections = rubtTassweerySections;
+
+  // Injicera Title- och Meta-tjänsterna
+  constructor(private titleService: Title, private metaService: Meta) {}
+ngOnInit() {
+  // Sätt sidans titel för SEO
+  this.titleService.setTitle('سورة البروج - تدبر، تفسير وفوائد رقمية');
+
+  // Sätt meta-taggar för sökmotorer
+  this.metaService.updateTag({ 
+    name: 'description', 
+    content: 'تدبر وتفسير سورة البروج، مع تسليط الضوء على قصة أصحاب الأخدود والثبات على الدين، وبيان شروط التوبة النصوح وعظمة بطش الله وجزائه العادل.' 
+  });
+  
+  this.metaService.updateTag({ 
+    name: 'keywords', 
+    content: 'سورة البروج, تفسير سورة البروج, أصحاب الأخدود, شروط التوبة, تدبر القرآن الكريم, الثبات على الحق, لوح محفوظ' 
+  });
+  
+  // Open Graph (för optimal delning på WhatsApp/Sociala medier)
+  this.metaService.updateTag({ 
+    property: 'og:title', 
+    content: 'سورة البروج - محور التدبر والتفسير التفاعلي' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:description', 
+    content: 'اكتشف مقاصد سورة البروج التفسيرية، مع إيضاحات حول قصة أصحاب الأخدود وعبر الثبات واليقين في مواجهة الابتلاءات.' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:type', 
+    type: 'website' 
+  });
+}
+
+  // Toggla visning av extra verser i den visuella tidslinjen
+  toggleExpanded(index: number) {
+    this.expandedSections[index] = !this.expandedSections[index];
+  }
+  
+  // Uppdatera aktiv flik
+  onTabChange(tab: 'tadabbur' | 'visual') {
+    this.selectedTab = tab;
+  }
+
+  // Sök fram versens text baserat på versnummer
+  getVerseText(number: number): string {
+    const verse = this.verses.find(v => v.number === number);
+    return verse ? verse.text : '';
+  }
+  
+  // Visa eller dölj tafsir för en specifik vers (stänger andra automatiskt)
+  toggleVerse(index: number) {
+    if (this.shown.has(index)) {
+      this.shown.clear(); 
+    } else {
+      this.shown.clear(); 
+      this.shown.add(index); 
     }
+  }
+
+  // Talsyntes för Tafsir-texten
+  speakTafseer(text: string | undefined) {
+    if (!text) return;
     
+    window.speechSynthesis.cancel();
+    const plainText = text.replace(/<[^>]*>/g, '');
+    const utterance = new SpeechSynthesisUtterance(plainText);
+
+    utterance.lang = 'ar';
+    utterance.rate = 0.9;
     
-    playAyah(ayahNum: number) {
-      const surahNum = 1; // سورة المطففين
-      
-      // التأكد من تحويل الأرقام إلى 3 خانات (مثلاً: 83 -> 083 و 1 -> 001)
-      const formattedSurah = String(surahNum).padStart(3, '0');
-      const formattedAyah = String(ayahNum).padStart(3, '0');
-      
-      // بناء الرابط باستخدام المسار الذي جربتِه
-      const audioUrl = `https://www.everyayah.com/data/Ayman_Sowaid_64kbps/${formattedSurah}${formattedAyah}.mp3`;
-      
-      // إيقاف صوت المتصفح الآلي إذا كان يعمل
-      window.speechSynthesis.cancel(); 
+    utterance.onerror = (event) => {
+      console.error("حدث خطأ في القراءة الصوتية:", event.error);
+    };
+    window.speechSynthesis.speak(utterance);
+  }
+
+  // Ljuduppspelning för specifik vers via EveryAyah API
+  playAyah(ayahNum: number) {
+    const surahNum = 85; // Uppdaterat till rätt surah-nummer (84)
     
-      const audio = new Audio(audioUrl);
-      
-      audio.play().catch(error => {
-        console.error("خطأ في التشغيل:", error);
-        // إذا حدث خطأ، قد يكون السبب أن المتصفح يحتاج لتفاعل مباشر
-      });
-    }
-      
+    const formattedSurah = String(surahNum).padStart(3, '0');
+    const formattedAyah = String(ayahNum).padStart(3, '0');
+    
+    const audioUrl = `https://www.everyayah.com/data/Ayman_Sowaid_64kbps/${formattedSurah}${formattedAyah}.mp3`;
+    
+    window.speechSynthesis.cancel(); 
+
+    const audio = new Audio(audioUrl);
+    audio.play().catch(error => {
+      console.error("خطأ في التشغيل:", error);
+    });
+  }
 }
