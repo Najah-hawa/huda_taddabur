@@ -3,6 +3,14 @@
   [hintText]="'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'">
 </app-surah-hint>
 
+
+
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/home'" [SurahBefore]="'القائمة'"
+  [RoutelinkAfter]="'/surah-78'"  [SurahNext]="'النبأ'">
+</app-next-before-surah-meny> 
+
+
 <h1 class="visually-hidden" style="display:none;">سورة الفاتحة - التفسير والتدبر</h1>
 
 <app-surah-tabs [surahName]="'سورة الفاتحة'">
@@ -69,8 +77,8 @@
 </p>
 
 <app-next-before-surah-meny 
-  [RoutelinkBefore]="'/surah-78'" [SurahBefore]="'النبأ'"
-  [RoutelinkAfter]="'/surah-79'"  [SurahNext]="'النازعات'">
+  [RoutelinkBefore]="'/home'" [SurahBefore]="'القائمة'"
+  [RoutelinkAfter]="'/surah-78'"  [SurahNext]="'النبأ'">
 </app-next-before-surah-meny>
   
 <div class="quiz-section">

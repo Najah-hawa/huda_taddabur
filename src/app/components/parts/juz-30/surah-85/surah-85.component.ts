@@ -6,7 +6,8 @@ import { SurahTabsComponent } from '../../../surah-tabs/surah-tabs.component';
 import { QuixTafserComponent } from '../../../quix-tafser/quix-tafser.component';
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { FawaedOfSurahComponent } from '../../../fawaed-of-surah/fawaed-of-surah.component';
-import { verses, abassaQuestions, rubtTassweerySections } from './surah85-data'
+import { NextBeforeSurahMenyComponent } from '../../../next-before-surah-meny/next-before-surah-meny.component'; 
+import { verses, burujQuestions, rubtTassweerySections } from './surah85-data'
 import { RouterModule } from '@angular/router';
 
 
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
     SurahTabsComponent,
     QuixTafserComponent,
     FooterInfoComponent,
-    FawaedOfSurahComponent
+    FawaedOfSurahComponent,
+    NextBeforeSurahMenyComponent
   ],
   templateUrl: './surah-85.component.html',
   styleUrl: './surah-85.component.css'
@@ -38,7 +40,7 @@ export class Surah85Component {
       
         // ✅ Lägg till importerade data som medlemmar
         verses = verses;
-        abassaQuestions = abassaQuestions;
+        burujQuestions = burujQuestions;
         rubtTassweerySections = rubtTassweerySections;
   
         // ✅ Denna funktion för rubtafser pillarna 
@@ -113,5 +115,4 @@ export class Surah85Component {
       });
     }
       
-   
 }

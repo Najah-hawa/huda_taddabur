@@ -44,6 +44,10 @@ export const routes: Routes = [
     path: 'surah-84',
     loadComponent: () => import('./components/parts/juz-30/surah-84/surah-84.component').then(m => m.Surah84Component)
   },
+    {
+    path: 'surah-85',
+    loadComponent: () => import('./components/parts/juz-30/surah-85/surah-85.component').then(m => m.Surah85Component)
+  },
 
 // ⬇️ هنا نقوم بإضافة مسارات الفقه الجديدة بأسلوب الـ Lazy Loading ⬇️
   {

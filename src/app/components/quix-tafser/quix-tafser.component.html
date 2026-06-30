@@ -15,7 +15,11 @@
   <div class="question-counter">
     السؤال {{ currentQuestionNumber }} من {{ totalQuestions }}
   </div>
-
+  <div *ngIf="showFeedback" class="quiz-feedback">
+    <p [ngClass]="{ 'correct-feedback': isCorrect, 'incorrect-feedback': !isCorrect }">
+      {{ isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة، حاول مرة أخرى.' }}
+    </p>
+  </div>
   <h3 class="quiz-question">{{ questions[currentQuestionIndex].question }}</h3>
 
   <ul class="quiz-answers">
@@ -31,11 +35,7 @@
     <button class="quiz-quit-btn" (click)="quitQuiz()">إنهاء الاختبار</button>
   </div>
 
-  <div *ngIf="showFeedback" class="quiz-feedback">
-    <p [ngClass]="{ 'correct-feedback': isCorrect, 'incorrect-feedback': !isCorrect }">
-      {{ isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة، حاول مرة أخرى.' }}
-    </p>
-  </div>
+
 </div>
 
 <!-- Slutmeddelande -->

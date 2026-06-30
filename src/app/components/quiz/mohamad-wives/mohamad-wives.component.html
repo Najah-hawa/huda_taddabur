@@ -1,8 +1,5 @@
 <div class="hadith-page-container">
-  <app-next-before-surah-meny
-    [RoutelinkBefore]="'/quiz'" [SurahBefore]="'الرجوع للقائمة'"
-    [RoutelinkAfter]="'/quiz/mohamad-family'" [SurahNext]="' نسب الرسول محمد ﷺ'">
-  </app-next-before-surah-meny>
+
   <!-- المشغل الصوتي المحدث للأنشودة وكلماتها الكاريوكي -->
   <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
     
@@ -61,11 +58,14 @@
     }
   </div>
 </div>
-
-
     </div>
   </div>
 
+
+    <app-next-before-surah-meny
+    [RoutelinkBefore]="'/quiz'" [SurahBefore]="'القائمة'"
+    [RoutelinkAfter]="'/quiz/mohamad-family'" [SurahNext]="' نسب الرسول محمد ﷺ'">
+  </app-next-before-surah-meny>
   <!-- منطقة اللعبة (البيوت والمستويات) -->
   <div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
     
