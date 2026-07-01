@@ -27,7 +27,7 @@ export class GlobalErrorHandler implements ErrorHandler {
       errorDiv.style.boxSizing = 'border-box';
    // قمنا بترميز الخطأ أولاً لكي يُكتب داخل الإيميل بشكل سليم وبدون مشاكل في الروابط
 const encodedError = encodeURIComponent(`السلام عليكم، واجهت الخطأ التالي في تطبيق هدى وتدبر:\n\n${errorMsg}`);
-const developerEmail = 'your-email@example.com'; // 👈 ضعي إيميلكِ الحقيقي هنا تماماً
+const developerEmail = 'najah.hawa@gmail.com'; // 👈 ضعي إيميلكِ الحقيقي هنا تماماً
 
 errorDiv.innerHTML = `
   <h3 style="color: #d9534f; margin-top: 0; font-family: sans-serif;">⚠️ حدث خطأ تقني في تحميل التطبيق:</h3>
