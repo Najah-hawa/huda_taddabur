@@ -149,3 +149,31 @@
     width: auto;
   }
 }
+
+
+/* حاوية شريط التقدم */
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px 0;
+  height: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* الشريط المتحرك */
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  width: 0%; /* يتغير ديناميكياً عبر الأنجولار */
+  transition: width 0.3s ease-in-out;
+}
+
+/* زر الانتظار الرمادي */
+.download-btn.waiting {
+  background-color: #bdbdbd !important;
+  color: #ffffff !important;
+  cursor: not-allowed;
+  text-align: center;
+}

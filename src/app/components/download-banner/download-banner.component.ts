@@ -17,6 +17,11 @@ export class DownloadBannerComponent implements OnInit {
   isPocketHidden: boolean = false;  
   isAlreadyInstalled: boolean = false; 
 
+
+  // 👇 تأكدي من وجود هذين السطرين هنا بالضبط 👇
+  downloadStatus: 'idle' | 'downloading' | 'installing' | 'completed' = 'idle';
+  downloadProgress: number = 0;
+
   deferredPrompt: any = null;
   showInstallButton: boolean = false;
 
@@ -129,5 +134,39 @@ triggerBannerToggle() {
     if (localStatus === 'true') {
       this.isAlreadyInstalled = true;
     }
+  }
+
+
+  // 👇 أضيفي هذه الدالة في أسفل ملف الـ TS لتتوافق مع الـ HTML 👇
+  forceReinstall(event: Event) {
+    event.preventDefault();
+    
+    localStorage.removeItem('pwa_installed_status');
+    this.isAlreadyInstalled = false;
+    this.downloadStatus = 'idle';
+    this.downloadProgress = 0;
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+
+    if ('caches' in window) {
+      caches.keys().then(names => {
+        for (const name of names) {
+          caches.delete(name);
+        }
+      });
+    }
+
+    this.isExpanded = true;
+    this.isPocketHidden = false;
+    DownloadBannerComponent.wasClosedInThisSession = false;
+    this.cdr.detectChanges();
+    
+    alert('تم تصفير كاش التطبيق بنجاح! يمكنكِ الآن المحاولة مجدداً وسيتتعرف متصفحكِ على الزر فوراً.');
   }
 }
