@@ -1,6 +1,31 @@
 /* ==========================================================================
    1. Grundläggande globala stilar (Body & Basmala)
    ========================================================================== */
+
+/* 1. Importera Google-fonten Amiri ALLRA HÖGST UPP i filen */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* 2. Registrera din nedladdade lokalfil (Uthman Hafs) */
+@font-face {
+  font-family: 'Uthman Hafs';
+  /* Om du har den i public-mappen, ändra sökvägen till '/fonts/UthmanicHafs.woff2' */
+src: url('/fonts/UthmanicHafs1 Ver09.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* 3. Koppla BÅDA typsnitten till dina klasser på samma gång */
+.verse-text, 
+.verse-item, 
+.ayah {
+  /* Webbläsaren testar 'Uthman Hafs' först (lokalfilen). 
+     Om den misslyckas, tar den 'Amiri' (Google), och sist vanlig 'serif' */
+  font-family: 'Uthman Hafs', 'Amiri', serif !important;
+  
+  line-height: 2.3; /* Ger vokalmarkeringarna plats att andas */
+  font-size: 26px;  /* Gör texten stor och tydlig på mobilen */
+  direction: rtl;   /* Höger till vänster för arabiska */
+  text-align: right;
+}
 body {
   font-family: sans-serif;
   background: #fcfaf7; /* lite mjukare, nära vit */
