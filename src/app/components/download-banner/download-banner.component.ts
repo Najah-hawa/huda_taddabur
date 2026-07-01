@@ -84,24 +84,68 @@ export class DownloadBannerComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  
+  // 1. دالة التحميل المحدثة التي تستدعي شريط التقدم
   downloadApp(event: Event) {
     event.preventDefault();
     if (this.isAlreadyInstalled) return; 
-    if (!this.deferredPrompt) return;
+    
+    if (!this.deferredPrompt) {
+      this.startProgressSimulation();
+      return;
+    }
 
     this.deferredPrompt.prompt();
     this.deferredPrompt.userChoice.then((choiceResult: any) => {
       if (choiceResult.outcome === 'accepted') {
-        this.isPocketHidden = true;
-        this.isExpanded = false;
-        this.isAlreadyInstalled = true;
-        DownloadBannerComponent.wasClosedInThisSession = true;
-        localStorage.setItem('pwa_installed_status', 'true');
+        this.startProgressSimulation(); // تشغيل العداد هنا عند قبول التثبيت
+      } else {
+        this.downloadStatus = 'idle';
+        this.downloadProgress = 0;
       }
       this.deferredPrompt = null;
       this.cdr.detectChanges();
     });
+  }
+
+  // 2. الدالة المسؤولة عن تحريك الشريط المئوي من 0% إلى 100% (المحاكي الذكي)
+  startProgressSimulation() {
+    this.downloadStatus = 'downloading';
+    this.downloadProgress = 0;
+    this.cdr.detectChanges();
+
+    const interval = setInterval(() => {
+      if (this.downloadProgress < 90) {
+        // يصعد العداد عشوائياً ليشعر المستخدم بالحركة
+        this.downloadProgress += Math.floor(Math.random() * 10) + 5;
+        if (this.downloadProgress > 90) this.downloadProgress = 90;
+      } else if (this.downloadProgress >= 90 && this.downloadProgress < 99) {
+        // يتباطأ قليلاً ليحاكي مرحلة التثبيت النهائي (Installing)
+        this.downloadStatus = 'installing';
+        this.downloadProgress += 1;
+      } else {
+        // عند الوصول إلى 100% نوقف العداد ونثبت التطبيق
+        clearInterval(interval);
+        this.downloadProgress = 100;
+        this.completeInstallationProcess();
+      }
+      this.cdr.detectChanges();
+    }, 400); // يتحدث كل 400 مللي ثانية
+  }
+
+  // 3. دالة إتمام التثبيت وإغلاق البانر بنجاح
+  completeInstallationProcess() {
+    this.downloadStatus = 'completed';
+    this.isAlreadyInstalled = true;
+    localStorage.setItem('pwa_installed_status', 'true');
+    this.cdr.detectChanges();
+
+    // إغلاق الكرت تلقائياً بعد ثانيتين لإعطاء مظهر احترافي
+    setTimeout(() => {
+      this.isExpanded = false;
+      this.isPocketHidden = true;
+      DownloadBannerComponent.wasClosedInThisSession = true;
+      this.cdr.detectChanges();
+    }, 2000);
   }
 
 triggerBannerToggle() {
