@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'; // ✅ الـ CommonModule يأ�
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { DownloadBannerComponent } from "./components/download-banner/download-banner.component"; 
+
 import { SwUpdate } from '@angular/service-worker'; 
 import { interval } from 'rxjs';
 @Component({
@@ -14,7 +14,7 @@ import { interval } from 'rxjs';
     RouterOutlet,
     RouterLink, 
     FormsModule, 
-    DownloadBannerComponent
+
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
