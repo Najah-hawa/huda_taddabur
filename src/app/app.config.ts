@@ -19,6 +19,9 @@ export const appConfig: ApplicationConfig = {
     // ملاحظة: قمت بحذف تكرار provideRouter(routes) الزائد ليكون الكود أنظف
     
     // تفعيل معالج الأخطاء العالمي الخاص بنا 👇
-    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }, provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          })
   ]
 };

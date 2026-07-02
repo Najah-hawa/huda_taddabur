@@ -2,35 +2,44 @@
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
   "assetGroups": [
- {
+    {
       "name": "app",
-      "installMode": "prefetch", 
-      "updateMode": "prefetch", 
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
+          "/index.csr.html",
           "/index.html",
+          "/manifest.webmanifest",
           "/*.css",
           "/*.js"
         ]
       }
     },
     {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+       "files": [
+          "/assets/**/*",
+          "/icons/**/*"
+        ]
+      }
+    },{
       "name": "game-assets",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/icons/android-chrome-192x192.png",
-          "/icons/android-chrome-512x512.png",
-          "/images/play-images/**",
-          "/audio/play-game/**"
+          "/images/play-images/**/*",
+          "/audio/play-game/**/*"
         ]
       }
-    },
-    {
+    },{
       "name": "local-audio",
-      "installMode": "lazy", 
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": [
@@ -42,12 +51,11 @@
           "/audio/ryad-bab-1/**/*.mpeg"
         ]
       },
-      "cacheQueryOptions": {
+"cacheQueryOptions": {
         "ignoreSearch": true
       }
     }
-  ],
-  "dataGroups": [
+  ],"dataGroups": [
     {
       "name": "api-audio",
       "urls": [
@@ -61,4 +69,5 @@
       }
     }
   ]
+
 }
