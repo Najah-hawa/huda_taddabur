@@ -17,8 +17,8 @@ export class DownloadBannerComponent implements OnInit {
   isPocketHidden: boolean = false;  
   isAlreadyInstalled: boolean = false; 
 
-  // متغير لمعرفة إذا كانت عملية التحميل قد بدأت بعد الضغط على الزر
-  isDownloadingNow: boolean = false;
+  // متغير جديد لمعرفة إذا كانت المستخدمة قد ضغطت بالفعل على الزر في هذه الجلسة
+  hasClickedDownload: boolean = false;
 
   deferredPrompt: any = null;
   showInstallButton: boolean = false;
@@ -41,6 +41,7 @@ export class DownloadBannerComponent implements OnInit {
       return;
     }
 
+    // الفحص الافتراضي عند عمل Refresh لمعرفة حالة التثبيت السابقة
     this.checkIfAppInstalledBefore();
 
     if (DownloadBannerComponent.wasClosedInThisSession) {
@@ -48,7 +49,6 @@ export class DownloadBannerComponent implements OnInit {
       return;
     }
 
-    // الـ ngOnInit الآن نظيفة تماماً ولا تقوم بأي تحميل تلقائي في الخلفية 🛑
     setTimeout(() => {
       if (!this.isPocketHidden) {
         this.isExpanded = true;
@@ -74,53 +74,47 @@ export class DownloadBannerComponent implements OnInit {
     this.completeInstallationProcess();
   }
 
-  // دالة التحميل الفورية عند كبس الزر 📥
   downloadApp(event: Event) {
     event.preventDefault();
-    if (this.isAlreadyInstalled) return; 
+    if (this.isAlreadyInstalled || this.hasClickedDownload) return; 
 
-    // تغيير الحالة لتظهر رسالة الانتظار في الواجهة فوراً
-    this.isDownloadingNow = true;
+    // 1. نقوم بتغيير الحالة فوراً لإخفاء الزر ومنع الضغط المتكرر
+    this.hasClickedDownload = true;
     this.cdr.detectChanges();
 
-    // إظهار تنبيه صريح للمستخدمة بالوقت والعملية
     alert(
-      '⏳ بدأت عملية جلب وتثبيت ملفات تطبيق "هدى وتدبر" والمصحف الشريف الآن.\n\n' +
-      'نظراً لأن التطبيق سيحفظ البيانات ليعمل لاحقاً بدون إنترنت، فقد تستغرق هذه العملية ما بين 30 ثانية إلى دقيقة كاملة حسب سرعة شبكتكِ.\n\n' +
-      'الرجاء الانتظار ومتابعة الشاشة، ولا تقومي بإغلاق هذه الصفحة حتى يكتمل التثبيت وتظهر الأيقونة على جوالكِ بنجاح! ✨'
+      '⏳ بدأت عملية جلب ملفات التطبيق والمصحف الشريف الآن في الخلفية.\n\n' +
+      'نظراً لظروف الشبكة، قد تستغرق العملية ما بين 30 ثانية إلى دقيقة كاملة.\n\n' +
+      'الرجاء الانتظار وعدم إغلاق الصفحة، وسيتكفل المتصفح بإنشاء الأيقونة على جوالكِ فور اكتمال التنزيل! ✨'
     );
 
-    // إذا كان المتصفح يدعم إطلاق نافذة التثبيت الرسمية للاختصار
     if (this.deferredPrompt) {
       this.deferredPrompt.prompt();
       this.deferredPrompt.userChoice.then((choiceResult: any) => {
         if (choiceResult.outcome !== 'accepted') {
-          // إذا ألغت المستخدمة الطلب، نعيد الحالة لوضعها الطبيعي
-          this.isDownloadingNow = false;
+          // إذا ألغت الطلب تماماً، نعيد إتاحة الزر
+          this.hasClickedDownload = false;
         }
         this.deferredPrompt = null;
         this.cdr.detectChanges();
       });
-    } 
-    // إذا كان التثبيت يدوياً عبر النقاط الثلاث (المتصفح لا يدعم Prompt تلقائي)
-    else {
-      // نترك الرسالة التنبيهية تعمل، ونعلمها بكيفية التثبيت اليدوي احتياطاً
+    } else {
       setTimeout(() => {
         alert(
-          '💡 تنبيه إضافي:\n\n' +
-          'إذا لم تظهر لكِ نافذة التثبيت التلقائية الآن، يمكنكِ في أي وقت الضغط على زر الخيارات (النقاط الثلاث في أعلى أو أسفل المتصفح) واختيار "إضافة إلى الشاشة الرئيسية" لإنهاء التثبيت يدوياً.'
+          '💡 إرشاد إضافي:\n\n' +
+          'إذا لم تظهر نافذة التثبيت التلقائية بعد قليل، يمكنكِ إتمام العملية يدوياً بالضغط على زر خيارات المتصفح (النقاط الثلاث) واختيار "إضافة إلى الشاشة الرئيسية".'
         );
       }, 1000);
     }
   }
 
   completeInstallationProcess() {
-    this.isDownloadingNow = false;
+    this.hasClickedDownload = false;
     this.isAlreadyInstalled = true;
     localStorage.setItem('pwa_installed_status', 'true');
     this.cdr.detectChanges();
 
-    alert('✨ مبارك! تم تحميل وتثبيت تطبيق "هدى وتدبر" بنجاح. ستجدين أيقونة التطبيق الآن على شاشة جوالكِ الرئيسية وتعمل بدون إنترنت.');
+    alert('✨ مبارك! تم تثبيت تطبيق "هدى وتدبر" بنجاح على جوالكِ ويعمل الآن بدون إنترنت.');
 
     setTimeout(() => {
       this.isExpanded = false;
@@ -158,13 +152,13 @@ export class DownloadBannerComponent implements OnInit {
     }
   }
 
-  // زر الطوارئ لتصفيير الكاش وإعادة التحميل النظيف عند الحاجة يدوياً 🛠️
+  // 🛠️ زر الطوارئ لتصفير الكاش مع الحفاظ التام عليه عند الـ Refresh لإعادة التثبيت اليدوي والنظيف
   forceReinstall(event: Event) {
     event.preventDefault();
     
     localStorage.removeItem('pwa_installed_status');
     this.isAlreadyInstalled = false;
-    this.isDownloadingNow = false;
+    this.hasClickedDownload = false;
 
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -187,6 +181,6 @@ export class DownloadBannerComponent implements OnInit {
     DownloadBannerComponent.wasClosedInThisSession = false;
     this.cdr.detectChanges();
     
-    alert('تم تصفير كاش التطبيق بنجاح! يمكنكِ الآن الضغط على زر التحميل مجدداً لبدء عملية نظيفة.');
+    alert('تم تصفير كاش التطبيق بنجاح! عند إعادة تحميل الصفحة (Refresh) ستتمكنين من بدء تثبيت نظيف تماماً.');
   }
 }
