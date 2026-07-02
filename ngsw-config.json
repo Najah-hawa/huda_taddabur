@@ -24,7 +24,8 @@
       "resources": {
        "files": [
           "/assets/**/*",
-          "/icons/**/*"
+          "/icons/**/*",
+          "/fonts/**/*"
         ]
       }
     },{

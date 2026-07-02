@@ -1,10 +1,3 @@
-/* ==========================================================================
-   1. Grundläggande globala stilar (Body & Basmala)
-   ========================================================================== */
-
-/* 1. Importera Google-fonten Amiri ALLRA HÖGST UPP i filen */
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 /* 2. Registrera din nedladdade lokalfil (Uthman Hafs) */
 @font-face {
   font-family: 'Uthman Hafs';
@@ -12,6 +5,22 @@
 src: url('/fonts/UthmanicHafs1 Ver09.woff2') format('woff2');
   font-display: swap;
 }
+
+/* 2. Din Amiri-font (TTF) */
+@font-face {
+  font-family: 'Amiri';
+  src: url('/fonts/Amiri-Regular.ttf') format('truetype'); /* Viktigt: skriv 'truetype' för .ttf-filer */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Amiri';
+  src: url('/fonts/Amiri-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 
 /* 3. Koppla BÅDA typsnitten till dina klasser på samma gång */
 .verse-text, 
@@ -43,7 +52,7 @@ body {
 .basmala {
   text-align: center;
   color: #4d2828;
-  font-family: 'Amiri', serif;
+  font-family: 'Amiri', sans-serif;
   margin: 40px auto 20px;
   border-radius: 35px;
   letter-spacing: 1px; /* mer luft */
@@ -443,7 +452,7 @@ body {
 }
 
 .benefit-title {
-  font-family: 'Lateef', serif;
+  font-family: ' sans-serif', serif;
   font-size: 1.4rem;
   text-align: center;
   color: #6d4c41;
@@ -469,7 +478,7 @@ body {
 
 .custom-presentation-list li::before { content: '🔸'; position: absolute; right: 0; font-size: 0.8rem; }
 .benefit-list li::before { content: '📌'; position: absolute; right: 0; font-size: 0.9rem; opacity: 0.8; }
-.poetic-phrase { text-align: center; font-family: 'Lateef', serif; font-weight: bold; font-size: 1.25rem; color: #d63384; padding: 10px 0; line-height: 1.8; margin: 0; }
+.poetic-phrase { text-align: center; font-family: 'sans-serif', serif; font-weight: bold; font-size: 1.25rem; color: #d63384; padding: 10px 0; line-height: 1.8; margin: 0; }
 
 
 
