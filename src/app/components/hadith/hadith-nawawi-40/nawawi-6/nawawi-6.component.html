@@ -36,9 +36,20 @@
       ⏭️
     </button>
     
-    <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
-      {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
-    </button>
+    <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)" [disabled]="isLoadingAudio">
+  
+  <!-- 1. حالة التحميل: تظهر الدائرة التي تدور والنص فقط أثناء جلب الملف -->
+  <ng-container *ngIf="isLoadingAudio">
+    <span class="audio-spinner"></span>
+    جاري التحميل...
+  </ng-container>
+
+  <!-- 2. الحالة العادية: (إيقاف أو تشغيل) عند انتهاء التحميل -->
+  <ng-container *ngIf="!isLoadingAudio">
+    {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+  </ng-container>
+
+</button>
     
   <!-- ⏪ الزر اللي على اليسار بيقدم للجملة التالية -->
     <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">

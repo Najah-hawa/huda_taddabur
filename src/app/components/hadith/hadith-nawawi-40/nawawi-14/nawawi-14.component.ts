@@ -34,6 +34,7 @@ export class Nawawi14Component implements OnInit, OnDestroy {
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
+  isLoadingAudio = false; 
   currentPhraseIndex: number = -1;
 
   // 🎵 متغيرات المشغل الصوتي المطور (Audio Player)
@@ -258,74 +259,86 @@ ngOnInit() {
   // ==========================================
   // Synkroniserat ljudspår för själva texten (Mappat till Slider)
   // ==========================================
+playHadithAudio(url: string | undefined) {
+  if (!url) return;
 
-  playHadithAudio(url: string | undefined) {
-    if (!url) return;
+  // 1. إذا كان الصوت يعمل الآن -> نقوم بإيقافه مؤقتاً
+  if (this.currentAudio && this.isPlaying) {
+    this.currentAudio.pause();
+    this.isPlaying = false;
+    this.cdr.detectChanges();
+    return;
+  }
 
-    if (this.currentAudio && this.isPlaying) {
-      this.currentAudio.pause();
+  // 2. إذا كان الصوت موجوداً وموقوفاً -> نعيد تشغيله مباشرة دون تحميل جديد
+  if (this.currentAudio && !this.isPlaying) {
+    this.isPlaying = true;
+    this.cdr.detectChanges();
+    this.currentAudio.play().catch(() => this.isPlaying = false);
+    return;
+  }
+
+  // 3. حالة تشغيل ملف صوتي جديد لأول مرة (تحتاج تحميل)
+  window.speechSynthesis.cancel();
+  
+  // تفعيل مؤشر التحميل فوراً قبل بدء الطلب
+  this.isLoadingAudio = true; 
+  this.cdr.detectChanges();
+
+  this.http.get(url, { responseType: 'blob' }).subscribe({
+    next: (blob) => {
+      const localBlobUrl = URL.createObjectURL(blob);
+      
+      this.currentAudio = new Audio(localBlobUrl);
+      this.isPlaying = true;
+      
+      // إيقاف مؤشر التحميل لأن الملف أصبح جاهزاً في المتصفح
+      this.isLoadingAudio = false; 
+      this.cdr.detectChanges();
+
+      this.currentAudio.onloadedmetadata = () => {
+        if (this.currentAudio) {
+          this.duration = this.currentAudio.duration;
+          this.cdr.detectChanges();
+        }
+      };
+      
+      this.currentAudio.ontimeupdate = () => {
+        if (!this.currentAudio) return;
+        this.currentTime = this.currentAudio.currentTime;
+
+        const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
+        if (index !== this.currentPhraseIndex) {
+          this.currentPhraseIndex = index;
+        }
+        this.cdr.detectChanges();
+      };
+      
+      this.currentAudio.play()
+        .then(() => this.cdr.detectChanges())
+        .catch(() => {
+          this.isPlaying = false;
+          this.cdr.detectChanges();
+        });
+        
+      this.currentAudio.onended = () => {
+        this.isPlaying = false;
+        this.currentTime = 0;
+        this.currentPhraseIndex = -1;
+        this.currentAudio = null;
+        this.cdr.detectChanges();
+      };
+    },
+    error: (err) => {
+      console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين ولم يخزن هذا الملف مسبقاً:", err);
+      
+      // إيقاف مؤشر التحميل وإرجاع الحالة للوضع الطبيعي عند حدوث خطأ شبكة
+      this.isLoadingAudio = false; 
       this.isPlaying = false;
       this.cdr.detectChanges();
-      return;
     }
-
-    if (this.currentAudio && !this.isPlaying) {
-      this.isPlaying = true;
-      this.cdr.detectChanges();
-      this.currentAudio.play().catch(() => this.isPlaying = false);
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-
-    this.http.get(url, { responseType: 'blob' }).subscribe({
-      next: (blob) => {
-        const localBlobUrl = URL.createObjectURL(blob);
-        
-        this.currentAudio = new Audio(localBlobUrl);
-        this.isPlaying = true;
-        this.cdr.detectChanges();
-
-        // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
-        this.currentAudio.onloadedmetadata = () => {
-          if (this.currentAudio) {
-            this.duration = this.currentAudio.duration;
-            this.cdr.detectChanges();
-          }
-        };
-        
-        // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
-        this.currentAudio.ontimeupdate = () => {
-          if (!this.currentAudio) return;
-          this.currentTime = this.currentAudio.currentTime;
-
-          // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
-          const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
-          if (index !== this.currentPhraseIndex) {
-            this.currentPhraseIndex = index;
-          }
-          this.cdr.detectChanges();
-        };
-        
-        this.currentAudio.play()
-          .then(() => this.cdr.detectChanges())
-          .catch(() => this.isPlaying = false);
-          
-        this.currentAudio.onended = () => {
-          this.isPlaying = false;
-          this.currentTime = 0;
-          this.currentPhraseIndex = -1;
-          this.currentAudio = null;
-          this.cdr.detectChanges();
-        };
-      },
-      error: (err) => {
-        console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين ولم يخزن هذا الملف مسبقاً:", err);
-        this.isPlaying = false;
-        this.cdr.detectChanges();
-      }
-    });
-  }
+  });
+}
 
   // ⏭️ القفز الذكي للجملة التالية
   skipToNextPhrase() {
