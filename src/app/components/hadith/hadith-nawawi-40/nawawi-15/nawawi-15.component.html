@@ -1,16 +1,14 @@
 <div class="hadith-page-container">
- <app-surah-hint
-  [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
-  [hintText]="hadith.hintText">
-</app-surah-hint>
+  <app-surah-hint
+    [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
+    [hintText]="hadith.hintText">
+  </app-surah-hint>
 
-
-       <!-- Navigering anpassad för Hadith 1 -->
-  <app-next-before-surah-meny 
-    [RoutelinkBefore]="'/home'" [SurahBefore]="'القائمة الرئيسية'"
-    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
+  <app-next-before-surah-meny
+    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-14'" [SurahBefore]="'الحديث الرابع عشر'"
+    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-16'" [SurahNext]="'الحديث السادس عشر'">
   </app-next-before-surah-meny>
-   <div class="hadith-page-container">
+
 
 <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
 
@@ -22,8 +20,9 @@
   <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
     <div class="verse-block hadith-main-block-modern">
       <div class="hadith-audio-trigger-wrapper">
-        
+  
 
+        
  <!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
 <!-- المبدل الصوتي الجديد والمطور (Audio Player Controls) -->
 <div class="hadith-audio-player-wrapper">
@@ -34,7 +33,7 @@
   
         <!-- ⏩ الزر اللي على اليمين بيرجع للجملة السابقة -->
     <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
-      ⏭️ 
+      ⏭️
     </button>
     
     <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
@@ -113,7 +112,6 @@
   <!-- الحاوية 2: فوائد الحديث (Box 1) -->
 <div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
 
-
   <app-zoom-controls
     [isMaximized]="isBox1Maximized"  
     (onToggle)="toggleBox1Zoom(box1)" 
@@ -121,34 +119,57 @@
     (onZoomOut)="zoomOutBox1(box1)">
   </app-zoom-controls>
 
-  
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 حكم و أداب النصيحة  </h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أنواع الجار وحقوقه </h2>
+
+   <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
+
+</div>
+
+  <!-- الحاوية 3: أهمية الحديث (Box 2) -->
+
+  <div #box2 class="fawaed-box-container mini box2-container" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox2Maximized"  
+    (onToggle)="toggleBox2Zoom(box2)" 
+    (onZoomIn)="zoomInBox1(box2)" 
+    (onZoomOut)="zoomOutBox1(box2)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{ hadith.name }}</h2>
 
   <div class="box-list-wrapper">
-  <ul class="custom-presentation-list">
-    <!-- استخدام الطريقة العادية ومسح innerHTML يضمن ظهورها 100% على Vercel -->
-    <li *ngFor="let item of box1Items">
-      <span [textContent]="item"></span>
-    </li>
-  </ul>
- </div>
-</div>
-
-<!-- الحاوية 3: اختبار الحديث (Box 2)
-<div class="quiz-section-container">
-  
-  <div class="quiz-card-wrapper" *ngIf="!showQuizHadith">
-    <button class="start-quiz-button" (click)="startHadithQuiz()">اختبر نفسك: الحديث الأول</button>
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
+    </ul>
   </div>
+</div>
 
-  <div class="quiz-section" *ngIf="showQuizHadith === 'hadith1'">
-    <app-quix [quizData]="hadith1Questions" (closeQuiz)="showQuizHadith = null"></app-quix>
+  <!-- الحاوية 4: فائدة 1 (Box 3) -->
+
+ <div #box3 class="fawaed-box-container mini box3-container" [class.full-presentation]="isBox3Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox3Maximized"  
+    (onToggle)="toggleBox3Zoom(box3)" 
+    (onZoomIn)="zoomInBox3(box3)" 
+    (onZoomOut)="zoomOutBox3(box3)">
+  </app-zoom-controls>
+
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 تعقيبات </h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box3Items" [innerHTML]="item"></li>
+    </ul>
   </div>
-
 </div>
-  -->
 
-
-</div>
+ 
 
 <app-footer-info />

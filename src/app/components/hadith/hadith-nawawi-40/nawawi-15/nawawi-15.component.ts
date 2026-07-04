@@ -7,28 +7,32 @@ import { SurahHintComponent } from "../../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
-import {ProvComponent} from '../../prov/prov.component'; // 👈 Importerar ProvComponent för quizet
-// 📥 Hämta strukturerad data specifikt för Hadith 7
-import { hadith1Questions, hadithDetails, hadithImportanceList} from './hadith-data';
+
+// 📥 Hämta strukturerad data specifikt för Hadith 6
+import { hadithDetails, hadithImportanceList, hadithFawaedList, hadithFawaed1} from './hadith-15-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-nawawi-15',
   standalone: true,
-  imports: [CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent, ProvComponent],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+  templateUrl: './nawawi-15.component.html',
+  styleUrl: './nawawi-15.component.css'
 })
 
-export class Nawawi1Component implements OnInit, OnDestroy {
+export class Nawawi15Component implements OnInit, OnDestroy {
 
-  
   private http = inject(HttpClient);
 
   hadith = hadithDetails;
   box1Items = hadithImportanceList;
+  box2Items = hadithFawaedList;    
+  box3Items = hadithFawaed1;
 
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
+  fontSizeBox2: number = 16;
+  fontSizeBox3: number = 16;
+
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
@@ -39,43 +43,47 @@ export class Nawawi1Component implements OnInit, OnDestroy {
   duration: number = 0;
 
   isBox1Maximized: boolean = false;
+  isBox2Maximized: boolean = false;
+  isBox3Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
-  // 1. نربط البيانات المستوردة بمتغير كلاس ليقرأه الـ HTML
-  hadith1Questions = hadith1Questions;
-
-  // 2. متغير التحكم في إظهار شاشة الاختبار أو إخفائها
-  showQuizHadith: 'hadith1' | null = null;
-
-
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
-
-   ngOnInit() {
-    // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle('الحديث الأول: إنما الأعمال بالنيات - شروح الأربعين النووية');
-
-    this.metaService.updateTag({ 
-      name: 'description', 
-      content: 'شرح وتدبر الحديث الأول من الأربعين النووية (الأعمال بالنيات)، مع إضاءات من حياة الراوي عمر بن الخطاب رضي الله عنه وفوائد الحديث.' 
-    });
-    this.metaService.updateTag({ 
-      name: 'keywords', 
-      content: 'الأعمال بالنيات, الحديث الأول, الأربعون النووية, عمر بن الخطاب, شرح الحديث, تدبر الحديث نبوي' 
-    });
-    
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الأول: إنما الأعمال بالنيات - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الأول مع الشرح الصوتي، ترجمة الراوي، وأهم الفوائد المستخرجة.' });
-    this.metaService.updateTag({ property: 'og:type', content: 'article' });
-  }
-
+ngOnInit() {
+  this.titleService.setTitle('الحديث الخامس عشر: من خصال الإيمان وعلاماته - شروح الأربعين النووية');
+  
+  this.metaService.updateTag({
+    name: 'description',
+    content: 'شرح وتدبر الحديث الخامس عشر (من كان يؤمن بالله واليوم الآخر فليقل خيراً أو ليصمت)، وبيان حقوق الجار الثلاثة، وآداب إكرام الضيف، وأثر الإيمان في توجيه السلوك.'
+  });
+  
+  this.metaService.updateTag({
+    name: 'keywords',
+    content: 'الحديث الخامس عشر, من خصال الإيمان, فليقل خيراً أو ليصمت, إكرام الجار, إكرام الضيف, حقوق الجار, آداب الضيافة, حفظ اللسان, شروح الأربعين النووية'
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:title', 
+    content: 'الحديث الخامس عشر: من خصال الإيمان - تدبر تفاعلي' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:description', 
+    content: 'استمع إلى الحديث الشريف بالتظليل التزامني، وتعرّف على أنواع الجيران الثلاثة، وكيف يكون إكرام الضيف ببشاشة الوجه وطيب النفس.' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:type', 
+    content: 'article' 
+  });
+}
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
       this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
-      this.isExplanationShown = false;
+          this.isExplanationShown = false;
     }
     if (this.isRawiMaximized) {
       document.body.style.overflow = 'hidden'; 
@@ -152,6 +160,83 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     }
   }
 
+  toggleBox2Zoom(boxElement: HTMLElement) {
+    this.isBox2Maximized = !this.isBox2Maximized;
+
+    if (this.isBox2Maximized) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox2 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
+    }
+
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      if (boxElement) {
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',  
+          inline: 'center'
+        });
+      }
+    }, 100);
+  }
+
+  zoomInBox2(boxElement: HTMLElement) {
+    if (this.fontSizeBox2 < 36) {
+      this.fontSizeBox2 += 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
+    }
+  }
+
+  zoomOutBox2(boxElement: HTMLElement) {
+    if (this.fontSizeBox2 > 14) {
+      this.fontSizeBox2 -= 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
+    }
+  }
+
+  toggleBox3Zoom(boxElement: HTMLElement) {
+    this.isBox3Maximized = !this.isBox3Maximized;
+
+    if (this.isBox3Maximized) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox3 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
+    }
+
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      if (boxElement) {
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',  
+          inline: 'center'
+        });
+      }
+    }, 100);
+  }
+
+  zoomInBox3(boxElement: HTMLElement) {
+    if (this.fontSizeBox3 < 36) {
+      this.fontSizeBox3 += 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
+    }
+  }
+
+  zoomOutBox3(boxElement: HTMLElement) {
+    if (this.fontSizeBox3 > 14) {
+      this.fontSizeBox3 -= 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox3);
+    }
+  }
+
+
   toggleExplanation() {
     this.isExplanationShown = !this.isExplanationShown;
   }
@@ -210,7 +295,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // Synkroniserat ljudspår för själva texten (Mappat till Slider)
+  // المشغل الصوتي المطور والمزامن للسلايدر (Hadith 6)
   // ==========================================
 
   playHadithAudio(url: string | undefined) {
@@ -240,7 +325,6 @@ export class Nawawi1Component implements OnInit, OnDestroy {
         this.isPlaying = true;
         this.cdr.detectChanges();
 
-        // ⏱️ عند تحميل معلومات الملف الصوتي المبدئية
         this.currentAudio.onloadedmetadata = () => {
           if (this.currentAudio) {
             this.duration = this.currentAudio.duration;
@@ -248,12 +332,10 @@ export class Nawawi1Component implements OnInit, OnDestroy {
           }
         };
         
-        // 🔄 تحديث موضع الوقت الحالي وتغيير الـ Highlight والـ Slider
         this.currentAudio.ontimeupdate = () => {
           if (!this.currentAudio) return;
           this.currentTime = this.currentAudio.currentTime;
 
-          // البحث عن العبارة الحالية بناءً على الحقول (start و end) بالـ Data الفعالية
           const index = this.hadith.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
           if (index !== this.currentPhraseIndex) {
             this.currentPhraseIndex = index;
@@ -292,11 +374,10 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     }
   }
 
-  // ⏮️ الترجيع الذكي للجملة السابقة (بحسب الاستهلاك الزمني للجملة الحالية)
+  // ⏮️ الترجيع الذكي للجملة السابقة
   skipToPreviousPhrase() {
     if (!this.currentAudio || !this.hadith?.phrases) return;
     
-    // إذا لم يعثر على أي جملة، نرجعه لبداية الصوت
     if (this.currentPhraseIndex === -1) {
       this.currentAudio.currentTime = 0;
       return;
@@ -305,7 +386,6 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     const currentPhrase = this.hadith.phrases[this.currentPhraseIndex];
     const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
 
-    // إذا استمع لأكثر من ثانيتين من الجملة، يعود لبدايتها، وإلا يعود للجملة السابقة تماماً
     if (progressInPhrase > 2) {
       this.currentAudio.currentTime = currentPhrase.start;
     } else if (this.currentPhraseIndex > 0) {
@@ -318,7 +398,7 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  // 🎚️ السحب اليدوي للمؤشر الشريطي من قبل المستخدم
+  // 🎚️ السحب اليدوي للمؤشر من قبل المستخدم
   onSliderChange(event: any) {
     if (this.currentAudio) {
       this.currentAudio.currentTime = Number(event.target.value);
@@ -346,10 +426,4 @@ export class Nawawi1Component implements OnInit, OnDestroy {
       });
     }, 50); 
   }
-
-  // 3. الدالة التي يتم استدعاؤها عند الضغط على زر "اختبر نفسك"
-  startHadithQuiz() {
-    this.showQuizHadith = 'hadith1';
-  }
- 
 }

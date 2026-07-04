@@ -1,17 +1,15 @@
-<div class="hadith-page-container">
+  <div class="hadith-page-container">
  <app-surah-hint
   [surahName]=" 'همسة من ' + hadith.title + ' ' + hadith.name"
   [hintText]="hadith.hintText">
 </app-surah-hint>
 
-
-       <!-- Navigering anpassad för Hadith 1 -->
-  <app-next-before-surah-meny 
-    [RoutelinkBefore]="'/home'" [SurahBefore]="'القائمة الرئيسية'"
-    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
+<app-next-before-surah-meny 
+    [RoutelinkBefore]="'/hadith/hadith-nawawi-40/nawawi-13'" [SurahBefore]="'الحديث الثالث عشر'"
+    [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-15'" [SurahNext]="' الحديث  الخامس عشر'"> 
   </app-next-before-surah-meny>
-   <div class="hadith-page-container">
 
+ 
 <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
 
   <div class="box-container ">
@@ -34,7 +32,7 @@
   
         <!-- ⏩ الزر اللي على اليمين بيرجع للجملة السابقة -->
     <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
-      ⏭️ 
+      ⏭️
     </button>
     
     <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
@@ -122,31 +120,37 @@
   </app-zoom-controls>
 
   
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 حكم و أداب النصيحة  </h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 فوائد الحديث {{hadith.name}} </h2>
 
   <div class="box-list-wrapper">
   <ul class="custom-presentation-list">
     <!-- استخدام الطريقة العادية ومسح innerHTML يضمن ظهورها 100% على Vercel -->
-    <li *ngFor="let item of box1Items">
-      <span [textContent]="item"></span>
-    </li>
+
+       <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
   </ul>
  </div>
 </div>
 
-<!-- الحاوية 3: اختبار الحديث (Box 2)
-<div class="quiz-section-container">
-  
-  <div class="quiz-card-wrapper" *ngIf="!showQuizHadith">
-    <button class="start-quiz-button" (click)="startHadithQuiz()">اختبر نفسك: الحديث الأول</button>
-  </div>
 
-  <div class="quiz-section" *ngIf="showQuizHadith === 'hadith1'">
-    <app-quix [quizData]="hadith1Questions" (closeQuiz)="showQuizHadith = null"></app-quix>
-  </div>
+  <!-- الحاوية 3: أهمية الحديث (Box 2) -->
 
+  <div #box2 class="fawaed-box-container mini box2-container" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox2Maximized"  
+    (onToggle)="toggleBox2Zoom(box2)" 
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 مقارنة </h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
 </div>
-  -->
 
 
 </div>

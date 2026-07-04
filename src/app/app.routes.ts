@@ -130,6 +130,22 @@ export const routes: Routes = [
     loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-12/nawawi-12.component').then(m => m.Nawawi12Component)
   },
   {
+    path: 'hadith/hadith-nawawi-40/nawawi-13',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-13/nawawi-13.component').then(m => m.Nawawi13Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-14',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-14/nawawi-14.component').then(m => m.Nawawi14Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-15',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-15/nawawi-15.component').then(m => m.Nawawi15Component)
+  },
+  {
+    path: 'hadith/hadith-nawawi-40/nawawi-16',
+    loadComponent: () => import('./components/hadith/hadith-nawawi-40/nawawi-16/nawawi-16.component').then(m => m.Nawawi16Component)
+  },
+  {
     path: 'hadith/ryad-alsalihin',
     loadComponent: () => import('./components/hadith/ryad-alsalihin/ryad-alsalihin.component').then(m => m.RyadAlsalihinComponent)
   },

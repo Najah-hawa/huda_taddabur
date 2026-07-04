@@ -1,14 +1,8 @@
-
-
-/* Stil för källa */
-.source-text {
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-  margin-top: 10px;
+/* Gör så att vanliga radbrytningar i JS-strängar visas korrekt på skärmen */
+.custom-presentation-list li, .benefit-list li {
+  white-space: pre-line;
+  line-height: 1.8;
 }
-
-
 
 /* ==========================================================================
    📦 التنسيق الأساسي الموحد لحاوية الحديث والفوائد
@@ -63,14 +57,12 @@
 ::ng-deep .tafsir-modern-box * {
   font-size: inherit !important; 
   line-height: 1.8 !important;
-    font-size: x-small !important; /* fallback for very small screens */
 }
 
 /* زيادة تأكيد على العلبة الداخلية المحقونة */
 .tafsir-content-inner, 
 .tafsir-content-inner * {
   font-size: inherit !important;
-
 }
 
 
@@ -118,7 +110,6 @@
   /* مسافة مريحة بين عناصر قائمة المفردات في الشاشات الصغيرة */
   ::ng-deep .tafsir-modern-box .vocabulary-list li {
     margin-bottom: 8px !important;
-
   }
   
 }
@@ -159,33 +150,3 @@
 
 
 
-
-
-
-
-/* app.component.css - Anpassa dessa till din bäst efter din "min.jpg" design */
-
-.quiz-section-container {
-  display: flex;
-  flex-direction: column; /* 👈 هذا السطر يضمن ظهور العناصر تحت بعضها بدلاً من جانب بعضها */
-  align-items: center;    /* لتوسيط العناصر في المنتصف أفقياً */
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-.quiz-card-wrapper {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.start-quiz-button {
-    background-color: #a67c52; /* Guldfärgen från ornamenten i min.jpg */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-}

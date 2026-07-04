@@ -7,28 +7,30 @@ import { SurahHintComponent } from "../../../surah-hint/surah-hint.component";
 import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from "../../../next-before-surah-meny/next-before-surah-meny.component";
-import {ProvComponent} from '../../prov/prov.component'; // 👈 Importerar ProvComponent för quizet
+
 // 📥 Hämta strukturerad data specifikt för Hadith 7
-import { hadith1Questions, hadithDetails, hadithImportanceList} from './hadith-data';
+import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith-14-data';
 
 @Component({
-  selector: 'app-nawawi-1',
+  selector: 'app-nawawi-14',
   standalone: true,
-  imports: [CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent, ProvComponent],
-  templateUrl: './nawawi-1.component.html',
-  styleUrl: './nawawi-1.component.css'
+  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+  templateUrl: './nawawi-14.component.html',
+  styleUrl: './nawawi-14.component.css'
 })
 
-export class Nawawi1Component implements OnInit, OnDestroy {
+export class Nawawi14Component implements OnInit, OnDestroy {
 
   
   private http = inject(HttpClient);
 
   hadith = hadithDetails;
   box1Items = hadithImportanceList;
+  box2Items = hadithFawaedList;    
 
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
+  fontSizeBox2: number = 16;
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
@@ -39,43 +41,49 @@ export class Nawawi1Component implements OnInit, OnDestroy {
   duration: number = 0;
 
   isBox1Maximized: boolean = false;
+  isBox2Maximized: boolean = false;
   isRawiMaximized: boolean = false;
 
   isSpeakingTafsir: boolean = false;
   isTafsirPaused: boolean = false;
 
-  // 1. نربط البيانات المستوردة بمتغير كلاس ليقرأه الـ HTML
-  hadith1Questions = hadith1Questions;
-
-  // 2. متغير التحكم في إظهار شاشة الاختبار أو إخفائها
-  showQuizHadith: 'hadith1' | null = null;
-
-
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 
-   ngOnInit() {
-    // 🎯 Behåller de exakta unika meta-taggarna för Hadith 1
-    this.titleService.setTitle('الحديث الأول: إنما الأعمال بالنيات - شروح الأربعين النووية');
+ngOnInit() {
+  this.titleService.setTitle('الحديث الرابع عشر: حرمة دم المسلم وأسباب العقوبة - شروح الأربعين النووية');
+  
+  this.metaService.updateTag({
+    name: 'description',
+    content: 'شرح وتدبر الحديث الرابع عشر عن ابن مسعود (لا يحل دم امرئ مسلم)، وبيان الأحوال الثلاثة التي يحل بها القتل: الثيب الزاني، النفس بالنفس، والتارك لدينه المفارق للجماعة، مع مناقشة حكم تارك الصلاة عند ابن الجوزية.'
+  });
+  
+  this.metaService.updateTag({
+    name: 'keywords',
+    content: 'الحديث الرابع عشر, لا يحل دم امرئ مسلم, ابن مسعود, الثيب الزاني, النفس بالنفس, التارك لدينه, المفارق للجماعة, عقوبة الزاني المحصن, حكم تارك الصلاة, ابن الجوزية, شروح الأربعين النووية'
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:title', 
+    content: 'الحديث الرابع عشر: حرمة دم المسلم والخصال الثلاث - تدبر تفاعلي' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:description', 
+    content: 'استمع إلى الحديث الشريف بالتظليل التزامني، وتعرّف على شرح المفردات الفقهية، والدروس المستفادة في وجوب حفظ الأعراض ونقائها والحث على التزام جماعة المسلمين.' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:type', 
+    content: 'article' 
+  });
+}
 
-    this.metaService.updateTag({ 
-      name: 'description', 
-      content: 'شرح وتدبر الحديث الأول من الأربعين النووية (الأعمال بالنيات)، مع إضاءات من حياة الراوي عمر بن الخطاب رضي الله عنه وفوائد الحديث.' 
-    });
-    this.metaService.updateTag({ 
-      name: 'keywords', 
-      content: 'الأعمال بالنيات, الحديث الأول, الأربعون النووية, عمر بن الخطاب, شرح الحديث, تدبر الحديث نبوي' 
-    });
-    
-    this.metaService.updateTag({ property: 'og:title', content: 'الحديث الأول: إنما الأعمال بالنيات - تدبر تفاعلي' });
-    this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الحديث الأول مع الشرح الصوتي، ترجمة الراوي، وأهم الفوائد المستخرجة.' });
-    this.metaService.updateTag({ property: 'og:type', content: 'article' });
-  }
 
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {
       this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
-      this.isExplanationShown = false;
+          this.isExplanationShown = false;
     }
     if (this.isRawiMaximized) {
       document.body.style.overflow = 'hidden'; 
@@ -149,6 +157,44 @@ export class Nawawi1Component implements OnInit, OnDestroy {
     if (element) {
       element.style.setProperty('--dynamic-font-size', `${size}px`);
       this.cdr.detectChanges();
+    }
+  }
+
+  toggleBox2Zoom(boxElement: HTMLElement) {
+    this.isBox2Maximized = !this.isBox2Maximized;
+
+    if (this.isBox2Maximized) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox2 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
+    }
+
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      if (boxElement) {
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',  
+          inline: 'center'
+        });
+      }
+    }, 100);
+  }
+
+  zoomInBox2(boxElement: HTMLElement) {
+    if (this.fontSizeBox2 < 36) {
+      this.fontSizeBox2 += 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
+    }
+  }
+
+  zoomOutBox2(boxElement: HTMLElement) {
+    if (this.fontSizeBox2 > 14) {
+      this.fontSizeBox2 -= 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox2);
     }
   }
 
@@ -346,10 +392,4 @@ export class Nawawi1Component implements OnInit, OnDestroy {
       });
     }, 50); 
   }
-
-  // 3. الدالة التي يتم استدعاؤها عند الضغط على زر "اختبر نفسك"
-  startHadithQuiz() {
-    this.showQuizHadith = 'hadith1';
-  }
- 
 }
