@@ -218,46 +218,67 @@ ngOnInit() {
   // Talsyntes för förklaringsboxen
   // ==========================================
 
-  speakText(text: string | undefined) {
-    if (!text) return;
-    if (this.isSpeakingTafsir && !this.isTafsirPaused) {
-      window.speechSynthesis.pause();
-      this.isTafsirPaused = true;
-      this.cdr.detectChanges();
-      return;
-    }
-    if (this.isSpeakingTafsir && this.isTafsirPaused) {
-      window.speechSynthesis.resume();
-      this.isTafsirPaused = false;
-      this.cdr.detectChanges();
-      return;
-    }
-  window.speechSynthesis?.cancel();
-    const plainText = text.replace(/<[^>]*>/g, '');
-    const utterance = new SpeechSynthesisUtterance(plainText);
-    utterance.lang = 'ar';
-    utterance.rate = 0.9;
-    utterance.onstart = () => {
-      this.isSpeakingTafsir = true;
-      this.isTafsirPaused = false;
-      this.cdr.detectChanges();
-    };
-    utterance.onend = () => {
-      this.stopSpeakingTafsir();
-    };
-    utterance.onerror = (event) => {
-      console.error("حدث خطأ في القراءة الصوتية:", event.error);
-      this.stopSpeakingTafsir();
-    };
-    window.speechSynthesis.speak(utterance);
+speakText(text: string | undefined) {
+  if (!text) return;
+
+  // 1. فحص الأمان: إذا كان المتصفح لا يدعم ميزة تحويل النص إلى كلام، اخرج فوراً لمنع الانهيار
+  if (typeof window === 'undefined' || !('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+    console.warn("هذا المتصفح أو الجهاز لا يدعم ميزة تحويل النص إلى كلام الآلية.");
+    // يمكنك هنا إظهار رسالة تنبيه للمستخدم إن أحببتِ، مثل: alert("الميزة غير مدعومة في متصفحك")
+    return; 
   }
 
-  stopSpeakingTafsir() {
-   window.speechSynthesis?.cancel();
-    this.isSpeakingTafsir = false;
+  // الآن كل الأسطر بالأسفل ستعمل بأمان لأننا تأكدنا من دعم المتصفح لها 100%
+  if (this.isSpeakingTafsir && !this.isTafsirPaused) {
+    window.speechSynthesis.pause();
+    this.isTafsirPaused = true;
+    this.cdr.detectChanges();
+    return;
+  }
+
+  if (this.isSpeakingTafsir && this.isTafsirPaused) {
+    window.speechSynthesis.resume();
     this.isTafsirPaused = false;
     this.cdr.detectChanges();
+    return;
   }
+
+  window.speechSynthesis.cancel();
+  
+  const plainText = text.replace(/<[^>]*>/g, '');
+  const utterance = new SpeechSynthesisUtterance(plainText);
+  
+  utterance.lang = 'ar';
+  utterance.rate = 0.9;
+
+  utterance.onstart = () => {
+    this.isSpeakingTafsir = true;
+    this.isTafsirPaused = false;
+    this.cdr.detectChanges();
+  };
+
+  utterance.onend = () => {
+    this.stopSpeakingTafsir();
+  };
+
+  utterance.onerror = (event) => {
+    console.error("حدث خطأ في القراءة الصوتية:", event.error);
+    this.stopSpeakingTafsir();
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+stopSpeakingTafsir() {
+  // إضافة حماية هنا أيضاً لحالات الإيقاف المباشر
+  if (typeof window !== 'undefined' && window.speechSynthesis) {
+    window.speechSynthesis.cancel();
+  }
+  
+  this.isSpeakingTafsir = false;
+  this.isTafsirPaused = false;
+  this.cdr.detectChanges();
+}
 
   // ==========================================
   // المشغل الصوتي المطور والمزامن للسلايدر (Hadith 6)
