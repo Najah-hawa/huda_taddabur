@@ -78,8 +78,8 @@ export const routes: Routes = [
     loadComponent: () => import('./components/hadith/ryad-nawawi-menu/ryad-nawawi-menu.component').then(m => m.RyadNawawiMenuComponent)
   },
   {
-    path: 'hadith/hadith-menu',
-    loadComponent: () => import('./components/hadith/hadith-menu/hadith-menu.component').then(m => m.HadithMenuComponent)
+    path: 'hadith/hadith-menu-nawawi',
+    loadComponent: () => import('./components/hadith/hadith-menu-nawawi/hadith-menu-nawawi.component').then(m => m.HadithMenuNawawiComponent)
   },
   {
     path: 'hadith/hadith-nawawi-40/nawawi-1',

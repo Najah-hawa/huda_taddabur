@@ -4,13 +4,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser'; // Importera Title och Meta för SEO
 
 @Component({
-  selector: 'app-hadith-menu',
+  selector: 'app-hadith-menu-nawawi',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
-  templateUrl: './hadith-menu.component.html',
-  styleUrl: './hadith-menu.component.css'
+  templateUrl: './hadith-menu-nawawi.component.html',
+  styleUrl: './hadith-menu-nawawi.component.css'
 })
-export class HadithMenuComponent implements OnInit { // Implementera OnInit
+export class HadithMenuNawawiComponent implements OnInit { // Implementera OnInit
 
   constructor(private titleService: Title, private metaService: Meta) {}
 
