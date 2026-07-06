@@ -5,6 +5,7 @@
     {
       "name": "app",
       "installMode": "prefetch",
+      "updateMode": "prefetch",
       "resources": {
         "files": [
           "/favicon.ico",
@@ -21,39 +22,44 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": [
-          "/**/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)",
-          "/icons/android-chrome-192x192.png",
-          "/icons/android-chrome-512x512.png"
+       "files": [
+          "/assets/**/*",
+          "/icons/**/*",
+          "/fonts/**/*"
         ]
       }
-    },
-    {
+    },{
       "name": "game-assets",
-      "installMode": "prefetch",
+      "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/images/play-images/**",
-          "/audio/play-game/**"
+          "/images/play-images/**/*",
+          "/audio/play-game/**/*"
         ]
       }
-    },
-    {
+    },{
       "name": "local-audio",
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/audio/hadith/**"
+          "/audio/hadith/**/*.mpeg",
+          "/audio/hadith/**/*.mp3",
+          "/audio/hadith/**/*.m4a",
+          "/audio/ryad-bab-1/**/*.m4a",
+          "/audio/ryad-bab-1/**/*.mp3",
+          "/audio/ryad-bab-1/**/*.mpeg",
+          "/audio/ryad-bab-2/**/*.m4a",
+          "/audio/ryad-bab-2/**/*.mp3",
+          "/audio/ryad-bab-2/**/*.mpeg"
         ]
       },
-      "cacheQueryOptions": {
+"cacheQueryOptions": {
         "ignoreSearch": true
       }
     }
-  ],
-  "dataGroups": [
+  ],"dataGroups": [
     {
       "name": "api-audio",
       "urls": [
@@ -67,4 +73,5 @@
       }
     }
   ]
+
 }

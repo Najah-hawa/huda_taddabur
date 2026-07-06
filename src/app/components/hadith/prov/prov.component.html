@@ -1,0 +1,61 @@
+<div class="fawaed-box-container mini box1-container " style="padding: 40px; position: relative; " >
+<!-- 👈 تأكدي أن هذا السطر موجود هنا تماماً -->
+
+  <section >
+    <h1>اختبار: {{ quizData. hadith_title_prov }}</h1>
+    <ng-container *ngIf="!quizComplete"> 
+    <p>السؤال {{ currentQuestionIndex + 1 }} من {{ totalQuestions }}</p>
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width]="progressPercentage + '%'"></div>
+    </div>
+    </ng-container>
+  </section>
+
+  <div>
+    <ng-container *ngIf="!quizComplete; else resultSection">
+      <!-- Frågekort med fade-in och shake-animation -->
+      <div class="question-card" >
+        <p class="question-text">{{ currentQuestion.text }}</p>
+        
+       <div class="options-container">
+  <button *ngFor="let option of currentQuestion.options" 
+          (click)="selectOption(option)" 
+          class="option-button" 
+          [class.selected]="selectedOption === option"
+          [class.correct]="isCorrect === true && selectedOption === option"
+          [class.wrong]="isCorrect === false && selectedOption === option"
+          [disabled]="isCorrect !== null">
+    
+    <!-- الدائرة الجانبية المضافة مثل نموذج الصورة -->
+    <span class="radio-circle">
+      <span class="radio-inner" *ngIf="selectedOption === option"></span>
+    </span>
+
+    <!-- نص الخيار المجلوب من الـ Array -->
+    <span class="option-text">{{ option }}</span>
+
+  </button>
+</div>
+        <p class="feedback" [style.color]="feedbackColor">{{ feedbackText }}</p>
+
+              <!-- Räknare i botten -->
+       <div class="quiz-footer">
+   
+        <button class="exit-quiz-btn" (click)="exitQuiz()">إنهاء الاختبار</button>
+      </div>
+      </div>
+ 
+
+    </ng-container>
+
+    <!-- Resultatsidan -->
+    <ng-template #resultSection>
+      <div class="result-card">
+        <h2>مبروك! لقد أكملت الاختبار. 🎉</h2>
+        <p>الأسئلة الصحيحة من أول محاولة: {{ firstAttempts }} من أصل {{ totalQuestions }}</p>
+        <button class="restart-button" (click)="restartQuiz()" >إعادة الاختبار</button>
+      </div>
+    </ng-template>
+
+  </div>
+</div>

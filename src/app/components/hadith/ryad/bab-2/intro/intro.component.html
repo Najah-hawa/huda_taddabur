@@ -1,0 +1,74 @@
+<div class="hadith-page-container">
+  <app-surah-hint
+    [surahName]=" hadith.title ">
+  </app-surah-hint>
+
+  <app-next-before-surah-meny
+    [RoutelinkBefore]="'/hadith'" [SurahBefore]="'القائمة الرئيسية'"
+    [RoutelinkAfter]="'/hadith/ryad/bab-2/hadith-13'" [SurahNext]="'الحديث الأول'">
+  </app-next-before-surah-meny>
+
+
+  <!-- باب الاخلاص واحضار النيه في جميع الاعمال والاحوال (Box 1) -->
+<div #box1 class="fawaed-box-container mini box1-container" [class.full-presentation]="isBox1Maximized" style="margin-top: 25px; position: relative;">
+  <app-zoom-controls
+    [isMaximized]="isBox1Maximized"  
+    (onToggle)="toggleBox1Zoom(box1)" 
+    (onZoomIn)="zoomInBox1(box1)" 
+    (onZoomOut)="zoomOutBox1(box1)">
+  </app-zoom-controls>
+  
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;"> باب التوبة   </h2>
+   <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box1Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
+</div>
+
+
+ <!-- الحاوية 3: أهمية الحديث (Box 2) -->
+
+  <div #box2 class="fawaed-box-container mini box2-container" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox2Maximized"  
+    (onToggle)="toggleBox2Zoom(box2)" 
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 حكم ،  شروط ،  انواع ،  وثمرات التوبة</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
+</div>
+
+
+
+ <!-- الحاوية 3: أهمية الحديث (Box 2) -->
+
+  <div #box3 class="fawaed-box-container mini box3-container" [class.full-presentation]="isBox3Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox3Maximized"  
+    (onToggle)="toggleBox3Zoom(box3)" 
+    (onZoomIn)="zoomInBox3(box3)" 
+    (onZoomOut)="zoomOutBox3(box3)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 أمور تساعدني على التوبة</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box3Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
+</div>
+
+
+
+<app-footer-info />

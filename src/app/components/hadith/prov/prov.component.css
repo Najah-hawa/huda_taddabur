@@ -1,0 +1,377 @@
+h1 {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+p {
+  color: #555;
+  margin-top: 0;
+}
+
+/* Framstegsindikator */
+.progress-bar-container {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #a67c52; /* Guldfärgen */
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+
+/* Frågekort med skugga och animation */
+.question-card {
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0px 40px rgba(0,0,0,0.1);
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards; /* Fade-in vid visning */
+  margin-bottom: 30px;
+  margin-top: 20px;
+  width:500px;
+
+}
+
+.question-text {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.question-text ::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: #00796b;
+    margin: 0.5rem auto;
+}
+
+/* حاوية الخيارات */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* مسافة عمودية مريحة بين الخيارات */
+}
+
+.option-button {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 14px; /* المسافة بين الدائرة والنص */
+  padding: 12px 8px;
+  cursor: pointer;
+  width: 100%;
+  text-align: right;
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  color: #334155;
+  transition: all 0.2s ease;
+  background-color: #f5f1ee; /* خلفية خفيفة للخيارات */
+  border-style:ridge;
+  border-color:#f0ece8;
+}
+
+.radio-circle {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #705334; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* يمنع الدائرة من الانضغاط إذا كان النص طويلاً */
+  transition: all 0.2s ease;
+}
+
+.radio-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #64748b;
+}
+.option-button:hover:not([disabled]) .radio-circle::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #a67c52;
+}
+.option-button .radio-inner {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #64748b; 
+}
+
+/* 2. في حال الإجابة الصحيحة (أخضر زمردي) */
+.option-button.correct .radio-circle {
+  border-color: #10b981;
+  background-color: #10b981;
+}
+.option-button.correct .radio-inner {
+  background-color: #ffffff; 
+}
+.option-button.correct .option-text {
+  color: #10b981;
+  font-weight: 600;
+}
+.option-button.correct {
+  border: 2px solid #10b981 !important; 
+  background-color: #ecfdf5; 
+}
+
+/* 3. في حال الإجابة الخاطئة (أحمر قرمزي) */
+.option-button.wrong .radio-circle {
+  border-color: rgb(234, 67, 53);;
+  background-color:  rgb(234, 67, 53);
+}
+.option-button.wrong .radio-inner {
+  background-color: #ffffff;
+}
+.option-button.wrong .option-text {
+  color: #FF6961;
+}
+.option-button.wrong {
+  border: 2px solid  rgb(234, 67, 53) !important;
+  background-color: #fef2f2; 
+}
+
+
+.feedback {
+  font-size: 1.1em;
+  margin-top: 20px;
+  min-height: 1.5em;
+}
+
+.quiz-footer {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Resultat- och restart-knapp */
+.result-card {
+  text-align: center;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0px 40px rgba(0,0,0,0.1);
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards; /* Fade-in vid visning */
+  margin-bottom: 30px;
+  margin-top: 20px;
+  width:500px
+}
+
+.restart-button {
+  background-color: #a67c52;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Animationer */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
+
+
+/* زر إنهاء الاختبار */
+.exit-quiz-btn {
+  background-color: #a67c52; /* Guldfärgen från ornamenten i min.jpg */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.exit-quiz-btn:hover {
+  background-color: #a67c52; /* يتحول للأحمر عند تمرير الماوس للتنبيه بالإغلاق */
+  color: white;
+  border-color: #a67c52;
+}
+
+
+/* ==========================================
+   التعديلات الاحترافية للشاشات الصغيرة والموبايل
+   ========================================== */
+@media (max-width: 576px) {
+  
+  /* تكييف حاوية التطبيق وتأمين هوامش عامة */
+  .quiz-container {
+    padding: 0 10px !important;
+    min-height: auto !important;
+    height: auto !important;
+  }
+
+  /* تصغير العنوان الرئيسي مع إعطائه مسافة ممتازة من الأعلى والأسفل */
+  h1 {
+    font-size: 1.5em !important;
+    margin-top: 15px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* عداد الأسئلة */
+  p {
+    font-size: 0.95em !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* خط التقدم: جعله متناسقاً تماماً مع عرض الكرت الجديد */
+  .progress-bar-container {
+    width: 90% !important;
+    height: 8px !important; /* أنحف وأرشق على الموبايل */
+    margin: 10px auto 20px auto !important;
+  }
+
+  /* تقليل المساحة المحيطة بالـ main لتوفير الارتفاع */
+  main {
+    padding: 10px 0 !important;
+  }
+
+  /* كرت الأسئلة والنتيجة: أصغر قليلاً وملموم مع هوامش مريحة جداً */
+  .question-card, .result-card {
+    width: fit-content !important; /* الكرت لا يلتصق بالأطراف، بل يترك مسافة أمان أنيقة */
+    max-width: 420px !important; /* لكي لا يتمدد كثيراً في الشاشات المتوسطة */
+    margin: 10px auto 25px auto !important; /* مارجن متناسق وممركز في المنتصف */
+    border-radius: 12px !important; /* تدوير ناعم ومناسب للحجم الأصغر */
+  }
+
+  /* نص السؤال: حجم خط ممتاز وسلس للقراءة */
+  .question-text {
+    font-size: 1.25em !important;
+    margin-bottom: 20px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* تقليل المسافة العمودية بين الأزرار لتوفير المساحة */
+  .options-container {
+    gap: 12px !important;
+  }
+
+  /* أزرار الخيارات: تصميم مريح ومحاذاة داخلية ممتازة */
+  .option-button {
+    padding: 12px 14px !important;
+    font-size: 15px !important;
+    gap: 10px !important; /* تقريب الدائرة من النص قليلاً ليناسب الشاشات الضيقة */
+  }
+
+  /* الدائرة الخاصة بالـ Radio */
+  .radio-circle {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* نص الفيدباك الأسفل (أحسنت / خطأ) */
+  .feedback {
+    font-size: 1em !important;
+    margin-top: 15px !important;
+  }
+
+  /* أزرار التحكم في النهاية */
+  .restart-button, .exit-quiz-btn {
+    padding: 10px 20px !important;
+    font-size: 1em !important;
+  }
+}
+
+
+
+/* ==========================================
+   التعديلات الخاصة بالشاشات الصغيرة جداً (أقل من 400px)
+   مثل هواتف الـ iPhone SE و Galaxy S9+ الضيقة
+   ========================================== */
+@media (max-width: 400px) {
+
+  /* جعل الكرت ملموماً ومناسباً للشاشات النحيفة مع هوامش جانبية ناعمة */
+  .question-card, .result-card {
+    margin: 8px auto 16px auto !important;
+    border-radius: 10px !important;
+  }
+
+  /* تصغير عنوان الحديث أو الاختبار ليكون على سطرين أنيقين دون تضخم */
+  h1 {
+    font-size: large !important;
+    margin-top: 10px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* عداد الأسئلة الصغير */
+  p {
+    font-size: 0.85em !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* تقليص الـ margin الخاص بخط التقدم */
+  .progress-bar-container {
+    margin: 5px auto 15px auto !important;
+    height: 6px !important; /* أنحف ليتماشى مع صغر الشاشة */
+  }
+
+  /* نص السؤال: تصغير الخط ليمنع الالتفاف الطويل جداً للكلمات */
+  .question-text {
+    font-size: small !important;
+    margin-bottom: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  /* تقريب أزرار الإجابات من بعضها */
+  .options-container {
+    gap: 10px !important;
+  }
+
+  /* تعديل أزرار الخيارات لتصبح انسيابية وتمنع نزول الكلمات لسطر جديد بشكل مشوه */
+  .option-button {
+    padding: 10px 12px !important; /* تقليص المساحات الداخلية */
+    font-size: 10px !important; /* خط أنعم وأصغر يناسب شاشات الـ 320px */
+    gap: 8px !important; /* تقريب الدائرة من النص لمنح مساحة أفقية إضافية للكلمات */
+    border-radius: 6px !important;
+  }
+
+  /* تصغير حجم الدائرة قليلاً لتتناسب مع حجم الخط الجديد */
+  .radio-circle {
+    width: 18px !important;
+    height: 18px !important;
+    border-width: 1.5px !important; /* جعل حواف الدائرة أنحف */
+  }
+
+  /* الدائرة الداخلية */
+  .radio-inner, 
+  .option-button:hover:not([disabled]) .radio-circle::after {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  /* نصوص الفيدباك في الأسفل */
+  .feedback {
+    font-size: 0.95em !important;
+    margin-top: 12px !important;
+  }
+
+  /* أزرار الإعادة والإنهاء */
+  .restart-button, .exit-quiz-btn {
+    padding: 8px 16px !important;
+    font-size: 0.95em !important;
+  }
+}

@@ -1,0 +1,247 @@
+import { Component, ChangeDetectorRef, OnDestroy, OnInit, inject} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Title, Meta } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http'; 
+import { SurahHintComponent } from "../../../../surah-hint/surah-hint.component";
+import { FooterInfoComponent } from '../../../../footer-info/footer-info.component';
+import { ZoomControlsComponent } from '../../../zoom-controls/zoom-controls.component';
+import { NextBeforeSurahMenyComponent } from "../../../../next-before-surah-meny/next-before-surah-meny.component";
+
+// 📥 Hämta strukturerad data specifikt för Hadith 6
+import { hadithDetails, hadithImportanceList, } from './nawawi-intro-data';
+
+@Component({
+  selector: 'app-nawawi-intro',
+  standalone: true,
+  imports: [ CommonModule, RouterModule, SurahHintComponent, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
+    templateUrl: './nawawi-intro.component.html',
+  styleUrl: './nawawi-intro.component.css'
+})
+
+export class NawawiIntroComponent implements OnInit, OnDestroy {
+
+  private http = inject(HttpClient);
+
+  hadith = hadithDetails;
+  box1Items = hadithImportanceList;
+
+  fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
+  fontSizeBox1: number = 16;
+
+  isExplanationShown: boolean = false;
+  currentAudio: HTMLAudioElement | null = null;
+  isPlaying: boolean = false;
+  currentPhraseIndex: number = -1;
+
+  // 🎵 متغيرات المشغل الصوتي المطور (Audio Player)
+  currentTime: number = 0;
+  duration: number = 0;
+
+  isBox1Maximized: boolean = false;
+  isBox2Maximized: boolean = false;
+  isBox3Maximized: boolean = false;
+  isRawiMaximized: boolean = false;
+
+  isSpeakingTafsir: boolean = false;
+  isTafsirPaused: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
+ngOnInit() {
+  this.titleService.setTitle('سيرة الإمام النووي ومؤلفاته - شروح الأربعين النووية');
+  
+  this.metaService.updateTag({
+    name: 'description',
+    content: 'تعرف على سيرة ومؤلفات الإمام النووي (يحيى بن شرف الخزامي) ومحيي الدين أبو زكريا، من ولادته في قرية نوى التابعة لدرعا السورية حتى وفاته برئاسة دار الحديث الأشرفية بدمشق، وصفاته في الورع والزهد والمذهب الشافعي.'
+  });
+  
+  this.metaService.updateTag({
+    name: 'keywords',
+    content: 'الإمام النووي, يحيى بن شرف بن مري, محيي الدين أبو زكريا, قرية نوى, درعا السورية, الأربعين النووية, رياض الصالحين, الأذكار, المذهب الشافعي, الشيخ ياسين المراكشي, دار الحديث الأشرفية'
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:title', 
+    content: 'سيرة ومؤلفات الإمام النووي ومحيي الدين أبو زكريا' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:description', 
+    content: 'حياة الإمام النووي من صغره وابتعاده عن اللعب، ودراسته بدمشق في مدرسة الحديث الرواحية، وأبرز مؤلفاته مثل الأربعين النووية ورياض الصالحين وزهده في الدنيا.' 
+  });
+  
+  this.metaService.updateTag({ 
+    property: 'og:type', 
+    content: 'article' 
+  });
+}
+  toggleRawiZoom(boxElement: HTMLElement) {
+    this.isRawiMaximized = !this.isRawiMaximized;
+    if (!this.isRawiMaximized) {
+      this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
+          this.isExplanationShown = false;
+    }
+    if (this.isRawiMaximized) {
+      document.body.style.overflow = 'hidden'; 
+    } else {
+      document.body.style.overflow = 'auto';   
+    }
+    this.cdr.detectChanges();
+    setTimeout(() => {
+      if (boxElement) {
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',   
+          inline: 'nearest'
+        });
+      }
+    }, 100); 
+  }
+
+  zoomInRawi() {
+    if (this.fontSizeRawi < 36) {
+      this.fontSizeRawi += 2;
+      this.cdr.detectChanges();
+    }
+  }
+  zoomOutRawi() {
+    if (this.fontSizeRawi > 12) {
+      this.fontSizeRawi -= 2;
+      this.cdr.detectChanges();
+    }
+  }
+
+  toggleBox1Zoom(boxElement: HTMLElement) {
+    this.isBox1Maximized = !this.isBox1Maximized;
+
+    if (this.isBox1Maximized) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto'; 
+      this.fontSizeBox1 = 16;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+    }
+
+    this.cdr.detectChanges();
+
+    setTimeout(() => {
+      if (boxElement) {
+        boxElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',  
+          inline: 'center'
+        });
+      }
+    }, 100);
+  }
+
+  zoomInBox1(boxElement: HTMLElement) {
+    if (this.fontSizeBox1 < 36) {
+      this.fontSizeBox1 += 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+    }
+  }
+
+  zoomOutBox1(boxElement: HTMLElement) {
+    if (this.fontSizeBox1 > 14) {
+      this.fontSizeBox1 -= 2;
+      this.applyFontChangeDirect(boxElement, this.fontSizeBox1);
+    }
+  }
+
+  private applyFontChangeDirect(element: HTMLElement, size: number) {
+    if (element) {
+      element.style.setProperty('--dynamic-font-size', `${size}px`);
+      this.cdr.detectChanges();
+    }
+  }
+
+
+  toggleExplanation() {
+    this.isExplanationShown = !this.isExplanationShown;
+  }
+
+  private applyFontChange(selector: string, size: number) {
+    const element = document.querySelector(selector) as HTMLElement;
+    if (element) {
+      element.style.setProperty('--dynamic-font-size', `${size}px`);
+      this.cdr.detectChanges();
+    }
+  }
+
+  // ==========================================
+  // Talsyntes för förklaringsboxen
+  // ==========================================
+
+  speakText(text: string | undefined) {
+    if (!text) return;
+    if (this.isSpeakingTafsir && !this.isTafsirPaused) {
+      window.speechSynthesis.pause();
+      this.isTafsirPaused = true;
+      this.cdr.detectChanges();
+      return;
+    }
+    if (this.isSpeakingTafsir && this.isTafsirPaused) {
+      window.speechSynthesis.resume();
+      this.isTafsirPaused = false;
+      this.cdr.detectChanges();
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const plainText = text.replace(/<[^>]*>/g, '');
+    const utterance = new SpeechSynthesisUtterance(plainText);
+    utterance.lang = 'ar';
+    utterance.rate = 0.9;
+    utterance.onstart = () => {
+      this.isSpeakingTafsir = true;
+      this.isTafsirPaused = false;
+      this.cdr.detectChanges();
+    };
+    utterance.onend = () => {
+      this.stopSpeakingTafsir();
+    };
+    utterance.onerror = (event) => {
+      console.error("حدث خطأ في القراءة الصوتية:", event.error);
+      this.stopSpeakingTafsir();
+    };
+    window.speechSynthesis.speak(utterance);
+  }
+
+  stopSpeakingTafsir() {
+    window.speechSynthesis.cancel();
+    this.isSpeakingTafsir = false;
+    this.isTafsirPaused = false;
+    this.cdr.detectChanges();
+  }
+
+
+
+  // 🎚️ السحب اليدوي للمؤشر من قبل المستخدم
+  onSliderChange(event: any) {
+    if (this.currentAudio) {
+      this.currentAudio.currentTime = Number(event.target.value);
+      this.currentTime = this.currentAudio.currentTime;
+      this.cdr.detectChanges();
+    }
+  }
+
+  ngOnDestroy() {
+    document.body.style.overflow = 'auto';
+    if (this.currentAudio) {
+      this.currentAudio.pause();
+      this.currentAudio = null;
+    }
+    window.speechSynthesis.cancel();
+  }
+
+  closeExplanationAndScroll(targetElement: HTMLElement) {
+    this.isExplanationShown = false;
+    this.cdr.detectChanges();
+    setTimeout(() => {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 50); 
+  }
+}

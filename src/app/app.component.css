@@ -35,7 +35,7 @@
 }
 
 .title-text {
-  font-family: 'Lateef', serif;
+  font-family: ' sans-serif', serif;
   background: linear-gradient(
     90deg,
     #46280f,        /* mörkbrun */
@@ -102,7 +102,7 @@
 }
 
 .benefit-title {
-  font-family: 'Lateef', serif;
+  font-family: ' sans-serif', serif;
   font-size: 1.4rem;
   text-align: center;
   color: #6d4c41;

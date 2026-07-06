@@ -7,7 +7,7 @@
 
        <!-- Navigering anpassad för Hadith 1 -->
   <app-next-before-surah-meny 
-    [RoutelinkBefore]="'/hadith/hadith-nawawi-40'" [SurahBefore]="'القائمة الرئيسية'"
+    [RoutelinkBefore]="'/home'" [SurahBefore]="'القائمة الرئيسية'"
     [RoutelinkAfter]="'/hadith/hadith-nawawi-40/nawawi-2'" [SurahNext]="'الحديث الثاني'"> 
   </app-next-before-surah-meny>
    <div class="hadith-page-container">
@@ -34,13 +34,23 @@
   
         <!-- ⏩ الزر اللي على اليمين بيرجع للجملة السابقة -->
     <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
-      ⏭️
+      ⏭️ 
     </button>
     
-    <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)">
-      {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
-    </button>
-    
+   <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(hadith.audioUrl)" [disabled]="isLoadingAudio">
+  
+  <!-- 1. حالة التحميل: تظهر الدائرة التي تدور والنص فقط أثناء جلب الملف -->
+  <ng-container *ngIf="isLoadingAudio">
+    <span class="audio-spinner"></span>
+    جاري التحميل...
+  </ng-container>
+
+  <!-- 2. الحالة العادية: (إيقاف أو تشغيل) عند انتهاء التحميل -->
+  <ng-container *ngIf="!isLoadingAudio">
+    {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+  </ng-container>
+
+</button>
   <!-- ⏪ الزر اللي على اليسار بيقدم للجملة التالية -->
     <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
       ⏮️
@@ -134,6 +144,19 @@
  </div>
 </div>
 
+<!-- الحاوية 3: اختبار الحديث (Box 2)
+<div class="quiz-section-container">
+  
+  <div class="quiz-card-wrapper" *ngIf="!showQuizHadith">
+    <button class="start-quiz-button" (click)="startHadithQuiz()">اختبر نفسك: الحديث الأول</button>
+  </div>
+
+  <div class="quiz-section" *ngIf="showQuizHadith === 'hadith1'">
+    <app-quix [quizData]="hadith1Questions" (closeQuiz)="showQuizHadith = null"></app-quix>
+  </div>
+
+</div>
+  -->
 
 
 </div>

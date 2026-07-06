@@ -3,6 +3,12 @@
   [hintText]="'سورة النبأ تهز القلوب بمشاهد القيامة، وتلفت الأنظار لآيات الخلق، مذكّرة بمصير الكافرين ونعيم المتقين.'">
 </app-surah-hint>
 
+
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="'/alfatiha'" [SurahBefore]="'الفاتحة'"
+  [RoutelinkAfter]="'/surah-79'" [SurahNext]="'النازعات'">
+</app-next-before-surah-meny>
+   
 <app-surah-tabs [surahName]="'سورة النبأ'">
   <div tadabbur>
     <app-surahs-start></app-surahs-start>
