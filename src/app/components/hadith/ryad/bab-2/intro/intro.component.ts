@@ -262,7 +262,7 @@ ngOnInit() {
       this.cdr.detectChanges();
       return;
     }
-    window.speechSynthesis.cancel();
+   window.speechSynthesis?.cancel();
     const plainText = text.replace(/<[^>]*>/g, '');
     const utterance = new SpeechSynthesisUtterance(plainText);
     utterance.lang = 'ar';
@@ -283,7 +283,7 @@ ngOnInit() {
   }
 
   stopSpeakingTafsir() {
-    window.speechSynthesis.cancel();
+ window.speechSynthesis?.cancel();
     this.isSpeakingTafsir = false;
     this.isTafsirPaused = false;
     this.cdr.detectChanges();
@@ -297,7 +297,7 @@ ngOnInit() {
       this.currentAudio.pause();
       this.currentAudio = null;
     }
-    window.speechSynthesis.cancel();
+window.speechSynthesis?.cancel();
   }
 
   closeExplanationAndScroll(targetElement: HTMLElement) {
