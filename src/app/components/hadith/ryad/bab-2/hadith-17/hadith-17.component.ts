@@ -53,7 +53,7 @@ export class Hadith17Component implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
   // تعيين عنوان الصفحة
-  this.titleService.setTitle('باب التوبة. الحديث السابع عشر - شرح رياض الصالحين');
+  this.titleService.setTitle('باب التوبة. الحديث الخامس - شرح رياض الصالحين');
   
   // وصف الصفحة لمجازات البحث
   this.metaService.updateTag({
@@ -70,7 +70,7 @@ ngOnInit() {
   // إعدادات بروتوكول Open Graph (لوسائل التواصل الاجتماعي)
   this.metaService.updateTag({ 
     property: 'og:title', 
-    content: 'باب التوبة. الحديث السابع عشر - شرح رياض الصالحين'
+    content: 'باب التوبة. الحديث الخامس - شرح رياض الصالحين'
   });
   
   this.metaService.updateTag({ 
