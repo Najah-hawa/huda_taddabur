@@ -210,5 +210,34 @@ export const routes: Routes = [
     path: 'hadith/ryad/hadith-12',
     loadComponent: () => import('./components/hadith/ryad/bab-1/hadith-12/hadith-12.component').then(m => m.Hadith12Component)
   },
+   {
+    path: 'hadith/ryad/bab-2',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/bab2.component').then(m => m.Bab2Component)
+  },
+    {
+    path: 'hadith/ryad/bab-2/intro',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/intro/intro.component').then(m => m.IntroComponent)
+  },
+  {
+    path: 'hadith/ryad/bab-2/hadith-13',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-13/hadith-13.component').then(m => m.Hadith13Component)
+  },
+  {
+    path: 'hadith/ryad/bab-2/hadith-14',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-14/hadith-14.component').then(m => m.Hadith14Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-15',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-15/hadith-15.component').then(m => m.Hadith15Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-16',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-16/hadith-16.component').then(m => m.Hadith16Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-17',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-17/hadith-17.component').then(m => m.Hadith17Component)
+  }
+  ,
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
