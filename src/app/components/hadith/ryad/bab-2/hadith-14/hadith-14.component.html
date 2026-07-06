@@ -95,6 +95,7 @@
            [style.--current-zoom.px]="fontSizeRawi">
         <div class="tafsir-header-row">
           <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
+        <!-- 
           <div class="tafsir-audio-actions">
             <button (click)="speakText(hadith.explanation)" class="modern-tafsir-audio-btn">
               {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
@@ -102,7 +103,7 @@
             <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
               🛑
             </button>
-          </div>
+          </div> -->
         </div>
 
         <div [innerHTML]="hadith.explanation" class="tafsir-content-inner"></div>
