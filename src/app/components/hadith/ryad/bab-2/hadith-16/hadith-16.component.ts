@@ -231,7 +231,7 @@ ngOnInit() {
       this.cdr.detectChanges();
       return;
     }
-    window.speechSynthesis.cancel();
+   window.speechSynthesis?.cancel();
     const plainText = text.replace(/<[^>]*>/g, '');
     const utterance = new SpeechSynthesisUtterance(plainText);
     utterance.lang = 'ar';
@@ -252,7 +252,7 @@ ngOnInit() {
   }
 
   stopSpeakingTafsir() {
-    window.speechSynthesis.cancel();
+  window.speechSynthesis?.cancel();
     this.isSpeakingTafsir = false;
     this.isTafsirPaused = false;
     this.cdr.detectChanges();
@@ -281,7 +281,7 @@ playHadithAudio(url: string | undefined) {
   }
 
   // 3. حالة تشغيل ملف صوتي جديد لأول مرة (تحتاج تحميل)
-  window.speechSynthesis.cancel();
+window.speechSynthesis?.cancel();
   
   // تفعيل مؤشر التحميل فوراً قبل بدء الطلب
   this.isLoadingAudio = true; 
@@ -394,7 +394,7 @@ playHadithAudio(url: string | undefined) {
       this.currentAudio.pause();
       this.currentAudio = null;
     }
-    window.speechSynthesis.cancel();
+window.speechSynthesis?.cancel();
   }
 
   closeExplanationAndScroll(targetElement: HTMLElement) {
