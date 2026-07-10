@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { SurahHintComponent } from '../../../surah-hint/surah-hint.component';
@@ -8,6 +8,7 @@ import { FooterInfoComponent } from '../../../footer-info/footer-info.component'
 import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from '../../../next-before-surah-meny/next-before-surah-meny.component';
 import { ProvComponent } from '../../prov/prov.component';
+import { ALL_HADITHS } from './hadith-data';
 
 @Component({
   selector: 'app-hadith-view',
@@ -27,40 +28,42 @@ import { ProvComponent } from '../../prov/prov.component';
 export class HadithViewComponent implements OnInit, OnDestroy {
   private http = inject(HttpClient);
   private cdr = inject(ChangeDetectorRef);
+  private route = inject(ActivatedRoute);
   private titleService = inject(Title);
   private metaService = inject(Meta);
 
-  // ==================== Inputs استقبال البيانات ====================
-  @Input() title: string = '';
-  @Input() name: string = '';
-  @Input() hintText: string = '';
-  @Input() audioUrl: string = '';
-  @Input() phrases: { text: string; start: number; end: number }[] = [];
-  @Input() explanation: string = '';
-  @Input() source: string = 'متن الأربعين النووية';
- // الصندوق 1 (موجود سابقاً)
-  @Input() box1Title: string = '';
-  @Input() box1Items: string[] = [];
-  // الصندوق 2
-  @Input() box2Title: string = '';
-  @Input() box2Items: string[] = [];
-  // الصندوق 3
-  @Input() box3Title: string = '';
-  @Input() box3Items: string[] = [];
-  // الصندوق 4
-  @Input() box4Title: string = '';
-  @Input() box4Items: string[] = [];
-  @Input() quizQuestions: any;
-  // روابط القائمة والتنقل
-  @Input() routeBefore: string = '/home';
-  @Input() surahBefore: string = 'القائمة الرئيسية';
-  @Input() routeAfter: string = '';
-  @Input() surahNext: string = '';
+title: string = 'الأربعين النووية'; // قيمة افتراضية عامة
+  name: string = '';
+  hintText: string = '';
+  audioUrl: string = '';
+  phrases: { text: string; start: number; end: number }[] = [];
+  explanation: string = '';
+  source: string = 'متن الأربعين النووية';
+
+  // الصناديق الأربعة الموحدة
+  box1Title: string = '';
+  box1Items: string[] = [];
+  
+  box2Title: string = '';
+  box2Items: string[] = [];
+  
+  box3Title: string = '';
+  box3Items: string[] = [];
+  
+  box4Title: string = '';
+  box4Items: string[] = [];
+
+  quizQuestions: any;
+
+  // روابط القائمة والتنقل (ستحسب تلقائياً بالدالة)
+  routeBefore: string = '/home';
+  surahBefore: string = 'القائمة الرئيسية';
+  routeAfter: string = '';
+  surahNext: string = '';
 
   // السيو المخصص بكل حديث
-  @Input() metaDescription: string = '';
-  @Input() metaKeywords: string = '';
-
+  metaDescription: string = '';
+  metaKeywords: string = '';
   // ==================== متغيرات الحالة الداخلية ====================
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
@@ -80,19 +83,73 @@ export class HadithViewComponent implements OnInit, OnDestroy {
   isTafsirPaused: boolean = false;
   showQuizHadith = false;
 
-  ngOnInit() {
-    // إعداد الـ Meta Tags ديناميكياً بناءً على الـ Inputs المتلقاة
-    this.titleService.setTitle(`${this.name} - شرح ${this.title}`);
-    if (this.metaDescription) {
-      this.metaService.updateTag({ name: 'description', content: this.metaDescription });
-      this.metaService.updateTag({ property: 'og:description', content: this.metaDescription });
+ngOnInit() {
+  this.route.paramMap.subscribe(params => {
+    const hadithId = params.get('id'); // يقرأ الـ id من الراوتر
+    if (hadithId) {
+      this.loadHadithData(hadithId); // يستدعي دالة شحن البيانات
     }
-    if (this.metaKeywords) {
-      this.metaService.updateTag({ name: 'keywords', content: this.metaKeywords });
+  });
+}
+
+  loadHadithData(id: string) {
+  const currentHadith = ALL_HADITHS[id];
+  
+  if (!currentHadith) return; // حماية برمجية في حال كان المعرّف غير موجود
+this.isExplanationShown = false;
+  // [1] تحديث البيانات الأساسية المعروضة في الـ HTML
+  this.name = currentHadith.name;
+  this.audioUrl = currentHadith.audioUrl;
+  this.phrases = currentHadith.phrases;
+  this.explanation = currentHadith.explanation;
+  this.quizQuestions = currentHadith.quizQuestions; // إرسال بيانات الكويز ديناميكياً
+  this.hintText = currentHadith.hintText;
+  // [2] تحديث عناوين ونصوص الصناديق الأربعة ديناميكياً
+  this.box1Title = currentHadith.box1Title;
+  this.box1Items = currentHadith.box1Items;
+  
+  this.box2Title = currentHadith.box2Title;
+  this.box2Items = currentHadith.box2Items;
+  
+  this.box3Title = currentHadith.box3Title;
+  this.box3Items = currentHadith.box3Items;
+  
+  this.box4Title = currentHadith.box4Title;
+  this.box4Items = currentHadith.box4Items;
+
+  // [3] حساب أزرار التنقل الذكي (التالي والسابق) تلقائياً بناءً على رقم الحديث الحالي
+  const currentNum = parseInt(id, 10);
+  
+  // زر السابق: إذا كان الحديث رقم 1 يرجع للقائمة الرئيسية، وإلا يرجع للحديث السابق
+  this.routeBefore = currentNum > 1 ? `/hadith/hadith-nawawi-40/${currentNum - 1}` : '/home';
+  this.surahBefore = currentNum > 1 ? 'الحديث السابق' : 'القائمة الرئيسية';
+  
+ // زر التالي: إذا وصلنا للحديث 42 ينقل للقائمة الرئيسية، وإلا ينقل للحديث التالي
+this.routeAfter = currentNum < 16 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home'; // أو مسار القائمة عندك مثلاً '/home'
+this.surahNext = currentNum < 16 ? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
+
+  // [4] تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
+  this.updateSEO(currentHadith);
+
+  // إجبار أنجولار على تحديث الواجهة فوراً
+  this.cdr.detectChanges();
+} 
+  private updateSEO(hadith: any) {
+    // تحديث عنوان المتصفح العلوي (Title) ديناميكياً ليصبح مثلاً: "الحديث الأول: إنما الأعمال بالنيات - الأربعين النووية"
+    this.titleService.setTitle(`${hadith.name} - الأربعين النووية`);
+
+    // تحديث وسم الوصف (Description) الخاص بجوجل
+    this.metaService.updateTag({ 
+      name: 'description', 
+      content: hadith.metaDescription || 'شرح وتدبر الأربعين النووية' 
+    });
+
+    // تحديث وسم الكلمات المفتاحية (Keywords)
+    this.metaService.updateTag({ 
+      name: 'keywords', 
+      content: hadith.metaKeywords || 'الأربعون النووية, أحاديث, تدبر' 
+    });
     }
-    this.metaService.updateTag({ property: 'og:title', content: `${this.name} - تدبر تفاعلي` });
-    this.metaService.updateTag({ property: 'og:type', content: 'article' });
-  }
 
   playHadithAudio(url: string | undefined) {
     if (!url) return;
