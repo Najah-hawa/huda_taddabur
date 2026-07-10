@@ -4,13 +4,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser'; // Importera Title och Meta för SEO
 
 @Component({
-  selector: 'app-hadith-menu-nawawi',
+  selector: 'app-hadith-menu',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
-  templateUrl: './hadith-menu-nawawi.component.html',
-  styleUrl: './hadith-menu-nawawi.component.css'
+  templateUrl: './hadith-menu.component.html',
+  styleUrl: './hadith-menu.component.css'
 })
-export class HadithMenuNawawiComponent implements OnInit { // Implementera OnInit
+export class HadithMenuComponent implements OnInit { // Implementera OnInit
 
   constructor(private titleService: Title, private metaService: Meta) {}
 
@@ -33,5 +33,26 @@ export class HadithMenuNawawiComponent implements OnInit { // Implementera OnIni
     this.metaService.updateTag({ property: 'og:description', content: 'اقرأ واستمع إلى متن الأربعين النووية مع شروحات مبسطة وفوائد مستخرجة لكل حديث.' });
     this.metaService.updateTag({ property: 'og:type', content: 'website' });
   }
+
+
+  hadithNamesList: string[] = [
+   'الحديث الأول: الأعمال بالنيات',
+   'الحديث الثاني : مراتب الدين: الإسلام والإيمان والإحسان',
+   'الحديث الثالث : أركان الإسلام ودعائمه العظام',
+   'الحديث الرابع : أطور خلق الإنسان وخاتمته',
+   'الحديث الخامس : إبطال المنكرات والبدع',
+   'الحديث السادس : الحلال و الحرام',
+   'الحديث السابع : الدين النصيحة',
+   'الحديث الثامن : حرمة المسلم',
+   'الحديث التاسع : الأخذ بالتيسير وترك التعسير',
+   'الحديث العاشر : الحلال الطيب شرط القبول',
+   'الحديث الحادي عشر : الأخذ باليقين والبعد عن الشبهات',
+   'الحديث الثاني عشر : الاشتغال بما يفيد',
+   'الحديث الثالث عشر : أخوة الإيمان و الإسلام',
+   'الحديث الرابع عشر : حرمة دم المسلم',
+   'الحديث الخامس عشر : من خصال الإيمان',
+   'الحديث السادس عشر : النهي عن الغضب'
+    
+  ];
 
 }

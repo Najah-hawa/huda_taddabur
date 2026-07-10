@@ -1,0 +1,14 @@
+<h1 class="basmala">﴿ احاديث الأربعين النووية﴾</h1>
+
+<div class="parts-container">
+  <p class="choose-text-1">  اختر من القائمة </p>
+  <div 
+  *ngFor="let hadithName of hadithNamesList; let i = index" 
+  class="part-box" 
+  [routerLink]="['/hadith/hadith-nawawi-40', i + 1]" 
+  routerLinkActive="active">
+  
+  <div class="choose-text">{{ hadithName }}</div>
+</div>
+
+</div>

@@ -1,0 +1,240 @@
+<div class="hadith-page-container">
+  
+  <!-- همسة الحديث الديناميكية -->
+  <app-surah-hint
+    [surahName]="'همسة من ' + ' ' + name"
+    [hintText]="hintText">
+  </app-surah-hint>
+
+  <!-- أزرار التنقل الديناميكية بين الأحاديث -->
+  <app-next-before-surah-meny 
+    [RoutelinkBefore]="routeBefore" 
+    [SurahBefore]="surahBefore"
+    [RoutelinkAfter]="routeAfter" 
+    [SurahNext]="surahNext"> 
+  </app-next-before-surah-meny>
+
+  <div class="hadith-page-container">
+
+    <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
+    <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.maximized-style]="isRawiMaximized" style="margin-top: 5px; position: relative;">
+
+      <div class="box-container">
+        <app-zoom-controls
+          [isMaximized]="isRawiMaximized" 
+          (onToggle)="toggleRawiZoom(hadithBox)" 
+          (onZoomIn)="zoomInRawi()" 
+          (onZoomOut)="zoomOutRawi()">
+        </app-zoom-controls>
+      </div>
+
+      <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
+          
+          <!-- المبدل الصوتي الذكي والمطور -->
+          <div class="hadith-audio-player-wrapper">
+            
+            <!-- أزرار التحكم الذكية بالحديث (جملة جملة) -->
+            <div class="hadith-player-buttons">
+              <!-- ⏩ الزر الأيمن: الرجوع للجملة السابقة -->
+              <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
+                 ⏭️ 
+              </button>
+              
+              <!-- زر التشغيل الرئيسي مع مؤشر التحميل الآمن -->
+              <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(audioUrl)" [disabled]="isLoadingAudio">
+                <!-- 1. حالة التحميل من السيرفر -->
+                <ng-container *ngIf="isLoadingAudio">
+                  <span class="audio-spinner"></span>
+                  جاري التحميل...
+                </ng-container>
+
+                <!-- 2. الحالة العادية بعد انتهاء التحميل -->
+                <ng-container *ngIf="!isLoadingAudio">
+                  {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+                </ng-container>
+              </button>
+
+              <!-- ⏪ الزر الأيسر: التقدم للجملة التالية -->
+              <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
+                 ⏮️
+              </button>
+            </div>
+
+            <!-- شريط التحكم بالوقت (Progress Slider) -->
+            <div class="hadith-player-slider-container">
+              <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
+              
+              <input 
+                type="range" 
+                [min]="0" 
+                [max]="duration" 
+                [value]="currentTime" 
+                (input)="onSliderChange($event)"
+                class="hadith-audio-slider" />
+                
+              <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
+            </div>
+
+          </div>
+
+          <!-- عرض متن الحديث المقسم إلى جمل متحكم بها صوتياً -->
+          <div class="hadith-text-full-width">
+            <p class="Hadith" [style.font-size.px]="fontSizeRawi + 2" style="line-height: 2 !important; max-width: 100%;">
+              @for (phrase of phrases; track $index) {
+                <span [class.highlighted-phrase]="$index === currentPhraseIndex">
+                  {{ phrase.text }}
+                </span>
+              }
+            </p>
+          </div>
+
+          <!-- زر فتح/إغلاق شرح المفردات -->
+          <div class="tafsir-toggle-wrapper">
+            <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
+              <span>📚 شرح الحديث والمفردات</span>
+              <span class="arrow" [class.open]="isExplanationShown">▼</span>
+            </button>
+          </div>
+
+          <!-- صندوق الشرح والمفردات المحمي والمعدل برمجياً -->
+          <div class="tafsir-modern-box" *ngIf="isExplanationShown"
+               [style.font-size.px]="fontSizeRawi"
+               [style.--current-zoom.px]="fontSizeRawi">
+            <div class="tafsir-header-row">
+              <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
+              <div class="tafsir-audio-actions">
+                <!-- الميز الصوتية المحمية المفحوصة من الانهيار -->
+                <button (click)="speakText(explanation)" class="modern-tafsir-audio-btn">
+                  {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
+                </button>
+                <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
+                  🛑
+                </button>
+              </div>
+            </div>
+
+            <div [innerHTML]="explanation" class="tafsir-content-inner"></div>
+            
+            <div class="bottom-close-wrapper">
+              <button class="modern-tafsir-close-btn-bottom" (click)="closeExplanationAndScroll(hadithBox)">
+                ❌ إغلاق شرح المفردات
+              </button>
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+<!-- الحاوية 1: (Box 1) -->
+<div *ngIf="box1Items && box1Items.length > 0" #box1 
+     class="fawaed-box-container mini box1-container" 
+     [class.maximized-style]="maximizedBoxes[1]" 
+     style="margin-top: 5px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="maximizedBoxes[1]"  
+    (onToggle)="toggleBoxZoom(1, box1)" 
+    (onZoomIn)="zoomInBox1(box1)" 
+    (onZoomOut)="zoomOutBox1(box1)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box1Title }}</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box1Items">
+        <span [innerHTML]="item"></span>
+      </li>
+   </ul>
+  </div>
+</div>
+
+<!-- الحاوية 2: (Box 2) -->
+<div *ngIf="box2Items && box2Items.length > 0" #box2 
+     class="fawaed-box-container mini box2-container" 
+     [class.maximized-style]="maximizedBoxes[2]" 
+     style="margin-top: 5px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="maximizedBoxes[2]"  
+    (onToggle)="toggleBoxZoom(2, box2)" 
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box2Title }}</h2>
+
+  <div class="box-list-wrapper">
+   <ul class="custom-presentation-list">
+      <li *ngFor="let item of box2Items">
+        <span [innerHTML]="item"></span>
+      </li>
+   </ul>
+  </div>
+</div>
+
+<!-- الحاوية 3: (Box 3) -->
+<div *ngIf="box3Items && box3Items.length > 0" #box3 
+     class="fawaed-box-container mini box3-container" 
+     [class.maximized-style]="maximizedBoxes[3]" 
+     style="margin-top: 5px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="maximizedBoxes[3]"  
+    (onToggle)="toggleBoxZoom(3, box3)" 
+    (onZoomIn)="zoomInBox3(box3)" 
+    (onZoomOut)="zoomOutBox3(box3)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box3Title }}</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box3Items">
+        <span [innerHTML]="item"></span>
+      </li>
+   </ul>
+  </div>
+</div>
+
+<!-- الحاوية 4: (Box 4) -->
+<div *ngIf="box4Items && box4Items.length > 0" #box4 
+     class="fawaed-box-container mini box4-container" 
+     [class.maximized-style]="maximizedBoxes[4]" 
+     style="margin-top: 5px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="maximizedBoxes[4]"  
+    (onToggle)="toggleBoxZoom(4, box4)" 
+    (onZoomIn)="zoomInBox4(box4)" 
+    (onZoomOut)="zoomOutBox4(box4)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box4Title }}</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box4Items">
+        <span [innerHTML]="item"></span>
+      </li>
+   </ul>
+  </div>
+</div>
+    <!-- الحاوية 3: اختبار الحديث المستقبلي (محتفظ بها ومعطلة مؤقتاً) -->
+    <!-- 
+    <div class="quiz-section-container">
+      <div class="quiz-card-wrapper" *ngIf="!showQuizHadith">
+        <button class="start-quiz-button" (click)="startHadithQuiz()">اختبر نفسك: {{ name }}</button>
+      </div>
+
+      <div class="quiz-section" *ngIf="showQuizHadith">
+        <app-quix [quizData]="quizQuestions" (closeQuiz)="showQuizHadith = false"></app-quix>
+      </div>
+    </div>
+    -->
+
+  </div>
+</div>
+
+<app-footer-info />

@@ -66,8 +66,8 @@
         "https://www.everyayah.com/data/Ayman_Sowaid_64kbps/**"
       ],
       "cacheConfig": {
-        "maxSize": 150,        
-        "maxAge": "30d",        
+        "maxSize": 150,
+        "maxAge": "30d",
         "timeout": "5s",
         "strategy": "performance"
       }
