@@ -127,15 +127,20 @@
 .tree-drop-slot {
   position: absolute;
   pointer-events: auto; /* إعادة تفعيل الضغط والسحب للمربع نفسه */
-  background: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  width: 15%;  /* حجم مرن يتناسب مع المربع في الصورة */
+  width: 28%;  /* حجم مرن يتناسب مع المربع في الصورة */
+  padding-right: 10px;
+  padding-left: 10px;
   height: 6%;  /* حجم مرن يتناسب مع المربع في الصورة */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 }
-
+.guide-text{
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
 .placed-name {
   color: #004d40;
   font-weight: bold;
@@ -164,29 +169,41 @@
 
 /* حاوية الأسماء الموحدة في الشاشات الكبيرة تفرش الكروت بشكل متناسق */
 .names-pool-container {
-  display: flex;
-  flex-wrap: wrap;
+ display: flex;
   justify-content: center;
-  gap: 12px;
+  align-items: center;
   width: 100%;
-  max-width: 900px;
-  background: rgba(255, 255, 255, 0.6);
-  padding: 15px;
+  min-height: 80px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 12px;
-  border: 1px solid #e0e0e0;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+/* الحاوية الداخلية للأسماء بعد بدء اللعب لضمان ترتيبها أفقيًا */
+.names-pool-wrapper-scroll {
+  display: flex;
+  flex-direction: row; /* تجبر العناصر على الاصطفاف بجانب بعضها */
+  flex-wrap: wrap;     /* تجعل الكروت تنزل لسطر جديد إذا انتهت المساحة بدلاً من التكدس */
+  justify-content: center;
+  gap: 12px;           /* مسافة بين كل كرت وآخر */
+  width: 100%;
 }
 
 .draggable-name-card {
-  padding: 8px 16px;
-  background: #fff;
-  border: 2px solid #d4af37;
-  border-radius: 20px;
-  cursor: grab;
+ background: linear-gradient(135deg, #ffffff, #f1f2f6);
+  color: #2c3e50;
   font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  font-size: 18px;
+  padding: 10px 20px;
+  border: 2px solid #34495e;
+  border-radius: 8px;
+  cursor: grab;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
   user-select: none;
+  white-space: nowrap; /* تمنع انقسام الاسم الواحد على سطرين */
 }
-
 .draggable-name-card:active {
   cursor: grabbing;
 }
@@ -351,4 +368,125 @@
   0%, 100% { transform: translateX(0) !important; }
   20%, 60% { transform: translateX(-8px) !important; }
   40%, 80% { transform: translateX(8px) !important; }
+}
+
+
+
+.dynamic-tutorial-hand {
+  font-size: 42px;
+  animation: dynamicGuide 3s infinite ease-in-out;
+}
+
+@keyframes dynamicGuide {
+  0% {
+    /* تبدأ اليد من فوق مكان الاسم الأول تماماً */
+    top: var(--startY);
+    left: var(--startX);
+    transform: scale(1);
+    opacity: 0;
+  }
+  15% {
+    /* تظهر وتكبر كأنها تمسك الكرت */
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  65% {
+    /* تسحب الكرت وتتحرك برمجياً إلى إحداثيات الخانة الهدف بالضبط */
+    top: var(--endY);
+    left: var(--endX);
+    transform: scale(1);
+    opacity: 1;
+  }
+  85% {
+    /* تترك الكرت وتختفي */
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+.welcome-overlay {
+display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.start-game-btn {
+background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 12px 35px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(39, 174, 96, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-game-btn:hover {
+ transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(39, 174, 96, 0.6);
+}
+
+.preview-name {
+  color: #2c3e50;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.empty-drop-slot {
+  font-size: 22px;
+  color: #bdc3c7;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   2. شاشات الجوال والأجهزة الصغيرة (Media Queries)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* تصغير مساحات الحاوية العلوية لتناسب الجوال */
+  .names-pool-container {
+    min-height: 60px;
+    margin-bottom: 15px;
+    padding: 6px;
+  }
+
+  /* تقليص المسافات بين الكروت ليتحمل السطر الواحد كروت أكثر */
+  .names-pool-wrapper-scroll {
+    gap: 8px;
+  }
+
+  /* تصغير حجم كروت الأسماء لتناسب الشاشة الصغيرة ولا تزحم المساحة */
+  .draggable-name-card {
+    font-size: 15px;
+    padding: 6px 14px;
+    border-width: 1.5px;
+    border-radius: 6px;
+  }
+
+  /* تصغير حجم زر "ابدأ اللعبة" حتى لا يظهر ضخماً على شاشة الجوال */
+  .start-game-btn {
+    font-size: 17px;
+    padding: 10px 24px;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+  }
+}
+
+@media (max-width: 480px) {
+  /* للشاشات الصغيرة جداً (الهواتف الضيقة) */
+  .draggable-name-card {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  
+  .start-game-btn {
+    font-size: 15px;
+    padding: 8px 20px;
+  }
 }

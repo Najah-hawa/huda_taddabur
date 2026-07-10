@@ -9,7 +9,6 @@ import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from 
 import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
 // 📥 استيراد بيانات نسب الرسول المحدثة (تأكدي من تعديل محتوى هذا الملف ليطابق النسب)
 import { hadithDetails } from './quiz-data';
-
 @Component({
   selector: 'app-mohamad-family',
   standalone: true,
@@ -33,11 +32,12 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
 
   // بيانات نسب الرسول والصوت المقسم عبارات
   hadith = hadithDetails;
-
+  isGameStarted: boolean = false;
   // إعدادات واجهة العرض والزوم
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   isRawiMaximized: boolean = false;
   isBox1Maximized: boolean = false;
+
 
   // 🎵 متغيرات المشغل الصوتي المطور لنسب الرسول ﷺ
   currentAudio: HTMLAudioElement | null = null;
@@ -67,8 +67,10 @@ export class MohamadFamilyComponent implements OnInit, OnDestroy {
 // 🕹️ متغيرات التحكم باللعبة والمستويات
   currentLevel: number = 1;
   allGameNames: string[] = []; // مصفوفة واحدة تجمع كل الأسماء المبعثرة للمستوى الحالي
-  showSuccessModal: boolean = false; // التحكم في ظهور نافذة التهنئة المنبثقة
- maxUnlockedLevel: number = 1; // يبدأ اللعب والمستوى الأول فقط هو المفتوح
+    // 🎯 المتغير السحري للتحكم بظهور اليد أثناء السحب فقط
+isDragging: boolean = false;
+showSuccessModal: boolean = false; // التحكم في ظهور نافذة التهنئة المنبثقة
+maxUnlockedLevel: number = 1; // يبدأ اللعب والمستوى الأول فقط هو المفتوح
 wrongSlotIndex: number | null = null; // لمتابعة أي مربع تم الإسقاط فيه بشكل خاطئ
 treeSlots: { correctName: string, currentPlacedName: string | null, top: string, left: string }[] = [];
 // تحديث المصفوفة في ملف الـ TS لتشمل الإحداثيات النسبية لكل جد
@@ -158,8 +160,19 @@ levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   { name: 'عَدْنَان',top: '1%', left: '42%' }, 
 ]
 };
+// 🚀 الدالة التي تنطلق عند الضغط على زر "ابدأ اللعبة"
+  startGame() {
+    this.isGameStarted = true;
+  }
 
-
+  // 🔥 تنطلق هذه الدالة فوراً عندما يمسك الطفل الكرت ليبدأ السحب
+  onDragStarted() {
+    this.isDragging = true;
+  }
+  // 🏁 تنطلق هذه الدالة عندما يفلت الكرت (سواء وضعه في مكان صح أو خطأ)
+  onDragEnded() {
+    this.isDragging = false;
+  }
 selectLevel(level: number) {
     this.showSuccessModal = false;
     this.loadLevel(level);
@@ -191,8 +204,8 @@ selectLevel(level: number) {
   }
 
 // 🔄 دالة السحب والإفلات عند إسقاط الكرت
-onNameDropped(event: CdkDragDrop<string[]>, slotIndex: number) {
-  const draggedName = event.previousContainer.data[event.previousIndex];
+onNameDropped(event: any, slotIndex: number) {
+const draggedName = event.previousContainer.data[event.previousIndex];
   const targetSlot = this.treeSlots[slotIndex];
 
   // 🛑 1. فحص الترتيب الصارم (من الأسفل للأعلى)
@@ -202,6 +215,8 @@ onNameDropped(event: CdkDragDrop<string[]>, slotIndex: number) {
       console.log('يجب وضع الاسم السابق أولاً في الشجرة بالترتيب المتسلسل!');
       return;
     }
+    // تأكيد إضافي لإخفاء اليد عند نجاح أو فشل الإسقاط
+    this.isDragging = false;
   }
 
   // ✅ 2. إذا كانت الإجابة صحيحة ومطابقة للجد
