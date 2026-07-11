@@ -180,6 +180,26 @@ export const routes: Routes = [
    {
     path: 'hadith/ryad/bab-2/hadith-17',
     loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-17/hadith-17.component').then(m => m.Hadith17Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-18',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-18/hadith-18.component').then(m => m.Hadith18Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-19',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-19/hadith-19.component').then(m => m.Hadith19Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-20',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-20/hadith-20.component').then(m => m.Hadith20Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-21',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-21/hadith-21.component').then(m => m.Hadith21Component)
+  },
+   {
+    path: 'hadith/ryad/bab-2/hadith-22',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-22/hadith-22.component').then(m => m.Hadith22Component)
   }
   ,
   { path: '', redirectTo: '/home', pathMatch: 'full' }
