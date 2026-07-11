@@ -128,23 +128,17 @@
   position: absolute;
   pointer-events: auto; /* إعادة تفعيل الضغط والسحب للمربع نفسه */
   border-radius: 8px;
-  width: 28%;  /* حجم مرن يتناسب مع المربع في الصورة */
-  padding-right: 10px;
-  padding-left: 10px;
+  width: 19%;  /* حجم مرن يتناسب مع المربع في الصورة */
+  padding-left: 12px;
   height: 6%;  /* حجم مرن يتناسب مع المربع في الصورة */
   display: flex;
   align-items: center;
   justify-content: left;
 }
-.guide-text{
-  text-align: center;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
+
 .placed-name {
-  color: #004d40;
-  font-weight: bold;
-  font-size: 10px;
+  color: #000000;
+  font-size: 9px;
   animation: popIn 0.3s ease-in-out;
 }
 
@@ -489,4 +483,24 @@ background: linear-gradient(135deg, #2ecc71, #27ae60);
     font-size: 15px;
     padding: 8px 20px;
   }
+
+  .guide-text{
+  text-align: center;
+  color: rgb(117 35 35);
+  font-size: 12px;
+  margin-right: 10%;
+ margin-left: 10%;
 }
+}
+@media (min-width: 400px) {
+  
+  .guide-text{
+  font-size: 18px;
+  margin-right: 15%;
+ margin-left: 15%;
+}
+}
+
+
+.tree-drop-slot.correct-flash { background-color: #2ecc71 !important; color: white !important; }
+.tree-drop-slot.wrong-flash { background-color: #e74c3c !important; color: white !important; }

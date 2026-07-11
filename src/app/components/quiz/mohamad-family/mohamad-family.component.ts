@@ -72,7 +72,7 @@ isDragging: boolean = false;
 showSuccessModal: boolean = false; // التحكم في ظهور نافذة التهنئة المنبثقة
 maxUnlockedLevel: number = 1; // يبدأ اللعب والمستوى الأول فقط هو المفتوح
 wrongSlotIndex: number | null = null; // لمتابعة أي مربع تم الإسقاط فيه بشكل خاطئ
-treeSlots: { correctName: string, currentPlacedName: string | null, top: string, left: string }[] = [];
+treeSlots: { correctName: string, currentPlacedName: string | null, top: string, left: string , status?: string;}[] = [];
 // تحديث المصفوفة في ملف الـ TS لتشمل الإحداثيات النسبية لكل جد
 levelData: { [key: number]: { name: string, top: string, left: string }[] } = {
   1: [
@@ -205,26 +205,40 @@ selectLevel(level: number) {
 
 // 🔄 دالة السحب والإفلات عند إسقاط الكرت
 onNameDropped(event: any, slotIndex: number) {
-const draggedName = event.previousContainer.data[event.previousIndex];
+  const draggedName = event.previousContainer.data[event.previousIndex];
   const targetSlot = this.treeSlots[slotIndex];
+
+  // تأكيد إخفاء اليد فور إسقاط الكرت
+  this.isDragging = false;
 
   // 🛑 1. فحص الترتيب الصارم (من الأسفل للأعلى)
   if (slotIndex > 0) {
     const previousSlot = this.treeSlots[slotIndex - 1];
     if (!previousSlot.currentPlacedName) {
       console.log('يجب وضع الاسم السابق أولاً في الشجرة بالترتيب المتسلسل!');
+      
+      // 🎨 وميض أحمر خفيف لتنبيه الطفل أن الترتيب خاطئ
+      targetSlot.status = 'wrong';
+      this.wrongSlotIndex = slotIndex;
+      this.cdr.detectChanges();
+
+      setTimeout(() => {
+        targetSlot.status = '';
+        this.wrongSlotIndex = null;
+        this.cdr.detectChanges();
+      }, 800);
+      
       return;
     }
-    // تأكيد إضافي لإخفاء اليد عند نجاح أو فشل الإسقاط
-    this.isDragging = false;
   }
 
   // ✅ 2. إذا كانت الإجابة صحيحة ومطابقة للجد
   if (targetSlot.correctName === draggedName) {
-    // تثبيت الاسم على غصن الشجرة فوراً
+    // تثبيت الاسم على غصن الشجرة وتغيير الحالة إلى اللون الأخضر
     targetSlot.currentPlacedName = draggedName;
-
-    // 🔄 3. حذف الكرت من المصفوفة العلوية بشكل صريح ومباشر لضمان التحديث
+    targetSlot.status = 'correct'; // 🟢 إضافة اللون الأخضر
+    
+    // 🔄 3. حذف الكرت من المصفوفه العلوية بشكل صريح ومباشر لضمان التحديث
     this.allGameNames = this.allGameNames.filter(name => name !== draggedName);
 
     this.cdr.detectChanges();
@@ -233,7 +247,6 @@ const draggedName = event.previousContainer.data[event.previousIndex];
     const isLevelComplete = this.treeSlots.every(slot => slot.currentPlacedName !== null);
 
     if (isLevelComplete) {
-      // نفتح قفل المستوى التالي فوراً هنا لضمان فتح القفل قبل ظهور النافذة
       if (this.currentLevel < 3) {
         const nextLevel = this.currentLevel + 1;
         if (nextLevel > this.maxUnlockedLevel) {
@@ -243,26 +256,25 @@ const draggedName = event.previousContainer.data[event.previousIndex];
       
       this.cdr.detectChanges();
 
-      // إطلاق الاحتفالات وظهور النافذة
       setTimeout(() => {
         this.celebrateWin();
       }, 100);
     }
 
   } else {
-    // ❌ 5. إذا كانت الإجابة خاطئة: نقوم بتفعيل تأثير التنبيه البصري (الوميض والاهتزاز)
+    // ❌ 5. إذا كانت الإجابة خاطئة
+    targetSlot.status = 'wrong'; // 🔴 إضافة اللون الأحمر
     this.wrongSlotIndex = slotIndex;
     this.cdr.detectChanges();
 
-    // إزالة تأثير الخطأ بعد 800 ملي ثانية لتهيئة المربع للمحاولة القادمة
+    // إزالة تأثير الخطأ واللون الأحمر بعد 800 ملي ثانية لتهيئة المربع للمحاولة القادمة
     setTimeout(() => {
+      targetSlot.status = ''; // تنظيف اللون الأحمر
       this.wrongSlotIndex = null;
       this.cdr.detectChanges();
-    }, 600);
+    }, 800);
   }
-
-} // 👈 هذا هو القوس الأساسي الذي كان مفقوداً وتسبب في الـ 38 خطأ!
-
+}
 // 🎵 دالة تشغيل الاحتفالات والكونفيتي عند اكتمال المرحلة
   celebrateWin() {
     this.showSuccessModal = true;

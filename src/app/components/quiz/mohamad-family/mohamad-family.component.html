@@ -123,6 +123,8 @@
      *ngFor="let slot of treeSlots; let i = index"
      [style.top]="slot.top"
      [style.left]="slot.left"
+     [class.correct-flash]="slot.status === 'correct'"
+     [class.wrong-flash]="slot.status === 'wrong'"
      cdkDropList
      [cdkDropListDisabled]="!isGameStarted || slot.correctName === 'محمد'"
      (cdkDropListDropped)="onNameDropped($event, i)">
