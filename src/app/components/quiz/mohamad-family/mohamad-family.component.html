@@ -100,9 +100,9 @@
         🚀 ابدأ اللعبة (اسحب للمربع الصحيح)
       </button>
     </div>
-  } @else {
+  } @else { <span class="guide-text">ضع الاسم في مكانه الصحيح على الشجرة</span>
     <div class="names-pool-wrapper-scroll" cdkDropList [cdkDropListData]="allGameNames">
-       <span class="guide-text">ضع الاسم في مكانه الصحيح على الشجرة</span>
+      
       @for (name of allGameNames; track $index) {
         <div class="draggable-name-card" 
              cdkDrag

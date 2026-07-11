@@ -61,6 +61,17 @@ body {
   padding-top: 40px;
 }
 
+.basmala-2 {
+  text-align: center;
+  color: #4d2828;
+  font-family: 'Amiri', sans-serif;
+  margin: 20px auto 10px;
+  border-radius: 35px;
+  letter-spacing: 1px; /* mer luft */
+  padding-top: 20px;
+  font-size: medium !important;
+}
+
 /* ==========================================================================
    2. Global design för Verser (Ayah & Tafsir)
    ========================================================================== */
