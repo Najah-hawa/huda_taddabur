@@ -83,6 +83,7 @@ ngOnInit() {
     content: 'article' 
   });
   }
+  
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {

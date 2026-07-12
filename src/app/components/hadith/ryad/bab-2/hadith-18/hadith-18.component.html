@@ -75,6 +75,8 @@
 
       </div>
       <div class="hadith-text-full-width">
+
+        <!--
         <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
           @for (phrase of hadith.phrases; track $index) {
             <span [class.highlighted-phrase]="$index === currentPhraseIndex">
@@ -82,6 +84,10 @@
             </span>
           }
         </p>
+-->
+    <div class="hadith-image-container">
+  <img src="/images/ryad/ryad-bab2-6.jpeg" alt=" الحديث 6 من باب 2" class="responsive-hadith-img">
+</div>
       </div>
       <div class="tafsir-toggle-wrapper">
         <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">

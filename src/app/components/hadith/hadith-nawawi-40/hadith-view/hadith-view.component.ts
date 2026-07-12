@@ -125,8 +125,8 @@ this.isExplanationShown = false;
   this.surahBefore = currentNum > 1 ? 'الحديث السابق' : 'القائمة الرئيسية';
   
  // زر التالي: إذا وصلنا للحديث 42 ينقل للقائمة الرئيسية، وإلا ينقل للحديث التالي
-this.routeAfter = currentNum < 16 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home'; // أو مسار القائمة عندك مثلاً '/home'
-this.surahNext = currentNum < 16 ? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
+this.routeAfter = currentNum < 20 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home'; // أو مسار القائمة عندك مثلاً '/home'
+this.surahNext = currentNum < 20? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
 
   // [4] تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);

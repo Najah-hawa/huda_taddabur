@@ -15,7 +15,7 @@
     </app-zoom-controls>
   </div>
   <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '20px' : '0px'">
-    <div class="verse-block hadith-main-block-modern">
+    <div class="verse-block hadith-main-block-modern  ">
       <div class="hadith-audio-trigger-wrapper">
   
 
@@ -74,7 +74,8 @@
 
 
       </div>
-      <div class="hadith-text-full-width">
+     
+        <!--
         <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
           @for (phrase of hadith.phrases; track $index) {
             <span [class.highlighted-phrase]="$index === currentPhraseIndex">
@@ -82,7 +83,10 @@
             </span>
           }
         </p>
-      </div>
+-->
+    <div class="hadith-image-container">
+  <img src="/images/ryad/ryad-bab2-7.jpeg" alt=" الحديث 6 من باب 2" class="responsive-hadith-img">
+</div>
       <div class="tafsir-toggle-wrapper">
         <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
           <span>📚 شرح الحديث والمفردات</span>

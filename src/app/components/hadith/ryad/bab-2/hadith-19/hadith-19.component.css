@@ -142,3 +142,39 @@
   font-size: var(--current-zoom, 14px);
 }
 
+
+/* الحاوية الأساسية التي تحل محل الـ div القديم */
+.hadith-image-container {
+  width: 100%;         /* تأخذ كامل العرض المتاح لها في الصفحة */
+  max-width: 100%;     /* أمان لكي لا تخرج عن إطار الأب */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* الصورة المتجاوبة الذكية */
+.responsive-hadith-img {
+  width: 100%;          /* تجبر الصورة على ملء عرض الـ div بالكامل */
+  height: auto;         /* تحافظ على أبعاد الطول والعرض تلقائياً لمنع تمطط الصورة */
+  display: block;       /* تلغي أي مسافات مخفية تحت الصورة */
+  max-width: 100%;      /* تضمن عدم خروجها في الشاشات الصغيرة جداً */
+}
+/* الحاوية الأساسية التي تحل محل الـ div القديم */
+.hadith-image-container {
+  width: 100%;         /* تأخذ كامل العرض المتاح لها في الصفحة */
+  max-width: 100%;     /* أمان لكي لا تخرج عن إطار الأب */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* الصورة المتجاوبة الذكية */
+.responsive-hadith-img {
+  width: 100%;          /* تجبر الصورة على ملء عرض الـ div بالكامل */
+  height: auto;         /* تحافظ على أبعاد الطول والعرض تلقائياً لمنع تمطط الصورة */
+  display: block;       /* تلغي أي مسافات مخفية تحت الصورة */
+  max-width: 100%;      /* تضمن عدم خروجها في الشاشات الصغيرة جداً */
+}
+

@@ -51,7 +51,7 @@ explanation: `
 
   `,
   // رابط صوت متن الحديث السادس
-   audioUrl:  'audio/ryad-bab-2/hadith-15.mpeg'
+   audioUrl:  'audio/ryad-bab-2/hadith-20.m4a'
 };
 
 // 📌 باکس 2: فوائد الحديث (تُعرض كمصفوفة عبر آلية *ngFor في صندوق الفوائد)
