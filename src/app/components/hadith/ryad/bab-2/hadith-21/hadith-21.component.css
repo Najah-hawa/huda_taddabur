@@ -142,21 +142,60 @@
   font-size: var(--current-zoom, 14px);
 }
 
-/* الحاوية الأساسية التي تحل محل الـ div القديم */
+
+
+/* الحاوية الأساسية المحسنة */
 .hadith-image-container {
-  width: 100%;         /* تأخذ كامل العرض المتاح لها في الصفحة */
-  max-width: 100%;     /* أمان لكي لا تخرج عن إطار الأب */
+  width: 100%;
+  max-width: 100%; /* عرض مرن ومريح للعين */
+  margin: 0px auto;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  position: relative; /* مهم لإضافة الزخرفة */
 }
 
-/* الصورة المتجاوبة الذكية */
+/* إضافة خطوط زخرفية بسيطة فوق وتحت الصورة */
+.hadith-image-container::before,
+.hadith-image-container::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background-color: #c4a77d; /* لون ذهبي/بني دافئ */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hadith-image-container::before {
+  top: -15px;
+}
+
+.hadith-image-container::after {
+  bottom: -15px;
+}
+
+/* الصورة المتجاوبة في التصميم الحديث - نسخة معدلة للتنظيف */
 .responsive-hadith-img {
-  width: 100%;          /* تجبر الصورة على ملء عرض الـ div بالكامل */
-  height: auto;         /* تحافظ على أبعاد الطول والعرض تلقائياً لمنع تمطط الصورة */
-  display: block;       /* تلغي أي مسافات مخفية تحت الصورة */
-  max-width: 100%;      /* تضمن عدم خروجها في الشاشات الصغيرة جداً */
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
+
+  /* الفلاتر السحرية لتفتيح الخلفية الرمادية وتغميق النص */
+  filter: grayscale(1) /* يحول أي ألوان جانبية في الصورة إلى أبيض وأسود */
+          brightness(1.01) /* يزيد إضاءة الخلفية الرمادية ليقربها من الأبيض */
+          contrast(2.8); /* يزيد التباين لكي يصبح النص أسود حاد والخلفية بيضاء تماماً */
+
+  /* الدمج مع الخلفية */
+  mix-blend-mode: multiply; 
+
+  /* إضافات جمالية خفيفة */
+  border-radius: 8px;
+  padding: 15px;
 }
 
+.fix-tilt {
+  transform: rotate(+0.6deg); /* غيري الرقم (مثلاً -2 أو -3) حتى تشوفي الخط صار مستقيم تماماً على الشاشة */
+}
