@@ -53,7 +53,7 @@ export class Hadith21Component implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
   // تعيين عنوان الصفحة
-  this.titleService.setTitle('باب التوبة. الحديث الثالث- شرح رياض الصالحين');
+  this.titleService.setTitle('باب التوبة. الحديث التاسع- شرح رياض الصالحين');
   
   // وصف الصفحة لمجازات البحث
   this.metaService.updateTag({

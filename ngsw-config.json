@@ -38,6 +38,16 @@
           "/audio/play-game/**/*"
         ]
       }
+    },
+    {
+      "name": "ryad-assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/images/ryad/**/*"
+        ]
+      }
     },{
       "name": "local-audio",
       "installMode": "lazy",
