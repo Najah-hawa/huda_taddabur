@@ -216,3 +216,19 @@
 .fix-tilt {
   transform: rotate(+1.8deg); /* غيري الرقم (مثلاً -2 أو -3) حتى تشوفي الخط صار مستقيم تماماً على الشاشة */
 }
+
+@media (max-width: 768px) {
+  /* 1. إزالة الحشو من الحاوية لتعطي مساحة كاملة للصورة */
+  .hadith-image-container {
+    padding: 0 !important;
+    margin: 0px 0 !important;
+  }
+
+  /* 2. تكبير الصورة لتملأ العرض بالكامل مع الحفاظ على استقامتها */
+  .responsive-hadith-img {
+    width: 115% !important;
+    max-width: 115% !important;
+    padding: 0px 0 !important; /* تقليل الفراغات الداخلية لأقل درجة */
+    transform-origin: center;
+  }
+}

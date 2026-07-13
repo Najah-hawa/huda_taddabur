@@ -1,13 +1,12 @@
 <div class="hadith-page-container">
 
   <app-next-before-surah-meny
-     [RoutelinkBefore]="'/hadith/ryad/bab-2/hadith-21'" [SurahBefore]="'الحديث السابق'"
-     [RoutelinkAfter]="'/hadith/ryad-alsalihin'" [SurahNext]="'القائمة الرئيسية'">
+     [RoutelinkBefore]="'/hadith/ryad/bab-2/hadith-20'" [SurahBefore]="'الحديث السابق'"
+     [RoutelinkAfter]="'/hadith'" [SurahNext]="'القائمة الرئيسية '">
   </app-next-before-surah-meny>
 
 
 <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.full-presentation]="isRawiMaximized" style="margin-top: 25px; position: relative;">
-  <h2 class="benefit-title" style="font-size: 1.2em; margin-top: 15px; padding:0;  font-weight: bold;">  الحديث العاشر</h2>
 
   <div class="box-container ">
     <app-zoom-controls
@@ -15,7 +14,6 @@
     </app-zoom-controls>
   </div>
   <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '20px' : '0px'">
-    <div class="verse-block hadith-main-block-modern">
       <div class="hadith-audio-trigger-wrapper">
   
 
@@ -74,7 +72,7 @@
 
 
       </div>
-    
+     
         <!--
         <p class="Hadith" [style.font-size.px]="fontSizeRawi + 4" style="line-height: 2 !important; max-width: 100%;">
           @for (phrase of hadith.phrases; track $index) {
@@ -84,19 +82,42 @@
           }
         </p>
 -->
+          <h2 class="benefit-title" style="font-size: 1.2em; margin-top: 15px; padding:0;  font-weight: bold;">  الحديث العاشر</h2>
+
     <div class="hadith-image-container">
-  <img src="/images/ryad/ryad-bab2-11.jpeg" alt=" الحديث 10 من باب 2. الرجاء الاتصال بالانترنيت لتحميل الصورة" class="responsive-hadith-img">
+  <img src="/images/ryad/ryad-bab2-11.jpeg" alt="الحديث 10 من باب 2. الرجاء الاتصال بالانترنيت لتحميل الصورة" class="responsive-hadith-img ">
 </div>
-      <!-- 
       <div class="tafsir-toggle-wrapper">
         <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
           <span>📚 شرح الحديث والمفردات</span>
           <span class="arrow" [class.open]="isExplanationShown">▼</span>
         </button>
       </div>
--->
-     
-    </div>
+
+      <div class="tafsir-modern-box" *ngIf="isExplanationShown"
+           [style.font-size.px]="fontSizeRawi"
+           [style.--current-zoom.px]="fontSizeRawi">
+        <div class="tafsir-header-row">
+          <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
+          <!-- 
+          <div class="tafsir-audio-actions">
+            <button (click)="speakText(hadith.explanation)" class="modern-tafsir-audio-btn">
+              {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
+            </button>
+            <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
+              🛑
+            </button>
+          </div> -->
+        </div>
+
+        <div [innerHTML]="hadith.explanation" class="tafsir-content-inner"></div>
+        <div class="bottom-close-wrapper">
+          <button class="modern-tafsir-close-btn-bottom" (click)="closeExplanationAndScroll(hadithBox)">
+            ❌ إغلاق شرح المفردات
+          </button>
+        </div>
+      </div>
+
   </div>
 
 </div>
@@ -111,7 +132,7 @@
     (onZoomOut)="zoomOutBox1(box1)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;"> 📌فوائد الحديث</h2>
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌 نبذة عن الراوي</h2>
 
    <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -121,7 +142,7 @@
 
 </div>
 
-  
+
 
  </div>
 

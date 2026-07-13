@@ -577,7 +577,7 @@ font-size: small !important;
 @media (max-width: 400px) {
   .ayah { font-size: 1rem; }
   .tafsir { font-size: 0.85rem; padding: 0.4rem 0.6rem; }
-  .verse-block { padding: 0.4rem 0.8rem; }
+  .verse-block { padding: 0.4rem 0rem; }
   .arrow { font-size: 1rem; margin-right: 2px; margin-left: 2px; }
 }
 
@@ -716,7 +716,7 @@ font-size: small !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 /* زر الاستماع والايقاف الأساسي (الموسع) */
