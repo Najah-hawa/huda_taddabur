@@ -234,8 +234,7 @@
 }
 
 /* إضافة خطوط زخرفية بسيطة فوق وتحت الصورة */
-.hadith-image-container::before,
-.hadith-image-container::after {
+.hadith-image-container::before {
   content: "";
   position: absolute;
   width: 100px;
