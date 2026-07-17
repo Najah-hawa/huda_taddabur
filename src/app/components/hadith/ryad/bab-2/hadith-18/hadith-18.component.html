@@ -36,12 +36,12 @@
   <!-- 1. حالة التحميل: تظهر الدائرة التي تدور والنص فقط أثناء جلب الملف -->
   <ng-container *ngIf="isLoadingAudio">
     <span class="audio-spinner"></span>
-    جاري التحميل...
+    يحمل..
   </ng-container>
 
   <!-- 2. الحالة العادية: (إيقاف أو تشغيل) عند انتهاء التحميل -->
   <ng-container *ngIf="!isLoadingAudio">
-    {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️' }}
+    {{ isPlaying ? '⏸️' : '▶️' }}
   </ng-container>
 
 </button>
