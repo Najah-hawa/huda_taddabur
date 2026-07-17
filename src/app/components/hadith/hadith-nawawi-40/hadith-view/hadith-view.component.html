@@ -35,9 +35,9 @@
             
             <!-- أزرار التحكم الذكية بالحديث (جملة جملة) -->
             <div class="hadith-player-buttons">
-              <!-- ⏩ الزر الأيمن: الرجوع للجملة السابقة -->
-              <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="الجملة السابقة">
-                 ⏭️ 
+              <!--⏩ الزر الأيمن: الرجوع للجملة السابقة -->
+              <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="تأخير 10 ثوانٍ">
+                 ⏭ 
               </button>
               
               <!-- زر التشغيل الرئيسي مع مؤشر التحميل الآمن -->
@@ -50,13 +50,13 @@
 
                 <!-- 2. الحالة العادية بعد انتهاء التحميل -->
                 <ng-container *ngIf="!isLoadingAudio">
-                  {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+                  {{ isPlaying ? '⏸️' : '▶️' }}
                 </ng-container>
               </button>
 
               <!-- ⏪ الزر الأيسر: التقدم للجملة التالية -->
-              <button class="player-nav-btn" (click)="skipToNextPhrase()" title="الجملة التالية">
-                 ⏮️
+              <button class="player-nav-btn" (click)="skipToNextPhrase()" title="تقديم 10 ثوانٍ ">
+                 ⏮
               </button>
             </div>
 

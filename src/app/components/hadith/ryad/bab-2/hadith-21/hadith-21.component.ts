@@ -82,7 +82,57 @@ ngOnInit() {
     property: 'og:type', 
     content: 'article' 
   });
+
+
+  // مصفوفة صور حديث اليوم الطويل مكتوبة يدوياً للتجربة الفورية
+  const dag_hadith_bilder = [
+    '/images/ryad/ryad-bab2-9-1.jpeg',
+    '/images/ryad/ryad-bab2-9-2.jpeg',
+    '/images/ryad/ryad-bab2-9-3.jpeg',
+    '/images/ryad/ryad-bab2-9-4.jpeg',
+    '/images/ryad/ryad-bab2-9-5.jpeg',
+    '/images/ryad/ryad-bab2-9-6.jpeg',
+    '/images/ryad/ryad-bab2-9-7.jpeg'
+  ];
+
+  // استدعاء الدالة لتجهيز السلايدر فوراً
+  this.setupHadithImages(dag_hadith_bilder);
   }
+
+
+
+  // مصفوفة لتخزين الصور (سواء كانت صورة واحدة أو عدة صور)
+hadithImages: string[] = [];
+currentImageIndex: number = 0;
+
+// استدعاء هذه الدالة عند تحميل بيانات الحديث (داخل الـ subscribe الخاص بكِ)
+setupHadithImages(imagesData: string | string[]) {
+  this.currentImageIndex = 0; // إعادة العداد للصفر عند الانتقال لحديث جديد
+  
+  if (Array.isArray(imagesData)) {
+    // إذا كانت البيانات مصفوفة (مثل حديث اليوم الطويل الذي يحتوي 7 صور)
+    this.hadithImages = imagesData;
+  } else {
+    // إذا كانت صورة واحدة فقط (باقي الأحاديث العادية)
+    this.hadithImages = [imagesData];
+  }
+}
+
+// دالة الانتقال للصورة التالية
+nextImage() {
+  if (this.currentImageIndex < this.hadithImages.length - 1) {
+    this.currentImageIndex++;
+    this.cdr.detectChanges(); // إذا كنتِ تستخدمين ChangeDetectorRef
+  }
+}
+
+// دالة العودة للصورة السابقة
+prevImage() {
+  if (this.currentImageIndex > 0) {
+    this.currentImageIndex--;
+    this.cdr.detectChanges();
+  }
+}
   toggleRawiZoom(boxElement: HTMLElement) {
     this.isRawiMaximized = !this.isRawiMaximized;
     if (!this.isRawiMaximized) {

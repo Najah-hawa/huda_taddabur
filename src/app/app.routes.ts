@@ -90,7 +90,7 @@ export const routes: Routes = [
   },
   {
     path: 'hadith/ryad-alsalihin',
-    loadComponent: () => import('./components/hadith/ryad-alsalihin/ryad-alsalihin.component').then(m => m.RyadAlsalihinComponent)
+    loadComponent: () => import('./components/hadith/ryad/ryad-alsalihin-bab-menu/ryad-alsalihin.component').then(m => m.RyadAlsalihinComponent)
   },
   {
     path: 'hadith/ryad/bab-1',
@@ -200,6 +200,16 @@ export const routes: Routes = [
    {
     path: 'hadith/ryad/bab-2/hadith-22',
     loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-22/hadith-22.component').then(m => m.Hadith22Component)
+  }
+  ,
+   {
+    path: 'hadith/ryad/bab-2/hadith-23',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-23/hadith-23.component').then(m => m.Hadith23Component)
+  }
+  ,
+   {
+    path: 'hadith/ryad/bab-2/hadith-24',
+    loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-24/hadith-24.component').then(m => m.Hadith24Component)
   }
   ,
   { path: '', redirectTo: '/home', pathMatch: 'full' }

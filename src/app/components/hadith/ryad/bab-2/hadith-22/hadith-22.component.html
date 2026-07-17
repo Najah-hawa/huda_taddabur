@@ -1,8 +1,8 @@
 <div class="hadith-page-container">
 
   <app-next-before-surah-meny
-     [RoutelinkBefore]="'/hadith/ryad/bab-2/hadith-20'" [SurahBefore]="'الحديث السابق'"
-     [RoutelinkAfter]="'/hadith'" [SurahNext]="'القائمة الرئيسية '">
+     [RoutelinkBefore]="'/hadith/ryad/bab-2/hadith-21'" [SurahBefore]="'الحديث السابق'"
+     [RoutelinkAfter]="'/hadith/ryad/bab-2/hadith-23'" [SurahNext]="'الحديث التالي'">
   </app-next-before-surah-meny>
 
 
@@ -41,7 +41,7 @@
 
   <!-- 2. الحالة العادية: (إيقاف أو تشغيل) عند انتهاء التحميل -->
   <ng-container *ngIf="!isLoadingAudio">
-    {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️ استمع للحديث' }}
+    {{ isPlaying ? '⏸️ إيقاف مؤقت' : '▶️' }}
   </ng-container>
 
 </button>
@@ -85,7 +85,7 @@
           <h2 class="benefit-title" style="font-size: 1.2em; margin-top: 15px; padding:0;  font-weight: bold;">  الحديث العاشر</h2>
 
     <div class="hadith-image-container">
-  <img src="/images/ryad/ryad-bab2-11.jpeg" alt="الحديث 10 من باب 2. الرجاء الاتصال بالانترنيت لتحميل الصورة" class="responsive-hadith-img ">
+  <img src="/images/ryad/ryad-bab2-10.jpeg" alt="الحديث 9 من باب 2. الرجاء الاتصال بالانترنيت لتحميل الصورة" class="responsive-hadith-img fix-tilt">
 </div>
       <div class="tafsir-toggle-wrapper">
         <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
@@ -140,6 +140,26 @@
     </ul>
   </div>
 
+</div>
+
+  <!-- الحاوية 3: أهمية الحديث (Box 2) -->
+
+  <div #box2 class="fawaed-box-container mini box2-container" [class.full-presentation]="isBox2Maximized" style="margin-top: 25px; position: relative;">
+
+  <app-zoom-controls
+    [isMaximized]="isBox2Maximized"  
+    (onToggle)="toggleBox2Zoom(box2)" 
+    (onZoomIn)="zoomInBox2(box2)" 
+    (onZoomOut)="zoomOutBox2(box2)">
+  </app-zoom-controls>
+
+  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">📌  فوائد الحديث</h2>
+
+  <div class="box-list-wrapper">
+    <ul class="custom-presentation-list">
+      <li *ngFor="let item of box2Items" [innerHTML]="item"></li>
+    </ul>
+  </div>
 </div>
 
 

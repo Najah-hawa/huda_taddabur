@@ -8,23 +8,22 @@ import { ZoomControlsComponent } from '../../../zoom-controls/zoom-controls.comp
 import { NextBeforeSurahMenyComponent } from "../../../../next-before-surah-meny/next-before-surah-meny.component";
 
 // 📥 Hämta strukturerad data specifikt för Hadith 6
-import { hadithDetails, hadithImportanceList, hadithFawaedList} from './hadith22-data';
+import { hadithDetails, hadithImportanceList} from './hadith24-data';
 
 @Component({
-  selector: 'app-hadith-22',
+  selector: 'app-hadith-24',
   standalone: true,
   imports: [ CommonModule, RouterModule, FooterInfoComponent, NextBeforeSurahMenyComponent, ZoomControlsComponent ],
-  templateUrl: './hadith-22.component.html',
-  styleUrl: './hadith-22.component.css'
+  templateUrl: './hadith-24.component.html',
+  styleUrl: './hadith-24.component.css'
 })
 
-export class Hadith22Component implements OnInit, OnDestroy {
+export class Hadith24Component implements OnInit, OnDestroy {
 
   private http = inject(HttpClient);
 
   hadith = hadithDetails;
   box1Items = hadithImportanceList;
-  box2Items = hadithFawaedList;    
 
   fontSizeRawi: number = window.innerWidth < 600 ? 14 : 20;
   fontSizeBox1: number = 16;
@@ -34,7 +33,7 @@ export class Hadith22Component implements OnInit, OnDestroy {
   isExplanationShown: boolean = false;
   currentAudio: HTMLAudioElement | null = null;
   isPlaying: boolean = false;
-    isLoadingAudio = false; 
+  isLoadingAudio = false; 
   currentPhraseIndex: number = -1;
 
   // 🎵 متغيرات المشغل الصوتي المطور (Audio Player)
@@ -53,7 +52,7 @@ export class Hadith22Component implements OnInit, OnDestroy {
   constructor(private cdr: ChangeDetectorRef, private titleService: Title, private metaService: Meta) {}
 ngOnInit() {
   // تعيين عنوان الصفحة
-  this.titleService.setTitle('باب التوبة. الحديث العاشر- شرح رياض الصالحين');
+  this.titleService.setTitle('باب التوبة. الحديث الثاني عشر - شرح رياض الصالحين');
   
   // وصف الصفحة لمجازات البحث
   this.metaService.updateTag({
@@ -70,7 +69,7 @@ ngOnInit() {
   // إعدادات بروتوكول Open Graph (لوسائل التواصل الاجتماعي)
   this.metaService.updateTag({ 
     property: 'og:title', 
-    content: 'باب التوبة. الحديث الثالث - شرح رياض الصالحين'
+    content: 'باب التوبة. الحديث الرابع- شرح رياض الصالحين'
   });
   
   this.metaService.updateTag({ 
@@ -217,7 +216,6 @@ ngOnInit() {
   // ==========================================
   // Talsyntes för förklaringsboxen
   // ==========================================
-
 speakText(text: string | undefined) {
   if (!text) return;
 
@@ -279,7 +277,6 @@ stopSpeakingTafsir() {
   this.isTafsirPaused = false;
   this.cdr.detectChanges();
 }
-
   // ==========================================
   // المشغل الصوتي المطور والمزامن للسلايدر (Hadith 6)
   // ==========================================
@@ -304,6 +301,7 @@ playHadithAudio(url: string | undefined) {
 
   // 3. حالة تشغيل ملف صوتي جديد لأول مرة (تحتاج تحميل)
 window.speechSynthesis?.cancel();
+  
   // تفعيل مؤشر التحميل فوراً قبل بدء الطلب
   this.isLoadingAudio = true; 
   this.cdr.detectChanges();

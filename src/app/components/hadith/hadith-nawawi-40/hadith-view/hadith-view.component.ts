@@ -225,36 +225,45 @@ this.surahNext = currentNum < 20? 'الحديث التالي' : 'العودة ل
     });
   }
 
-  skipToNextPhrase() {
-    if (!this.currentAudio || !this.phrases) return;
-    const nextIndex = this.currentPhraseIndex + 1;
-    if (nextIndex >= 0 && nextIndex < this.phrases.length) {
-      this.currentAudio.currentTime = this.phrases[nextIndex].start;
-      this.currentTime = this.currentAudio.currentTime;
-      this.cdr.detectChanges();
-    }
+// دالة التقديم 10 ثوانٍ للأمام
+skipToNextPhrase() {
+  if (!this.currentAudio) return;
+  
+  // حساب الوقت الجديد بعد إضافة 10 ثوانٍ
+  const newTime = this.currentAudio.currentTime + 10;
+  
+  // التأكد من أن الوقت الجديد لا يتجاوز طول الملف الصوتي الإجمالي
+  if (newTime < this.currentAudio.duration) {
+    this.currentAudio.currentTime = newTime;
+  } else {
+    // إذا تجاوز، نذهب إلى نهاية الصوت مباشرة
+    this.currentAudio.currentTime = this.currentAudio.duration;
   }
+  
+  this.currentTime = this.currentAudio.currentTime;
+  this.cdr.detectChanges();
+}
 
-  skipToPreviousPhrase() {
-    if (!this.currentAudio || !this.phrases) return;
-    if (this.currentPhraseIndex === -1) {
-      this.currentAudio.currentTime = 0;
-      return;
-    }
-    const currentPhrase = this.phrases[this.currentPhraseIndex];
-    const progressInPhrase = this.currentAudio.currentTime - currentPhrase.start;
-
-    if (progressInPhrase > 2) {
-      this.currentAudio.currentTime = currentPhrase.start;
-    } else if (this.currentPhraseIndex > 0) {
-      const prevPhrase = this.phrases[this.currentPhraseIndex - 1];
-      this.currentAudio.currentTime = prevPhrase.start;
-    } else {
-      this.currentAudio.currentTime = 0;
-    }
-    this.currentTime = this.currentAudio.currentTime;
-    this.cdr.detectChanges();
+// دالة التأخير 10 ثوانٍ للخلف
+skipToPreviousPhrase() {
+  if (!this.currentAudio) return;
+  
+  // حساب الوقت الجديد بعد طرح 10 ثوانٍ
+  const newTime = this.currentAudio.currentTime - 10;
+  
+  // التأكد من أن الوقت لا يقل عن الصفر
+  if (newTime > 0) {
+    this.currentAudio.currentTime = newTime;
+  } else {
+    // إذا قل عن الصفر، نعود للبداية تماماً
+    this.currentAudio.currentTime = 0;
   }
+  
+  this.currentTime = this.currentAudio.currentTime;
+  this.cdr.detectChanges();
+}
+
+
 
   onSliderChange(event: any) {
     if (this.currentAudio) {
