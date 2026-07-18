@@ -441,7 +441,7 @@ body {
   display: inline;      /* Ser till att texten flyter på naturligt direkt efter b */
 }
 
-/* Fawaed & Highlighted */
+/* Fawaed & Highlighted
 .highlighted-phrase {
   background-color: #fff3cd;
   color: #b89b3f;
@@ -449,7 +449,7 @@ body {
   padding: 0 4px;
   transition: all 0.2s ease;
   font-weight: bold;
-}
+} */
 
 .fawaed-box-container.mini, .surah-benefits.mini {
   position: relative;
