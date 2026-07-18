@@ -45,6 +45,7 @@ export class Hadith22Component implements OnInit, OnDestroy {
   isBox2Maximized: boolean = false;
   isBox3Maximized: boolean = false;
   isBox4Maximized: boolean = false;
+  imageScale: number = 1;
   isRawiMaximized: boolean = false;
 
   isSpeakingTafsir: boolean = false;
@@ -83,41 +84,49 @@ ngOnInit() {
     content: 'article' 
   });
   }
-  toggleRawiZoom(boxElement: HTMLElement) {
-    this.isRawiMaximized = !this.isRawiMaximized;
-    if (!this.isRawiMaximized) {
-      this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
-          this.isExplanationShown = false;
-    }
-    if (this.isRawiMaximized) {
-      document.body.style.overflow = 'hidden'; 
-    } else {
-      document.body.style.overflow = 'auto';   
-    }
-    this.cdr.detectChanges();
-    setTimeout(() => {
-      if (boxElement) {
-        boxElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',   
-          inline: 'nearest'
-        });
-      }
-    }, 100); 
+  
+toggleRawiZoom(boxElement: HTMLElement) {
+  this.isRawiMaximized = !this.isRawiMaximized;
+  
+  if (!this.isRawiMaximized) {
+    // عند إغلاق التكبير، نعيد الصورة لحجمها الطبيعي 100%
+    this.imageScale = 1; 
+    document.body.style.overflow = 'auto';    
+  } else {
+    document.body.style.overflow = 'hidden';  
   }
+  
+  this.cdr.detectChanges();
+  
+  setTimeout(() => {
+    if (boxElement) {
+      boxElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',   
+        inline: 'nearest'
+      });
+    }
+  }, 100); 
+}
 
-  zoomInRawi() {
-    if (this.fontSizeRawi < 36) {
-      this.fontSizeRawi += 2;
-      this.cdr.detectChanges();
-    }
+// 2. دالة التكبير عند الضغط على زر (+)
+zoomInRawi() {
+  // الحد الأقصى للتكبير هو 2.5 (أي 250% من حجمها) لكي لا تخرب الجودة على الـ TV
+  if (this.imageScale < 2.5) {
+    this.imageScale += 0.15; // نزيد التكبير بمقدار 15% مع كل ضغطة
+    this.cdr.detectChanges();
   }
-  zoomOutRawi() {
-    if (this.fontSizeRawi > 12) {
-      this.fontSizeRawi -= 2;
-      this.cdr.detectChanges();
-    }
+}
+
+// 3. دالة التصغير عند الضغط على زر (-)
+zoomOutRawi() {
+  // الحد الأدنى هو الحجم الطبيعي 1 (أي 100%)
+  if (this.imageScale > 1) {
+    this.imageScale -= 0.15; // ننقص التكبير بمقدار 15%
+    this.cdr.detectChanges();
   }
+}
+
 
   toggleBox1Zoom(boxElement: HTMLElement) {
     this.isBox1Maximized = !this.isBox1Maximized;

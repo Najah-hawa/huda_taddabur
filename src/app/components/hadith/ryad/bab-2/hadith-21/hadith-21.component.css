@@ -259,6 +259,9 @@
   mix-blend-mode: multiply; 
   border-radius: 8px;
   padding: 15px;
+
+  transition: transform 0.2s ease-out, max-height 0.2s ease-out;
+  transform-origin: center center; /* ليكون التكبير من منتصف الصورة دائماً */
 }
 
 /* كلاس تصحيح الميلان الخاص بكِ */
