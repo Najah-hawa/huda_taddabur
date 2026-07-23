@@ -189,3 +189,113 @@
   padding: 30px !important; /* مساحة داخلية ناعمة ومريحة للنصوص عند التكبير */
   box-sizing: border-box !important;
 }
+
+
+
+
+
+
+
+
+.image-carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.carousel-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.carousel-btn {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dot.active {
+  background-color: #2c3e50;
+  transform: scale(1.2);
+}
+
+
+/* Container för karusellen */
+.image-carousel-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Förhindrar att bilden går utanför ramen när den förstoras */
+  padding: 10px 0;
+}
+
+.carousel-image-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Håller den förstorade bilden inom ramen */
+}
+
+.carousel-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* Sätt detta i din komponents CSS med ::ng-deep ELLER i globala styles.css */
+::ng-deep .tafsir-modern-box,
+::ng-deep .tafsir-modern-box *,
+::ng-deep .tafsir-content-inner,
+::ng-deep .tafsir-content-inner * {
+  font-size: var(--dynamic-tafsir-size, 16px) !important;
+  line-height: 1.8 !important;
+}

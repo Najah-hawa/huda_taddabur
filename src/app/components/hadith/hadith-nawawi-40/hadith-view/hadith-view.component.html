@@ -16,114 +16,154 @@
 
   <div class="hadith-page-container">
 
-    <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
-    <div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.maximized-style]="isRawiMaximized" style="margin-top: 5px; position: relative;">
+  <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
+<div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.maximized-style]="isRawiMaximized" style="margin-top: 5px; position: relative;">
 
-      <div class="box-container">
-        <app-zoom-controls
-          [isMaximized]="isRawiMaximized" 
-          (onToggle)="toggleRawiZoom(hadithBox)" 
-          (onZoomIn)="zoomInRawi()" 
-          (onZoomOut)="zoomOutRawi()">
-        </app-zoom-controls>
-      </div>
+  <div class="box-container">
+    <app-zoom-controls
+      [isMaximized]="isRawiMaximized" 
+      (onToggle)="toggleRawiZoom(hadithBox)" 
+      (onZoomIn)="zoomInRawi()" 
+      (onZoomOut)="zoomOutRawi()">
+    </app-zoom-controls>
+  </div>
 
-      <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
+  <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
+      
+      <!-- المبدل الصوتي الذكي والمطور -->
+      <div class="hadith-audio-player-wrapper">
+        
+   <div class="hadith-player-buttons">
+  <!-- Bakåt 10 sekunder -->
+  <button class="player-nav-btn" (click)="skipBackward10()" title="تأخير 10 ثوانٍ">
+     ⏭ 
+  </button>
+  
+  <!-- Play / Pause -->
+  <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(audioUrl)" [disabled]="isLoadingAudio">
+    <ng-container *ngIf="isLoadingAudio">
+      <span class="audio-spinner"></span>
+      جاري التحميل...
+    </ng-container>
+
+    <ng-container *ngIf="!isLoadingAudio">
+      {{ isPlaying ? '⏸️' : '▶️' }}
+    </ng-container>
+  </button>
+
+  <!-- Framåt 10 sekunder -->
+  <button class="player-nav-btn" (click)="skipForward10()" title="تقديم 10 ثوانٍ">
+     ⏮
+  </button>
+</div>
+
+        <!-- شريط التحكم بالوقت (Progress Slider) -->
+        <div class="hadith-player-slider-container">
+          <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
           
-          <!-- المبدل الصوتي الذكي والمطور -->
-          <div class="hadith-audio-player-wrapper">
+          <input 
+            type="range" 
+            [min]="0" 
+            [max]="duration" 
+            [value]="currentTime" 
+            (input)="onSliderChange($event)"
+            class="hadith-audio-slider" />
             
-            <!-- أزرار التحكم الذكية بالحديث (جملة جملة) -->
-            <div class="hadith-player-buttons">
-              <!--⏩ الزر الأيمن: الرجوع للجملة السابقة -->
-              <button class="player-nav-btn" (click)="skipToPreviousPhrase()" title="تأخير 10 ثوانٍ">
-                 ⏭ 
-              </button>
-              
-              <!-- زر التشغيل الرئيسي مع مؤشر التحميل الآمن -->
-              <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(audioUrl)" [disabled]="isLoadingAudio">
-                <!-- 1. حالة التحميل من السيرفر -->
-                <ng-container *ngIf="isLoadingAudio">
-                  <span class="audio-spinner"></span>
-                  جاري التحميل...
-                </ng-container>
-
-                <!-- 2. الحالة العادية بعد انتهاء التحميل -->
-                <ng-container *ngIf="!isLoadingAudio">
-                  {{ isPlaying ? '⏸️' : '▶️' }}
-                </ng-container>
-              </button>
-
-              <!-- ⏪ الزر الأيسر: التقدم للجملة التالية -->
-              <button class="player-nav-btn" (click)="skipToNextPhrase()" title="تقديم 10 ثوانٍ ">
-                 ⏮
-              </button>
-            </div>
-
-            <!-- شريط التحكم بالوقت (Progress Slider) -->
-            <div class="hadith-player-slider-container">
-              <span class="time-indicator text-left">{{ currentTime | number:'1.0-0' }}ث</span>
-              
-              <input 
-                type="range" 
-                [min]="0" 
-                [max]="duration" 
-                [value]="currentTime" 
-                (input)="onSliderChange($event)"
-                class="hadith-audio-slider" />
-                
-              <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
-            </div>
-
-          </div>
-
-          <!-- عرض متن الحديث المقسم إلى جمل متحكم بها صوتياً -->
-          <div class="hadith-text-full-width">
-            <p class="Hadith" [style.font-size.px]="fontSizeRawi + 2" style="line-height: 2 !important; max-width: 100%;">
-              @for (phrase of phrases; track $index) {
-                <span [class.highlighted-phrase]="$index === currentPhraseIndex">
-                  {{ phrase.text }}
-                </span>
-              }
-            </p>
-          </div>
-
-          <!-- زر فتح/إغلاق شرح المفردات -->
-          <div class="tafsir-toggle-wrapper">
-            <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
-              <span>📚 شرح الحديث والمفردات</span>
-              <span class="arrow" [class.open]="isExplanationShown">▼</span>
-            </button>
-          </div>
-
-          <!-- صندوق الشرح والمفردات المحمي والمعدل برمجياً -->
-          <div class="tafsir-modern-box" *ngIf="isExplanationShown"
-               [style.font-size.px]="fontSizeRawi"
-               [style.--current-zoom.px]="fontSizeRawi">
-            <div class="tafsir-header-row">
-              <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
-              <div class="tafsir-audio-actions">
-                <!-- الميز الصوتية المحمية المفحوصة من الانهيار -->
-                <button (click)="speakText(explanation)" class="modern-tafsir-audio-btn">
-                  {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
-                </button>
-                <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
-                  🛑
-                </button>
-              </div>
-            </div>
-
-            <div [innerHTML]="explanation" class="tafsir-content-inner"></div>
-            
-            <div class="bottom-close-wrapper">
-              <button class="modern-tafsir-close-btn-bottom" (click)="closeExplanationAndScroll(hadithBox)">
-                ❌ إغلاق شرح المفردات
-              </button>
-            </div>
-          </div>
+          <span class="time-indicator text-right">{{ duration | number:'1.0-0' }}ث</span>
+        </div>
 
       </div>
+
+      <!-- 🖼️ صورة الحديث المربوطة بمسار imageUrl والتكبير عبر imageScale -->
+   <div class="image-carousel-container" *ngIf="imageUrls.length > 0">
+  
+  <!-- Huvudbilden som visas just nu -->
+  <div class="carousel-image-wrapper">
+ <img 
+  [src]="imageUrls[currentImageIndex]" 
+  alt="Hadith bild {{ currentImageIndex + 1 }}" 
+  class="carousel-image"
+  [style.transform]="'scale(' + imageScale + ') rotate(' + currentImageRotation + 'deg)'"
+  style="transition: transform 0.3s ease; transform-origin: center center;"
+/>
+  </div>
+
+  <!-- Kontroller längst ned (visas endast om det finns fler än 1 bild) -->
+  <div class="carousel-controls" *ngIf="imageUrls.length > 1">
+    
+    <!-- Föregående bild (Högernavigering i RTL/Arabiska) -->
+    <button 
+      class="carousel-btn" 
+      (click)="prevImage()" 
+      [disabled]="currentImageIndex === 0"
+      title="الصورة السابقة">
+      ▶
+    </button>
+
+    <!-- Indikator / Punkter (t.ex. "1 / 3" eller klickbara prickar) -->
+    <div class="carousel-dots">
+      <span 
+        *ngFor="let img of imageUrls; let i = index" 
+        class="dot" 
+        [class.active]="i === currentImageIndex"
+        (click)="setImageIndex(i)">
+      </span>
     </div>
+
+    <!-- Nästa bild (Vänsternavigering i RTL/Arabiska) -->
+    <button 
+      class="carousel-btn" 
+      (click)="nextImage()" 
+      [disabled]="currentImageIndex === imageUrls.length - 1"
+      title="الصورة التالية">
+      ◀
+    </button>
+
+  </div>
+
+</div>
+      <!-- زر فتح/إغلاق شرح المفردات -->
+      <div class="tafsir-toggle-wrapper">
+        <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
+          <span>📚 شرح الحديث والمفردات</span>
+          <span class="arrow" [class.open]="isExplanationShown">▼</span>
+        </button>
+      </div>
+
+      <!-- 📚 صندوق الشرح والمفردات (يتأثر بتغيير fontSizeRawi وتكبير الحاوية) -->
+<!-- 2. شرح المفردات (Skalas jämnt genom att räkna om font-size dynamiskt) -->
+<div class="tafsir-modern-box" *ngIf="isExplanationShown"
+     [style.--dynamic-tafsir-size.px]="fontSizeRawi"
+     style="width: 100%;">
+  
+  <div class="tafsir-header-row">
+    <strong class="explanation-title-modern">📝 المفردات والشرح:</strong>
+    <div class="tafsir-audio-actions">
+      <button (click)="speakText(explanation)" class="modern-tafsir-audio-btn">
+        {{ !isSpeakingTafsir ? '🔊 استمع للشرح' : (isTafsirPaused ? '▶️ استئناف' : '⏸️ إيقاف مؤقت') }}
+      </button>
+      <button *ngIf="isSpeakingTafsir" (click)="stopSpeakingTafsir()" class="modern-tafsir-stop-btn">
+        🛑
+      </button>
+    </div>
+  </div>
+
+  <!-- Texten inuti tafsir-content-inner -->
+ <div [innerHTML]="explanation" 
+     [style.font-size.px]="fontSizeRawi" 
+     class="tafsir-content-inner">
+</div>
+  
+  <div class="bottom-close-wrapper">
+    <button class="modern-tafsir-close-btn-bottom" (click)="closeExplanationAndScroll(hadithBox)">
+      ❌ إغلاق شرح المفردات
+    </button>
+  </div>
+</div>
+
+
+  </div>
+</div>
 
 
 <!-- الحاوية 1: (Box 1) -->

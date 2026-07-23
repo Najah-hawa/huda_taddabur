@@ -35,8 +35,12 @@ export class HadithViewComponent implements OnInit, OnDestroy {
 title: string = 'الأربعين النووية'; // قيمة افتراضية عامة
   name: string = '';
   hintText: string = '';
+  imageUrls: string[] = [];
+  currentImageIndex: number = 0;
+imageRotations: number[] = [];
+currentImageRotation: number = 0;
+  imageScale: number = 1;
   audioUrl: string = '';
-  phrases: { text: string; start: number; end: number }[] = [];
   explanation: string = '';
   source: string = 'متن الأربعين النووية';
 
@@ -92,18 +96,26 @@ ngOnInit() {
   });
 }
 
-  loadHadithData(id: string) {
-  const currentHadith = ALL_HADITHS[id];
-  
-  if (!currentHadith) return; // حماية برمجية في حال كان المعرّف غير موجود
-this.isExplanationShown = false;
+loadHadithData(id: string) {
+ const currentHadith = ALL_HADITHS[id];
+  if (!currentHadith) return;// حماية برمجية في حال كان المعرّف غير موجود
+  this.isExplanationShown = false;
+
   // [1] تحديث البيانات الأساسية المعروضة في الـ HTML
   this.name = currentHadith.name;
   this.audioUrl = currentHadith.audioUrl;
-  this.phrases = currentHadith.phrases;
+  
+
+// 🖼️ Läs in bilden/bilderna och återställ index
+this.imageUrls = currentHadith.imageUrls || (currentHadith.imageUrl ? [currentHadith.imageUrl] : []);
+    this.currentImageIndex = 0;
+  this.imageRotations = currentHadith.imageRotations || [];
+  this.currentImageIndex = 0;
+  this.updateCurrentImageRotation();
   this.explanation = currentHadith.explanation;
   this.quizQuestions = currentHadith.quizQuestions; // إرسال بيانات الكويز ديناميكياً
   this.hintText = currentHadith.hintText;
+
   // [2] تحديث عناوين ونصوص الصناديق الأربعة ديناميكياً
   this.box1Title = currentHadith.box1Title;
   this.box1Items = currentHadith.box1Items;
@@ -124,16 +136,43 @@ this.isExplanationShown = false;
   this.routeBefore = currentNum > 1 ? `/hadith/hadith-nawawi-40/${currentNum - 1}` : '/home';
   this.surahBefore = currentNum > 1 ? 'الحديث السابق' : 'القائمة الرئيسية';
   
- // زر التالي: إذا وصلنا للحديث 42 ينقل للقائمة الرئيسية، وإلا ينقل للحديث التالي
-this.routeAfter = currentNum < 20 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home'; // أو مسار القائمة عندك مثلاً '/home'
-this.surahNext = currentNum < 20? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
+  // زر التالي: إذا وصلنا للحديث 20 ينقل للقائمة الرئيسية، وإلا ينقل للحديث التالي
+  this.routeAfter = currentNum < 20 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home';
+  this.surahNext = currentNum < 20 ? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
 
   // [4] تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);
 
   // إجبار أنجولار على تحديث الواجهة فوراً
   this.cdr.detectChanges();
-} 
+}
+
+// När du laddar data eller byter bild:
+updateCurrentImageRotation() {
+  // Hämtar rotationen för bilden på position currentImageIndex (standard är 0 om ingen finns)
+  this.currentImageRotation = this.imageRotations[this.currentImageIndex] || 0;
+}
+// ⏩ Nästa bild
+nextImage() {
+  if (this.currentImageIndex < this.imageUrls.length - 1) {
+    this.currentImageIndex++;
+    this.updateCurrentImageRotation();
+  }
+}
+
+prevImage() {
+  if (this.currentImageIndex > 0) {
+    this.currentImageIndex--;
+    this.updateCurrentImageRotation();
+  }
+}
+
+  // 🔢 Välj specifik bild direkt
+  setImageIndex(index: number) {
+    this.currentImageIndex = index;
+    this.cdr.detectChanges();
+  }
+
   private updateSEO(hadith: any) {
     // تحديث عنوان المتصفح العلوي (Title) ديناميكياً ليصبح مثلاً: "الحديث الأول: إنما الأعمال بالنيات - الأربعين النووية"
     this.titleService.setTitle(`${hadith.name} - الأربعين النووية`);
@@ -151,148 +190,138 @@ this.surahNext = currentNum < 20? 'الحديث التالي' : 'العودة ل
     });
     }
 
-  playHadithAudio(url: string | undefined) {
-    if (!url) return;
+ // 🎵 Spela / Pausa ljud
+playHadithAudio(url: string | undefined) {
+  if (!url) return;
 
-    if (this.currentAudio && this.isPlaying) {
-      this.currentAudio.pause();
+  // 1. Om ljudet redan spelas -> Pausa
+  if (this.currentAudio && this.isPlaying) {
+    this.currentAudio.pause();
+    this.isPlaying = false;
+    this.cdr.detectChanges();
+    return;
+  }
+
+  // 2. Om ljudet finns men är pausat -> Fortsätt spela
+  if (this.currentAudio && !this.isPlaying) {
+    this.isPlaying = true;
+    this.cdr.detectChanges();
+    this.currentAudio.play().catch(() => this.isPlaying = false);
+    return;
+  }
+
+  // Stäng av eventuell talsyntes om den körs i bakgrunden
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  
+  this.isLoadingAudio = true; 
+  this.cdr.detectChanges();
+
+  // Skapa nytt Audio-objekt
+  this.currentAudio = new Audio(url);
+
+  // När filens metadata har laddats (totaltid osv)
+  this.currentAudio.onloadedmetadata = () => {
+    if (this.currentAudio) {
+      this.duration = this.currentAudio.duration;
+      this.isLoadingAudio = false;
+      this.cdr.detectChanges();
+    }
+  };
+
+  // Uppdatera tidsindikatorn kontinuerligt
+  this.currentAudio.ontimeupdate = () => {
+    if (!this.currentAudio) return;
+    this.currentTime = this.currentAudio.currentTime;
+    this.cdr.detectChanges();
+  };
+
+  // När spårningen startar
+  this.currentAudio.play()
+    .then(() => {
+      this.isPlaying = true;
+      this.isLoadingAudio = false;
+      this.cdr.detectChanges();
+    })
+    .catch((err) => {
+      console.error('Fel vid uppspelning:', err);
+      this.isLoadingAudio = false;
       this.isPlaying = false;
       this.cdr.detectChanges();
-      return;
-    }
-
-    if (this.currentAudio && !this.isPlaying) {
-      this.isPlaying = true;
-      this.cdr.detectChanges();
-      this.currentAudio.play().catch(() => this.isPlaying = false);
-      return;
-    }
-
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
-    
-    this.isLoadingAudio = true; 
-    this.cdr.detectChanges();
-
-    this.http.get(url, { responseType: 'blob' }).subscribe({
-      next: (blob) => {
-        const localBlobUrl = URL.createObjectURL(blob);
-        this.currentAudio = new Audio(localBlobUrl);
-        this.isPlaying = true;
-        this.isLoadingAudio = false; 
-        this.cdr.detectChanges();
-
-        this.currentAudio.onloadedmetadata = () => {
-          if (this.currentAudio) {
-            this.duration = this.currentAudio.duration;
-            this.cdr.detectChanges();
-          }
-        };
-        
-        this.currentAudio.ontimeupdate = () => {
-          if (!this.currentAudio) return;
-          this.currentTime = this.currentAudio.currentTime;
-
-          const index = this.phrases.findIndex(p => this.currentTime >= p.start && this.currentTime < p.end);
-          if (index !== this.currentPhraseIndex) {
-            this.currentPhraseIndex = index;
-          }
-          this.cdr.detectChanges();
-        };
-        
-        this.currentAudio.play()
-          .then(() => this.cdr.detectChanges())
-          .catch(() => {
-            this.isPlaying = false;
-            this.cdr.detectChanges();
-          });
-          
-        this.currentAudio.onended = () => {
-          this.isPlaying = false;
-          this.currentTime = 0;
-          this.currentPhraseIndex = -1;
-          this.currentAudio = null;
-          this.cdr.detectChanges();
-        };
-      },
-      error: (err) => {
-        console.error("خطأ في جلب ملف الصوت؛ قد يكون المستخدم أوف لاين:", err);
-        this.isLoadingAudio = false; 
-        this.isPlaying = false;
-        this.cdr.detectChanges();
-      }
     });
-  }
 
-// دالة التقديم 10 ثوانٍ للأمام
-skipToNextPhrase() {
-  if (!this.currentAudio) return;
-  
-  // حساب الوقت الجديد بعد إضافة 10 ثوانٍ
-  const newTime = this.currentAudio.currentTime + 10;
-  
-  // التأكد من أن الوقت الجديد لا يتجاوز طول الملف الصوتي الإجمالي
-  if (newTime < this.currentAudio.duration) {
-    this.currentAudio.currentTime = newTime;
-  } else {
-    // إذا تجاوز، نذهب إلى نهاية الصوت مباشرة
-    this.currentAudio.currentTime = this.currentAudio.duration;
-  }
-  
-  this.currentTime = this.currentAudio.currentTime;
-  this.cdr.detectChanges();
-}
-
-// دالة التأخير 10 ثوانٍ للخلف
-skipToPreviousPhrase() {
-  if (!this.currentAudio) return;
-  
-  // حساب الوقت الجديد بعد طرح 10 ثوانٍ
-  const newTime = this.currentAudio.currentTime - 10;
-  
-  // التأكد من أن الوقت لا يقل عن الصفر
-  if (newTime > 0) {
-    this.currentAudio.currentTime = newTime;
-  } else {
-    // إذا قل عن الصفر، نعود للبداية تماماً
-    this.currentAudio.currentTime = 0;
-  }
-  
-  this.currentTime = this.currentAudio.currentTime;
-  this.cdr.detectChanges();
-}
-
-
-
-  onSliderChange(event: any) {
-    if (this.currentAudio) {
-      this.currentAudio.currentTime = Number(event.target.value);
-      this.currentTime = this.currentAudio.currentTime;
-      this.cdr.detectChanges();
-    }
-  }
-
-  toggleRawiZoom(boxElement: HTMLElement) {
-    this.isRawiMaximized = !this.isRawiMaximized;
-    if (!this.isRawiMaximized) {
-      this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
-      this.isExplanationShown = false;
-    }
-    document.body.style.overflow = this.isRawiMaximized ? 'hidden' : 'auto';
+  // När ljudet tar slut
+  this.currentAudio.onended = () => {
+    this.isPlaying = false;
+    this.currentTime = 0;
+    this.currentAudio = null;
     this.cdr.detectChanges();
-    setTimeout(() => {
-      if (boxElement) boxElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100); 
-  }
+  };
+}
 
-  zoomInRawi() {
-    if (this.fontSizeRawi < 36) { this.fontSizeRawi += 2; this.cdr.detectChanges(); }
-  }
-  zoomOutRawi() {
-    if (this.fontSizeRawi > 12) { this.fontSizeRawi -= 2; this.cdr.detectChanges(); }
-  }
+// ⏩ Hoppa 10 sekunder framåt
+skipForward10() {
+  if (!this.currentAudio) return;
+  
+  const newTime = this.currentAudio.currentTime + 10;
+  this.currentAudio.currentTime = Math.min(newTime, this.currentAudio.duration || newTime);
+  this.currentTime = this.currentAudio.currentTime;
+  this.cdr.detectChanges();
+}
 
+// ⏪ Hoppa 10 sekunder bakåt
+skipBackward10() {
+  if (!this.currentAudio) return;
+  
+  const newTime = this.currentAudio.currentTime - 10;
+  this.currentAudio.currentTime = Math.max(newTime, 0);
+  this.currentTime = this.currentAudio.currentTime;
+  this.cdr.detectChanges();
+}
+
+// 🎚️ Dra i tidslinjen (Slider)
+onSliderChange(event: any) {
+  if (this.currentAudio) {
+    this.currentAudio.currentTime = Number(event.target.value);
+    this.currentTime = this.currentAudio.currentTime;
+    this.cdr.detectChanges();
+  }
+}
+toggleRawiZoom(boxElement: HTMLElement) {
+  this.isRawiMaximized = !this.isRawiMaximized;
+  
+  if (!this.isRawiMaximized) {
+    // 🔄 Återställ både text och bild till sin ursprungliga storlek när man stänger
+    this.fontSizeRawi = window.innerWidth < 600 ? 14 : 20;
+    this.imageScale = 1; 
+    this.isExplanationShown = false;
+  }
+  
+  document.body.style.overflow = this.isRawiMaximized ? 'hidden' : 'auto';
+  this.cdr.detectChanges();
+  
+  setTimeout(() => {
+    if (boxElement) boxElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100); 
+}
+
+zoomInRawi() {
+  if (this.fontSizeRawi < 40) { 
+    this.fontSizeRawi += 4;  // Ökar med 4px så skillnaden syns tydligt!
+    this.imageScale += 0.15; 
+    console.log('Ny font-storlek för Tafsir:', this.fontSizeRawi); // Klicka på ➕ och kolla i Webbläsarens Console (F12)
+    this.cdr.detectChanges(); 
+  }
+}
+
+zoomOutRawi() {
+  if (this.fontSizeRawi > 12) { 
+    this.fontSizeRawi -= 3;  // Minskar textstorleken
+    this.imageScale -= 0.15; // Gör bilden mindre
+    this.cdr.detectChanges(); 
+  }
+}
 // تحديث دالة التكبير لتأخذ رقم الصندوق والعنصر الخاص به
 // 3. دالة تبديل وضع التكبير الموحدة المتوافقة مع ستايلك
 toggleBoxZoom(boxNumber: number, boxElement: HTMLElement) {
