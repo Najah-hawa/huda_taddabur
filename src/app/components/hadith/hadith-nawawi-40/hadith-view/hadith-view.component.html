@@ -80,19 +80,27 @@
   <!-- Huvudbilden som visas just nu -->
 <div class="carousel-image-wrapper">
   
-  <!-- Om bilden inte laddades (visar meddelande på arabiska) -->
+  <!-- ⌛ 1. Indikator medan bilden laddas -->
+  <div class="image-loader-spinner" *ngIf="isImageLoading && !isImageError">
+    <div class="spinner"></div>
+    <p>جاري تحميل الصورة...</p>
+  </div>
+
+  <!-- ⚠️ 2. Om bilden misslyckades -->
   <div class="image-error-box" *ngIf="isImageError">
     <span class="error-icon">⚠️</span>
     <p class="error-text-ar">تعذر تحميل الصورة، يرجى التأكد من الإتصال بالإنترنت</p>
   </div>
 
-  <!-- Om bilden laddas som den ska -->
+  <!-- 🖼️ 3. Själva bilden (Döljs med [hidden] tills den har laddats helt för att undvika flimmer) -->
   <img 
-    *ngIf="!isImageError"
+    *ngIf="imageUrls.length > 0 && !isImageError"
     [src]="imageUrls[currentImageIndex]" 
     alt="Hadith bild {{ currentImageIndex + 1 }}" 
     class="carousel-image"
+    (load)="onImageLoad()"
     (error)="onImageError()"
+    [hidden]="isImageLoading"
     [style.transform]="'scale(' + imageScale + ') rotate(' + currentImageRotation + 'deg)'"
     style="transition: transform 0.3s ease; transform-origin: center center;"
   />

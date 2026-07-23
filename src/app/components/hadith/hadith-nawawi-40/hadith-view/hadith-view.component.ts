@@ -33,17 +33,18 @@ export class HadithViewComponent implements OnInit, OnDestroy {
   private metaService = inject(Meta);
 
 title: string = 'الأربعين النووية'; // قيمة افتراضية عامة
-  name: string = '';
-  hintText: string = '';
-  imageUrls: string[] = [];
-  currentImageIndex: number = 0;
+name: string = '';
+hintText: string = '';
+imageUrls: string[] = [];
+currentImageIndex: number = 0;
 imageRotations: number[] = [];
 currentImageRotation: number = 0;
 isImageError: boolean = false;
-  imageScale: number = 1;
-  audioUrl: string = '';
-  explanation: string = '';
-  source: string = 'متن الأربعين النووية';
+isImageLoading: boolean = false;
+imageScale: number = 1;
+audioUrl: string = '';
+explanation: string = '';
+source: string = 'متن الأربعين النووية';
 
   // الصناديق الأربعة الموحدة
   box1Title: string = '';
@@ -100,24 +101,26 @@ ngOnInit() {
 loadHadithData(id: string) {
  const currentHadith = ALL_HADITHS[id];
   if (!currentHadith) return;// حماية برمجية في حال كان المعرّف غير موجود
+  
   this.isExplanationShown = false;
-
-  // [1] تحديث البيانات الأساسية المعروضة في الـ HTML
+  
+// 1. Nollställ bildstatus och rensa den gamla bilden direkt
+  this.resetImageState();
+  this.imageUrls = [];
+// 2. تحديث البيانات الأساسية المعروضة في الـ HTML
   this.name = currentHadith.name;
   this.audioUrl = currentHadith.audioUrl;
-  
-
 // 🖼️ Läs in bilden/bilderna och återställ index
-this.imageUrls = currentHadith.imageUrls || (currentHadith.imageUrl ? [currentHadith.imageUrl] : []);
-    this.currentImageIndex = 0;
+  this.imageUrls = currentHadith.imageUrls || (currentHadith.imageUrl ? [currentHadith.imageUrl] : []);
   this.imageRotations = currentHadith.imageRotations || [];
   this.currentImageIndex = 0;
   this.updateCurrentImageRotation();
+
   this.explanation = currentHadith.explanation;
   this.quizQuestions = currentHadith.quizQuestions; // إرسال بيانات الكويز ديناميكياً
   this.hintText = currentHadith.hintText;
 
-  // [2] تحديث عناوين ونصوص الصناديق الأربعة ديناميكياً
+// 3. تحديث عناوين ونصوص الصناديق الأربعة ديناميكياً
   this.box1Title = currentHadith.box1Title;
   this.box1Items = currentHadith.box1Items;
   
@@ -130,7 +133,7 @@ this.imageUrls = currentHadith.imageUrls || (currentHadith.imageUrl ? [currentHa
   this.box4Title = currentHadith.box4Title;
   this.box4Items = currentHadith.box4Items;
 
-  // [3] حساب أزرار التنقل الذكي (التالي والسابق) تلقائياً بناءً على رقم الحديث الحالي
+// 4. حساب أزرار التنقل الذكي (التالي والسابق) تلقائياً بناءً على رقم الحديث الحالي
   const currentNum = parseInt(id, 10);
   
   // زر السابق: إذا كان الحديث رقم 1 يرجع للقائمة الرئيسية، وإلا يرجع للحديث السابق
@@ -141,50 +144,63 @@ this.imageUrls = currentHadith.imageUrls || (currentHadith.imageUrl ? [currentHa
   this.routeAfter = currentNum < 20 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home';
   this.surahNext = currentNum < 20 ? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
 
-  // [4] تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
+// 5. تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);
-  this.isImageError = false;
 
-  // إجبار أنجولار على تحديث الواجهة فوراً
+// إجبار أنجولار على تحديث الواجهة فوراً
   this.cdr.detectChanges();
 }
 
-// I loadHadithData, reset-funktionen eller vid bildbyte:
+// 🔄 Hjälparfunktion för att nollställa bildtillståndet
 resetImageState() {
+  this.isImageLoading = true;
   this.isImageError = false;
+  this.currentImageRotation = 0;
 }
-// Körs när en bild misslyckas att ladda:
+// 2. Anropas från HTML när den nya bilden har laddats färdigt i DOM-en
+onImageLoad() {
+  this.isImageLoading = false;
+  this.isImageError = false;
+  this.cdr.detectChanges();
+}
+
+// 3. Anropas från HTML om bilden misslyckas
 onImageError() {
+  this.isImageLoading = false;
   this.isImageError = true;
   this.cdr.detectChanges();
 }
-
-// När du laddar data eller byter bild:
+// 🖼️ Uppdatera rotationen för den aktiva bilden
 updateCurrentImageRotation() {
-  // Hämtar rotationen för bilden på position currentImageIndex (standard är 0 om ingen finns)
   this.currentImageRotation = this.imageRotations[this.currentImageIndex] || 0;
 }
-// Uppdatera dina navigationsfunktioner så att de återställer felstatusen när man byter bild:
+
+// ▶️ Navigation i karusellen (Nästa bild)
 nextImage() {
   if (this.currentImageIndex < this.imageUrls.length - 1) {
     this.currentImageIndex++;
-    this.isImageError = false; // Återställ tillstånd
+    this.isImageLoading = true;
+    this.isImageError = false;
     this.updateCurrentImageRotation();
   }
 }
 prevImage() {
   if (this.currentImageIndex > 0) {
     this.currentImageIndex--;
-    this.isImageError = false; // Återställ tillstånd
+    this.isImageLoading = true;
+    this.isImageError = false;
     this.updateCurrentImageRotation();
   }
 }
-
-  // 🔢 Välj specifik bild direkt
-  setImageIndex(index: number) {
+// 🔘 Klick på prickarna i karusellen
+setImageIndex(index: number) {
+  if (index >= 0 && index < this.imageUrls.length) {
     this.currentImageIndex = index;
-    this.cdr.detectChanges();
+    this.isImageLoading = true;
+    this.isImageError = false;
+    this.updateCurrentImageRotation();
   }
+}
 
   private updateSEO(hadith: any) {
     // تحديث عنوان المتصفح العلوي (Title) ديناميكياً ليصبح مثلاً: "الحديث الأول: إنما الأعمال بالنيات - الأربعين النووية"
@@ -201,7 +217,7 @@ prevImage() {
       name: 'keywords', 
       content: hadith.metaKeywords || 'الأربعون النووية, أحاديث, تدبر' 
     });
-    }
+}
 
  // 🎵 Spela / Pausa ljud
 playHadithAudio(url: string | undefined) {
