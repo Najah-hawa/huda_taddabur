@@ -43,7 +43,7 @@
   <button class="modern-hadith-audio-btn-expanded" (click)="playHadithAudio(audioUrl)" [disabled]="isLoadingAudio">
     <ng-container *ngIf="isLoadingAudio">
       <span class="audio-spinner"></span>
-      جاري التحميل...
+      يحمل..
     </ng-container>
 
     <ng-container *ngIf="!isLoadingAudio">
@@ -78,15 +78,26 @@
    <div class="image-carousel-container" *ngIf="imageUrls.length > 0">
   
   <!-- Huvudbilden som visas just nu -->
-  <div class="carousel-image-wrapper">
- <img 
-  [src]="imageUrls[currentImageIndex]" 
-  alt="Hadith bild {{ currentImageIndex + 1 }}" 
-  class="carousel-image"
-  [style.transform]="'scale(' + imageScale + ') rotate(' + currentImageRotation + 'deg)'"
-  style="transition: transform 0.3s ease; transform-origin: center center;"
-/>
+<div class="carousel-image-wrapper">
+  
+  <!-- Om bilden inte laddades (visar meddelande på arabiska) -->
+  <div class="image-error-box" *ngIf="isImageError">
+    <span class="error-icon">⚠️</span>
+    <p class="error-text-ar">تعذر تحميل الصورة، يرجى التأكد من الإتصال بالإنترنت</p>
   </div>
+
+  <!-- Om bilden laddas som den ska -->
+  <img 
+    *ngIf="!isImageError"
+    [src]="imageUrls[currentImageIndex]" 
+    alt="Hadith bild {{ currentImageIndex + 1 }}" 
+    class="carousel-image"
+    (error)="onImageError()"
+    [style.transform]="'scale(' + imageScale + ') rotate(' + currentImageRotation + 'deg)'"
+    style="transition: transform 0.3s ease; transform-origin: center center;"
+  />
+
+</div>
 
   <!-- Kontroller längst ned (visas endast om det finns fler än 1 bild) -->
   <div class="carousel-controls" *ngIf="imageUrls.length > 1">

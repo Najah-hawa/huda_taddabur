@@ -299,3 +299,34 @@
   font-size: var(--dynamic-tafsir-size, 16px) !important;
   line-height: 1.8 !important;
 }
+
+
+
+.image-error-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 15px;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 10px;
+  color: #856404;
+  text-align: center;
+  margin: 15px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.error-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.error-text-ar {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+  direction: rtl;
+  font-family: inherit;
+}

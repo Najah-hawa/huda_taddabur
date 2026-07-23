@@ -45,7 +45,8 @@
       "updateMode": "prefetch",
       "resources": {
         "files": [
-          "/images/ryad/**/*"
+          "/images/ryad/**/*",
+           "/images/nawawi/**/*"
         ]
       }
     },{

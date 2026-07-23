@@ -39,6 +39,7 @@ title: string = 'الأربعين النووية'; // قيمة افتراضية 
   currentImageIndex: number = 0;
 imageRotations: number[] = [];
 currentImageRotation: number = 0;
+isImageError: boolean = false;
   imageScale: number = 1;
   audioUrl: string = '';
   explanation: string = '';
@@ -142,8 +143,19 @@ this.imageUrls = currentHadith.imageUrls || (currentHadith.imageUrl ? [currentHa
 
   // [4] تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);
+  this.isImageError = false;
 
   // إجبار أنجولار على تحديث الواجهة فوراً
+  this.cdr.detectChanges();
+}
+
+// I loadHadithData, reset-funktionen eller vid bildbyte:
+resetImageState() {
+  this.isImageError = false;
+}
+// Körs när en bild misslyckas att ladda:
+onImageError() {
+  this.isImageError = true;
   this.cdr.detectChanges();
 }
 
@@ -152,17 +164,18 @@ updateCurrentImageRotation() {
   // Hämtar rotationen för bilden på position currentImageIndex (standard är 0 om ingen finns)
   this.currentImageRotation = this.imageRotations[this.currentImageIndex] || 0;
 }
-// ⏩ Nästa bild
+// Uppdatera dina navigationsfunktioner så att de återställer felstatusen när man byter bild:
 nextImage() {
   if (this.currentImageIndex < this.imageUrls.length - 1) {
     this.currentImageIndex++;
+    this.isImageError = false; // Återställ tillstånd
     this.updateCurrentImageRotation();
   }
 }
-
 prevImage() {
   if (this.currentImageIndex > 0) {
     this.currentImageIndex--;
+    this.isImageError = false; // Återställ tillstånd
     this.updateCurrentImageRotation();
   }
 }
