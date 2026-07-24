@@ -97,13 +97,35 @@ ngOnInit() {
     }
   });
 }
+// ⏹️ 1. Skapa en funktion som helt stoppar och nollställer ljudet
+// 🛑 Stoppar och nollställer allt ljud samt talsyntes
+stopAudio() {
+  if (this.currentAudio) {
+    this.currentAudio.pause();
+    this.currentAudio.currentTime = 0;
+    this.currentAudio = null;
+  }
+  this.isPlaying = false;
+  this.isLoadingAudio = false;
+  this.currentTime = 0;
 
+  // Stoppa talsyntes om den körs
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+
+  this.cdr.detectChanges();
+}
+
+// 🔄 2. Anropa stopAudio() direkt i loadHadithData()
 loadHadithData(id: string) {
  const currentHadith = ALL_HADITHS[id];
   if (!currentHadith) return;// حماية برمجية في حال كان المعرّف غير موجود
   
+  // 🛑 Stoppa pågående ljud DIREKT när ny Hadith laddas
+  this.stopAudio();
+
   this.isExplanationShown = false;
-  
 // 1. Nollställ bildstatus och rensa den gamla bilden direkt
   this.resetImageState();
   this.imageUrls = [];
@@ -223,7 +245,12 @@ setImageIndex(index: number) {
 playHadithAudio(url: string | undefined) {
   if (!url) return;
 
-  // 1. Om ljudet redan spelas -> Pausa
+  // 🔄 Om vi har ett ljud laddat men URL:en inte matchar den nya -> Stoppa det gamla ljudet!
+  if (this.currentAudio && !this.currentAudio.src.endsWith(url)) {
+    this.stopAudio();
+  }
+
+  // 1. Om samma ljud redan spelas -> Pausa
   if (this.currentAudio && this.isPlaying) {
     this.currentAudio.pause();
     this.isPlaying = false;
@@ -231,7 +258,7 @@ playHadithAudio(url: string | undefined) {
     return;
   }
 
-  // 2. Om ljudet finns men är pausat -> Fortsätt spela
+  // 2. Om samma ljud finns men är pausat -> Fortsätt spela
   if (this.currentAudio && !this.isPlaying) {
     this.isPlaying = true;
     this.cdr.detectChanges();
@@ -239,7 +266,7 @@ playHadithAudio(url: string | undefined) {
     return;
   }
 
-  // Stäng av eventuell talsyntes om den körs i bakgrunden
+  // Stäng av eventuell talsyntes
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
   }
@@ -250,7 +277,6 @@ playHadithAudio(url: string | undefined) {
   // Skapa nytt Audio-objekt
   this.currentAudio = new Audio(url);
 
-  // När filens metadata har laddats (totaltid osv)
   this.currentAudio.onloadedmetadata = () => {
     if (this.currentAudio) {
       this.duration = this.currentAudio.duration;
@@ -259,14 +285,12 @@ playHadithAudio(url: string | undefined) {
     }
   };
 
-  // Uppdatera tidsindikatorn kontinuerligt
   this.currentAudio.ontimeupdate = () => {
     if (!this.currentAudio) return;
     this.currentTime = this.currentAudio.currentTime;
     this.cdr.detectChanges();
   };
 
-  // När spårningen startar
   this.currentAudio.play()
     .then(() => {
       this.isPlaying = true;
@@ -280,7 +304,6 @@ playHadithAudio(url: string | undefined) {
       this.cdr.detectChanges();
     });
 
-  // När ljudet tar slut
   this.currentAudio.onended = () => {
     this.isPlaying = false;
     this.currentTime = 0;
@@ -445,9 +468,8 @@ private applyFontChangeDirect(element: HTMLElement, size: number) {
 
   startHadithQuiz() { this.showQuizHadith = true; }
 
-  ngOnDestroy() {
-    document.body.style.overflow = 'auto';
-    if (this.currentAudio) { this.currentAudio.pause(); this.currentAudio = null; }
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) { window.speechSynthesis.cancel(); }
-  }
+ngOnDestroy() {
+  document.body.style.overflow = 'auto';
+  this.stopAudio(); // Sköter stopp av både Audio och speechSynthesis!
+}
 }

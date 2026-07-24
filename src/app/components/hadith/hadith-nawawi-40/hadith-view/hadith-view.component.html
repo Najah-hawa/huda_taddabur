@@ -80,19 +80,19 @@
   <!-- Huvudbilden som visas just nu -->
 <div class="carousel-image-wrapper">
   
-  <!-- ⌛ 1. Indikator medan bilden laddas -->
+  <!-- 1. Spinnern ligger som ett lager ovanpå (visas när isImageLoading är true) -->
   <div class="image-loader-spinner" *ngIf="isImageLoading && !isImageError">
     <div class="spinner"></div>
     <p>جاري تحميل الصورة...</p>
   </div>
 
-  <!-- ⚠️ 2. Om bilden misslyckades -->
+  <!-- 2. Felmeddelande ifall bilden misslyckas -->
   <div class="image-error-box" *ngIf="isImageError">
     <span class="error-icon">⚠️</span>
     <p class="error-text-ar">تعذر تحميل الصورة، يرجى التأكد من الإتصال بالإنترنت</p>
   </div>
 
-  <!-- 🖼️ 3. Själva bilden (Döljs med [hidden] tills den har laddats helt för att undvika flimmer) -->
+  <!-- 3. Bilden laddas i bakgrunden och triggar (load) direkt när den är klar -->
   <img 
     *ngIf="imageUrls.length > 0 && !isImageError"
     [src]="imageUrls[currentImageIndex]" 
@@ -100,13 +100,12 @@
     class="carousel-image"
     (load)="onImageLoad()"
     (error)="onImageError()"
-    [hidden]="isImageLoading"
+    [style.opacity]="isImageLoading ? '0' : '1'"
     [style.transform]="'scale(' + imageScale + ') rotate(' + currentImageRotation + 'deg)'"
-    style="transition: transform 0.3s ease; transform-origin: center center;"
+    style="transition: opacity 0.2s ease, transform 0.3s ease; transform-origin: center center;"
   />
 
 </div>
-
   <!-- Kontroller längst ned (visas endast om det finns fler än 1 bild) -->
   <div class="carousel-controls" *ngIf="imageUrls.length > 1">
     
