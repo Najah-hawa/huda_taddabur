@@ -2,6 +2,7 @@
   
   <!-- همسة الحديث الديناميكية -->
   <app-surah-hint
+  *ngIf="hintText && hintText.trim() !== ''"
     [surahName]="'همسة من ' + ' ' + name"
     [hintText]="hintText">
   </app-surah-hint>
@@ -17,7 +18,7 @@
   <div class="hadith-page-container">
 
   <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
-<div #hadithBox class="fawaed-box-container mini hadith-main-box" [class.maximized-style]="isRawiMaximized" style="margin-top: 5px; position: relative;">
+<div #hadithBox class="fawaed-box-container mini hadith-main-box"*ngIf="imageUrls && imageUrls.length > 0 && imageUrls[0]" [class.maximized-style]="isRawiMaximized" style="margin-top: 5px; position: relative; ">
 
   <div class="box-container">
     <app-zoom-controls

@@ -72,22 +72,53 @@ export const routes: Routes = [
     path: 'quiz/mohamad-wives',
     loadComponent: () => import('./components/quiz/mohamad-wives/mohamad-wives.component').then(m => m.MohamadWivesComponent)
   },
+
+
 // ⬇️ هنا نقوم بإضافة مسارات الحديث الجديدة بأسلوب الـ Lazy Loading ⬇️
   {
     path: 'hadith',
     loadComponent: () => import('./components/hadith/ryad-nawawi-menu/ryad-nawawi-menu.component').then(m => m.RyadNawawiMenuComponent)
   },
+
+  // 2. Om man skriver 'hadith/hadith-menu' (gamla länken) -> Omdirigera till nya menyn
   {
     path: 'hadith/hadith-menu',
-    loadComponent: () => import('./components/hadith/hadith-nawawi-40/hadith-menu/hadith-menu.component').then(m => m.HadithMenuComponent)
+    redirectTo: 'hadith/hadith-nawawi-40/menu',
+    pathMatch: 'full'
   },
+
   {
-  // :id تعني أن هذا الجزء من الرابط متغير (يمكن أن يكون 1، 2، 3 حتى 42)
-  path: 'hadith/hadith-nawawi-40/:id',
-  loadComponent: () => 
-    import('./components/hadith/hadith-nawawi-40/hadith-view/hadith-view.component')
-      .then(m => m.HadithViewComponent)
+    path: 'hadith/ryad-alsalihin',
+    loadComponent: () => 
+      import('./components/hadith/ryad-alsalihin-bab-menu/ryad-alsalihin.component')
+        .then(m => m.RyadAlsalihinComponent)
   },
+  // 🔄 3. DYNAMISK OMDIRIGERNG: Om man går till t.ex. 'hadith/ryad-bab-1' -> Omdirigera till 'hadith/ryad-bab-1/menu'
+  {
+    path: 'hadith/:category',
+    redirectTo: 'hadith/:category/menu',
+    pathMatch: 'full'
+  },
+
+  // 📋 4. Menyn för vilken bab/kategori som helst
+  {
+    path: 'hadith/:category/menu',
+    loadComponent: () => 
+      import('./components/hadith/hadith-nawawi-40/hadith-menu/hadith-menu.component')
+        .then(m => m.HadithMenuComponent)
+  },
+
+  // 📖 5. Visning av en specifik hadith för vilken bab/kategori som helst
+  {
+    path: 'hadith/:category/:id',
+    loadComponent: () => 
+      import('./components/hadith/hadith-nawawi-40/hadith-view/hadith-view.component')
+        .then(m => m.HadithViewComponent)
+  }, 
+
+
+/*
+  
   {
     path: 'hadith/ryad-alsalihin',
     loadComponent: () => import('./components/hadith/ryad/ryad-alsalihin-bab-menu/ryad-alsalihin.component').then(m => m.RyadAlsalihinComponent)
@@ -211,6 +242,6 @@ export const routes: Routes = [
     path: 'hadith/ryad/bab-2/hadith-24',
     loadComponent: () => import('./components/hadith/ryad/bab-2/hadith-24/hadith-24.component').then(m => m.Hadith24Component)
   }
-  ,
+  , */
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

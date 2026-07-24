@@ -1,0 +1,14 @@
+<h1 class="basmala">﴿ أبواب كتاب رياض الصالحين ﴾</h1>
+
+<div class="parts-container">
+  <p class="choose-text-1"> اختر الباب </p>
+  
+  <div 
+    *ngFor="let bab of babsList" 
+    class="part-box" 
+    [routerLink]="['/hadith', bab.id, 'menu']" 
+    routerLinkActive="active">
+    
+    <div class="choose-text">{{ bab.title }}</div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import { FooterInfoComponent } from '../../../footer-info/footer-info.component'
 import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
 import { NextBeforeSurahMenyComponent } from '../../../next-before-surah-meny/next-before-surah-meny.component';
 import { ProvComponent } from '../../prov/prov.component';
-import { ALL_HADITHS } from './hadith-data';
+import { HADITH_CATEGORIES } from './hadith-registry';
 
 @Component({
   selector: 'app-hadith-view',
@@ -32,7 +32,7 @@ export class HadithViewComponent implements OnInit, OnDestroy {
   private titleService = inject(Title);
   private metaService = inject(Meta);
 
-title: string = 'الأربعين النووية'; // قيمة افتراضية عامة
+title: string = ' '; // قيمة افتراضية عامة
 name: string = '';
 hintText: string = '';
 imageUrls: string[] = [];
@@ -44,7 +44,7 @@ isImageLoading: boolean = false;
 imageScale: number = 1;
 audioUrl: string = '';
 explanation: string = '';
-source: string = 'متن الأربعين النووية';
+source: string = '';
 
   // الصناديق الأربعة الموحدة
   box1Title: string = '';
@@ -90,11 +90,12 @@ source: string = 'متن الأربعين النووية';
   showQuizHadith = false;
 
 ngOnInit() {
+ // 💡 استخدام paramMap مع دالة .get()
   this.route.paramMap.subscribe(params => {
-    const hadithId = params.get('id'); // يقرأ الـ id من الراوتر
-    if (hadithId) {
-      this.loadHadithData(hadithId); // يستدعي دالة شحن البيانات
-    }
+    const category = params.get('category') || 'nawawi-40';
+    const id = params.get('id') || '1';
+
+    this.loadHadithData(category, id);
   });
 }
 // ⏹️ 1. Skapa en funktion som helt stoppar och nollställer ljudet
@@ -118,10 +119,12 @@ stopAudio() {
 }
 
 // 🔄 2. Anropa stopAudio() direkt i loadHadithData()
-loadHadithData(id: string) {
- const currentHadith = ALL_HADITHS[id];
-  if (!currentHadith) return;// حماية برمجية في حال كان المعرّف غير موجود
-  
+loadHadithData(category: string, id: string) {
+const categoryObj = HADITH_CATEGORIES[category];
+  if (!categoryObj) return;// حماية برمجية في حال كان المعرّف غير موجود
+  // 2. جلب الحديث المطلوب
+  const currentHadith = categoryObj.data[id];
+  if (!currentHadith) return;
   // 🛑 Stoppa pågående ljud DIREKT när ny Hadith laddas
   this.stopAudio();
 
@@ -158,14 +161,26 @@ loadHadithData(id: string) {
 // 4. حساب أزرار التنقل الذكي (التالي والسابق) تلقائياً بناءً على رقم الحديث الحالي
   const currentNum = parseInt(id, 10);
   
-  // زر السابق: إذا كان الحديث رقم 1 يرجع للقائمة الرئيسية، وإلا يرجع للحديث السابق
-  this.routeBefore = currentNum > 1 ? `/hadith/hadith-nawawi-40/${currentNum - 1}` : '/home';
-  this.surahBefore = currentNum > 1 ? 'الحديث السابق' : 'القائمة الرئيسية';
-  
-  // زر التالي: إذا وصلنا للحديث 20 ينقل للقائمة الرئيسية، وإلا ينقل للحديث التالي
-  this.routeAfter = currentNum < 20 ? `/hadith/hadith-nawawi-40/${currentNum + 1}` : '/home';
-  this.surahNext = currentNum < 20 ? 'الحديث التالي' : 'العودة للقائمة الرئيسية';
+// 2. حساب إجمالي عدد الأحاديث/العناصر في الباب الحالي تلقائياً
+const totalHadiths = Object.keys(categoryObj.data).length;
 
+// ⬅️ زر السابق:
+// إذا كنا في العنصر الأول (1)، الزر يعود إلى قائمة الباب الحالي (`/hadith/:category/menu`)
+// وإلا ينتقل للعنصر السابق في نفس الباب
+this.routeBefore = currentNum > 1 
+  ? `/hadith/${category}/${currentNum - 1}` 
+  : `/hadith/${category}/menu`;
+
+this.surahBefore = currentNum > 1 ? 'الحديث السابق' : 'قائمة الأحاديث';
+
+// ➡️ زر التالي:
+// إذا لم نصل بعد لآخر عنصر في الباب، ننتقل للعنصر التالي بنفس الباب
+// وإذا وصلنا للحديث الأخير، يعود لقائمة الباب الحالي
+this.routeAfter = currentNum < totalHadiths 
+  ? `/hadith/${category}/${currentNum + 1}` 
+  : `/hadith/${category}/menu`;
+
+this.surahNext = currentNum < totalHadiths ? 'الحديث التالي' : 'العودة للقائمة';
 // 5. تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);
 

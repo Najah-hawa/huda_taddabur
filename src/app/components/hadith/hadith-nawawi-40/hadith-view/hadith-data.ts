@@ -1,4 +1,4 @@
-export const ALL_HADITHS: { [key: string]: any } = {
+export const NAWAWI_HADITHS: Record<string, any> = {
   '1': {
     title: 'الحديث الأول:', 
     name: 'الحديث الأول:  [الأعمال بالنيات]', 
