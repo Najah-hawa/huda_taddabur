@@ -1,6 +1,6 @@
 import { NAWAWI_HADITHS } from './hadith-data';
 import { RYAD_BAB1_HADITHS } from './ryad-bab1-data'; // حسب مسار الملف لديك
-
+import { RYAD_BAB2_HADITHS } from './ryad-bab2-data'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -9,5 +9,9 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-1': {
     title: 'رياض الصالحين - باب الإخلاص',
     data: RYAD_BAB1_HADITHS
+  },
+  'ryad-bab-2': {
+    title: 'رياض الصالحين - باب التوبة',
+    data: RYAD_BAB2_HADITHS
   }
 };

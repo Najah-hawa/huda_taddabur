@@ -338,7 +338,7 @@
 
 .carousel-image-wrapper {
   position: relative;
-  min-height: 250px; /* Ger en stabil höjd så att spinnern hamnar i mitten */
+  min-height: 150px; /* Ger en stabil höjd så att spinnern hamnar i mitten */
   display: flex;
   align-items: center;
   justify-content: center;
