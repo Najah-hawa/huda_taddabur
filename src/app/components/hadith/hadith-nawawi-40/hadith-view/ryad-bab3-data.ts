@@ -48,8 +48,8 @@ explanation: `
     title: 'الحديث الأول:', 
     name: '', 
     hintText: '',
-    audioUrl: '',
-    imageUrls: [ '/images/bab3/ryad-bab3-hadith1.png'],
+    audioUrl: 'audio/ryad-bab-3/hadith-25.m4a',
+    imageUrls: [ '/images/bab3/ryad-bab3-hadith1-1.jpeg'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -96,8 +96,8 @@ explanation: `
     title: 'الحديث الثاني:', 
     name: '', 
     hintText: '',
-    audioUrl: '',
-    imageUrls: [ '/images/bab3/ryad-bab3-hadith2.png'],
+    audioUrl: 'audio/ryad-bab-3/hadith-26.m4a',
+    imageUrls: [ '/images/bab3/ryad-bab3-hadith2.jpeg'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -145,8 +145,8 @@ explanation: `
     title: 'الحديث الثالث:', 
     name: '', 
     hintText: '',
-    audioUrl: '',
-    imageUrls: [ '/images/bab3/ryad-bab3-hadith3.png'],
+    audioUrl: 'audio/ryad-bab-3/hadith-27.m4a',
+    imageUrls: [ '/images/bab3/ryad-bab3-hadith3.jpeg'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -198,7 +198,7 @@ explanation: `
     title: 'الحديث الرابع:', 
     name: '', 
     hintText: '',
-    audioUrl: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-28.m4a',
     imageUrls: [ '/images/bab3/ryad-bab3-hadith4.png'],
 explanation: `
     <div class="explanation-content">
@@ -242,7 +242,7 @@ explanation: `
     title: 'الحديث الخامس:', 
     name: '', 
     hintText: '',
-    audioUrl: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-29.m4a',
     imageUrls: [ '/images/bab3/ryad-bab3-hadith5-1.png', '/images/bab3/ryad-bab3-hadith5-2.png'],
 explanation: `
     <div class="explanation-content">
@@ -298,7 +298,7 @@ explanation: `
     title: 'الحديث السادس:', 
     name: '', 
     hintText: '',
-    audioUrl: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-31.m4a',
     imageUrls: [ '/images/bab3/ryad-bab3-hadith6.png'],
 explanation: `
     <div class="explanation-content">
