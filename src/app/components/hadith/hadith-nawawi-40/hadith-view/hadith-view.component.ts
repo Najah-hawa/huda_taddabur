@@ -241,12 +241,12 @@ setImageIndex(index: number) {
 
   private updateSEO(hadith: any) {
     // تحديث عنوان المتصفح العلوي (Title) ديناميكياً ليصبح مثلاً: "الحديث الأول: إنما الأعمال بالنيات - الأربعين النووية"
-    this.titleService.setTitle(`${hadith.name} - الأربعين النووية`);
+    this.titleService.setTitle(`${hadith.name}  أحاديث رسول الله `);
 
     // تحديث وسم الوصف (Description) الخاص بجوجل
     this.metaService.updateTag({ 
       name: 'description', 
-      content: hadith.metaDescription || 'شرح وتدبر الأربعين النووية' 
+      content: hadith.metaDescription || 'شرح وتدبر ' 
     });
 
     // تحديث وسم الكلمات المفتاحية (Keywords)
