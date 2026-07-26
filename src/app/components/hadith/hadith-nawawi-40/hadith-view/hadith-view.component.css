@@ -89,11 +89,11 @@
     padding: 10px !important;
   }
  
-  /* إخفاء حاوية الأزرار بالكامل من الشاشة */
+  /* إخفاء حاوية الأزرار بالكامل من الشاشة 
   app-zoom-controls,
   .box-container {
     display: none !important;
-  }
+  }*/
 
   /* إلغاء الهامش العلوي الذي تركناه للأزرار، لترتفع النصوص بشكل أنيق */
   .verse-wrapper {
@@ -385,4 +385,144 @@ position: absolute;
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+.hadith-frame-wrapper {
+  display: inline-block;
+  position: relative;
+  padding: 20px; /* Anpassa utrymmet mellan ramen och hadith-bilden */
+  
+  /* Sätt ramens tjocklek */
+  border: 30px solid transparent; 
+  
+  /* Länka till din ram-bild */
+  border-image-source: url('/icons/frame.png'); 
+  
+  /* Slice-värdet bestämmer var ramen ska skäras (i pixlar från kanten) */
+  border-image-slice: 100; /* Testa t.ex. 60, 80 eller 100 beroende på ramens mönster */
+  
+  /* Sidorna upprepas snyggt när bilden blir längre */
+  border-image-repeat: repeat; 
+  
+  max-width: 100%;
+}
+
+.carousel-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* الحاوية الرئيسية - بدون خلفية كارت متكلفة */
+.fawaed-box-container.box1-container {
+  background: transparent;
+  padding: 10px 5px;
+}
+
+/* العنوان */
+/* توسيط الـ Wrapper باستخدام Flexbox لضمان التوسيط المطلق */
+.benefit-title-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-bottom: 25px !important;
+  text-align: center;
+}
+
+/* تنسيق العنوان */
+.benefit-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  color: #3d5236;
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+  padding-bottom: 10px;
+  margin: 0 !important;
+}
+
+/* تنسيق الماسة الذهبية على الطرفين */
+.benefit-title .diamond-icon {
+  color: #e6b800; /* لون أصفر ذهبي لامع ومطابق لمنتصف الخط */
+  font-size: 0.85em; /* حجم متناسق مع النص */
+  margin: 0 8px; /* مسافة بسيطة بين الماسة والعنوان */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* النجمة الذهبية */
+.benefit-title .star-icon {
+  color: #c5a059;
+  font-size: 1.1em;
+}
+
+/* الخط المدرّج أسفل العنوان */
+.benefit-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #3d5236, #e6b800, #c5a059, #e6b800, #3d5236);
+}
+/* القائمة الرئيسية */
+.custom-presentation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  counter-reset: fawaed-counter;
+}
+
+/* الخط العمودي الناعم الذي يربط الفوائد معاً */
+.custom-presentation-list::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 14px; /* يوضع خلف الأرقام مباشرة */
+  width: 2px;
+  background-color: #e2ded4; /* خط بيج غامق/زيتي باهت */
+}
+
+/* عنصر الفائدة - مجرد نص أنيق ومريح بدون كارت */
+.custom-presentation-list li {
+  position: relative;
+  padding-right: 42px; /* مسافة لترك مجال للرقم والخط */
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  background: transparent; /* إزالة خلفية الكارت تماماً */
+  box-shadow: none;
+  border: none;
+}
+
+/* الرقم على الخط العمودي */
+.custom-presentation-list li::before {
+  counter-increment: fawaed-counter;
+  content: counter(fawaed-counter);
+  position: absolute;
+  right: 0;
+  top: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #3d5236; /* لون زيتي داكن */
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(61, 82, 54, 0.2);
+  z-index: 1; /* ليكون فوق الخط */
 }

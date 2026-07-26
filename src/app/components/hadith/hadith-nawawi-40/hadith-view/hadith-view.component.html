@@ -18,7 +18,7 @@
   <div class="hadith-page-container">
 
   <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
-<div #hadithBox class="fawaed-box-container mini hadith-main-box"*ngIf="imageUrls && imageUrls.length > 0 && imageUrls[0]" [class.maximized-style]="isRawiMaximized" style="margin-top: 5px; position: relative; ">
+<div #hadithBox class="fawaed-box-container mini hadith-main-box"*ngIf="imageUrls && imageUrls.length > 0 && imageUrls[0]" [class.maximized-style]="isRawiMaximized" style="margin-top: 0px; position: relative; ">
 
   <div class="box-container">
     <app-zoom-controls
@@ -94,6 +94,7 @@
   </div>
 
   <!-- 3. Bilden laddas i bakgrunden och triggar (load) direkt när den är klar -->
+   <div class="hadith-frame-wrapper"> 
   <img 
     *ngIf="imageUrls.length > 0 && !isImageError"
     [src]="imageUrls[currentImageIndex]" 
@@ -105,7 +106,7 @@
     [style.transform]="'scale(' + imageScale + ') rotate(' + currentImageRotation + 'deg)'"
     style="transition: opacity 0.2s ease, transform 0.3s ease; transform-origin: center center;"
   />
-
+</div>
 </div>
   <!-- Kontroller längst ned (visas endast om det finns fler än 1 bild) -->
   <div class="carousel-controls" *ngIf="imageUrls.length > 1">
@@ -198,7 +199,12 @@
     (onZoomOut)="zoomOutBox1(box1)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box1Title }}</h2>
+
+<div class="benefit-title-wrapper">
+  <h2 class="benefit-title">
+    <span class="diamond-icon">✦</span> {{ box1Title }} <span class="diamond-icon">✦</span>
+  </h2>
+</div>
 
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
@@ -222,8 +228,12 @@
     (onZoomOut)="zoomOutBox2(box2)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box2Title }}</h2>
 
+  <div class="benefit-title-wrapper">
+  <h2 class="benefit-title">
+    <span class="diamond-icon">✦</span> {{ box2Title }} <span class="diamond-icon">✦</span>
+  </h2>
+</div>
   <div class="box-list-wrapper">
    <ul class="custom-presentation-list">
       <li *ngFor="let item of box2Items">
@@ -246,8 +256,11 @@
     (onZoomOut)="zoomOutBox3(box3)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box3Title }}</h2>
-
+  <div class="benefit-title-wrapper">
+  <h2 class="benefit-title">
+    <span class="diamond-icon">✦</span> {{ box3Title }} <span class="diamond-icon">✦</span>
+  </h2>
+</div>
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
       <li *ngFor="let item of box3Items">
@@ -270,8 +283,11 @@
     (onZoomOut)="zoomOutBox4(box4)">
   </app-zoom-controls>
 
-  <h2 class="benefit-title" style="font-size: 1.2em; margin: 0; font-weight: bold;">{{ box4Title }}</h2>
-
+ <div class="benefit-title-wrapper">
+  <h2 class="benefit-title">
+    <span class="diamond-icon">✦</span> {{ box4Title }} <span class="diamond-icon">✦</span>
+  </h2>
+</div>
   <div class="box-list-wrapper">
     <ul class="custom-presentation-list">
       <li *ngFor="let item of box4Items">

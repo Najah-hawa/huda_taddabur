@@ -1,14 +1,12 @@
 /* الحاوية المطلقة التي تجمع الأزرار في أعلى اليسار */
 .fawaed-controls-group {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 6px;
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 10;
+  width: 100%;
+  margin: 10px 0;
 }
-
 /* الستايل الموحد الذهبي لجميع الأزرار */
 .fawaed-btn-action {
   background-color: #b89b3f;
@@ -61,4 +59,11 @@
 .fawaed-controls-group.in-full-presentation .fawaed-btn-action:hover {
   background-color: #967d2f; /* هوفر ذهبي غامق للأزرار العادية */
   transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .fawaed-controls-group {
+    justify-content: flex-end; /* نقل الأزرار لأقصى اليسار في واجهات RTL */
+    padding-left: 20px; /* مسافة بسيطة عن حافة الشاشة */
+  }
 }
