@@ -189,7 +189,7 @@ this.routeBefore = currentNum > 1
   ? `/hadith/${category}/${currentNum - 1}` 
   : `/hadith/ryad-alsalihin`;
 
-this.surahBefore = currentNum > 1 ? 'الحديث السابق' : ' القائمة الرئيسية';
+this.surahBefore = currentNum > 1 ? ' السابق' : ' القائمة ';
 
 // ➡️ زر التالي:
 // إذا لم نصل بعد لآخر عنصر في الباب، ننتقل للعنصر التالي بنفس الباب
@@ -198,7 +198,7 @@ this.routeAfter = currentNum < totalHadiths
   ? `/hadith/${category}/${currentNum + 1}` 
   : `/hadith/ryad-alsalihin`;
 
-this.surahNext = currentNum < totalHadiths ? 'الحديث التالي' : 'العودة للقائمة';
+this.surahNext = currentNum < totalHadiths ? ' التالي' : ' القائمة';
 } 
 // 5. تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);

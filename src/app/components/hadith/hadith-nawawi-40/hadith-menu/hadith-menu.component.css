@@ -64,7 +64,7 @@ display: flex !important;
   max-width: 550px; /* ليناسب عرض المحتوى */
   
   /* 🌟 المسافات الخارجية: (فوق - يمين - تحت - يسار) */
-  margin-top: 25px !important;    /* إبعاد الشريط عن همسة سورة النبأ من الأعلى */
+  margin-top: 35px !important;    /* إبعاد الشريط عن همسة سورة النبأ من الأعلى */
   margin-bottom: 25px !important; /* إبعاد الشريط عن عنوان "سورة النبأ" من الأسفل */
   margin-left: auto !important;
   margin-right: auto !important;
