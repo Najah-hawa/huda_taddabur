@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { SurahHintComponent } from '../../../surah-hint/surah-hint.component';
-import { FooterInfoComponent } from '../../../footer-info/footer-info.component';
-import { ZoomControlsComponent } from '../../zoom-controls/zoom-controls.component';
-import { NextBeforeSurahMenyComponent } from '../../../next-before-surah-meny/next-before-surah-meny.component';
-import { ProvComponent } from '../../prov/prov.component';
+import { SurahHintComponent } from '../../surah-hint/surah-hint.component';
+import { FooterInfoComponent } from '../../footer-info/footer-info.component';
+import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component';
+import { NextBeforeSurahMenyComponent } from '../../next-before-surah-meny/next-before-surah-meny.component';
+import { ProvComponent } from '../prov/prov.component';
 import { HADITH_CATEGORIES } from './hadith-registry';
 
 @Component({

@@ -114,7 +114,7 @@ export const routes: Routes = [
   {
     path: 'hadith/:category/menu',
     loadComponent: () => 
-      import('./components/hadith/hadith-nawawi-40/hadith-menu/hadith-menu.component')
+      import('./components/hadith/hadith-menu/hadith-menu.component')
         .then(m => m.HadithMenuComponent)
   },
 
@@ -122,7 +122,7 @@ export const routes: Routes = [
   {
     path: 'hadith/:category/:id',
     loadComponent: () => 
-      import('./components/hadith/hadith-nawawi-40/hadith-view/hadith-view.component')
+      import('./components/hadith/hadith-view/hadith-view.component')
         .then(m => m.HadithViewComponent)
   }, 
 

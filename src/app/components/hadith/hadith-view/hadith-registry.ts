@@ -1,9 +1,9 @@
-import { NAWAWI_HADITHS } from './hadith-data';
-import { RYAD_BAB1_HADITHS } from './ryad-bab1-data'; // حسب مسار الملف لديك
-import { RYAD_BAB2_HADITHS } from './ryad-bab2-data'; 
-import { RYAD_BAB3_HADITHS } from './ryad-bab3-data'; 
-import { RYAD_BAB4_HADITHS } from './ryad-bab4-data'; 
-import { NAWAWI_INTRO } from './intro-imam-nawawi'; 
+import { NAWAWI_HADITHS } from './data/hadith-data';
+import { RYAD_BAB1_HADITHS } from './data/ryad-bab1-data'; // حسب مسار الملف لديك
+import { RYAD_BAB2_HADITHS } from './data/ryad-bab2-data'; 
+import { RYAD_BAB3_HADITHS } from './data/ryad-bab3-data'; 
+import { RYAD_BAB4_HADITHS } from './data/ryad-bab4-data'; 
+import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
