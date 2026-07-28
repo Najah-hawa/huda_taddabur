@@ -1,19 +1,18 @@
 <div class="sura-nav-minimal">
-  <a class="nav-link prev" routerLink="{{RoutelinkBefore}}">
-    <span class="arrow">→</span>
-    <div class="nav-info">
-      <span class="label">السابق</span>
-      <span class="benefit-title">  {{ SurahBefore }}</span>
-    </div>
+  <!-- أقصى اليمين: زر السابق -->
+  <a class="nav-btn step-btn" [routerLink]="RoutelinkBefore">
+    <span class="arrow">→</span> {{ SurahBefore }}
   </a>
 
-  <a class="nav-link next" routerLink="{{RoutelinkAfter}}">
-    <div class="nav-info">
-      <span class="label"> التالي</span>
-      <span class="benefit-title">  {{ SurahNext }}</span>
-    </div>
-    <span class="arrow">←</span>
+  <!-- المنتصف: زر قائمة الأحاديث/الأبواب -->
+  <a class="nav-btn menu-btn" [routerLink]="MenuRoute">
+    القائمة الرئيسية
   </a>
-<ng-content></ng-content>
+
+  <!-- أقصى اليسار: زر التالي -->
+  <a class="nav-btn step-btn" [routerLink]="RoutelinkAfter">
+    {{ SurahNext }} <span class="arrow">←</span>
+  </a>
+
+  <ng-content></ng-content>
 </div>
-

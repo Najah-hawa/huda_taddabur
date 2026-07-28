@@ -1,6 +1,39 @@
 <h1 class="basmala">﴿ {{ titleHeader }} ﴾</h1>
 
 <div class="parts-container">
+<!-- 1️⃣ شريط الملاحة الخاص بالأربعين النووية (القرآن، الصفحة الرئيسية، المسابقات) -->
+<div class="navigation-bar" *ngIf="isNawawi">
+  <!-- أقصى اليمين: رابط القرآن الكريم -->
+  <a routerLink="/app-quran-parts" class="step-btn">
+    📖 القرآن الكريم
+  </a>
+
+  <!-- المنتصف: الرئيسية أو الفهرس العام -->
+  <a routerLink="/" class="nav-back-btn">
+   القائمة الرئيسية 
+  </a>
+
+  <!-- أقصى اليسار: مسابقات إسلامية -->
+  <a routerLink="/quiz" class="step-btn">
+    🏆 مسابقات إسلامية
+  </a>
+</div>
+
+<!-- 2️⃣ شريط الملاحة الخاص بـ رياض الصالحين (الباب السابق / قائمة الأبواب / الباب التالي) -->
+<div class="navigation-bar" *ngIf="!isNawawi">
+  <button class="step-btn" (click)="goToPreviousChapter()">
+    → الباب السابق
+  </button>
+
+  <button class="nav-back-btn" (click)="goToChaptersList()">
+    قائمة الأبواب
+  </button>
+
+  <button class="step-btn" (click)="goToNextChapter()">
+    الباب التالي ←
+  </button>
+</div>
+  
   <p class="choose-text-1"> اختر من القائمة </p>
   
   <div 
@@ -11,5 +44,5 @@
     
     <div class="choose-text">{{ hadithName }}</div>
   </div>
-
+ 
 </div>

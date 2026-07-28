@@ -62,8 +62,10 @@ source: string = '';
   quizQuestions: any;
 
   // روابط القائمة والتنقل (ستحسب تلقائياً بالدالة)
-  routeBefore: string = '/home';
-  surahBefore: string = 'القائمة الرئيسية';
+  category: string = '';
+  menuRoute: string = '';
+  routeBefore: string = '';
+  surahBefore: string = '';
   routeAfter: string = '';
   surahNext: string = '';
 
@@ -120,6 +122,11 @@ stopAudio() {
 
 // 🔄 2. Anropa stopAudio() direkt i loadHadithData()
 loadHadithData(category: string, id: string) {
+// Där du läser av category från URL (t.ex. params['category'] eller snapshot):
+this.category = category; // spara kategorin (t.ex. 'ryad-bab-1')
+
+// 🌟 Sätt mappen/menyns rutt här:
+this.menuRoute = `/hadith/${category}/menu`;
 const categoryObj = HADITH_CATEGORIES[category];
   if (!categoryObj) return;// حماية برمجية في حال كان المعرّف غير موجود
   // 2. جلب الحديث المطلوب
@@ -158,6 +165,17 @@ const categoryObj = HADITH_CATEGORIES[category];
   this.box4Title = currentHadith.box4Title;
   this.box4Items = currentHadith.box4Items;
 
+
+
+  if (category === 'nawawi-intro') {
+  // 🌟 Specialfall för ترجمة الإمام النووي
+  this.routeBefore = '/hadith/ryad-alsalihin';
+  this.surahBefore = 'أبواب رياض الصالحين';
+
+  this.routeAfter = '/hadith/ryad-bab-1/menu';
+  this.surahNext = 'الباب الأول: الإخلاص';
+
+} else {
 // 4. حساب أزرار التنقل الذكي (التالي والسابق) تلقائياً بناءً على رقم الحديث الحالي
   const currentNum = parseInt(id, 10);
   
@@ -169,18 +187,19 @@ const totalHadiths = Object.keys(categoryObj.data).length;
 // وإلا ينتقل للعنصر السابق في نفس الباب
 this.routeBefore = currentNum > 1 
   ? `/hadith/${category}/${currentNum - 1}` 
-  : `/hadith/${category}/menu`;
+  : `/hadith/ryad-alsalihin`;
 
-this.surahBefore = currentNum > 1 ? 'الحديث السابق' : 'قائمة الأحاديث';
+this.surahBefore = currentNum > 1 ? 'الحديث السابق' : ' القائمة الرئيسية';
 
 // ➡️ زر التالي:
 // إذا لم نصل بعد لآخر عنصر في الباب، ننتقل للعنصر التالي بنفس الباب
 // وإذا وصلنا للحديث الأخير، يعود لقائمة الباب الحالي
 this.routeAfter = currentNum < totalHadiths 
   ? `/hadith/${category}/${currentNum + 1}` 
-  : `/hadith/${category}/menu`;
+  : `/hadith/ryad-alsalihin`;
 
 this.surahNext = currentNum < totalHadiths ? 'الحديث التالي' : 'العودة للقائمة';
+} 
 // 5. تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);
 

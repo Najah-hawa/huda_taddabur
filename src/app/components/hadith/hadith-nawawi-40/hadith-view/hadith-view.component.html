@@ -8,13 +8,14 @@
   </app-surah-hint>
 
   <!-- أزرار التنقل الديناميكية بين الأحاديث -->
-  <app-next-before-surah-meny 
-    [RoutelinkBefore]="routeBefore" 
-    [SurahBefore]="surahBefore"
-    [RoutelinkAfter]="routeAfter" 
-    [SurahNext]="surahNext"> 
-  </app-next-before-surah-meny>
 
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="routeBefore" 
+  [SurahBefore]="surahBefore"
+  [RoutelinkAfter]="routeAfter" 
+  [SurahNext]="surahNext"
+  [MenuRoute]="'/hadith/' + category + '/menu'"> 
+</app-next-before-surah-meny>
   <div class="hadith-page-container">
 
   <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
@@ -289,7 +290,7 @@
   </h2>
 </div>
   <div class="box-list-wrapper">
-    <ul class="custom-presentation-list">
+    <ul class="custom-presentation-list ">
       <li *ngFor="let item of box4Items">
         <span [innerHTML]="item"></span>
       </li>

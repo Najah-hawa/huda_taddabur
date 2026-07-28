@@ -1,74 +1,61 @@
+
 .sura-nav-minimal {
-  display: flex;
-  justify-content: space-between;
-  margin: 3rem 0;
-  padding: 1rem 0;
-  border-top: 1px solid #e1cfb6; /* خط علوي خفيف جداً لفصل القسم فقط */
-  border-bottom: 1px solid #e1cfb6; /* خط علوي خفيف جداً لفصل القسم فقط */
-  direction: rtl;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+  max-width: 650px; /* ليناسب عرض البطاقة تحتها */
+  margin: 55px auto 25px auto;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
+/* تنسيق عام للأزرار كروابط */
+.nav-btn {
   text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  flex: 1;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-.nav-info {
-  display: flex;
-  flex-direction: column;
+/* زر قائمة الأحاديث بالمنتصف */
+.menu-btn {
+  background-color: #f0f4ef;
+  color: #3d5236;
+  border: 1px solid #d4dfd1;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
-/* زر السابقة - يمين */
-.prev {
-  border-left: 1px solid transparent; /* مساحة وهمية */
+.menu-btn:hover {
+  background-color: #3d5236;
+  color: #ffffff;
+  border-color: #3d5236;
+  transform: translateY(-1px);
 }
 
-/* زر التالية - يسار */
-.next {
-  text-align: left;
-  justify-content: flex-end;
+/* أزرار السابق والتالي على الأطراف */
+.step-btn {
+  background: transparent;
+  color: #3d5236;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 15px;
+  border: 1px solid transparent;
 }
 
-.label {
-  font-size: 0.8rem;
-  color: #a67c52; /* اللون الذهبي الخافت من تصميمك */
-  margin-bottom: 2px;
-}
-
-.name {
-  font-family: ' sans-serif', serif;
-  font-size: 1.3rem;
-  color: #5c432c; /* البني الداكن الخاص بك */
-  transition: color 0.3s ease;
+.step-btn:hover {
+  background-color: #e8e4d9;
+  color: #2c3e50;
 }
 
 .arrow {
-  font-size: 1.5rem;
-  color: #a67c52;
-  margin: 0 10px;
-  transition: transform 0.3s ease;
-}
-
-/* تأثير التمرير - نكتفي بتغيير اللون وتحريك السهم قليلاً */
-.nav-link:hover .name {
-  color: #8B4513; /* يغمق اللون قليلاً */
-}
-
-.nav-link:hover .arrow {
-  transform: translateX(5px); /* تحريك السهم لإعطاء شعور بالتفاعل */
-}
-
-.prev:hover .arrow {
-  transform: translateX(5px); /* للجهة الأخرى */
-}
-
-/* للموبايل */
-@media (max-width: 480px) {
-  .sura-nav-minimal {
-    gap: 1.5rem;
-  }
+  font-size: 1.1em;
 }

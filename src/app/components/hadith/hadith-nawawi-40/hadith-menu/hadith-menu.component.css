@@ -52,3 +52,74 @@
 .active {
   border: 2px solid #C5A880;
 }
+
+
+
+/* شريط التنقل العلوي */
+.navigation-bar {
+display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+  max-width: 550px; /* ليناسب عرض المحتوى */
+  
+  /* 🌟 المسافات الخارجية: (فوق - يمين - تحت - يسار) */
+  margin-top: 25px !important;    /* إبعاد الشريط عن همسة سورة النبأ من الأعلى */
+  margin-bottom: 25px !important; /* إبعاد الشريط عن عنوان "سورة النبأ" من الأسفل */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+  padding: 0 10px;
+}
+
+/* زر العودة الناعم */
+.nav-back-btn {
+  background-color: #f0f4ef;
+  color: #3d5236;
+  border: 1px solid #d4dfd1;
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-back-btn:hover {
+background-color: #3d5236;
+  color: #ffffff;
+  border-color: #3d5236;
+}
+
+.nav-back-btn .arrow {
+  font-size: 1.1em;
+}
+
+/* تنقل الأبواب (السابق والتالي) */
+.chapter-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #8c8275;
+}
+
+.step-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #3d5236;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 15px;
+  transition: all 0.2s;
+}
+
+.step-btn:hover {
+  background-color: #e8e4d9;
+}
+
+.divider {
+  color: #c5a059;
+}

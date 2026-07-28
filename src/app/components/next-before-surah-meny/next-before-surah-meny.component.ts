@@ -1,5 +1,6 @@
-import { Component, Input  } from '@angular/core';
-import { RouterModule } from '@angular/router'; // 👈 مهم جداً
+import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-next-before-surah-meny',
   standalone: true,
@@ -8,11 +9,11 @@ import { RouterModule } from '@angular/router'; // 👈 مهم جداً
   styleUrl: './next-before-surah-meny.component.css'
 })
 export class NextBeforeSurahMenyComponent {
- @Input() SurahBefore: string = '';
- @Input() SurahNext: string = '';
- @Input() RoutelinkBefore : string = '';
- @Input() RoutelinkAfter : string = '';
+  @Input() SurahBefore: string = '';
+  @Input() SurahNext: string = '';
+  @Input() RoutelinkBefore: string = '';
+  @Input() RoutelinkAfter: string = '';
+  
+  // 🌟 إضافة رابط القائمة بالمنتصف (افتراضياً يذهب للقائمة الرئيسية)
+  @Input() MenuRoute: string = '/hadith/ryad-alsalihin'; 
 }
-
-
-

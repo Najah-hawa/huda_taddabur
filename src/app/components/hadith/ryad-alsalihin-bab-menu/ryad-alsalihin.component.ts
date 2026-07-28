@@ -12,6 +12,7 @@ import { Title, Meta } from '@angular/platform-browser'; // Importera Title och 
 })
 export class RyadAlsalihinComponent { // Implementera OnInit
 babsList = [
+    { id: 'nawawi-intro', title: 'مقدمة عن الإمام النووي' },
     { id: 'ryad-bab-1', title: 'باب الإخلاص وإحضار النية' },
     { id: 'ryad-bab-2', title: 'باب التوبة' },
     { id: 'ryad-bab-3', title: 'باب الصبر' }
