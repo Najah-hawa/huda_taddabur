@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http'; 
-import { FooterInfoComponent } from '../../footer-info/footer-info.component';
+import { FooterInfoComponent } from '../../shared/footer-info/footer-info.component';
 import { ZoomControlsComponent } from '../../hadith/zoom-controls/zoom-controls.component';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { NextBeforeSurahMenyComponent } from "../../next-before-surah-meny/next-before-surah-meny.component";
+import { NextBeforeSurahMenyComponent } from "../../shared/next-before-surah-meny/next-before-surah-meny.component";
 // 📥 استيراد بيانات نسب الرسول المحدثة (تأكدي من تعديل محتوى هذا الملف ليطابق النسب)
 import { hadithDetails } from './quiz-data';
 @Component({

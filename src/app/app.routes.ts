@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { JuzAmmaSurahsListComponent } from './components/parts/juz-30/juz-amma-surahs-list/juz-amma-surahs-list.component';
+import { HomeComponent } from './components/shared/home/home.component';
+import { JuzAmmaSurahsListComponent } from './components/quran/parts/juz-30/juz-amma-surahs-list/juz-amma-surahs-list.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -9,44 +9,44 @@ export const routes: Routes = [
   // Här använder vi Lazy Loading för surorna
   { 
     path: 'app-quran-parts', 
-    loadComponent: () => import('./components/parts/quran-parts/quran-parts.component').then(m => m.QuranPartsComponent) 
+    loadComponent: () => import('./components/quran/parts/quran-parts/quran-parts.component').then(m => m.QuranPartsComponent) 
   },
   // Lägg till alfatiha här:
   { 
     path: 'alfatiha', 
-    loadComponent: () => import('./components/alfatiha/alfatiha.component').then(m => m.AlfatihaComponent) 
+    loadComponent: () => import('./components/quran/alfatiha/alfatiha.component').then(m => m.AlfatihaComponent) 
   },
   {
     path: 'surah-78',
-    loadComponent: () => import('./components/parts/juz-30/surah-78/surah-78.component').then(m => m.Surah78Component) 
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-78/surah-78.component').then(m => m.Surah78Component) 
   },
   {
     path: 'surah-79',
-    loadComponent: () => import('./components/parts/juz-30/surah-79/surah-79.component').then(m => m.Surah79Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-79/surah-79.component').then(m => m.Surah79Component)
   },
   {
     path: 'surah-80',
-    loadComponent: () => import('./components/parts/juz-30/surah-80/surah-80.component').then(m => m.Surah80Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-80/surah-80.component').then(m => m.Surah80Component)
   },
   {
     path: 'surah-81',
-    loadComponent: () => import('./components/parts/juz-30/surah-81/surah-81.component').then(m => m.Surah81Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-81/surah-81.component').then(m => m.Surah81Component)
   },
   {
     path: 'surah-82',
-    loadComponent: () => import('./components/parts/juz-30/surah-82/surah-82.component').then(m => m.Surah82Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-82/surah-82.component').then(m => m.Surah82Component)
   },
   {
     path: 'surah-83',
-    loadComponent: () => import('./components/parts/juz-30/surah-83/surah-83.component').then(m => m.Surah83Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-83/surah-83.component').then(m => m.Surah83Component)
   },
   {
     path: 'surah-84',
-    loadComponent: () => import('./components/parts/juz-30/surah-84/surah-84.component').then(m => m.Surah84Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-84/surah-84.component').then(m => m.Surah84Component)
   },
     {
     path: 'surah-85',
-    loadComponent: () => import('./components/parts/juz-30/surah-85/surah-85.component').then(m => m.Surah85Component)
+    loadComponent: () => import('./components/quran/parts/juz-30/surah-85/surah-85.component').then(m => m.Surah85Component)
   },
 
 // ⬇️ هنا نقوم بإضافة مسارات الفقه الجديدة بأسلوب الـ Lazy Loading ⬇️
