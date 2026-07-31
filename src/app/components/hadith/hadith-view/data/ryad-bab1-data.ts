@@ -43,7 +43,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-1.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith1.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith1.png'],
 explanation: `
     <div class="explanation-content">
          <ul class="vocabulary-list">
@@ -113,7 +113,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-2.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith2.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith2.png'],
 explanation: `
     <div class="explanation-content">
     <ul class="vocabulary-list">
@@ -177,7 +177,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-3.m4a',
-    imageUrls:  [ '/images/bab1/ryad-bab1-hadith3.png'],
+    imageUrls:  [ '/images/ryad/bab1/ryad-bab1-hadith3.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -220,7 +220,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-4.m4a',
-    imageUrls:  [ '/images/bab1/ryad-bab1-hadith4.png'],
+    imageUrls:  [ '/images/ryad/bab1/ryad-bab1-hadith4.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -270,7 +270,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-5.m4a',
-    imageUrls:  [ '/images/bab1/ryad-bab1-hadith5-1.png','/images/bab1/ryad-bab1-hadith5-2.png' ],
+    imageUrls:  [ '/images/ryad/bab1/ryad-bab1-hadith5-1.png','/images/ryad/bab1/ryad-bab1-hadith5-2.png' ],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -316,7 +316,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl:  'audio/ryad-bab-1/hadith-6.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith6.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith6.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -380,7 +380,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-7.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith7.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith7.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -433,7 +433,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-8.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith8.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith8.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -489,7 +489,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-9.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith9.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith9.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -537,7 +537,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-10.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith10.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith10.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -583,7 +583,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-11.m4a',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith11-1.png', '/images/bab1/ryad-bab1-hadith11-2.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith11-1.png', '/images/ryad/bab1/ryad-bab1-hadith11-2.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -640,7 +640,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-1/hadith-12.mpeg',
-    imageUrls: [ '/images/bab1/ryad-bab1-hadith12-1.png', '/images/bab1/ryad-bab1-hadith12-2.png'],
+    imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith12-1.png', '/images/ryad/bab1/ryad-bab1-hadith12-2.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
