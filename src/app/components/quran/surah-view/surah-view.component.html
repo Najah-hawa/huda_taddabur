@@ -1,0 +1,19 @@
+<!-- همسة الحديث الديناميكية -->
+<!-- Visas BARA om surahData och surahData.hint existerar -->
+
+@if (surahData?.hint) {
+  <app-surah-hint
+    [surahName]="surahData.hint.surahName"
+    [hintText]="surahData.hint.hintText">
+  </app-surah-hint>
+} @else {
+  <p style="color: red;">Ingen hint-data hittades för denna sura (surahData är null/tom).</p>
+}
+<!-- Dynamisk Meny-navigering -->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="prevSurah.route" 
+  [SurahBefore]="prevSurah.name"
+  [RoutelinkAfter]="nextSurah.route" 
+  [SurahNext]="nextSurah.name"  
+  [MenuRoute]="'/'">
+</app-next-before-surah-meny>

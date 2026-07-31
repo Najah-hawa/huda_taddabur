@@ -4,6 +4,16 @@ import { JuzAmmaSurahsListComponent } from './components/quran/parts/juz-30/juz-
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
+
+  {
+    path: 'surah/:category/:id',
+    loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)
+  },
+  // För enstaka suror som Alfatiha om den inte har ett id under en kategori:
+  {
+    path: 'surah/:category',
+    loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)
+  },
   { path: 'juz-amma', component: JuzAmmaSurahsListComponent },
 
   // Här använder vi Lazy Loading för surorna
@@ -12,10 +22,11 @@ export const routes: Routes = [
     loadComponent: () => import('./components/quran/parts/quran-parts/quran-parts.component').then(m => m.QuranPartsComponent) 
   },
   // Lägg till alfatiha här:
+  /*
   { 
     path: 'alfatiha', 
     loadComponent: () => import('./components/quran/alfatiha/alfatiha.component').then(m => m.AlfatihaComponent) 
-  },
+  },*/
   {
     path: 'surah-78',
     loadComponent: () => import('./components/quran/parts/juz-30/surah-78/surah-78.component').then(m => m.Surah78Component) 

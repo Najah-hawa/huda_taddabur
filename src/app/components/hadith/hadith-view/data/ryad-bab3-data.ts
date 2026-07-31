@@ -301,7 +301,66 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-3/hadith-31.m4a',
+    imageUrls: [ '/images/bab3/hadith6-1-bab3.png', '/images/bab3/hadith6-2-bab3.png', '/images/bab3/hadith6-3-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> الراهب:</b><span> المتعبد من النصارى. </span></li>
+         <li><b> الغلام:</b><span> هو الصبي من الفطام الى البلوغ ... <br> واسمه: عبد الله بن تامر.
+         <li><b> الأكمه:</b><span> الذي ولد أعمى. </span></li>
+         <li><b> مفرق رأسه:</b><span>   وسط الرأس الذي يفرق فيه الشعر </span></li>
+         <li><b>نفر :</b><span> الرهط مادون العشرة. </span></li>
+         <li><b>جذوع </b><span> واحد من جذوع النخل </span></li>
+         <li><b> كنانتي:</b><span>  الجعبة التي تجعل فيها السهام.</span></li> المنشار: اله ذات أسنان يقطع بها الخشب </span></li>
+         <li><b>كبد القوس: </b><span>  وسطه.</span></li>
+        <li><b> صدغه: </b><span>مابين العين والأذن. </span></li>
+        <li><b> أفواه السكك: </b><span> الأزقة.</span></li>
+        <li><b> الأخدود: </b><span>  الشق العظيم في الأرض.</span></li>
+
+ 
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>     ١. استعمال المربي القصص في التوجيه لأن له تأثير كبير في  الموعظة. </b> ',
+    '<b>٢. جواز الكذب لإنقاذ المحترم من التعدي عليه بالضرب والإنقاذ النفس من الهلاك.. سواء كانت نفسه أم نفس غيره ... فهو يحمل نفس معنى الكذب للإصلاح بين خصمين. </b> ',
+    '<b>٣. التضحية في سبيل الدعوة إلى الله وإظهار الحق اذا كأن في ذلك مصلحة دينية عامة. </b> ',
+    '<b>٤. المفهوم الحقيقي للنصر هو انتصار المبدأ السليم والفكر الصحيح.</b> ',
+    '<b> ٥. الاهتمام بالأطفال أبلغ لاهتمام يقول الرافعي: ان طفل اليوم هو الناضج غذاً.</b> ',
+    '<b>٦. قول الراهب: (أي بني أنت اليوم أفضل مني) يحتمل معنيين:  <br> ١. تواضع العالم.  <br> ٢. المجتمع لن يتقدم ولن يتحسن إلا إذا تفوق التلميذ واستفاد من خبرة أستاذه ليحقق مستقبلاً أفضل. <br> ✓لذلك كان النبي يطلق فى أصحاب الألقاب العلمية (وأقرؤُهُم أبيٌّ وأفرَضُهُم زيدٌ) </b> ',
+    '<b>٧. تعلم صدق الدعاء و الالتجاء إلى الله وطريقة الدعاء والققة بالاجابة (اللهم اكفنيهم بما شئت).</b> ', 
+    '<b>٨. الاصرار على نشر الدعوة واظهار الحق وتحدي الباطل. </b> ', 
+    '<b>٩. ثبوت كرامات الأولياء.</b> ', 
+    '<b>١٠. فضل الثبات ع الدين وإن عُذب بأنواع العذاب ... كما وقع من بلال في أول إسلامه مع أنه كان يجوز أن يتلفظ بكلمة الكفر مع الايمان القلبي.</b> ', 
+
+],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+  '8': {
+    title: 'الحديث السابع:', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-31.m4a',
     imageUrls: [ '/images/bab3/hadith7-bab3.png'],
+      imageRotations: [-1],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -310,7 +369,7 @@ explanation: `
       </ul>
     </div>
   `,
-    box1Title: ' فوائد الحديث: ',
+    box1Title: ' فوائد الحديث ',
     box1Items: [
     '<b> ١. إن عدم الصبر ينافي التقوى. </b> ',
     '<b> ٢. جواز زيارة النساء للقبور ولو كان منكراً لنهاها الرسول عنه.</b> ',
@@ -322,6 +381,132 @@ explanation: `
  ],
     box2Title: '', 
     box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  }
+  ,
+   '9': {
+    title: 'الحديث الثامن:', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-32.m4a',
+    imageUrls: [ '/images/bab3/hadith8-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> صفيّه:</b><span>  حبيبه لأنه يصافيه الودّ ويخلص بمحبته.</span></li>
+        <li><b>احتسبه: </b><span> طلب الأجر من الله (ويدل على الصبر والتسليم).</span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>    ١. الإيمان هو أساس قبول العمل فالكافر لا ثواب له سواء صبر أم جزع. </b> ',
+    '<b>٢. من المصائب التي تنزل بالإنسان فقدان أحبته. </b>',
+    '<b> ٣. المبادرة لطلب الأجر من الله عند المصيبة وعند المكروهات ويحصل الأجر بالتسليم والصبر لأنه يدل على كمال الإيمان ، وعدم السخط لأنه يدل على ضعف الإيمان.</b>',
+    '<b>٤. الحث على الصبر والتسليم لقضاء الله وقدره لينال الجنة وأي جزاء أعظم من ذلك. </b>',
+],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+   '10': {
+    title: 'الحديث التاسع:', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-33.m4a',
+    imageUrls: [ '/images/bab3/hadith9-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> الطاعون:</b><span>    هو مرض دال على الموت كالوباء وهو مرض حاد سببه جرثومي ،<br>  والوباء هو عموم الأمراض. </span></li>
+
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>    ١. رحمة الله بالمؤمنين فما كان عقاب للكافرين جُعِلَ رحمةً وثواباً للمؤمنين.</b>',
+    '<b>٢. منع القدوم على بلد فيها الطاعون ومنع الخروج منها فراراً أمنه ... وقالت عائشه الفرار منه كالفرار من الزحف.</b>',
+    '<b>٣. التسليم لقضاء الله عند حلول الآفات.</b>',
+    '<b>٤. من لم يتصف بالصفات المذكوره من الصبر وعدم الفرار والاحتساب لا يكون شهيد ولو مات بالطاعون. </b>',
+    '<b>٥. دعوه المصاب الى الصبر والمكث في البلد لا يتنافى مع الأخذ بأسباب الوقاية والمداواة والاحتذار من العدوى.</b>',
+    '<b>٦. في الحديث تأكيد وإقرار على الحجر الصحي للمصابين بأمراض سارية.</b>'
+],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+   '11': {
+    title: 'الحديث العاشر :', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-34.m4a',
+    imageUrls: [ '/images/bab3/hadith10-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>ابتليته: </b><span>  اخبرته. </span></li>
+        <li><b>البلاء: </b><span> يكون بالخير والشر. </span></li>
+        <li><b>عوضته :</b><span>  ابدلته. </span></li>
+        <li><b>حبيبتيه :</b><span> عينيه. </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' سبب ورود الحديث ',
+    box1Items: [
+    '<b> عن انس: مرَّ بنا أبن أم مكتوم فسلم ، فقال رسول الله صلى الله عليه وسلم ألا أحدثكم بما حدثني به جبريل عليه السلام إن الله جل ثناؤه يقول حق علي من اخذت كريمتيه أن ليس له جزاء الا الجنة.</b>'
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+      '<b> ١. من ابتُلي يفقد بصره او جارحة من جوارحه فصبر واحتسب ورضي باختيار الله ناله افضل العوض وهي الجنة. </b>',
+      '<b>٢. كلما عظم الابتلاء عظم الأجر والجزاء على الصبر عليه. </b>',
+      '<b> ٣. ابتلاء الله للعبد ليس من سخطه عليه إما الدفاع مكروه او تكفير ذنب او رفع درجة.</b>',
+   ],
     box3Title: '',
     box3Items: [],
     box4Title: '',
