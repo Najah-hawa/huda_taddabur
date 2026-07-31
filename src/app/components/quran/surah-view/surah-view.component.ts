@@ -34,6 +34,13 @@ export class SurahViewComponent implements OnInit {
   prevSurah = { name: '', route: '' };
   nextSurah = { name: '', route: '' };
 
+  selectedTab: 'tadabbur' | 'visual' = 'tadabbur';
+  shown = new Set<number>();
+  expandedSections: { [key: number]: boolean } = {};
+    
+
+ // alfatihaQuestions = alfatihaQuestions;
+ // rubtTassweerySections = rubtTassweerySections;
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -84,5 +91,62 @@ export class SurahViewComponent implements OnInit {
         route: nextItem.category === 'alfatiha' ? '/surah/alfatiha' : `/surah/${nextItem.category}/${nextItem.key}`
       };
     }
+  }
+
+
+  toggleExpanded(index: number) {
+    this.expandedSections[index] = !this.expandedSections[index];
+  }
+    
+  onTabChange(tab: 'tadabbur' | 'visual') {
+    this.selectedTab = tab;
+  }
+    
+getVerseText(number: number): string {
+  // التأكد من وجود البيانات والآيات داخل السورة الحالية
+  if (!this.surahData || !this.surahData.verses) {
+    return '';
+  }
+
+  // 🌟 إضافة (v: any) حل مشكلة Parameter 'v' implicitly has an 'any' type
+  const verse = this.surahData.verses.find((v: any) => v.number === number);
+  
+  return verse ? `${verse.text} ﴿${verse.number}﴾` : '';
+}
+      
+  toggleVerse(index: number) {
+    if (this.shown.has(index)) {
+      this.shown.clear(); 
+    } else {
+      this.shown.clear(); 
+      this.shown.add(index); 
+    }
+  }
+    
+  speakTafseer(text: string | undefined) {
+    if (!text) return;
+    window.speechSynthesis.cancel();
+    const plainText = text.replace(/<[^>]*>/g, '');
+    const utterance = new SpeechSynthesisUtterance(plainText);
+    utterance.lang = 'ar';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  }
+  
+  playAyah(ayahNum: number) {
+    // 💡 KOMMENTAR FIX: Här stod det "سورة المطففين" i din kommentar, 
+    // men eftersom detta är Al-Fatiha ska surahNum vara 1, vilket du har satt helt rätt!
+    const surahNum = 1; 
+    
+    const formattedSurah = String(surahNum).padStart(3, '0');
+    const formattedAyah = String(ayahNum).padStart(3, '0');
+    
+    const audioUrl = `https://www.everyayah.com/data/Ayman_Sowaid_64kbps/${formattedSurah}${formattedAyah}.mp3`;
+    
+    window.speechSynthesis.cancel(); 
+    const audio = new Audio(audioUrl);
+    audio.play().catch(error => {
+      console.error("خطأ في التشغيل:", error);
+    });
   }
 }

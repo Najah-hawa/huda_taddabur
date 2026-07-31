@@ -17,3 +17,71 @@
   [SurahNext]="nextSurah.name"  
   [MenuRoute]="'/'">
 </app-next-before-surah-meny>
+
+<h1 class="visually-hidden" style="display:none;">
+  {{ surahData?.name }} - التفسير والتدبر
+</h1>
+
+<app-surah-tabs [surahName]="surahData?.name">
+  
+  <!-- 🟢 Tab 1: Tadabbur / الآيات والتفسير -->
+  <div tadabbur>
+    <app-surahs-start></app-surahs-start>
+    
+    <div class="verse-wrapper">
+      <div class="verse-block" *ngFor="let verse of surahData?.verses; let i = index">
+        <div class="verse-line" (click)="toggleVerse(i)">
+          <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
+            ▶️
+          </button>
+          <p class="ayah">{{ verse.text }}</p>
+          <div class="ayah-arrow"> 
+            <span class="ayah-number">﴿{{ verse.number }}﴾</span>
+            <span class="arrow" [class.open]="shown.has(i)">▼</span>
+          </div>
+        </div>
+        
+        <div class="tafsir" *ngIf="shown.has(i)">
+          <button (click)="speakTafseer(verse.tafsir || '')" class="audio-btn">
+             🔊 استمع للتفسير
+          </button>
+          <div [innerHTML]="verse.tafsir"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- 🔵 Tab 2: Visual / الربط التصويري -->
+  <div visual>
+    <div class="intro-summary" *ngIf="surahData?.introSummary">
+      <h3>ملخص السورة:</h3>
+      <p>{{ surahData.introSummary }}</p>
+    </div>
+
+    <div *ngFor="let section of surahData?.rubtTassweerySections; let i = index" class="map-block">
+      <h3 class="section-title">{{ section.title }}</h3>
+      <p class="section-desc">{{ section.description }}</p>
+      
+      <ul class="verse-list">
+        <li class="verse-item verse-main" *ngIf="section.verseNumbers?.length">
+          <span class="verse-text">{{ getVerseText(section.verseNumbers[0]) }}</span>
+          <button
+            *ngIf="section.verseNumbers.length > 1"
+            class="toggle-btn"
+            (click)="toggleExpanded(i)">
+            {{ expandedSections[i] ? '↑' : '⋮' }}
+          </button>
+        </li>
+        
+        <li
+          *ngFor="let num of section.verseNumbers?.slice(1)"
+          class="verse-item"
+          [class.extra]="true"
+          [class.show]="expandedSections[i]">
+          {{ getVerseText(num) }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</app-surah-tabs>
