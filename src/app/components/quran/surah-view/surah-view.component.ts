@@ -3,12 +3,12 @@ import { RouterModule, ActivatedRoute, Params } from '@angular/router';
 import { CommonModule } from '@angular/common'; 
 import { Title, Meta } from '@angular/platform-browser'; // 👈 Importera Title och Meta
 import { SurahHintComponent } from "../../shared/surah-hint/surah-hint.component";
-import { SurahsStartComponent } from '../surahs-start/surahs-start.component';
-import { SurahTabsComponent } from "../surah-tabs/surah-tabs.component"; 
-import { QuixTafserComponent } from '../quix-tafser/quix-tafser.component';
-import { FawaedOfSurahComponent } from '../fawaed-of-surah/fawaed-of-surah.component';
+import { SurahsStartComponent } from '../quran_shared_components/surahs-start/surahs-start.component';
+import { SurahTabsComponent } from "../quran_shared_components/surah-tabs/surah-tabs.component"; 
+import { QuixTafserComponent } from '../quran_shared_components/quix-tafser/quix-tafser.component';
+import { FawaedOfSurahComponent } from '../quran_shared_components/fawaed-of-surah/fawaed-of-surah.component';
 import { FooterInfoComponent } from '../../shared/footer-info/footer-info.component';
-import { NezzolComponent } from '../nezzol/nezzol.component';
+import { NezzolComponent } from '../quran_shared_components/nezzol/nezzol.component';
 import { NextBeforeSurahMenyComponent } from "../../shared/next-before-surah-meny/next-before-surah-meny.component";
 import { SURAH_ORDER, SURAH_REGISTRY} from './surah-registry'; // Eller vad din registry-fil heter
 @Component({
@@ -30,6 +30,12 @@ import { SURAH_ORDER, SURAH_REGISTRY} from './surah-registry'; // Eller vad din 
 })
 export class SurahViewComponent implements OnInit {
   surahData: any = null;
+
+// 🌟 Nya variabler för meny-vyn
+  isCategoryView = false;
+  categoryTitle = '';
+  categorySurahs: any[] = [];
+
 // Navigationsdata
   prevSurah = { name: '', route: '' };
   nextSurah = { name: '', route: '' };
@@ -48,26 +54,33 @@ export class SurahViewComponent implements OnInit {
       const category = params['category'] as string; // t.ex. 'alfatiha' eller 'juz-30'
       const id = params['id']as string;         // t.ex. 'surah-78'
       
-      console.log('Kategori:', category, 'ID:', id);
       // Hämta kategoriobjektet från registryt
       const categoryObj = SURAH_REGISTRY[category];
     if (categoryObj) {
-        if (id && categoryObj.data) {
-          // Om vi har ett specifikt ID (som för juz-30/surah-78)
-          this.surahData = categoryObj.data[id];
-        } else {
-          // Om det är t.ex. alfatiha direkt uten undersuror
-          this.surahData = categoryObj.data;
-        }
-      } else {
-        this.surahData = null;
-      }
+      if (id) {
+        // 1. Om vi har ett specifikt id (t.ex. /surah/juz-30/surah-78) -> Sura-detaljvy
+        this.isCategoryView = false;
+        this.surahData = categoryObj.data?.[id];
+        this.calculateNavigation(category, id);
 
-      console.log('Laddad surahData:', this.surahData);
-      // 2. Beräkna Automatiskt Nästa & Föregående Sura
-      this.calculateNavigation(category, id);
-    });
-  }
+      } else if (categoryObj.data && categoryObj.data.verses) {
+        // 2. 🌟 Om det inte finns något id ELLER om datan i kategorin DIREKT innehåller 'verses' (som Al-Fatiha) -> Sura-detaljvy!
+        this.isCategoryView = false;
+        this.surahData = categoryObj.data;
+        this.calculateNavigation(category, '');
+
+      } else {
+        // 3. Om det är en hel samling/Juz utan enskilt id (t.ex. /surah/juz-30) -> Kategori/Meny-vy
+        this.isCategoryView = true;
+        this.categoryTitle = categoryObj.title;
+        this.categorySurahs = SURAH_ORDER.filter(item => item.category === category);
+      }
+    } else {
+      this.isCategoryView = false;
+      this.surahData = null;
+    }
+  });
+}
 
   private calculateNavigation(category: string, id: string): void {
     // Hitta nuvarande suras index i listan
@@ -93,6 +106,10 @@ export class SurahViewComponent implements OnInit {
     }
   }
 
+// Hjälpmetod för dynamisk länk i menyn
+  getSurahRoute(surah: any): string {
+    return surah.category === 'alfatiha' ? '/surah/alfatiha' : `/surah/${surah.category}/${surah.key}`;
+  }
 
   toggleExpanded(index: number) {
     this.expandedSections[index] = !this.expandedSections[index];

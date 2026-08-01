@@ -5,7 +5,7 @@ export const alfatiha: Record<string, any> = {
     surahName: 'همسة من سورة الفاتحة',
     hintText: 'إدعُ الله دومًا واطلب منه الهداية، فهو الهادي إلى الصراط المستقيم.'
   },
-  
+  tafseerSource: 'تفسير ابن كثير',
   // 📖 Verser & Tafsir
   verses: [
          {number: 2, text: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ', tafsir: '<b>الحمد</b>: هو الثناء على الله بصفاته ونعمه، وهو يتضمن أمر عباده أن يحمدوه. <br> <b>رب العالمين</b>: الخالق، الرازق، المحيي، المميت، المربي لجميع خلقه بنعمه.'},
@@ -21,5 +21,72 @@ export const alfatiha: Record<string, any> = {
   {title: '🕊️ الثناء على اللَّه', description: 'تبدأ السورة بحمد اللَّه وتمجيده، وذكر صفاته العظيمة التي تبعث في القلب الطمأنينة، فهو رب العالمين، الرحمن الرحيم، مالك يوم الدين، مما يهيئ النفس للتوجه الصادق إليه.', verseNumbers: [2,3,4]},
   {title: '🧎‍♂️ التوجه و العبودية', description: 'بعد الثناء يأتي الإقرار بالعبودية الكاملة لله وحده، وطلب العون منه في كل أمر، فهو وحده المستحق للعبادة والاستعانة.', verseNumbers: [5]},
   {title: '🌟 طلب الهداية', description: 'ثم نختم بطلب أعظم ما يحتاجه الإنسان في حياته وآخرته: الهداية إلى الصراط المستقيم، طريق المنعَم عليهم، واجتناب طريق المغضوب عليهم والضالين، ليكتمل بذلك الدعاء الشامل.',  verseNumbers: [6,7] }
-  ]
+  ],
+  // ❓ Quiz-frågor för denna sura
+  questions: [
+  { question: "لماذا سميت سورة الفاتحة بهذا الاسم؟",
+    answers: [ { text: "لأنها أول سورة نزلت", isCorrect: false }, { text: "لأنها تفتتح بها الصلاة فقط", isCorrect: false }, { text: "لأنه يفتتح بها القرآن", isCorrect: true },{ text: "لأنها آخر سورة في المصحف", isCorrect: false } ]
+  },
+  {question: "ما معنى (الشيطان الرجيم)؟",
+    answers: [ { text: "الذي يحب الخير للناس", isCorrect: false }, { text: "المطرود من رحمة الله", isCorrect: true }, { text: "المؤمن القوي", isCorrect: false }, { text: "العابد التقي", isCorrect: false }]
+  },
+  { question: "ما الفرق بين (الرحمن) و(الرحيم)؟",
+    answers: [ { text: "كلاهما بمعنى واحد", isCorrect: false }, { text: "الرحمن بالمؤمنين، والرحيم بكل الخلق", isCorrect: false }, { text: "الرحمن رحمة عامة، والرحيم رحمة خاصة بالمؤمنين", isCorrect: true }, { text: "الرحيم أرحم من الرحمن", isCorrect: false }]
+  },
+  { question: "ما معنى (مالك يوم الدين)؟",
+    answers: [ { text: "مالك يوم الجمعة", isCorrect: false }, { text: "مالك يوم القيامة", isCorrect: true }, { text: "مالك الدنيا", isCorrect: false }, { text: "مالك القرآن", isCorrect: false }]
+  },
+  { question: "من هم (المغضوب عليهم)؟",
+    answers: [  { text: "الذين عرفوا الحق ولم يعملوا به", isCorrect: true }, { text: "الذين لم يعرفوا الحق", isCorrect: false }, { text: "المؤمنين", isCorrect: false }, { text: "الصالحين", isCorrect: false }]
+  },
+  { question: "من هم (الضالين)؟",
+    answers: [ { text: "الذين عرفوا الحق وتركوه", isCorrect: false }, { text: "الذين لم يعرفوا الحق ولم يعملوا به", isCorrect: true }, { text: "الأنبياء", isCorrect: false }, { text: "الشهداء", isCorrect: false } ]
+  },
+  {question: "ما معنى (آمين) بعد قراءة الفاتحة؟",
+    answers: [ { text: "صدق الله العظيم", isCorrect: false }, { text: "يا رب استجب", isCorrect: true }, { text: "اللهم اغفر لنا", isCorrect: false },  { text: "لا معنى لها", isCorrect: false } ]
+  }
+  ],
+
+  // 💡 فائدة för denna sura (Valfri!)
+  benefit: {
+    title: 'فائدة:', // Kan ha standardvärde eller vara anpassat
+    text: 'يستحب للقارئ في الصلاة عند قراءة <span class="highlight">الفاتحة</span> أن يقول <strong>«آمين»</strong>، ومعناها: <em>يا رب استجب</em>.'
+  },
+  // 🔔 تذكير / Påminnelse (Valfri!)
+  reminder: {
+    title: 'تذكير:', 
+     content: `
+      <strong>البسملة</strong> إتباعاً للنبي صلى الله عليه وسلم <br>
+      <strong>وتطبيق لحديث:</strong> كل امر ذي بال لا يبدأ ببسم الله فهو أبتر أو أقطع <br>
+      <strong>أبتر:</strong> <em>المقطوع، الذي لا نسل له، أو الذي انقطع أثره وذِكره.</em><br>
+      <strong>أقطع:</strong> <em>مقطوع من الخير، لا يصل إلى تمامه، أو لا يُتمّ بنجاح.</em>
+    `,
+    hadithSummary: '📜 عرض الحديث',
+    hadithText: `
+      أَبِي هُرَيْرَةَ رضي الله عنه قَالَ : قَالَ رَسُولُ اللهِ ﷺ : 
+      (كُلُّ كَلَامٍ أَوْ أَمْرٍ ذِي بَالٍ لَا يُفْتَحُ بِذِكْرِ اللهِ فَفهُوَ أَبْتَرُ - أَوْ قَالَ : أَقْطَعُ -) 
+      رواه الإمام أحمد في "المسند".
+    `
+  },
+  nezool: {
+    dalel: 'علينا ياأحبتي أن نتعلم أن ديننا من القران والسنة وأن لانقبل قولاً في دينناإلا بدليل من القران أو السنة',
+    nezoolText: `
+      <ul class="benefit-list">
+        <li>أنها ركن من أركان الصلاة، لا تصح الصلاة إلا بها.</li>
+        <li>أنها أفضل سورة في القرآن.</li>
+        <li>أنها السبع المثاني.</li>
+        <li>أنها تشتمل على أنواع التوحيد الثلاثة: توحيد الربوبية، الألوهية، والأسماء والصفات.</li>
+      </ul>
+    `
+  },
+  fawaeed: {
+    SurahFaidah: 'فوائد سورة الفاتحة ',
+    FaidaText: `
+      <ul class="benefit-list">
+     <li>الفاتحة ركن في كل ركعة من الصلاة.</li>
+     <li>الاستعانة والتوكل واللجوء لله وحده في كل أمر.</li>
+     <li>أهمية سؤال الله الهداية في كل صلاة.</li>
+      </ul>
+    `
+  }
 };

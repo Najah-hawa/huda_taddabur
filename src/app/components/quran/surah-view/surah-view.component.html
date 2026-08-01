@@ -1,14 +1,26 @@
-<!-- همسة الحديث الديناميكية -->
-<!-- Visas BARA om surahData och surahData.hint existerar -->
+@if (isCategoryView) {
+  <!-- 🟢 KATEGORI/JUZ MENY-VY (Visas när man går till /surah/juz-30) -->
+  <div class="basmala">
+    <h2> ﴿ {{ categoryTitle }} ﴾</h2>
+    <p style="color: #666; margin-bottom: 20px;">اختر السورة للبدء في القراءة والتدبر:</p>
+    <p style="color: hsl(0, 0%, 40%); margin-bottom: 20px;">﴿قريبا سوف نكمل تنزيل باقي السور ادعوا لنا بالتيسير﴾</p>
+    <div class="parts-container">
+      @for (surah of categorySurahs; track surah.key) {
+        <div class="part-box" [routerLink]="getSurahRoute(surah)" style="cursor: pointer;">
+          <div >سورة {{ surah.name }}</div>
+        </div>     
+      }
+    </div>
+  </div>
+
+} @else { 
 
 @if (surahData?.hint) {
   <app-surah-hint
     [surahName]="surahData.hint.surahName"
     [hintText]="surahData.hint.hintText">
   </app-surah-hint>
-} @else {
-  <p style="color: red;">Ingen hint-data hittades för denna sura (surahData är null/tom).</p>
-}
+} 
 <!-- Dynamisk Meny-navigering -->
 <app-next-before-surah-meny 
   [RoutelinkBefore]="prevSurah.route" 
@@ -83,5 +95,83 @@
       </ul>
     </div>
   </div>
-
 </app-surah-tabs>
+
+
+@if (surahData?.tafseerSource) {
+  <p style="text-align:center; font-size:12px; color:#666; margin-top:10px;">
+    📚 مصدر التفسير: <b>{{ surahData.tafseerSource }}</b>
+  </p>
+}
+
+
+<!-- Dynamisk Meny-navigering -->
+<app-next-before-surah-meny 
+  [RoutelinkBefore]="prevSurah.route" 
+  [SurahBefore]="prevSurah.name"
+  [RoutelinkAfter]="nextSurah.route" 
+  [SurahNext]="nextSurah.name"  
+  [MenuRoute]="'/'">
+</app-next-before-surah-meny>
+
+
+
+@if (surahData?.questions && surahData.questions.length > 0) {
+  <div class="quiz-section">
+    <app-quix-tafser [questions]="surahData.questions"></app-quix-tafser>
+  </div>
+}
+
+@if (surahData?.benefit?.text && surahData.benefit.text.trim() !== '') {
+  <div class="benefit-box">
+    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
+    </svg>
+    <div class="benefit-text">
+      <strong>{{ surahData.benefit.title || 'فائدة:' }}</strong>
+      <span [innerHTML]="surahData.benefit.text"></span>
+    </div>
+  </div>
+}
+
+
+@if(surahData?.reminder?.content && surahData.reminder.content.trim() !== '') {
+  <div class="benefit-box">
+    <svg class="benefit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm1-4h-4V7h4Z"/>
+    </svg>
+    <div class="benefit-text">
+      <strong class="highlight">{{ surahData.reminder.title || 'تذكير:' }}</strong> <br>
+      
+      <!-- Huvudinnehåll / Förklaring -->
+      <div [innerHTML]="surahData.reminder.content"></div>
+
+      <!-- Utfällbar Hadith (Visas bara om hadithText finns) -->
+      @if (surahData.reminder.hadithText) {
+        <details style="margin-top:5px; font-size:0.85em; color:#444;">
+          <summary style="cursor:pointer; color:#b88a00;">
+            {{ surahData.reminder.hadithSummary || '📜 عرض الحديث' }}
+          </summary>
+          <em>{{ surahData.reminder.hadithText }}</em>
+        </details>
+      }
+    </div>
+  </div>
+}
+
+@if (surahData?.nezool?.nezoolText && surahData.nezool.nezoolText.trim() !== '') {
+  <app-nezzol
+    [dalel]="surahData.nezool.dalel"
+    [nezoolText]="surahData.nezool.nezoolText">
+  </app-nezzol>
+}
+
+@if (surahData?.fawaeed) {
+  <app-fawaed-of-surah
+    [SurahFaidah]="surahData.fawaeed.SurahFaidah"
+    [FaidaText]="surahData.fawaeed.FaidaText">
+  </app-fawaed-of-surah>
+}
+
+}
+<app-footer-info></app-footer-info>

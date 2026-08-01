@@ -18,5 +18,10 @@ export const SURAH_ORDER = [
   { key: 'surah-78', category: 'juz-30', name: 'النبأ' },
   { key: 'surah-79', category: 'juz-30', name: 'النازعات' },
   { key: 'surah-80', category: 'juz-30', name: 'عبس' },
-  // ... här lägger du till alla suror i ordning upp till 114 (الناس)
+  { key: 'surah-81', category: 'juz-30', name: 'التكوير' },
+  { key: 'surah-82', category: 'juz-30', name: 'الإنفطار' },
+  { key: 'surah-83', category: 'juz-30', name: 'المطففين' },
+  { key: 'surah-84', category: 'juz-30', name: 'الإنشقاق' },
+  { key: 'surah-85', category: 'juz-30', name: 'البروج' },
+
 ];

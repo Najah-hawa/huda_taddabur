@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/shared/home/home.component';
-import { JuzAmmaSurahsListComponent } from './components/quran/parts/juz-30/juz-amma-surahs-list/juz-amma-surahs-list.component';
-
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -13,20 +11,20 @@ export const routes: Routes = [
   {
     path: 'surah/:category',
     loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)
-  },
+  },/*
   { path: 'juz-amma', component: JuzAmmaSurahsListComponent },
-
+*/
   // Här använder vi Lazy Loading för surorna
   { 
     path: 'app-quran-parts', 
-    loadComponent: () => import('./components/quran/parts/quran-parts/quran-parts.component').then(m => m.QuranPartsComponent) 
+    loadComponent: () => import('./components/quran/quran_shared_components/quran-parts/quran-parts.component').then(m => m.QuranPartsComponent) 
   },
   // Lägg till alfatiha här:
   /*
   { 
     path: 'alfatiha', 
     loadComponent: () => import('./components/quran/alfatiha/alfatiha.component').then(m => m.AlfatihaComponent) 
-  },*/
+  },
   {
     path: 'surah-78',
     loadComponent: () => import('./components/quran/parts/juz-30/surah-78/surah-78.component').then(m => m.Surah78Component) 
@@ -58,7 +56,7 @@ export const routes: Routes = [
     {
     path: 'surah-85',
     loadComponent: () => import('./components/quran/parts/juz-30/surah-85/surah-85.component').then(m => m.Surah85Component)
-  },
+  },*/
 
 // ⬇️ هنا نقوم بإضافة مسارات الفقه الجديدة بأسلوب الـ Lazy Loading ⬇️
   {
