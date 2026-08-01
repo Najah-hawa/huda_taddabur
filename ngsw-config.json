@@ -63,7 +63,10 @@
           "/audio/ryad-bab-1/**/*.mpeg",
           "/audio/ryad-bab-2/**/*.m4a",
           "/audio/ryad-bab-2/**/*.mp3",
-          "/audio/ryad-bab-2/**/*.mpeg"
+          "/audio/ryad-bab-2/**/*.mpeg",
+          "/audio/ryad-bab-3/**/*.m4a",
+          "/audio/ryad-bab-3/**/*.mp3",
+          "/audio/ryad-bab-3/**/*.mpeg"
         ]
       },
 "cacheQueryOptions": {
