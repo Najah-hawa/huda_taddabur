@@ -1102,7 +1102,7 @@ explanation: `
     title: 'الحديث  الحادي و العشرون',
     name: 'الحديث الحادي و العشرون [ الإستقامة و الإيمان]',
     hintText: '',
-    audioUrl: 'audio/hadith/00.mpeg',
+    audioUrl: 'audio/hadith/21.mpeg',
     imageUrls: [ 
       '/images/nawawi/hadith21.png'],
       explanation: `
@@ -1144,7 +1144,7 @@ explanation: `
     title: 'الحديث الثاني و العشرون',
     name: 'الحديث الثاني و العشرون [طريق الجنة]',
     hintText: '',
-    audioUrl: 'audio/hadith/00.mpeg',
+    audioUrl: 'audio/hadith/22.mpeg',
     imageUrls: [ 
       '/images/nawawi/hadith22.png'],
       explanation: `
@@ -1199,7 +1199,7 @@ explanation: `
     title: 'الحديث الثالث و العشرون',
     name: 'الحديث الثالث و العشرون [من جوامع الخير]',
     hintText: '',
-    audioUrl: 'audio/hadith/00.mpeg',
+    audioUrl: 'audio/hadith/23.mpeg',
       imageUrls: [ 
       '/images/nawawi/hadith23.png'],
       explanation: `

@@ -175,7 +175,7 @@ if (category === 'hadith-nawawi-40') {
   // ⬅️ Föregående
   if (currentNum > 1) {
     this.routeBefore = `/hadith/hadith-nawawi-40/${currentNum - 1}`;
-    this.surahBefore = 'الحديث السابق';
+    this.surahBefore = 'السابق';
   } else {
     this.routeBefore = '/hadith/hadith-nawawi-40/menu';
     this.surahBefore = 'القائمة';
@@ -184,7 +184,7 @@ if (category === 'hadith-nawawi-40') {
   // ➡️ Nästa
   if (currentNum < totalHadiths) {
     this.routeAfter = `/hadith/hadith-nawawi-40/${currentNum + 1}`;
-    this.surahNext = 'الحديث التالي';
+    this.surahNext = 'التالي';
   } else {
     this.routeAfter = '/hadith/hadith-nawawi-40/menu';
     this.surahNext = 'القائمة';
@@ -211,7 +211,7 @@ else {
   // ⬅️ Föregående
   if (currentNum > 1) {
     this.routeBefore = `/hadith/${category}/${currentNum - 1}`;
-    this.surahBefore = 'الحديث السابق';
+    this.surahBefore = 'السابق';
   } else {
     this.routeBefore = '/hadith/ryad-alsalihin';
     this.surahBefore = 'أبواب رياض الصالحين';
@@ -220,7 +220,7 @@ else {
   // ➡️ Nästa
   if (currentNum < totalHadiths) {
     this.routeAfter = `/hadith/${category}/${currentNum + 1}`;
-    this.surahNext = 'الحديث التالي';
+    this.surahNext = 'التالي';
   } else {
     this.routeAfter = '/hadith/ryad-alsalihin';
     this.surahNext = 'أبواب رياض الصالحين';
