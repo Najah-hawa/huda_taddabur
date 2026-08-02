@@ -673,3 +673,9 @@ position: absolute;
 .arrow {
   font-size: 1.1em;
 }
+
+
+::ng-deep .highlight-color {
+   color: #816838 !important;
+  font-weight: bold; /* Om du vill göra den lite tydligare */
+}

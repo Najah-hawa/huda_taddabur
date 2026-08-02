@@ -164,42 +164,68 @@ const categoryObj = HADITH_CATEGORIES[category];
   
   this.box4Title = currentHadith.box4Title;
   this.box4Items = currentHadith.box4Items;
+// 1. Om kategorin är Nawawi 40 (Hadith 1 till 42 i Arba'een)
+if (category === 'hadith-nawawi-40') {
+  this.menuRoute = '/hadith/hadith-nawawi-40/menu';
 
+  // Beräkna föregående / nästa för Nawawi 40
+  const currentNum = parseInt(id, 10);
+  const totalHadiths = categoryObj?.data ? Object.keys(categoryObj.data).length : 0;
 
+  // ⬅️ Föregående
+  if (currentNum > 1) {
+    this.routeBefore = `/hadith/hadith-nawawi-40/${currentNum - 1}`;
+    this.surahBefore = 'الحديث السابق';
+  } else {
+    this.routeBefore = '/hadith/hadith-nawawi-40/menu';
+    this.surahBefore = 'القائمة';
+  }
 
-  if (category === 'nawawi-intro') {
-  // 🌟 Specialfall för ترجمة الإمام النووي
-  this.routeBefore = '/hadith/ryad-alsalihin';
-  this.surahBefore = 'أبواب رياض الصالحين';
+  // ➡️ Nästa
+  if (currentNum < totalHadiths) {
+    this.routeAfter = `/hadith/hadith-nawawi-40/${currentNum + 1}`;
+    this.surahNext = 'الحديث التالي';
+  } else {
+    this.routeAfter = '/hadith/hadith-nawawi-40/menu';
+    this.surahNext = 'القائمة';
+  }
 
-  this.routeAfter = '/hadith/ryad-bab-1/menu';
+} 
+// 2. Om kategorin är Nawawi Intro (ترجمة الإمام النووي)
+else if (category === 'nawawi-intro') {
+  this.menuRoute = '/hadith';
+
+  this.routeBefore = '/hadith';
+  this.surahBefore = 'قائمة رياض الصالحين ';
+  this.routeAfter = '/hadith/ryad-bab-1/1'; 
   this.surahNext = 'الباب الأول: الإخلاص';
 
-} else {
-// 4. حساب أزرار التنقل الذكي (التالي والسابق) تلقائياً بناءً على رقم الحديث الحالي
-  const currentNum = parseInt(id, 10);
-  
-// 2. حساب إجمالي عدد الأحاديث/العناصر في الباب الحالي تلقائياً
-const totalHadiths = Object.keys(categoryObj.data).length;
-
-// ⬅️ زر السابق:
-// إذا كنا في العنصر الأول (1)، الزر يعود إلى قائمة الباب الحالي (`/hadith/:category/menu`)
-// وإلا ينتقل للعنصر السابق في نفس الباب
-this.routeBefore = currentNum > 1 
-  ? `/hadith/${category}/${currentNum - 1}` 
-  : `/hadith/ryad-alsalihin`;
-
-this.surahBefore = currentNum > 1 ? ' السابق' : ' القائمة ';
-
-// ➡️ زر التالي:
-// إذا لم نصل بعد لآخر عنصر في الباب، ننتقل للعنصر التالي بنفس الباب
-// وإذا وصلنا للحديث الأخير، يعود لقائمة الباب الحالي
-this.routeAfter = currentNum < totalHadiths 
-  ? `/hadith/${category}/${currentNum + 1}` 
-  : `/hadith/ryad-alsalihin`;
-
-this.surahNext = currentNum < totalHadiths ? ' التالي' : ' القائمة';
 } 
+// 3. För alla andra kategorier (t.ex. Riyad Al-Salihin och dess kapitel)
+else {
+  this.menuRoute = '/hadith/ryad-alsalihin';
+
+  const currentNum = parseInt(id, 10);
+  const totalHadiths = categoryObj?.data ? Object.keys(categoryObj.data).length : 0;
+
+  // ⬅️ Föregående
+  if (currentNum > 1) {
+    this.routeBefore = `/hadith/${category}/${currentNum - 1}`;
+    this.surahBefore = 'الحديث السابق';
+  } else {
+    this.routeBefore = '/hadith/ryad-alsalihin';
+    this.surahBefore = 'أبواب رياض الصالحين';
+  }
+
+  // ➡️ Nästa
+  if (currentNum < totalHadiths) {
+    this.routeAfter = `/hadith/${category}/${currentNum + 1}`;
+    this.surahNext = 'الحديث التالي';
+  } else {
+    this.routeAfter = '/hadith/ryad-alsalihin';
+    this.surahNext = 'أبواب رياض الصالحين';
+  }
+}
 // 5. تحديث الـ Meta Tags برمجياً في الخلفية (الـ SEO) 🚀
   this.updateSEO(currentHadith);
 
@@ -256,6 +282,13 @@ setImageIndex(index: number) {
     this.isImageError = false;
     this.updateCurrentImageRotation();
   }
+}
+// 🌟 Kollar om matrisen har minst en sträng som inte är tom eller bara innehåller mellanslag
+hasValidItems(items: string[] | undefined | null): boolean {
+  if (!items || items.length === 0) {
+    return false;
+  }
+  return items.some(item => item && item.trim().length > 0);
 }
 
   private updateSEO(hadith: any) {
