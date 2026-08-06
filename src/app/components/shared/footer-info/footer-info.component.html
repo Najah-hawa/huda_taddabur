@@ -1,12 +1,27 @@
 <footer class="footer-container">
   <p class="footer-author">
-تم تنفيذ المشروع بواسطة فريق من المختصين بالتقنية والدعوة والتعليم. نسأل اللَّهُ الاخلاص والقبول.
+    @if (langService.currentLang() === 'en') {
+      This project was developed by a team of specialists in technology, outreach, and education. We ask Allah for sincerity and acceptance.
+    } @else {
+      تم تنفيذ المشروع بواسطة فريق من المختصين بالتقنية والدعوة والتعليم. نسأل اللَّهُ الاخلاص والقبول.
+    }
   </p>
 
   <p class="footer-contact">
-  <a href="mailto:najah.hawa@gmail.com">  للتواصل أو لارسال الملاحظات </a>
+    <a [href]="'mailto:' + email">
+      @if (langService.currentLang() === 'en') {
+        Contact us or send feedback
+      } @else {
+        للتواصل أو لارسال الملاحظات
+      }
+    </a>
   </p>
+
   <p class="footer-copy">
-    &copy; {{ currentYear }} جميع الحقوق محفوظة. يسمح باستخدام المحتوى لغير الأغراض التجارية مع ذكر المصدر.
+    @if (langService.currentLang() === 'en') {
+      &copy; {{ currentYear }} All rights reserved. Non-commercial use is permitted with attribution.
+    } @else {
+      &copy; {{ currentYear }} جميع الحقوق محفوظة. يسمح باستخدام المحتوى لغير الأغراض التجارية مع ذكر المصدر.
+    }
   </p>
 </footer>

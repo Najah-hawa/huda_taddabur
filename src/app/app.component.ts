@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'; // ✅ التعديل الصحيح هنا من core
+import { Component, OnInit, effect } from '@angular/core'; // ✅ التعديل الصحيح هنا من core
 import { CommonModule } from '@angular/common'; // ✅ الـ CommonModule يأتي من common
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterOutlet, RouterLink } from '@angular/router';
@@ -31,25 +31,39 @@ export class AppComponent implements OnInit {
     private swUpdate: SwUpdate, 
     public langService: LanguageService
 
-  ) {}
+  ) {
+    // 🌟 Reaktiv lyssnare: Körs automatiskt varje gång språket ändras
+    effect(() => {
+      const isEnglish = this.langService.currentLang() === 'en';
 
-  ngOnInit() : void{
-this.langService.initAppLanguage();
-    // 1. تحديث العنوان الخاص بالصفحة الرئيسية
-    this.titleService.setTitle('هدى وتدبر - الرئيسية');
+      // 1. Uppdatera sidtiteln beroende på språk
+      this.titleService.setTitle(
+        isEnglish ? 'Huda & Tadabbur - Home' : 'هدى وتدبر - الرئيسية'
+      );
 
-    // 2. استخدام الـ metaService لتحديث الأوسمة
-    this.metaService.updateTag({ 
-      name: 'description', 
-      content: 'تطبيق هدى وتدبر - تفسير جزء عم بطريقة تفاعليه, عرض أحاديث رسول الله عليه الصلاة والسلام, مسابقات إسلامية تفاعلية للأطفال والكبار.' 
+      // 2. Uppdatera Meta Description
+      this.metaService.updateTag({ 
+        name: 'description', 
+        content: isEnglish 
+          ? 'Huda & Tadabbur app - Interactive contemplation of Juz Amma, Hadith of the Prophet, and interactive Islamic quizzes.' 
+          : 'تطبيق هدى وتدبر - تفسير جزء عم بطريقة تفاعليه, عرض أحاديث رسول الله عليه الصلاة والسلام, مسابقات إسلامية تفاعلية للأطفال والكبار.' 
+      });
+
+      // 3. Uppdatera Meta Keywords
+      this.metaService.updateTag({ 
+        name: 'keywords', 
+        content: isEnglish 
+          ? 'Huda Tadabbur, Islamic Quizzes, Quran Reflection, Juz Amma Tafseer, Hadith' 
+          : 'هدى وتدبر, مسابقات إسلامية, أمهات المؤمنين, نسب الرسول, ألعاب أطفال تفاعلية, جزء عم تفسيرو أحاديث الأربعين النووية' 
+      });
     });
-    
-    this.metaService.updateTag({ 
-      name: 'keywords', 
-      content: 'هدى وتدبر, مسابقات إسلامية, أمهات المؤمنين, نسب الرسول, ألعاب أطفال تفاعلية, جزء عم تفسيرو أحاديث الأربعين النووية' 
-    });
+  }
 
-    // 3. تفعيل منظومة الفحص التلقائي والتحديث الفوري في الخلفية
+  ngOnInit(): void {
+    // 1. Initiera språket först av allt
+    this.langService.initAppLanguage();
+
+    // 2. Starta övervakning av PWA-uppdateringar i bakgrunden
     this.initAutoUpdateCheck();
   }
 
@@ -73,11 +87,7 @@ this.langService.initAppLanguage();
     }
   }
 
-  // دالة لتنشيط الكاش الجديد وعمل إنعاش للموقع فوراً
   private activateNewVersion() {
-    this.swUpdate.activateUpdate().then(() => {
-      console.log('✨ تم اكتشاف تحديث جديد وتثبيته بنجاح! جاري إنعاش التطبيق...');
-      window.location.reload(); // تحديث الشاشة لتظهر التعديلات الجديدة فوراً
-    });
+    this.swUpdate.activateUpdate().then(() => document.location.reload());
   }
 }

@@ -1,11 +1,10 @@
-
 <!-- Startknapp -->
 <div class="quiz-start">
-
-   <div class="quiz-promo-box">
-  <button class="quiz-button" (click)="showQuizSection()">اختبر نفسك</button>
-</div>
-
+  <div class="quiz-promo-box">
+    <button class="quiz-button" (click)="showQuizSection()">
+      {{ langService.currentLang() === 'en' ? 'Test Yourself' : 'اختبر نفسك' }}
+    </button>
+  </div>
 </div>
 
 <!-- Frågor visas -->
@@ -13,13 +12,24 @@
 
   <!-- Frågeräknare -->
   <div class="question-counter">
-    السؤال {{ currentQuestionNumber }} من {{ totalQuestions }}
+    @if (langService.currentLang() === 'en') {
+      Question {{ currentQuestionNumber }} of {{ totalQuestions }}
+    } @else {
+      السؤال {{ currentQuestionNumber }} من {{ totalQuestions }}
+    }
   </div>
+
+  <!-- Feedback vid svar -->
   <div *ngIf="showFeedback" class="quiz-feedback">
     <p [ngClass]="{ 'correct-feedback': isCorrect, 'incorrect-feedback': !isCorrect }">
-      {{ isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة، حاول مرة أخرى.' }}
+      @if (isCorrect) {
+        {{ langService.currentLang() === 'en' ? 'Correct answer!' : 'إجابة صحيحة!' }}
+      } @else {
+        {{ langService.currentLang() === 'en' ? 'Incorrect answer, try again.' : 'إجابة خاطئة، حاول مرة أخرى.' }}
+      }
     </p>
   </div>
+
   <h3 class="quiz-question">{{ questions[currentQuestionIndex].question }}</h3>
 
   <ul class="quiz-answers">
@@ -30,17 +40,21 @@
     </li>
   </ul>
 
-   <!-- Avsluta provet-knapp -->
+  <!-- Avsluta provet-knapp -->
   <div class="quit-quiz-container">
-    <button class="quiz-quit-btn" (click)="quitQuiz()">إنهاء الاختبار</button>
+    <button class="quiz-quit-btn" (click)="quitQuiz()">
+      {{ langService.currentLang() === 'en' ? 'End Quiz' : 'إنهاء الاختبار' }}
+    </button>
   </div>
-
 
 </div>
 
 <!-- Slutmeddelande -->
 <div *ngIf="quizStarted && quizCompleted" class="quiz-completed">
-
-  <h3>🎉لقد اجتزت الاختبار ! </h3>
-  <button class="quiz-restart-btn" (click)="restartQuiz()">اعاده الاختبار </button>
+  <h3>
+    {{ langService.currentLang() === 'en' ? '🎉 You completed the quiz!' : '🎉 لقد اجتزت الاختبار!' }}
+  </h3>
+  <button class="quiz-restart-btn" (click)="restartQuiz()">
+    {{ langService.currentLang() === 'en' ? 'Restart Quiz' : 'إعادة الاختبار' }}
+  </button>
 </div>

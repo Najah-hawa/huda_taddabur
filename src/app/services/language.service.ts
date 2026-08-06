@@ -56,14 +56,14 @@ export class LanguageService {
     }
   });
 }
-  public setLanguage(lang: Language): void {
-    this.currentLang.set(lang);
-    localStorage.setItem('app_user_lang', lang);
-    
-    // Ändra textriktning i hela appen
-    document.dir = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = lang;
-  }
+setLanguage(lang: 'ar' | 'en') {
+  this.currentLang.set(lang);
+  localStorage.setItem('lang', lang);
+
+  // 🌟 Sätter richtningen på hela <html>-taggen i webbläsaren
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+}
 
  public toggleLanguage(): void {
   const nextLang = this.currentLang() === 'ar' ? 'en' : 'ar';

@@ -5,14 +5,22 @@
     class="tab"
     [class.active]="selectedTab === 'tadabbur'"
     (click)="selectTab('tadabbur')">
-    📖 تدبر سريع
+    @if (langService.currentLang() === 'en') {
+      Quick Contemplation
+    } @else {
+      📖 تدبر سريع
+    }
   </button>
 
   <button
     class="tab"
     [class.active]="selectedTab === 'visual'"
     (click)="selectTab('visual')">
-    🧠 بنية السورة 
+    @if (langService.currentLang() === 'en') {
+      Surah Structure
+    } @else {
+      🧠 بنية السورة
+    }
   </button>
 </div>
 

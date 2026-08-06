@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
+import { LanguageService } from '../../../services/language.service';
 @Component({
   selector: 'app-next-before-surah-meny',
   standalone: true,
@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './next-before-surah-meny.component.css'
 })
 export class NextBeforeSurahMenyComponent {
+  constructor( public langService: LanguageService) {}
   @Input() SurahBefore: string = '';
   @Input() SurahNext: string = '';
   @Input() RoutelinkBefore: string = '';

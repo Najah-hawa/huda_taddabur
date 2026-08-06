@@ -194,30 +194,45 @@ ngOnInit(): void {
     this.router.navigateByUrl(updatedUrl);
   }
 
-  private calculateNavigation(category: string, id: string, lang: Language): void {
-    // Hitta nuvarande suras index i listan
-    const currentKey = id ? id : category;
-    const currentIndex = SURAH_ORDER.findIndex(item => item.key === currentKey);
+private calculateNavigation(category: string, id: string, lang: Language): void {
+  // Hitta nuvarande suras index i listan
+  const currentKey = id ? id : category;
+  const currentIndex = SURAH_ORDER.findIndex(item => item.key === currentKey);
 
-    if (currentIndex !== -1) {
-      // ⏪ Föregående sura (om vi är på 0/Alfatiha går vi till den sista)
-      const prevIndex = currentIndex === 0 ? SURAH_ORDER.length - 1 : currentIndex - 1;
-      const prevItem = SURAH_ORDER[prevIndex];
-      this.prevSurah = {
-        name: prevItem.name,
-        route: prevItem.category === 'alfatiha' ? '/surah/alfatiha' : `/surah/${prevItem.category}/${prevItem.key}`
-      };
+  if (currentIndex !== -1) {
+    // ⏪ Föregående sura (om vi är på 0/Alfatiha går vi till den sista)
+    const prevIndex = currentIndex === 0 ? SURAH_ORDER.length - 1 : currentIndex - 1;
+    const prevItem = SURAH_ORDER[prevIndex];
+    
+    // Extrahera rätt namn baserat på 'lang' (med fallback till 'ar')
+    const prevName = typeof prevItem.name === 'object' 
+      ? (prevItem.name[lang] || prevItem.name.ar) 
+      : prevItem.name;
 
-      // ⏩ Nästa sura (om vi är på sista går vi till 0/Alfatiha)
-      const nextIndex = currentIndex === SURAH_ORDER.length - 1 ? 0 : currentIndex + 1;
-      const nextItem = SURAH_ORDER[nextIndex];
-      this.nextSurah = {
-        name: nextItem.name,
-        route: nextItem.category === 'alfatiha' ? '/surah/alfatiha' : `/surah/${nextItem.category}/${nextItem.key}`
-      };
-    }
+    this.prevSurah = {
+      name: prevName,
+      route: prevItem.category === 'alfatiha' 
+        ? `/surah/alfatiha/${lang}` 
+        : `/surah/${prevItem.category}/${prevItem.key}/${lang}`
+    };
+
+    // ⏩ Nästa sura (om vi är på sista går vi till 0/Alfatiha)
+    const nextIndex = currentIndex === SURAH_ORDER.length - 1 ? 0 : currentIndex + 1;
+    const nextItem = SURAH_ORDER[nextIndex];
+
+    // Extrahera rätt namn baserat på 'lang' (med fallback till 'ar')
+    const nextName = typeof nextItem.name === 'object' 
+      ? (nextItem.name[lang] || nextItem.name.ar) 
+      : nextItem.name;
+
+    this.nextSurah = {
+      name: nextName,
+      route: nextItem.category === 'alfatiha' 
+        ? `/surah/alfatiha/${lang}` 
+        : `/surah/${nextItem.category}/${nextItem.key}/${lang}`
+    };
   }
-
+}
 // Hjälpmetod för dynamisk länk i menyn
   getSurahRoute(surah: any): string {
     return surah.category === 'alfatiha' ? '/surah/alfatiha' : `/surah/${surah.category}/${surah.key}`;

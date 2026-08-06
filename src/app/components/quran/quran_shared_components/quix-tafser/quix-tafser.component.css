@@ -56,7 +56,6 @@ body {
   box-shadow: 0 4px 12px rgba(212, 163, 115, 0.3);
   border-radius: 15px;
   user-select: none;
-  direction: rtl;
   border: 1px solid #d4a373;
 
 }
@@ -152,7 +151,6 @@ body {
   max-width: 400px;
   margin-left: auto;
   margin-right: auto;
-  direction: rtl;
   font-weight: 600;
   color: #5a3b1c;
 }

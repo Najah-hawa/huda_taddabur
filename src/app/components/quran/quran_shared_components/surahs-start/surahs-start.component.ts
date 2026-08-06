@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
+import { LanguageService } from '../../../../services/language.service'; 
 @Component({
   selector: 'app-surahs-start',
   imports: [RouterModule, CommonModule],
@@ -8,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './surahs-start.component.css'
 })
 export class SurahsStartComponent {
-
+constructor( public langService: LanguageService) {}
 bismillahShown = false;
 AwzobillahShown = false;
 shown: boolean[] = [];

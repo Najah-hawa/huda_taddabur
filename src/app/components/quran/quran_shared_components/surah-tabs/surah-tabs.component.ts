@@ -1,7 +1,8 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; //
+import { RouterModule } from '@angular/router'; 
+import { LanguageService } from '../../../../services/language.service';
 @Component({
   selector: 'app-surah-tabs',
   standalone: true,
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router'; //
   styleUrl: './surah-tabs.component.css'
 })
 export class SurahTabsComponent {
+   constructor( public langService: LanguageService) {}
   @Input() surahName!: string;
   @Output() tabChanged = new EventEmitter<'tadabbur' | 'visual'>();
 

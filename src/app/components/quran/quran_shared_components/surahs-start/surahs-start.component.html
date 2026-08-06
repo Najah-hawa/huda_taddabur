@@ -1,22 +1,52 @@
+<!-- Isti'adhah / أعوذ بالله -->
 <div class="bismillah-container">
-      <div class="bismillah-line" (click)="toggleAwzoBillah()">
-        <p class="bismillah-text"> أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ</p>
-        <span class="arrow" [class.open]="AwzobillahShown">▼</span>
-      </div>
+  <div class="bismillah-line" (click)="toggleAwzoBillah()">
+    <p class="bismillah-text"> أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ</p>
+    <span class="arrow" [class.open]="AwzobillahShown">▼</span>
+  </div>
 
-      <div class="bismillah-tafsir" *ngIf="AwzobillahShown">
-      <p>احتمي وألنجأ الى الله من شر الشيطان<br><b>مواضع الاستعاذة </b>: 1-قبل تلاوة القران .<br>2-  في الصلاة قبل قراءة الفاتحة في الركعة الاولى.<br>3-لدفع الشيطان وكيده ووسوسته.  <br> </p>
-      </div>
+  <div class="bismillah-tafsir" *ngIf="AwzobillahShown">
+    @if (langService.currentLang() === 'en') {
+      <p>
+        I seek refuge and protection in Allah from the evil of Satan, the accursed.<br>
+        <b>When to seek refuge</b>:<br>
+        1. Before reciting the Quran.<br>
+        2. In prayer before reciting Al-Fatiha in the first unit (Rak'ah).<br>
+        3. To repel Satan, his plots, and whisperings.
+      </p>
+    } @else {
+      <p>
+        احتمي وألجأ الى الله من شر الشيطان<br>
+        <b>مواضع الاستعاذة </b>: 1-قبل تلاوة القران .<br>
+        2- في الصلاة قبل قراءة الفاتحة في الركعة الاولى.<br>
+        3-لدفع الشيطان وكيده ووسوسته.
+      </p>
+    }
+  </div>
 </div>
 
+<!-- Basmalah / بسم الله -->
 <div class="bismillah-container">
-      <div class="bismillah-line" (click)="toggleBismillah()">
-        <p class="bismillah-text"> بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ </p>
-        <span class="arrow" [class.open]="bismillahShown">▼</span>
-      </div>
+  <div class="bismillah-line" (click)="toggleBismillah()">
+    <p class="bismillah-text"> بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ </p>
+    <span class="arrow" [class.open]="bismillahShown">▼</span>
+  </div>
 
-      <div class="bismillah-tafsir" *ngIf="bismillahShown">
-      <p><b>بسم الله</b>: ابتدئ قراءة القرآن مستعينا به سبحانه <br><b>الله</b>: الرب المعبود دون سواه ولا يسمى به غيره سبحانه<br><b>الرحمن</b>: ذي الرحمة العامة لكل الخلق <br><b>الرحيم</b>: بالمؤمنين</p>
-      </div>
+  <div class="bismillah-tafsir" *ngIf="bismillahShown">
+    @if (langService.currentLang() === 'en') {
+      <p>
+        <b>In the Name of Allah</b>: I begin reciting the Quran seeking help from Allah, the Exalted.<br>
+        <b>Allah</b>: The worshipped Lord, beside Whom there is no other deity, and none else is named by this Name.<br>
+        <b>Ar-Rahman (The Most Compassionate)</b>: Possessor of vast mercy encompassing all creation.<br>
+        <b>Ar-Raheem (The Most Merciful)</b>: Particularly Merciful to the believers.
+      </p>
+    } @else {
+      <p>
+        <b>بسم الله</b>: ابتدئ قراءة القرآن مستعينا به سبحانه <br>
+        <b>الله</b>: الرب المعبود دون سواه ولا يسمى به غيره سبحانه<br>
+        <b>الرحمن</b>: ذي الرحمة العامة لكل الخلق <br>
+        <b>الرحيم</b>: بالمؤمنين
+      </p>
+    }
+  </div>
 </div>
-

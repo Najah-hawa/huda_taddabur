@@ -6,7 +6,7 @@
 
   <!-- المنتصف: زر قائمة الأحاديث/الأبواب -->
   <a class="nav-btn menu-btn" [routerLink]="MenuRoute">
-    القائمة 
+   {{ langService.currentLang() === 'en' ? 'Menu' : 'القائمة' }}
   </a>
 
   <!-- أقصى اليسار: زر التالي -->

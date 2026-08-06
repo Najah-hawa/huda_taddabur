@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { LanguageService } from '../../../../services/language.service';
 @Component({
   selector: 'app-quix-tafser',
   standalone: true,
@@ -12,6 +13,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './quix-tafser.component.css'
 })
 export class QuixTafserComponent {
+  constructor( public langService: LanguageService) {}
  quizStarted = false;
 
 @Input() questions: { question: string; answers: { text: string; isCorrect: boolean }[] }[] = [];

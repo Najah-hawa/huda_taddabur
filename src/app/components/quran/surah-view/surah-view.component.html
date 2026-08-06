@@ -52,7 +52,15 @@
             <button class="play-ayah-btn" (click)="$event.stopPropagation(); playAyah(verse.number)">
               ▶️
             </button>
-            <p class="ayah">{{ verse.text }}</p>
+            <div class="verse-box">
+  <!-- Visar arabiska ayahn -->
+  <p class="arabic-verse">{{ verse.text }}</p>
+
+  <!-- Om det finns en translation i det aktuella objektet visas den under -->
+  @if (verse.translation) {
+    <p class="english-translation">{{ verse.translation }}</p>
+  }
+</div>
             <div class="ayah-arrow"> 
               <span class="ayah-number">﴿{{ verse.number }}﴾</span>
               <span class="arrow" [class.open]="shown.has(i)">▼</span>

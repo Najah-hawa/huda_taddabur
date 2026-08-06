@@ -1,10 +1,14 @@
- <div class="dalel-box">   <p><b>  {{ dalel }}  </b></p> </div><div class="surah-benefits mini">
- 
-  <h3 class="benefit-title">✨ فضائل وسبب نزول السورة</h3>
-    <div [innerHTML]="nezoolText"></div>
+<div class="dalel-box">
+  <p><b>{{ dalel }}</b></p>
+</div>
+
+<div class="surah-benefits mini">
+  <h3 class="benefit-title">
+    {{ langService.currentLang() === 'en' ? '✨ Virtues & Context of Revelation' : '✨ فضائل وسبب نزول السورة' }}
+  </h3>
+  <div [innerHTML]="nezoolText"></div>
+</div>
 
 <div class="faida-container">
   <ng-content></ng-content>
 </div>
-
-
