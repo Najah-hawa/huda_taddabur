@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/shared/home/home.component';
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-
+  { path: '', redirectTo: 'ar', pathMatch: 'full' },
   {
     path: 'surah/:category/:id',
     loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)

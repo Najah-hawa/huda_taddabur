@@ -62,3 +62,19 @@
 .active {
   border: 2px solid #C5A880;
 }
+
+
+/* Säkrar att titeln och undertexten är centrerad på båda språken */
+.basmala, p {
+  text-align: center;
+}
+
+/* Sänker storleken något på den engelska rubriken om det behövs */
+:host-context(html[lang="en"]) .basmala {
+  font-size: 1.4rem;
+  font-family: sans-serif;
+}
+
+:host-context(html[lang="en"]) p {
+  font-size: 0.95rem;
+}

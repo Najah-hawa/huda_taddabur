@@ -3,11 +3,11 @@ import { juz30Data } from './data/juz30-data';
 
 export const SURAH_REGISTRY: Record<string, any>= {
   'alfatiha': {
-    title: 'الفاتحة',
+    title: { ar: 'الفاتحة', en: 'Al-Fatiha' },
     data: alfatiha
   },
    'juz-30': {
-    title: 'جزء عم',
+   title: { ar: 'جزء عم', en: 'Juz Amma' },
     data: juz30Data
   }
 };

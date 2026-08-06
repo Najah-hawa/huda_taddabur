@@ -20,7 +20,7 @@ import { HADITH_CATEGORIES } from './hadith-registry';
     FooterInfoComponent, 
     NextBeforeSurahMenyComponent, 
     ZoomControlsComponent, 
-    ProvComponent
+   /* ProvComponent*/
   ],
   templateUrl: './hadith-view.component.html',
   styleUrls: ['./hadith-view.component.css']

@@ -1,9 +1,10 @@
 <div class="title-wrapper"> 
   <div class="title-flex">
-    <h1 class="title-text" [routerLink]="['']">هُدىً و تَدَبرْ</h1>
+    <h1 class="title-text" [routerLink]="['']">
+      {{ titleText[langService.currentLang()] }}
+    </h1> 
     <div class="title-icon"></div>
   </div>
 </div>
 
-
-<router-outlet></router-outlet>  
+<router-outlet></router-outlet>

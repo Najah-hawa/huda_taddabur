@@ -1,18 +1,34 @@
+<!-- Rubrik anpassad efter valt språk -->
+<h1 class="basmala">
+  {{ pageText.title[langService.currentLang()] }}
+</h1>
 
-<!-- Vi lägger till en h1-rubrik här för att stärka sidans SEO-struktur -->
-<h1 class="basmala">﴿ تفسير القرآن الكريم ﴾ </h1>
-<p style="color: hsl(0, 0%, 40%); margin-bottom: 20px; text-align: center;" >﴿ ادعوا لنا بالتيسير لإتمام تفسير القرآن كامل بإذن الله ﴾ </p>
-<!-- Lista med part -->
+<p style="color: hsl(0, 0%, 40%); margin-bottom: 20px; text-align: center;">
+  {{ pageText.subTitle[langService.currentLang()] }}
+</p>
+
+<!-- Lista med delar -->
 <div class="parts-container">
-  <p class="choose-text">اختر الجزء</p>
+  <!-- Dynamisk text: "اختر الجزء" eller "Choose Part / Juz" -->
+  <p class="choose-text">
+    {{ pageText.chooseJuz[langService.currentLang()] }}
+  </p>
   
-  <div class="part-box" routerLink="/surah/alfatiha" routerLinkActive="active">  
-    <div class="choose-text">الفاتحة</div> 
+  <!-- Al-Fatiha: skickar med nuvarande språk längst bak i URL:en -->
+  <div class="part-box" 
+       [routerLink]="['/surah', 'alfatiha', langService.currentLang()]" 
+       routerLinkActive="active">   
+    <div class="choose-text">
+      {{ pageText.fatiha[langService.currentLang()] }}
+    </div> 
   </div>
   
-  <div class="part-box" routerLink="/surah/juz-30" routerLinkActive="active">  
-    <div class="choose-text">الجزء 30</div> 
+  <!-- Juz 30: skickar med nuvarande språk längst bak i URL:en -->
+  <div class="part-box" 
+       [routerLink]="['/surah', 'juz-30', langService.currentLang()]" 
+       routerLinkActive="active">   
+    <div class="choose-text">
+      {{ pageText.juz30[langService.currentLang()] }}
+    </div> 
   </div>
-
-  
 </div>

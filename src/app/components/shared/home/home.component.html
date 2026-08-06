@@ -1,45 +1,42 @@
 <div class="welcome"> 
   <div class="bird">🕊️</div>
   
-  <!-- Vi ändrar detta till en h1 för att ge sidan maximal poäng hos Google SEO -->
-  <h1 class="welcome-text">
-    <span class="word" style="animation-delay: 0.3s;">أهلاً</span>
-    <span class="word" style="animation-delay: 0.7s;">بك</span>
-    <span class="word" style="animation-delay: 1.1s;">في</span>
-    <span class="word" style="animation-delay: 1.5s;">رحاب</span>
-    <span class="word" style="animation-delay: 1.9s;">التأمل</span>
-    <span class="word" style="animation-delay: 2.3s;">والتدبر،</span>
-    <span class="word" style="animation-delay: 2.7s;">للقرآن</span>
-    <span class="word" style="animation-delay: 3.1s;">الكريم</span>
-    <span class="word" style="animation-delay: 3.5s;">و</span>
-    <span class="word" style="animation-delay: 3.9s;">الحديث</span>
-    <span class="word" style="animation-delay: 4.3s;">الشريف</span>
+  <!-- 🌟 dynamisk dir="ltr" eller dir="rtl" beroende på språk -->
+  <h1 class="welcome-text" [attr.dir]="langService.currentLang() === 'ar' ? 'rtl' : 'ltr'">
+    @if (langService.currentLang() === 'ar') {
+      @for (word of welcomeWordsAr; track $index) {
+        <span class="word" [style.animation-delay]="(0.3 + $index * 0.4) + 's'">{{ word }}</span>
+      }
+    } @else {
+      @for (word of welcomeWordsEn; track $index) {
+        <span class="word" [style.animation-delay]="(0.2 + $index * 0.25) + 's'">{{ word }}</span>
+      }
+    }
   </h1>
-</div>
 
-<div class="menu">
+  @if (langService.showLangSwitcher()) {
+    <div class="lang-btn-container">
+      <button type="button" (click)="langService.toggleLanguage()" class="lang-btn">
+        <span class="globe-icon">🌐</span>
+        <span>{{ langService.currentLang() === 'ar' ? 'English' : 'العربية' }}</span>
+      </button>
+    </div>
+  }
+</div>
+<!-- Omslutande container för korten som håller layouten centrerad i både RTL och LTR -->
+<div class="cards-container">
   <div class="card" routerLink="/app-quran-parts" routerLinkActive="active">
     <span class="material-icons quran-icon">menu_book</span>
-    <div class="card-title">القرآن الكريم</div>
+    <div class="card-title">{{ menuTitles.quran[langService.currentLang()] }}</div>
   </div>
-<!--
-  <div class="card" routerLink="/hadith" routerLinkActive="active">
-    <span class="material-icons hadith-icon">emoji_objects</span>
-    <div class="card-title">أحاديث رسول الله</div>
-  </div> 
 
-   -->
-   <div class="card" routerLink="/hadith/hadith-menu" routerLinkActive="active">
+  <div class="card" routerLink="/hadith/hadith-menu" routerLinkActive="active">
     <span class="material-icons hadith-icon">emoji_objects</span>
-    <div class="card-title"> احاديث الأربعين النووية</div>
+    <div class="card-title">{{ menuTitles.hadith[langService.currentLang()] }}</div>
   </div>
-<!--
-  <div class="card" routerLink="/fiqh" routerLinkActive="active">
+
+  <div class="card" routerLink="/quiz" routerLinkActive="active">
     <span class="material-icons fiqh-icon">balance</span>
-    <div class="card-title">الفقه</div>
-  </div>  -->
-   <div class="card" routerLink="/quiz" routerLinkActive="active">
-    <span class="material-icons fiqh-icon">balance</span>
-    <div class="card-title">مسابقات إسلامية</div>
-  </div>  
+    <div class="card-title">{{ menuTitles.quiz[langService.currentLang()] }}</div>
+  </div>
 </div>

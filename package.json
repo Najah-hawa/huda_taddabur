@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.10",
     "@angular/service-worker": "^19.2.0",
+    "@ngx-translate/core": "^18.0.0",
+    "@ngx-translate/http-loader": "^18.0.0",
     "@vercel/analytics": "^2.0.1",
     "canvas-confetti": "^1.9.4",
     "ngx-google-analytics": "^14.0.1",

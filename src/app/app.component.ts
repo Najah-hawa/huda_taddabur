@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common'; // ✅ الـ CommonModule يأ�
 import { Title, Meta } from '@angular/platform-browser';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { LanguageService } from './services/language.service';
 import { SwUpdate } from '@angular/service-worker'; 
 import { interval } from 'rxjs';
 
@@ -20,15 +20,21 @@ import { interval } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'هدى وتدبر';
+ public titleText = {
+    ar: 'هُدًى و تَدَبُّرْ',
+    en: 'Huda & Tadabbur' // eller "Guidance & Reflection"
+  };
 
   constructor(
     private titleService: Title, 
     private metaService: Meta,
-    private swUpdate: SwUpdate 
+    private swUpdate: SwUpdate, 
+    public langService: LanguageService
+
   ) {}
 
-  ngOnInit() {
+  ngOnInit() : void{
+this.langService.initAppLanguage();
     // 1. تحديث العنوان الخاص بالصفحة الرئيسية
     this.titleService.setTitle('هدى وتدبر - الرئيسية');
 

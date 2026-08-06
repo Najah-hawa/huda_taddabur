@@ -1,13 +1,13 @@
 <div class="hadith-page-container">
   
-  <!-- همسة الحديث الديناميكية -->
+  <!-- Hamsa  Al-Hadith Al-Dinamikiya -->
   <app-surah-hint
   *ngIf="hintText && hintText.trim() !== ''"
     [surahName]="'همسة من ' + ' ' + name"
     [hintText]="hintText">
   </app-surah-hint>
 
-  <!-- أزرار التنقل الديناميكية بين الأحاديث -->
+  <!--Dynamic navigation buttons between conversations!-->
 
 <app-next-before-surah-meny 
   [RoutelinkBefore]="routeBefore" 
@@ -18,7 +18,7 @@
 </app-next-before-surah-meny>
   <div class="hadith-page-container">
 
-  <!-- حاوية متن الحديث الرئيسية مع دعم الزوم الكامل -->
+  <!-- Main Hadith text container with full Zoom support-->
 <div #hadithBox class="fawaed-box-container mini hadith-main-box"*ngIf="imageUrls && imageUrls.length > 0 && imageUrls[0]" [class.maximized-style]="isRawiMaximized" style="margin-top: 0px; position: relative; ">
 
   <div class="box-container">
@@ -32,7 +32,7 @@
 
   <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
       
-      <!-- المبدل الصوتي الذكي والمطور -->
+      <!-- Smart and advanced voice changer-->
       <div class="hadith-audio-player-wrapper">
         
    <div class="hadith-player-buttons">
