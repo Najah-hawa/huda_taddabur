@@ -9,7 +9,7 @@ import { ZoomControlsComponent } from '../zoom-controls/zoom-controls.component'
 import { NextBeforeSurahMenyComponent } from '../../shared/next-before-surah-meny/next-before-surah-meny.component';
 import { ProvComponent } from '../prov/prov.component';
 import { HADITH_CATEGORIES } from './hadith-registry';
-
+import { LanguageService } from '../../../services/language.service';
 @Component({
   selector: 'app-hadith-view',
   standalone: true,
@@ -26,6 +26,8 @@ import { HADITH_CATEGORIES } from './hadith-registry';
   styleUrls: ['./hadith-view.component.css']
 })
 export class HadithViewComponent implements OnInit, OnDestroy {
+  private langService = inject(LanguageService);
+
   private http = inject(HttpClient);
   private cdr = inject(ChangeDetectorRef);
   private route = inject(ActivatedRoute);
@@ -91,7 +93,13 @@ source: string = '';
   isTafsirPaused: boolean = false;
   showQuizHadith = false;
 
-ngOnInit() {
+ngOnInit(): void {
+  // 1. Tvinga språket till arabiska för denna komponent
+    this.langService.setLanguage('ar');
+
+    // 2. Tvinga dokumentets riktning till Höger-till-Vänster (RTL)
+    document.documentElement.dir = 'rtl';
+    document.documentElement.lang = 'ar';
  // 💡 استخدام paramMap مع دالة .get()
   this.route.paramMap.subscribe(params => {
     const category = params.get('category') || 'nawawi-40';
