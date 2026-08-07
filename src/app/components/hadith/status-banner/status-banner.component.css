@@ -1,0 +1,65 @@
+.status-banner-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 25px auto 15px auto;
+  padding: 0 10px;
+  direction: rtl;
+  box-sizing: border-box;
+}
+
+.status-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px;
+
+}
+
+.status-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 6px;
+  border: 1.5px solid #E0D5C1;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+  color: #6C5C43;
+  outline: none;
+}
+
+.status-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.status-text {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Aktiva tillstånd för respektive knapp */
+.status-card.completed.active {
+  background-color: #E8F5E9 !important;
+  border-color: #2E7D32 !important;
+  color: #2E7D32 !important;
+  font-weight: bold;
+}
+
+.status-card.review.active {
+  background-color: #FFF8E1 !important;
+  border-color: #B78103 !important;
+  color: #B78103 !important;
+  font-weight: bold;
+}
+
+.status-card.not-started.active {
+  background-color: #EFEBE4 !important;
+  border-color: #795548 !important;
+  color: #4E342E !important;
+  font-weight: bold;
+}

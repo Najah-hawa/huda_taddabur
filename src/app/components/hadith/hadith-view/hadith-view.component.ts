@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject, ChangeDetectorRef, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
@@ -10,6 +10,7 @@ import { NextBeforeSurahMenyComponent } from '../../shared/next-before-surah-men
 import { ProvComponent } from '../prov/prov.component';
 import { HADITH_CATEGORIES } from './hadith-registry';
 import { LanguageService } from '../../../services/language.service';
+import { StatusBannerComponent, HadithStatus } from '../status-banner/status-banner.component';
 @Component({
   selector: 'app-hadith-view',
   standalone: true,
@@ -20,12 +21,20 @@ import { LanguageService } from '../../../services/language.service';
     FooterInfoComponent, 
     NextBeforeSurahMenyComponent, 
     ZoomControlsComponent, 
+    StatusBannerComponent
    /* ProvComponent*/
   ],
   templateUrl: './hadith-view.component.html',
   styleUrls: ['./hadith-view.component.css']
 })
 export class HadithViewComponent implements OnInit, OnDestroy {
+  
+currentHadithStatus = signal<HadithStatus>('not-started');
+  
+  // Id för aktuellt hadith (kan ändras dynamiskt senare)
+  hadithId = 1;
+  
+
   private langService = inject(LanguageService);
 
   private http = inject(HttpClient);
@@ -93,20 +102,47 @@ source: string = '';
   isTafsirPaused: boolean = false;
   showQuizHadith = false;
 
+// Skapa variabler för att hålla reda på nuvarande kategori och ID
+currentCategory = 'nawawi-40';
+currentHadithId = '1';
+
+
 ngOnInit(): void {
   // 1. Tvinga språket till arabiska för denna komponent
-    this.langService.setLanguage('ar');
+  this.langService.setLanguage('ar');
 
-    // 2. Tvinga dokumentets riktning till Höger-till-Vänster (RTL)
-    document.documentElement.dir = 'rtl';
-    document.documentElement.lang = 'ar';
- // 💡 استخدام paramMap مع دالة .get()
+  // 2. Tvinga dokumentets riktning till Höger-till-Vänster (RTL)
+  document.documentElement.dir = 'rtl';
+  document.documentElement.lang = 'ar';
+
+  // 3. Lyssna på ruttändringar (körs varje gång ID eller Kategori ändras i URL)
   this.route.paramMap.subscribe(params => {
-    const category = params.get('category') || 'nawawi-40';
-    const id = params.get('id') || '1';
+    this.currentCategory = params.get('category') || 'nawawi-40';
+    this.currentHadithId = params.get('id') || '1';
 
-    this.loadHadithData(category, id);
+    // Ladda själva data för hadithet
+    this.loadHadithData(this.currentCategory, this.currentHadithId);
+
+    // Läs in sparat tillstånd från LocalStorage för JUST DETTA hadith
+    const storageKey = `hadith_${this.currentCategory}_${this.currentHadithId}_status`;
+    const savedStatus = localStorage.getItem(storageKey) as HadithStatus;
+
+    if (savedStatus) {
+      this.currentHadithStatus.set(savedStatus);
+    } else {
+      // Om inget finns sparat för detta hadith, återställ till 'not-started'
+      this.currentHadithStatus.set('not-started');
+    }
   });
+}
+
+onStatusChange(newStatus: HadithStatus): void {
+  // 1. Uppdatera Angular Signal så UI:t ändras direkt
+  this.currentHadithStatus.set(newStatus);
+
+  // 2. Spara i LocalStorage med den dynamiska nyckeln
+  const storageKey = `hadith_${this.currentCategory}_${this.currentHadithId}_status`;
+  localStorage.setItem(storageKey, newStatus);
 }
 // ⏹️ 1. Skapa en funktion som helt stoppar och nollställer ljudet
 // 🛑 Stoppar och nollställer allt ljud samt talsyntes

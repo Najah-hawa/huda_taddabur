@@ -1,0 +1,30 @@
+<div class="status-banner-container">
+  <div class="status-options">
+    <button 
+      type="button"
+      class="status-card completed"
+      [class.active]="currentStatus() === 'completed'"
+      (click)="selectStatus('completed')">
+      <span class="status-icon">✓</span>
+      <span class="status-text">تم الحفظ</span>
+    </button>
+
+    <button 
+      type="button"
+      class="status-card review"
+      [class.active]="currentStatus() === 'review'"
+      (click)="selectStatus('review')">
+      <span class="status-icon">↻</span>
+      <span class="status-text">مراجعة</span>
+    </button>
+
+    <button 
+      type="button"
+      class="status-card not-started"
+      [class.active]="currentStatus() === 'not-started'"
+      (click)="selectStatus('not-started')">
+      <span class="status-icon">⚪</span>
+      <span class="status-text">لم أبدأ</span>
+    </button>
+  </div>
+</div>

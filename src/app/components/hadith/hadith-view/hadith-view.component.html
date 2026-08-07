@@ -314,5 +314,10 @@
 
   </div>
 </div>
+<!-- Längst ned i Hadith View -->
+<app-status-banner 
+  [currentStatus]="currentHadithStatus()"
+  (statusChange)="onStatusChange($event)">
+</app-status-banner>
 
 <app-footer-info />

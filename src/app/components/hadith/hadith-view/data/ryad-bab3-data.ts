@@ -844,7 +844,54 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  } /*,
+  } ,
+   '19': {
+    title: 'الحديث الثامن عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-42.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith18-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> الصرف:</b><span>  وهو صبغ أحمر</span></li>
+        <li><b> حُنين:</b><span> واد بين مكة والطائف </span></li>
+        <li><b> آثر:</b><span>  أكرم</span></li>
+        <li><b> آثره عليه:  </b><span> فضله</span></li>
+        <li><b>لاجرم: </b><span> لا بد و لا محالة بمعنى حقاً</span></li>
+        <li><b>ناساً </b><span> من المؤلفة قلوبهم من رؤساء القبائل يتألفم </span></li>
+        <li><b> في القسمة: </b><span>قسمة الغنائم قبيلة هوازن </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>  جواز إعطاء من لم يتمكن الاسلام في قلبه وللإمام تميز بعض الناس لمصلحة</b>',
+    '<b>  الصفح من عثرات اللئام سنة قديمة في الانبياء و المرسلين</b>',
+    '<b>  تأسي رسول الله بإخوانه من الأنبياء</b>',
+    '<b>  بيان ما يباح من الغيبة والنميمة عندما أخبره ابن مسعود لإعلامه بما يطعن ممن يظهر الاسلام ويبطن النفاق ليحذر منه ( من باب النصيحة لله ولرسوله)</b>',
+    '<b>  الرسول بشر يتأثر بما  يتأثر به البشر من غضب أو فرح</b>'
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  }
+ /*,
    '5': {
     title: 'الحديث الأول:', 
     name: '', 
