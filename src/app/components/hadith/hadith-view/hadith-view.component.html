@@ -214,14 +214,15 @@
       </li>
    </ul>
   </div>
-</div>
+</div> 
 
 <!-- الحاوية 2: (Box 2) -->
-<div *ngIf="box2Items && box2Items.length > 0" #box2 
-     class="fawaed-box-container mini box2-container" 
-     [class.maximized-style]="maximizedBoxes[2]" 
-     style="margin-top: 5px; position: relative;">
 
+@if (hasBox2Content) {
+  <div #box2 
+       class="fawaed-box-container mini box2-container" 
+       [class.maximized-style]="maximizedBoxes[2]" 
+       style="margin-top: 5px; position: relative;">
   <app-zoom-controls
     [isMaximized]="maximizedBoxes[2]"  
     (onToggle)="toggleBoxZoom(2, box2)" 
@@ -244,6 +245,7 @@
   </div>
 </div>
 
+}
 <!-- الحاوية 3: (Box 3) -->
 <div *ngIf="box3Items && box3Items.length > 0" #box3 
      class="fawaed-box-container mini box3-container" 

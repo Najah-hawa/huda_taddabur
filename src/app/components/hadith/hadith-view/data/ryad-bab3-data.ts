@@ -524,7 +524,327 @@ explanation: `
     
      }] } 
   }
-  /*,
+  ,
+   '12': {
+    title: 'الحديث الحادي عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-35.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith11-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> الصرع:</b><span>  وهو مرض معروف وسمي بذلك لأنه يطرح الناس أرضاً.</span></li>,
+       <li><b> أتكشف:</b><span> خشية أن تظهر عورتها وهي لا تشعر.</span></li>,
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن راوي الحديث',
+    box1Items: [
+    '<span class="highlight-color"> أبو محمد القرشي  </span> <br>  <b>   شيخ الاسلام </b>  ',
+    '<b>  مفتي الحرم المكي  </b>', 
+    '<b>  يمني الأصل </b>', 
+    '<b>  وأبوه نوبيَّ (في منطقة في وادي النيل في جنوب مصر) يعمل المكاتل (القفه من ضفائر الخواص )صواني القش) .  </b>', 
+    '<b>  ولد في خلافة عثمان ونشأ بمكة  </b>', 
+    '<b>  وكان أفطس أشل أعرج ثم عمي ولم يكن في رأسه ألا بضع عشرات </b>', 
+    '<b> افترش المسجد /٢٠ سنة/  </b>', 
+    '<b>  من احسن الناس صلاة  </b>', 
+    '<b>  روى عن عائشة وأم سلمة وأبو هريرة وعدة من الصحابه </b>', 
+    '<b>  وكان من أوعية العلم فقيهاً فى الدين عالماً في الحديث </b>', 
+    '<b>  حج ٧٠ حجة </b>', 
+    '<b>  توفي في رمضان.</b>'
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+    '<b>  الصبر على البلاء في الدنيا يورث الجنة </b>', 
+    '<b>  علاج الامراض بالدعاء الالتجاء الصادق الى الله ناجح مع تعاطي الدواء. </b>', 
+    '<b>  المصائب التي يتعرض لها المرء لا ثواب عليها - انما الثواب على الاحتساب والصبر عليها </b>', 
+    '<b>  الأخذ بالشدة أفضل من الأخذ بالرخصة لمن علم من نفسه صرف القدرة على ذلك. </b>'
+    ],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } ,
+   '13': {
+    title: 'الحديث الثاني عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-36.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith12-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>  يحكي نبياً:</b><span> أنه ورد عند عبيد بن عمرو الليثي أن هذا النبي هو نوح عليه السلام . </span></li>,
+        <li><b>  وقال القرطبي:</b><span> هو رسول الله هو الحاكي والمحكي. </span></li> 
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن راوي الحديث ',
+    box1Items: [
+    '<span class="highlight-color"> ابن مسعود - أبو عبد الرحمن  </span> <br>  <b>   من أكابر الصحابة </b>  ',
+    '<b>  أول من جهر بالقرآن من السابقين في الاسلام  </b>', 
+    '<b>  هاجر الى الحبشة الهجرتين </b>', 
+    '<b>  شهد كل الغزوات </b>', 
+    '<b>  قال له رسول الله إنك غلام معلم </b>', 
+    '<b>  كلام صاحب نعل رسول الله وخادمه الامين وصاحب سره ورفيقه </b>', 
+    '<b>  كان كثير التطيب </b>', 
+    '<b>  مرة نظر إليه عمر وقال، وعاء مليء علماً ولي الكوفة بعد وفاة رسول الله ثم قدم المدينة في خلافة عثمان وتوفي فيها. </b>', 
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+    '<b>  صبر الانبياء وتحملهم الأذى في سبيل تبليغ الدعوة للناس.  </b>', 
+    '<b>  التأسي بأخلاق الانبياء ومن خلقم مقابلة الجهل بالغفران والمسامحة. </b>', 
+    '<b>  عدم معاملة الجاهلية بمثل أعمالهم. </b>', 
+    '<b>  عدم استعجال العذاب بالمخالفين وأعداء الدعوة . </b>'
+    ],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } ,
+   '14': {
+    title: 'الحديث الثالث عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-37.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith13-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>أذى: </b><span> كله مالا يلائم النفس </span></li>, 
+        <li><b>غم: </b><span>  أبلغ من الحزن </span></li>, 
+        <li><b>الوصب: </b><span> المرض </span></li>, 
+        <li><b>نصب: </b><span>  إعياء وتعب</span></li>, 
+        <li><b> يشاكها:</b><span>  تشكه وتدخل في جسده</span></li>, 
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>  الاسلام شرط لتكفير الذنوب بالبلاء.</b>',
+    '<b>  المؤذيات التي تصيب المؤمن ويصبر عليها سبب لتطهير ذنوبه</b>',
+    '<b>  المصيبة مع الجزع والفجر مصيبتان <br>✓مصيبة في فقدان الأجر  <br> ✓مصيبة في الجسم </b>',
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } ,
+   '15': {
+    title: 'الحديث الرابع عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-38.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith14-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> الوعك:</b><span>  مغث الحمى </span></li>
+         <li><b> أجل</b><span> جواب مثل نعم  </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b> حصول الثواب على أنواع البلاء مع الصبر.  </b>',
+    '<b> أشد الناس بلاء الانبياء لأنهم مخصوصون بكمال الصبر وهم قدوة وأسوة حسنة فالبلاء مقابل النعمة فمن كانت نعم الله عليه اكثر كان بلاءه اكثر </b>',
+    '<b> المرض اذا اشتد تضاعف الأجر ثم زاد عليه بعد ذلك ، فالمضاعفة تنتهي حتى تحط السيئات كلها</b>'
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } ,
+   '16': {
+    title: 'الحديث الخامس عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-39.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith15-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>يصب:</b><span>  يوجه له مصيبة إما في بدنه أو ماله أو محبوبه  </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: '  فوائد الحديث ',
+    box1Items: [
+    '<b> المؤمن معرض للابتلاء بعلة أو قلة أو ذلة وذلك كله خير لما فيه لجوء إلى الله وتكفير سيئات </b>',
+    '<b>  الابتلاء أمارة حب الله عبده حتى يرفع درجته ويكفر خطاياه ويعلي مرتبته</b>',
+    '<b>  أن الامراض والأوجاع والآلام بدنية كانت أو قلبية مكفرة للذنوب</b>'
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } ,
+   '17': {
+    title: 'الحديث السادس عشر ', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-40.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith16-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> الضر:</b><span> ما ينزل بالانسان من سوء </span></li>
+        <li><b>اللهم </b><span> أصله يا الله والميم عوض عن ياء النداء وقد حذفت لكثرة الاستعمال </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b> التفويض والتسليم لله في اختيار الحياة أو الموت ويرضى بالقضاء ولا ييأس من رحمة الله </b>',
+    '<b>  لا كراهة في تمني الموت ان كان شوقاً لله أو الشهادة في سبيله أو ليدفن في بلد شريف أو خوف من فتنة</b>',
+    '<b>  الانسان لا يعلم من أين يأتيه الخير، فربما تكون حياته خيراً مع المصائب والشدائد ، أو تكون وفاته خيراً اله لئلا يقع في المعاصي ، عليه أن يفوض الأمر لله</b>'
+
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } ,
+   '18': {
+    title: 'الحديث السابع عشر', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-41.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith17-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> البرد:</b><span>  كساء مخطط يلتخف به</span></li>
+        <li><b> متوسد:</b><span>  جاعل البرد تحت رأسه</span></li>
+        <li><b> المنشار:</b><span>  آلة نشر الخشب</span></li>
+        <li><b> ما يصده</b><span>  مايمنعه</span></li>
+        <li><b>هذا الأمر </b><span> دين الاسلام  </span></li>
+        <li><b> الراكب:</b><span> المسافر  </span></li>
+        <li><b> صنعاء:</b><span>  قاعدة اليمن ومدينتها العظمى</span></li>
+        <li><b> حضرموت:</b><span>بلدة باليمين </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن راوي الحديث ',
+    box1Items: [
+    '<span class="highlight-color"> خباب بن الأرت أبو عبد الله  </span> <br>  <b> تميمي </b>  ',
+    '<b>  لحقه سباء في الجاهلية فاشترته امرأة من خزاعة وأعتقته </b>', 
+    '<b>  كان يصنع السيوف (قیناً) </b>', 
+    '<b>  سادس من أسلم  </b>', 
+    '<b>  عُذب في الله وصبر على دينه  </b>', 
+    '<b>  شهد بدراً و غيرها </b>', 
+    '<b>  سأل عمر خباباً عن أذى المشركين له: فقال يا أمير المؤمنين انظر الى ظهري فكانوا يوقدون النار وما يطفؤها الا ودك ظهري </b>', 
+    '<b>  توفي بالكوفة  </b>', 
+    '<b>  صلى عليه علي عندما كان ذاهب الى صفين وفي أثناء عودته مر على قبر خباب وقال: رحم الله خباباً أسلم راغباً وهاجر طائعاً وعاش مجاهداً وابتلى في جسمه ولن يضيع الله أجر </b>'
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+    '<b>  مدح الصبر على العذاب في الدين .  </b>',
+    '<b>  إرشاد النبي أصحابه أن غاية الأدب الصبر على مراد الله والرضا بقضائه.  </b>',
+    '<b>   تحقق ما أخبريه النبي من انتشار الاسلام والامان من دلائل نبوته. </b>',
+    '<b>  صبر أصحاب النبي على ما أصابهم بقلوب راضية وأنفس مطمئنة وشكواهم ليست للتفجر انما استعجالا للنصر ونشر الدين.  </b>',
+    '<b>   العداء ضد الايمان قديم فيجب على كل المؤمنين في كل زمان ومكان أن يصبروا . </b>',
+    '<b>   التأسي بالصالحين الذين امتحنوا في دينهم.  </b>',
+    '<b>  وجوب الأخذ بأسباب النصر من صبر وجهاد ودعاء مع نهي عند الاستعجال حتى يأتي أمر الله.  </b>',
+    ],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  } /*,
    '5': {
     title: 'الحديث الأول:', 
     name: '', 
@@ -563,5 +883,12 @@ explanation: `
     
      }] } 
   }*/
+
+
+
+
+
+
+
 
 }

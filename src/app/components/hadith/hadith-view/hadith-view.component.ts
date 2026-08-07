@@ -164,6 +164,8 @@ const categoryObj = HADITH_CATEGORIES[category];
   
   this.box4Title = currentHadith.box4Title;
   this.box4Items = currentHadith.box4Items;
+
+  
 // 1. Om kategorin är Nawawi 40 (Hadith 1 till 42 i Arba'een)
 if (category === 'hadith-nawawi-40') {
   this.menuRoute = '/hadith/hadith-nawawi-40/menu';
@@ -538,5 +540,11 @@ private applyFontChangeDirect(element: HTMLElement, size: number) {
 ngOnDestroy() {
   document.body.style.overflow = 'auto';
   this.stopAudio(); // Sköter stopp av både Audio och speechSynthesis!
+}
+
+
+get hasBox2Content(): boolean {
+  // Returnerar true BARA om matrisen finns OCH har minst ett element med riktig text
+  return !!this.box2Items && this.box2Items.some(item => item && item.trim().length > 0);
 }
 }
