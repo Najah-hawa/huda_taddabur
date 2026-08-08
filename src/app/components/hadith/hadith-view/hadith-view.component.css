@@ -403,7 +403,7 @@ position: absolute;
   border-image-slice: 100; /* Testa t.ex. 60, 80 eller 100 beroende på ramens mönster */
   
   /* Sidorna upprepas snyggt när bilden blir längre */
-  border-image-repeat: repeat; 
+  /*border-image-repeat: repeat; */
   
   max-width: 100%;
 }
