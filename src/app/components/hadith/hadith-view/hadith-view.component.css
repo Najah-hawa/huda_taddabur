@@ -391,7 +391,6 @@ position: absolute;
 .hadith-frame-wrapper {
   display: inline-block;
   position: relative;
-  padding: 20px; /* Anpassa utrymmet mellan ramen och hadith-bilden */
   
   /* Sätt ramens tjocklek */
   border: 30px solid transparent; 
