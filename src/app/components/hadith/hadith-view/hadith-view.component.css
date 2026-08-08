@@ -397,7 +397,7 @@ position: absolute;
   border: 30px solid transparent; 
   
   /* Länka till din ram-bild */
-  border-image-source: url('/icons/frame.png'); 
+  border-image-source: url('/icons/frame2.png'); 
   
   /* Slice-värdet bestämmer var ramen ska skäras (i pixlar från kanten) */
   border-image-slice: 100; /* Testa t.ex. 60, 80 eller 100 beroende på ramens mönster */

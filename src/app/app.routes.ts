@@ -1,24 +1,33 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './components/shared/home/home.component';
 export const routes: Routes = [
+
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: 'ar', pathMatch: 'full' },
+
+  // 1. Matches: /surah/juz-30/surah-78/en (3 parameters)
+  {
+    path: 'surah/:category/:id/:lang',
+    loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)
+  },
+
+  // 2. Matches: /surah/juz-30/surah-78 OR /surah/alfatiha/en (2 parameters)
   {
     path: 'surah/:category/:id',
     loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)
   },
-  // För enstaka suror som Alfatiha om den inte har ett id under en kategori:
+
+  // 3. Matches: /surah/alfatiha (1 parameter)
   {
     path: 'surah/:category',
     loadComponent: () => import('./components/quran/surah-view/surah-view.component').then(m => m.SurahViewComponent)
-  },/*
-  { path: 'juz-amma', component: JuzAmmaSurahsListComponent },
-*/
-  // Här använder vi Lazy Loading för surorna
+  },
+
   { 
     path: 'app-quran-parts', 
     loadComponent: () => import('./components/quran/quran_shared_components/quran-parts/quran-parts.component').then(m => m.QuranPartsComponent) 
   },
+
   // Lägg till alfatiha här:
   /*
   { 
