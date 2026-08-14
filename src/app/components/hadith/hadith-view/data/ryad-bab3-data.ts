@@ -940,7 +940,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-3/hadith-44.m4a',
-    imageUrls: [ '/images/ryad/bab3/hadith20-bab3.png'],
+    imageUrls: [ '/images/ryad/bab3/hadith20-1-bab3.png', '/images/ryad/bab3/hadith20-2-bab3.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -1035,7 +1035,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: 'audio/ryad-bab-3/hadith-46.m4a',
-    imageUrls: [ '/images/ryad/bab3/hadith22-1-bab3.png', '/images/ryad/bab3/hadith22-2-bab3.png'],
+    imageUrls: [ '/images/ryad/bab3/hadith22-bab3.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
