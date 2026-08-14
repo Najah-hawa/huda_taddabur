@@ -605,8 +605,15 @@ export const juz30Data: Record<string, any> = {
     }
   }
 },
-   'surah-79': {
+
+'surah-79': {
   id: 'surah-79',
+
+  // ==========================================
+  // ARABISKA (ar)
+  // ==========================================
+  ar: {
+
   name: 'سورة النازعات',
   hint: {
     surahName: 'همسة من سورة النازعات',
@@ -909,7 +916,287 @@ export const juz30Data: Record<string, any> = {
       </li>
       </ul>
     `
-  } }, 
+  } },
+  // ==========================================
+  // ENGELSKA (en)
+  // ==========================================
+  en: {
+  name: 'Surat An-Nazi',
+  hint: {
+    surahName: 'En insikt från Surat An-Nazi',
+    hintText: 'Änglarna som tar människors själar är en påminnelse om att alla angelägenheter ligger i Guds händer och att allt återvänder till Honom.',
+  },
+  tafseerSource: 'Tafsir Ibn Kathir, Sa\'di och Ibn Uthaymeen',
+  verses: [
+    { number: 1, text: "وَٱلنَّٰزِعَٰتِ غَرۡقٗا", translation:'', tafsir: "Änglarna som rycker upp <b>de otrognas/förnekarnas själar</b> med våld och hårdhet." },
+    { number: 2, text: "وَٱلنَّٰشِطَٰتِ نَشۡطٗا", translation:'', tafsir: "Änglarna som hämtar <b>de troendes själar</b> med lätthet, mjukhet och vördnad." },
+    { number: 3, text: "وَٱلسَّٰبِحَٰتِ سَبۡحٗا",translation:'',  tafsir: "Änglarna som skyndar sig att utföra <b>Allahs befallningar</b> i universum." },
+    { number: 4, text: "فَٱلسَّٰبِقَٰتِ سَبۡقٗا", translation:'', tafsir: "Änglarna som <b>skyndar före</b> andra för att utföra Allahs order, och som hinner före djävlarna med uppenbarelsen så att de inte kan tjuvlyssna." },
+    { number: 5, text: "فَٱلۡمُدَبِّرَٰتِ أَمۡرٗا", translation:'', tafsir: "Änglarna som Allah har anförtrott att styra och förvalta många angelägenheter i skapelsen, såsom regn, växter, vindar, hav, foster, paradiset och helvetet." },
+    { number: 6, text: "يَوۡمَ تَرۡجُفُ ٱلرَّاجِفَةُ", translation:'', tafsir: "Det är <b>Uppståndelsens dag</b> (den första stöten i basunen då jorden och bergen skakar kraftigt)." },
+    { number: 7, text: "تَتۡبَعُهَا ٱلرَّادِفَةُ",translation:'',  tafsir: "Det vill säga: <b>Den andra stöten</b> som följer direkt efter den första för att uppväcka alla skapelser." },
+    { number: 8, text: "قُلُوبٞ يَوۡمَئِذٖ وَاجِفَةٌ",translation:'',  tafsir: "Det vill säga: Hjärtan som denna dag är fyllda av skräck, oro och ångest inför det de ser och hör." },
+    { number: 9, text: "أَبۡصَٰرُهَا خَٰشِعَةٞ",translation:'',  tafsir: "Deras blickar är ödmjukade och sänkta i skam. Fruktan har greppat deras hjärtan och <b>ångern har överväldigat dem</b>." },
+    { number: 10, text: "يَقُولُونَ أَءِنَّا لَمَرۡدُودُونَ فِي ٱلۡحَافِرَةِ",translation:'',  tafsir: "Målet är: <b>Mekkas avgudadykare</b> och de som förnekar <b>uppståndelsen</b>. De finner det osannolikt att bli återuppväckta efter att ha nått <b>graven (Al-Hafiradh)</b>, efter att deras kroppar har förmultnat." },
+    { number: 11, text: "أَإِذَا كُنَّا عِظَامًا نَّخِرَةً",translation:'',  tafsir: "Förnekarna säger i denna värld som en <b>förnekelse</b>: När vi har blivit förmultnade och ihåliga ben?" },
+    { number: 12, text: "قَالُوا۟ تِلۡكَ إِذࣰا كَرَّةٌ خَاسِرَةࣱ",translation:'',  tafsir: "De sa: Det vore i så fall en återkomst som innebär ren förlust för oss! Det beror på deras okunnighet om <b>Allahs makt</b>." },
+    { number: 13, text: "فَإِنَّمَا هِیَ زَجۡرَةࣱ وَٰحِدَةࣱ",translation:'',  tafsir: "Allah förklarar hur enkelt detta är för Honom: <b>Det krävs bara ett enda rop / en stöt i basunen</b>." },
+    { number: 14, text: "فَإِذَا هُم بِٱلسَّاهِرَةِ", translation:'', tafsir: "Då befinner sig alla skapade varelser plötsligt på <b>jordens yta (Al-Sahirah)</b> stående, och Allah samlar dem för att döma mellan dem." },
+    { number: 15, text: "هَلۡ أَتَىٰكَ حَدِیثُ مُوسَىٰۤ",translation:'',  tafsir: "Allah säger till sin profet <b>Muhammed ﷺ</b>: <b>Har berättelsen om Mosa nått dig?</b> Det är en fråga om en stor och verklig händelse." },
+    { number: 16, text: "إِذۡ نَادَىٰهُ رَبُّهُۥ بِٱلۡوَادِ ٱلۡمُقَدَّسِ طُوًى", translation:'', tafsir: "När hans Herre kallade på honom i <b>den heliga dalen Tuwa</b>, platsen där Allah talade till honom och gav honom budskapet." },
+    { number: 17, text: "ٱذۡهَبۡ إِلَىٰ فِرۡعَوۡنَ إِنَّهُۥ طَغَىٰ",translation:'',  tafsir: "Gå till Farao, han har sannerligen överskridit alla gränser. Hejda honom med mjukt och vänligt tal, kanske <b>blir han påmind eller känner gudsfruktan</b>." },
+    { number: 18, text: "فَقُلۡ هَل لَّكَ إِلَىٰۤ أَن تَزَكَّىٰ", translation:'', tafsir: "Säg till honom: Vill du rena din själ från otro och tyranni till <b>tro och goda gärningar</b>?" },
+    { number: 19, text: "وَأَهۡدِیَكَ إِلَىٰ رَبِّكَ فَتَخۡشَىٰ",translation:'',  tafsir: "<b>Och att jag vägleder dig till din Herre</b> så att du fruktar Honom när du känner den raka vägen? Men Farao vägrade det som Mosa kallade honom till." },
+    { number: 20, text: "فَأَرَىٰهُ ٱلۡأٓيَةَ ٱلۡكُبۡرَىٰ",translation:'',  tafsir: "Mosa visade honom <b>det stora tecknet</b> (staven som blev en orm och hans hand som lyste vit)." },
+    { number: 21, text: "فَكَذَّبَ وَعَصَىٰ", translation:'', tafsir: "Men Farao <b>förnekade</b> sanningen och <b>trotsade</b> befallningen." },
+    { number: 22, text: "ثُمَّ أَدۡبَرَ يَسۡعَىٰ",translation:'',  tafsir: "Sedan vände han ryggen till och ansträngde sig för att bekämpa sanningen." },
+    { number: 23, text: "فَحَشَرَ فَنَادَىٰ",translation:'',  tafsir: "Han samlade sina arméer och sitt folk, ropade ut och sa:" },
+    { number: 24, text: "فَقَالَ أَنَا۠ رَبُّكُمُ ٱلۡأَعۡلَىٰ",translation:'',  tafsir: "Han sade till dem: <b>Jag är er högste herre!</b> Och de lydde honom i hans falskhet." },
+    { number: 25, text: "فَأَخَذَهُ ٱللَّهُ نَكَالَ ٱلۡأٓخِرَةِ وَٱلۡأُولَىٰٓ",translation:'',  tafsir: "Så Allah straffade honom med ett avskräckande straff i <b>detta liv och det tillkommande</b>." },
+    { number: 26, text: "إِنَّ فِي ذَلِكَ لَعِبْرَةً لِمَنْ يَخْشَى", translation:'', tafsir: "Detta är sannerligen en lära och varning för den som <b>fruktar Allah</b>. Den som ser Faraos straff förstår vad som händer den som förhäver sig mot den Högste Konungen." },
+    { number: 27, text: "ءَأَنتُمۡ أَشَدُّ خَلۡقًا أَمِ ٱلسَّمَاۤءُۚ بَنَىٰهَا", translation:'', tafsir: "Allah säger till förnekarna av uppståndelsen: <b>Är det svårare att skapa er</b> eller <b>himlen</b> med dess enorma storlek och väldiga skapelse som Han har byggt?" },
+    { number: 28, text: "رَفَعَ سَمۡكَهَا فَسَوَّىٰهَا",translation:'',  tafsir: "<b>Han reste dess höjd</b> och gav den en perfekt och välordnad form som förbluffar förståndet." },
+    { number: 29, text: "وَأَغۡطَشَ لَيۡلَهَا وَأَخۡرَجَ ضُحَىٰهَا", translation:'', tafsir: "<b>Han gjorde dess natt mörk</b> över hela jorden, och <b>drar fram dess morgonljus</b> när solen stiger upp så att människorna kan sköta sina behov." },
+    { number: 30, text: "وَٱلۡأَرۡضَ بَعۡدَ ذَٰلِكَ دَحَىٰهَآ",translation:'',  tafsir: "Därefter <b>bredde Han ut jorden</b> och lade till rätta dess nytta. <br>Han förklarade detta genom att säga: <b>Frambringade dess vatten, bete och stadfäste bergen.</b>" },
+    { number: 31, text: "أَخۡرَجَ مِنۡهَا مَآءَهَا وَمَرۡعَىٰهَا",translation:'',  tafsir: "Jorden skapades före himlen, men dess utbredning (daha) och frambringandet av vatten och bete skedde efter himlens skapelse." },
+    { number: 32, text: "وَٱلۡجِبَالَ أَرۡسَىٰهَا",translation:'',  tafsir: "Han förankrade bergen i jorden så att den inte ska skaka med varelserna." },
+    { number: 33, text: "مَتَٰعٗا لَّكُمۡ وَ لِأَنۡعَٰمِكُمۡ", translation:'', tafsir: "Detta gjorde Allah till en <b>försörjning och nytta för er</b> och för er <b>boskap</b>. Och sedan påminner Han om den slutliga återkomsten: <b>När den stora katastrofen (Al-Tammah Al-Kubra) inträffar</b>." },
+    { number: 34, text: "فَإِذَا جَآءَتِ ٱلطَّآمَّةُ ٱلۡكُبۡرَىٰ",translation:'',  tafsir: "När <b>Uppståndelsens dag</b> kommer, den enorma prövningen som gör att alla andra svårigheter verkar små. Då glömmer föräldern sitt barn och vännen sin vän." },
+    { number: 35, text: "يَوۡمَ يَتَذَكَّرُ ٱلۡإِنسَٰنُ مَا سَعَىٰ",translation:'',  tafsir: "Den dagen kommer människan att minnas alla sina handlingar, både goda och onda." },
+    { number: 36, text: "وَبُرِّزَتِ ٱلۡجَحِيمُ لِمَن يَرَىٰ",translation:'',  tafsir: "Och helvetets eld dras fram så att den blir fullt synlig för alla." },
+    { number: 37, text: "فَأَمَّا مَن طَغَىٰ", translation:'', tafsir: "Den som var upprorisk och överskred gränserna," },
+    { number: 38, text: "وَءَاثَرَ ٱلۡحَيَوٰةَ ٱلدُّنۡيَا", translation:'', tafsir: "Och föredrog det jordiska livet framför sin religion och det nästkommande livet," },
+    { number: 39, text: "فَإِنَّ ٱلۡجَحِيمَ هِيَ ٱلۡمَأۡوَىٰ", translation:'', tafsir: "Kommer att ha helvetet som sin slutliga boning." },
+    { number: 40, text: "وَأَمَّا مَنۡ خَافَ مَقَامَ رَبِّهِۦ وَنَهَى ٱلنَّفۡسَ عَنِ ٱلۡهَوَىٰ",translation:'',  tafsir: "Men den som fruktade att stå inför sin Herre och avhöll sin själ från begär," },
+    { number: 41, text: "فَإِنَّ ٱلۡجَنَّةَ هِيَ ٱلۡمَأۡوَىٰ",translation:'',  tafsir: "Har Paradiset som sin slutliga boning." },
+    { number: 42, text: "يَسۡـَٔلُونَكَ عَنِ ٱلسَّاعَةِ أَيَّانَ مُرۡسَىٰهَا",translation:'',  tafsir: "De frågar dig hånfullt om Domens dag: När inträffar den?" },
+    { number: 43, text: "فِيمَ أَنتَ مِن ذِكۡرَىٰهَآ",translation:'',  tafsir: "Allah svarar: Vad har du med att nämna dess tidpunkt? Det finns ingen nytta för människorna att veta den exakta tiden, därför har Allah hållit det dolt." },
+    { number: 44, text: "إِلَىٰ رَبِّكَ مُنتَهَىٰهَآ",translation:'',  tafsir: "Kunskapen om den tillhör enbart din Herre Allah." },
+    { number: 45, text: "إِنَّمَآ أَنتَ مُنذِرُ مَن يَخۡشَىٰهَا", translation:'', tafsir: "Din uppgift är endast att varna dem som fruktar den. Den som fruktar Allah följer dig och lyckas." },
+    { number: 46, text: "كَأَنَّهُمۡ يَوۡمَ يَرَوۡنَهَا لَمۡ يَلۡبَثُوٓاْ إِلَّا عَشِيَّةً أَوۡ ضُحَىٰهَا",translation:'',  tafsir: "Den dag de ser den kommer det att verka som om de inte levde på jorden mer än en kväll eller dess följande morgon." }
+  ],
+  introSummary: 'Änglarnas uppgifter och arbete ← Domedagen och människans skräck ← Förnekarnas avvisande av uppståndelsen och deras överraskning ← Berättelsen om Moses och Farao ← Tecken i skapelsen och Allahs storhet ← Frågan om Domedagens tidpunkt.',
+  rubtTassweerySections: [
+    {
+      title: '❓ Änglarnas uppgifter och arbete',
+      description: 'Suran börjar med att nämna änglarna och deras olika uppgifter, särskilt hur de hämtar människors själar vid döden. Detta är en inledning till Domedagen där effekten av dessa handlingar visar sig.',
+      verseNumbers: [1, 2, 3, 4, 5]
+    },
+    {
+      title: '🌍 Domedagen och människans skräck',
+      description: 'Verserna beskriver scenen på Domedagen: jorden skakar, hjärtan bultar av skräck, blickarna är sänkta av ödmjukhet och människorna drabbas av djup fruktan.',
+      verseNumbers: [6, 7, 8, 9]
+    },
+    {
+      title: '⚠️ Förnekarnas avvisande av uppståndelsen',
+      description: 'Fokus ligger på avgudadykarna som förnekade uppståndelsen, och deras häpnad när allt plötsligt sker med ett enda rop så att alla står på jordens yta på en gång.',
+      verseNumbers: [10, 11, 12, 13, 14]
+    },
+    {
+      title: '🕊 Berättelsen om Mosa och Farao',
+      description: 'Efter att ha beskrivit skräcken på Domedagen ges ett historiskt exempel: Profeten Mosa och hur Farao var tyrannisk och straffades, som en varning för förnekare.',
+      verseNumbers: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+    },
+    {
+      title: '🌌 Tecken i skapelsen och Allahs storhet',
+      description: 'Bevis på Allahs makt i skapelsen (himlen, jorden, bergen, natten och dagen) bekräftar att allt är under Hans visdom. Detta kopplar det historiska straffet till den gudomliga makten.',
+      verseNumbers: [26, 27, 28, 29, 30, 31, 32, 33]
+    },
+    {
+      title: '⏳ Domens dag och räkenskapen',
+      description: 'Alla dessa tecken om skapelsen förbereder oss inför räkenskapens dag: Belöningen för de gudfruktiga och straffet för de upproriska som föredrog det jordiska livet.',
+      verseNumbers: [34, 35, 36, 37, 38, 39, 40, 41]
+    },
+    {
+      title: '⏳ Frågan om Domedagens tidpunkt',
+      description: 'Verserna betonar att kunskapen om Timmens exakta stund tillhör endast Allah, och beskriver hur snabbt det jordiska livet kommer att verka i jämförelse.',
+      verseNumbers: [42, 43, 44, 45, 46]
+    }
+  ],
+  questions: [
+    {
+      question: "Vad menas med 'An-Nazi'ati gharqa'?",
+      answers: [
+        { text: "Bergen som rycks upp från sina platser", isCorrect: false },
+        { text: "Vattnet som dränker jorden", isCorrect: false },
+        { text: "Änglarna som rycker upp de otrognas själar med hårdhet", isCorrect: true },
+        { text: "Stjärnorna som sjunker på himlen", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad betyder 'An-Nashitati nashta'?",
+      answers: [
+        { text: "Änglarna som hämtar de troendes själar med lätthet", isCorrect: true },
+        { text: "Snabba hästar", isCorrect: false },
+        { text: "Lysande planeter", isCorrect: false },
+        { text: "Snabba vindar", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vilka åsyftas med 'As-Sabiqati sabqa'?",
+      answers: [
+        { text: "Hästar som springer först i strid", isCorrect: false },
+        { text: "Änglarna som skyndar sig med de troendes själar till Paradiset", isCorrect: true },
+        { text: "Regnet som kommer före molnen", isCorrect: false },
+        { text: "Planeter som kretsar på himlen", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad är meningen med ordet 'Fal-mudabbirati amra'?",
+      answers: [
+        { text: "De lärda som styr angelägenheterna", isCorrect: false },
+        { text: "Änglarna som utför Allahs befallningar i skapelsen", isCorrect: true },
+        { text: "Stjärnorna som styr natt och dag", isCorrect: false },
+        { text: "Ledarna som styr krigen", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad betyder 'Yawma tarjufu ar-rajifah'?",
+      answers: [
+        { text: "Den första stöten i basunen (på Domedagen)", isCorrect: true },
+        { text: "En regnig dag", isCorrect: false },
+        { text: "En stjärnexplosion", isCorrect: false },
+        { text: "Jordbävningar i världen", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad åsyftas med 'Tatba'uha ar-radifah'?",
+      answers: [
+        { text: "Orkaner", isCorrect: false },
+        { text: "Jordbävningar", isCorrect: false },
+        { text: "Havsvågor", isCorrect: false },
+        { text: "Den andra stöten i basunen", isCorrect: true }
+      ]
+    },
+    {
+      question: "Vad kommer människan att minnas på Domedagen?",
+      answers: [
+        { text: "Drömmarna hon såg", isCorrect: false },
+        { text: "Pengarna hon spenderade", isCorrect: false },
+        { text: "Allt hon gjorde i det jordiska livet", isCorrect: true },
+        { text: "Endast människors namn", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad betyder 'Al-Tammah Al-Kubra'?",
+      answers: [
+        { text: "Ashura-dagen", isCorrect: false },
+        { text: "Domedagen", isCorrect: true },
+        { text: "Badr-dagen", isCorrect: false },
+        { text: "Hijra-dagen", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad blir ödet för den som var upprorisk och föredrog det jordiska livet?",
+      answers: [
+        { text: "Helvetet blir hans boning", isCorrect: true },
+        { text: "Han blir förlåten direkt", isCorrect: false },
+        { text: "Han kommer att gå in i Paradiset", isCorrect: false },
+        { text: "Han dör utan räkenskap", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad blir ödet för den som fruktade sin Herre och avhöll sig från begär?",
+      answers: [
+        { text: "Paradiset blir hans boning", isCorrect: true },
+        { text: "Han kommer aldrig att ställas till svars", isCorrect: false },
+        { text: "Han får mycket pengar", isCorrect: false },
+        { text: "Han hedras endast i detta liv", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad frågade förnekarna när de hörde talas om uppståndelsen?",
+      answers: [
+        { text: "Kommer vi verkligen att återvändas till vårt tidigare tillstånd?", isCorrect: true },
+        { text: "Kommer änglarna ner till jorden?", isCorrect: false },
+        { text: "Vem ger oss mat?", isCorrect: false },
+        { text: "När kommer regnet?", isCorrect: false }
+      ]
+    },
+    {
+      question: "Hur svarade Allah på förnekarnas tvivel om uppståndelsen?",
+      answers: [
+        { text: "Han gav dem en till chans", isCorrect: false },
+        { text: "Det krävs bara ett enda rop så står de på jordens yta", isCorrect: true },
+        { text: "Straffet skjuts upp för dem", isCorrect: false },
+        { text: "Domedagen kommer inte att inträffa", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vilket budskap kom Mosa med till Farao?",
+      answers: [
+        { text: "Att lära honom jordbruk", isCorrect: false },
+        { text: "Att fråga honom: Vill du rena din själ?", isCorrect: true },
+        { text: "Att ge honom pengar", isCorrect: false },
+        { text: "Att bygga ett palats åt honom", isCorrect: false }
+      ]
+    },
+    {
+      question: "Hur svarade Farao på Mosas kallelse?",
+      answers: [
+        { text: "Han teg och svarade inte", isCorrect: false },
+        { text: "Han trodde direkt", isCorrect: false },
+        { text: "Han förnekade, trotsade och vände ryggen till", isCorrect: true },
+        { text: "Han hedrade Mosa", isCorrect: false }
+      ]
+    },
+    {
+      question: "Varför nämns berättelsen om Farao i suran?",
+      answers: [
+        { text: "För att försköna berättelser", isCorrect: false },
+        { text: "För att lära ut magi", isCorrect: false },
+        { text: "Som en varning och lära av tyranners öde", isCorrect: true },
+        { text: "För att lära ut handel", isCorrect: false }
+      ]
+    },
+    {
+      question: "Vad är syftet med versen: 'Är det svårare att skapa er eller himlen'?",
+      answers: [
+        { text: "Att lära ut jordbruk", isCorrect: false },
+        { text: "En fråga om astronomi", isCorrect: false },
+        { text: "Att visa Allahs makt att återuppväcka skapelsen", isCorrect: true },
+        { text: "Uppmuntran till att resa", isCorrect: false }
+      ]
+    },
+    {
+      question: "Hur avslutas Surat An-Nazi'at?",
+      answers: [
+        { text: "Med att nämna Zakat", isCorrect: false },
+        { text: "Med att kunskapen om Domedagens tidpunkt tillhör endast Allah", isCorrect: true },
+        { text: "Med att nämna fastan", isCorrect: false },
+        { text: "Med att nämna bönen", isCorrect: false }
+      ]
+    }
+  ],
+  benefit: { title: '', text: '' },
+  reminder: { title: '', content: ``, hadithSummary: '', hadithText: `` },
+  nezool: { dalel: '', nezoolText: ` ` },
+  fawaeed: {
+    SurahFaidah: 'Insikter och lärdomar från Surat An-Nazi\'at',
+    FaidaText: `
+      <ul class="benefit-list">
+      <li>
+        En av surans lärdomar är att änglarna som har i uppdrag att hämta de troendes själar gör det med stor lätthet och vördnad. 
+        <p>Vad gäller änglarna som hämtar de otrognas själar, när själen kallas att komma ut ropar änglarna till den med de värsta egenskaperna: <span>Kliv ut, du onda själ som fanns i en ond kropp, kliv ut till Allahs vrede...</span></p>
+        <p>Då sprider sig själen i kroppen och vill inte komma ut, så änglarna drar ut den med våld...</p>
+        <p>Medan de troendes själar tas emot med glada nyheter: <span>Kliv ut, du goda själ som fanns i en god kropp, kliv ut till Allahs nåd och välbehag</span>.</p>
+        <p>Därför sade Profeten ﷺ: <strong>«Den som älskar att möta Allah, älskar Allah att möta honom...»</strong>.</p>
+      </li>
+      <li>
+        Versen: <strong>﴿فَالْمُدَبِّرَاتِ أَمْرًا﴾</strong> beskriver också änglarna som förvaltar Allahs befallningar i universum...
+      </li>
+      <li>
+        Versen: <strong>﴿فَتَخْشَى﴾</strong> innebär att du fruktar Allah grundat på kunskap, eftersom gudsfruktan (Khashyah) är fruktan förenad med insikt...
+      </li>
+      <li>
+        Eftersom människor ofta inte accepterar en profet utan tecken, gav Allah sina sändebud tydliga tecken. Här säger Han: <strong>﴿فَأَرَاهُ الْآيَةَ الْكُبْرَى﴾</strong> (Och han visade honom det stora tecknet)...
+      </li>
+      </ul>
+    `
+  }
+}}
+
+    , 
    'surah-80': {
   id: 'surah-80',
   name: 'سورة عبس',

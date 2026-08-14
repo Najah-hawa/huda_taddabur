@@ -890,9 +890,290 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
+  },
+   '20': {
+    title: 'الحديث التاسع عشر:', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-43.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith19-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>  يوافي:</b><span> يأتي بدنبه حاملاً له على كاهله </span></li>
+      <li><b>ابتلاهم: </b><span>اختبرهم ، والبلاء يكون بالخير والشر </span></li>
+      <li><b> فمن رضي: </b><span>أي قبل ولم يتضجر  </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>  يبتلى الناس ع حسب دينيهم</b>',
+    '<b> المصائب نعمة من نعم الله عليك بالصبر على المعصية والشكر للنعمة </b>',
+    '<b>  من علامات حب الله للعبد ابتلاؤة بالمصائب حتى يلقاه يوم القيامة طاهراً من الذنوب.</b>',
+    '<b>  من علامات تكفير الذنوب الصبر على البلاء.</b>',
+    '<b>  على المؤمن أن يكون راضياً بما ابتلي به ولا ييأس ولا يسخط منه </b>',
+    '<b> الحث على الصبر على البلاء بعد وقوعه لا الترغيب في طلبه والرضا بما تجري به الأقدار وأنه خير للناس في الحال والمال. </b>'
+
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+   '21': {
+    title: 'الحديث العشرون:', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-44.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith20-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> أسكن:</b><span>  أهدأ</span></li>
+        <li><b> أم سليم:</b><span>  هي زوجة مالك بن النضر والد انس أسلمت و عرضت عليه الاسلام فرفض مغاضبها وخرج إلى الشام ومات هناك تزوجت بعدها أبو طالحة فهو كان والده الصغير </span></li>
+        <li><b> أصاب منها:</b><span>  جامعها</span></li>
+        <li><b> واروا الصبي:</b><span> ادفنوه </span></li>
+        <li><b> أعرستم:</b><span>  الوطء</span></li>
+        <li><b> حنكه</b><span>  مضعت تمراً ثم وضعته في فم الصغير</span></li>
+        <li><b> تلطخت</b><span>  تقذرت بالجماع </span></li>
+        <li><b> ابن عينه:</b><span>  سفيان بن عينة وهو قرين الامام مالك</span></li>
+        <li><b>تصنعت :</b><span> تزينت </span></li>
+        <li><b> لا يطرقها طروقاً:</b><span> لايدخلها ليلاً </span></li>
+        <li><b> فضربها المخاض:</b><span>  وجع الولادة </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b> عظيم صبر ام سليم وحسن رضاها بقدر الله ورجاحة عقلها في إخفاء موت ابنها على أبيه لينام مستريحاً بدون حزن </b>',
+    '<b>  جواز الأخذ بالشدة وترك الرخصه مع القدرة عليها والتسلية عن المصائب  </b>',
+    '<b>  التلطف فى الاخبار عند وفاة أو مصيبة.</b>',
+    '<b> استحباب تحنيك المولود عند ولادته بتمر فإن تعذر مما قرب عليه من الحلو </b>',
+    '<b> جواز التسمية يوم الولاة ( أحب الاسماء إلى الله عبد الله وعبد الرحمن) </b>',
+    '<b>  اجابة دعوة النبي فقد حملت أم سليم بعبد الله وجاء من عبد الله (٩) ذكور و(٤) إناث كلهم صالحون علماء </b>',
+    '<b>  كراهية طروق المسافر أهله ليلاً لئلا يرى منهم ما قد يكرهه.</b>'
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+   '22': {
+    title: 'الحديث الحادي والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-45.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith21-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>الصُرَعة: </b><span> هو الذي يغلب الناس ولا يغلبه أحد </span></li>
+       <li><b>الصُرْعة: </b><span>  هو الضعيف الذي يصرعه الناس.</span></li>
+      </ul> 
+
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b> مجاهدة النفس والهوى أشد من مجاهدة العدو. </b>',
+    '<b>  القدرة على التحكم بالنفس تؤدي إلى السعادة والنجاة في الحياة</b>',
+    '<b> فضل كظم الغيظ وإمساك النفس عند الغضب   </b>',
+    '<b>  مخالفة الهوى تورث العبد قوة في بدنه وقلبه ولسانه</b>',
+    '<b> الغضب مضيع للجهود والانجازات. </b>',
+    
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+   '23': {
+    title: 'الحديث الثاني والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-46.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith22-1-bab3.png', '/images/ryad/bab3/hadith22-2-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> يستبان:</b><span>  يسبُّ كل منها صاحبة</span></li>
+        <li><b>أوداجه: </b><span>  ما أحاط بالعنق من عروق </span></li>
+        <li><b> أعوذ:</b><span> التجأ وأعتصم </span></li>
+        <li><b> الشيطان:</b><span>  العاني المتمرد</span></li>
+        <li><b> الرجيم:</b><span> الملعون والمبعد عن رحمة الله</span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن الراوي ',
+    box1Items: [
+  '<b> الراوي:</b> سليمان بن صرد',
+  '<b>  يكنى أبا مطرف وكان خيراً فاضلاً </b>',
+  '<b> له دين وعبادة.  </b>',
+  '<b>  كان اسمه يساراً سماه رسول الله سليمان </b>',
+  '<b>  سكن الكوفة وكان له شرف وكلمة عند قومه</b>',
+  '<b>  خرج إلى الشام للمطالبه بدم الحسين فقل وعمره /٩٣ سنة</b>',
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+      '<b>  الغضب في غير الله هو من نزغ الشيطان فينبغي للغاضب أن يستعيذ من الشيطان الرجيم وهو سبب زوال الغضب  </b>',
+      '<b>  رأفة النبي ورحمته بأمته وإرادة لهم الخير </b>',
+      '<b>  الغضب الذي يثيره الشيطان يتسبب في أضرار بالدنيا و الآخرة </b>',
+      '<b>  حرص الرسول على التوجيه والإرشاد في كل موقف وهذا يجب أن يكون حال الدعاة. </b>'
+    ]
+    ,
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  }
+ ,
+   '24': {
+    title: ' الحديث الثالث والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-47.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith23-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> كظم غيظاً:</b><span>  تجرعه واحتمل سببه وصلر عليه <br>  (أصل الكظم: الحبس ومنع ظهوره)</span></li>
+         <li><b> الحور العين:</b><span>  شديدة البياض في العين شديدة السواد</span></li>
+          <li><b> العين:</b><span> واسعة العين "وهم الحِسَانُ من النساء" </span></li>
+
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن الراوي ',
+    box1Items: [
+    '<b> الراوي:</b>  معاذ بن أنس الجهني ',
+  '<b>  حليف الأنصار  </b>',
+  '<b>  صحابي كان بالشام  </b>',
+  '<b>  روى عن النبي أحاديث وله رواية عن أبي الدرداء.  </b>',
+  '<b>  وبقي إلى خلافه عبد الملك بن مروان. </b>',
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+  '<b>  فضل كظم الغيظ. لانه قهر للنفس الأمارة بالسوء ومن نهى النفس عن هواها فإن الجنة مأواها .. والحور العينين جزاه</b>',
+  '<b>  تزداد قيمة العضو. كلما ازدادت القدرة على الانتصاف </b>',
+  '<b> قوة الإرادة وقوة الشخصية تظهر أن في المواقف الحرجة المثيرة للغضب. </b>',
+  '<b>إضاءة كان عند ميمون بن مهران ضيف فاستعجل على جاريته بالعشاء فجاءت مسرعة ومعها قصعة مملوءة فتعثرت فأراقتها على رأس سيدها (ميمون) فقال يا جارية أحرقتني ! فقالت : يا معلم الخير ومؤدب الناس ارجع إلى ما قال الله  قال ، وما قال ، قالت : قال "والكاظمين الغيظ" قال كظمت غيظي قالت: "والعافين عن الناس" قال: عفوت عنك قالت: والله يحب المحسنين قال: فانت حرة لوجه لله </b>'
+
+    ],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+   '25': {
+    title: 'الحديث الرابع والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-48.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith24-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> </b><span>   أوصني: تجمع خيري الدينا والآخرة. <br> في رواية أخبرني بعمل يدخلني الجنة ولا تكثر عليّ لعلي أعقله </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>  ذم العضب والبعد  أسبابه</b>',
+    '<b>  الغضب المذموم ما كان في أمور الدينا والعضب المحمود ماكان لنصرة وين الله</b>',
+    '<b>  ينبغي للمرء المسلم أن يعين نفسه على ترك الغضب باستحضار فضل من كظم غيظه</b>',
+    '<b> للغضب تأثيرات سلبية على جسم الانسان  </b>',
+    '<b> توجيه النيي واسداؤه النصيحة الجامعة لكل خير (وهي النهي عن الغضب) </b>'
+
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
   }
  /*,
-   '5': {
+   '26': {
     title: 'الحديث الأول:', 
     name: '', 
     hintText: '',
