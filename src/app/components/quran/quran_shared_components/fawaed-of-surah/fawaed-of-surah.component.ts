@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'; // 👈 مهم جداً
 @Component({
@@ -6,7 +6,8 @@ import { RouterModule } from '@angular/router'; // 👈 مهم جداً
   standalone: true,
   imports: [RouterModule],
   templateUrl: './fawaed-of-surah.component.html',
-  styleUrl: './fawaed-of-surah.component.css'
+  styleUrl: './fawaed-of-surah.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class FawaedOfSurahComponent {
   @Input() SurahFaidah: string = '';

@@ -1,0 +1,54 @@
+
+/* تنسيق العنوان */
+.benefit-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  color: #3d5236;
+  font-size: 1.3rem !important;
+  font-weight: bold !important;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin: 0 !important;
+}
+
+/* تنسيق الماسة الذهبية على الطرفين */
+.benefit-title .diamond-icon {
+  color: #e6b800; /* لون أصفر ذهبي لامع ومطابق لمنتصف الخط */
+  font-size: 0.85em; /* حجم متناسق مع النص */
+  margin: 0 8px; /* مسافة بسيطة بين الماسة والعنوان */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* النجمة الذهبية */
+.benefit-title .star-icon {
+  color: #c5a059;
+  font-size: 1.1em;
+}
+
+
+.benefit-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #3d5236, #e6b800, #c5a059, #e6b800, #3d5236);
+}
+
+/* العنوان */
+/* توسيط الـ Wrapper باستخدام Flexbox لضمان التوسيط المطلق */
+.benefit-title-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  margin-bottom: 25px !important;
+  margin-top: 25px !important;
+  text-align: center;
+
+}
