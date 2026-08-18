@@ -889,3 +889,18 @@ border: none;
   box-shadow: 0 2px 5px rgba(61, 82, 54, 0.2) !important;
   z-index: 1 !important;
 }
+
+.custom-presentation-list li .nawawi-slut {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.custom-presentation-list li:has(.nawawi-slut)::before {
+  display: none !important;
+}
+
+.custom-presentation-list li:has(.nawawi-slut) {
+  counter-increment: none !important;
+  padding-right: 0 !important;
+}
