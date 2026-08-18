@@ -1,6 +1,6 @@
 export const RYAD_BAB3_HADITHS: Record<string, any> = {
 
-    '1': {
+  '1': {
     title: 'باب الصبر',
     name: '', 
     hintText: '',
@@ -397,9 +397,8 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  }
-  ,
-   '9': {
+  },
+  '9': {
     title: 'الحديث الثامن:', 
     name: '', 
     hintText: '',
@@ -439,7 +438,7 @@ explanation: `
     
      }] } 
   },
-   '10': {
+  '10': {
     title: 'الحديث التاسع:', 
     name: '', 
     hintText: '',
@@ -481,7 +480,7 @@ explanation: `
     
      }] } 
   },
-   '11': {
+  '11': {
     title: 'الحديث العاشر :', 
     name: '', 
     hintText: '',
@@ -523,9 +522,8 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  }
-  ,
-   '12': {
+  },
+  '12': {
     title: 'الحديث الحادي عشر', 
     name: '', 
     hintText: '',
@@ -578,7 +576,7 @@ explanation: `
     
      }] } 
   } ,
-   '13': {
+  '13': {
     title: 'الحديث الثاني عشر', 
     name: '', 
     hintText: '',
@@ -627,7 +625,7 @@ explanation: `
     
      }] } 
   } ,
-   '14': {
+  '14': {
     title: 'الحديث الثالث عشر', 
     name: '', 
     hintText: '',
@@ -669,7 +667,7 @@ explanation: `
     
      }] } 
   } ,
-   '15': {
+  '15': {
     title: 'الحديث الرابع عشر', 
     name: '', 
     hintText: '',
@@ -708,7 +706,7 @@ explanation: `
     
      }] } 
   } ,
-   '16': {
+  '16': {
     title: 'الحديث الخامس عشر', 
     name: '', 
     hintText: '',
@@ -746,7 +744,7 @@ explanation: `
     
      }] } 
   } ,
-   '17': {
+  '17': {
     title: 'الحديث السادس عشر ', 
     name: '', 
     hintText: '',
@@ -786,7 +784,7 @@ explanation: `
     
      }] } 
   } ,
-   '18': {
+  '18': {
     title: 'الحديث السابع عشر', 
     name: '', 
     hintText: '',
@@ -845,7 +843,7 @@ explanation: `
     
      }] } 
   } ,
-   '19': {
+  '19': {
     title: 'الحديث الثامن عشر', 
     name: '', 
     hintText: '',
@@ -891,7 +889,7 @@ explanation: `
     
      }] } 
   },
-   '20': {
+  '20': {
     title: 'الحديث التاسع عشر:', 
     name: '', 
     hintText: '',
@@ -935,11 +933,11 @@ explanation: `
     
      }] } 
   },
-   '21': {
+  '21': {
     title: 'الحديث العشرون:', 
     name: '', 
     hintText: '',
-    audioUrl: 'audio/ryad-bab-3/hadith-44.m4a',
+    audioUrl: 'audio/ryad-bab-3/hadith-44.mpeg',
     imageUrls: [ '/images/ryad/bab3/hadith20-1-bab3.png', '/images/ryad/bab3/hadith20-2-bab3.png'],
 explanation: `
     <div class="explanation-content">
@@ -987,7 +985,7 @@ explanation: `
     
      }] } 
   },
-   '22': {
+  '22': {
     title: 'الحديث الحادي والعشرون', 
     name: '', 
     hintText: '',
@@ -1030,7 +1028,7 @@ explanation: `
     
      }] } 
   },
-   '23': {
+  '23': {
     title: 'الحديث الثاني والعشرون', 
     name: '', 
     hintText: '',
@@ -1080,9 +1078,8 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  }
- ,
-   '24': {
+  },
+  '24': {
     title: ' الحديث الثالث والعشرون', 
     name: '', 
     hintText: '',
@@ -1131,7 +1128,7 @@ explanation: `
     
      }] } 
   },
-   '25': {
+  '25': {
     title: 'الحديث الرابع والعشرون', 
     name: '', 
     hintText: '',
@@ -1171,26 +1168,25 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  }
- /*,
-   '26': {
-    title: 'الحديث الأول:', 
+  },
+  '26': {
+    title: 'الحديث الخامس والعشرون', 
     name: '', 
     hintText: '',
-    audioUrl: '',
-    imageUrls: [ ''],
+    audioUrl: 'audio/ryad-bab-3/hadith-49.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith25-bab3.png'],
 explanation: `
     <div class="explanation-content">
       <ul class="vocabulary-list"> 
-        <li><b> </b><span> </span></li>
-   
+        <li><b>  البلاء:</b><span> الاختبار سواء كان في الخير أو الشر إلا أنه غلب على استعماله بالمصاعب. </span></li>
       </ul>
     </div>
   `,
-    box1Title: '  ',
+    box1Title: ' فوائد الحديث ',
     box1Items: [
-    '',
-    ''
+    '<b>  المؤمن معرض للاختبار بشتى ألوان البلاء </b>',
+    '<b>  صدق الايمان يتجلى عند المصائب والمحن (فالعبد المؤمن يعلم أن الله يبتليه ليسمع مناجاته وشكواه ويعلم صبره) (أما ضعيف الإيمان يعتريه سوء الظن بالله ) </b>',
+    '<b>  بشارة المؤمن المبتلي ان صبر على البلاء الذي أتاه بأنه تكفير له من الذنوب... (وَلَنَبْلُوَنَّكُمْ بِشَيْ‏ءٍ مِنَ الْخَوْفِ وَالْجُوعِ وَنَقْصٍ مِنَ الأَْمْوالِ وَالأَْنْفُسِ وَالثَّمَراتِ وَبَشِّرِ الصَّابِرِينَ) </b>'
     ],
     box2Title: '', 
     box2Items: [],
@@ -1210,13 +1206,204 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  }*/
+  },
+  '27': {
+    title: 'الحديث السادس والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-50.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith26-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> النفر:/b><span>   مادون العشرة من الرجال  </span></li>
+        <li><b> القراء:</b><span>    جمع قارئ وهو القارئ للقرآن المتفهم لمعانيه </span></li>
+        <li><b> أصحاب مجلس عمر:</b><span>   الملازمين لمجلس عمر  </span></li>
+        <li><b>كهولاً: </b><span>   مازاد عمره عن ثلاثين من خط الشيب راسه  </span></li>
+        <li><b>خذ العفو: </b><span>  ما عفا وتيسر من أخلاق الناس   </span></li>
+        <li><b> أمر بالعرف:</b><span>   الامر بالمعروف في الشرع  </span></li>
+        <li><b>أعرض عن الجاهلية: </b><span>   لا تقابلهم بسفههم  </span></li>
+        <li><b>وقافاً عند كتاب الله: </b><span>   فتمثل لاوامر الله وما ورد في الآيات وعدم تجاوز ذلك  </span></li>
+        <li><b> الجزل:</b><span>  الكثير. </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>   عظم منزلة القراء وهم العاملون بأحكامه لا المكتسبون بتلاوته</b>',
+    '<b>  التنبه مع أخذ العلم من أهله وإن صغرت أسنانهم   </b>',
+    '<b>  على الحاكم أن يتخذ بطانة خير يجالسهم ويستشيرهم </b>',
+    '<b>  على الحاكم التحلي بالصبر و الحلم والأناة ولا يغضب  </b>',
+    '<b> <span class="highlight-color"> إضاءة:</span> ليس في القرآن آية أجمع لمكارم الأخلاق من هذه الآية . ( خذ العفو وأمر بالعرف وأعرض عن الجاهلين) </b>',
 
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+  '28': {
+    title: 'الحديث السابع والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-51.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith27-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>أثرة:</b><span>   الانفراد بالشيئ   </span></li>
+         <li><b> تؤدون:</b><span>   تعطون.  </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' فوائد الحديث ',
+    box1Items: [
+    '<b>  الصبر على المقدور و الرضا بالقضاء حلوه ومره ... </b>',
+    '<b>   الحث على السمع والطاعة وان كان المتولي ظالماً وندعو الله أن يكشفزأذاه عنا. ولكن لا تخرج عليه</b>',
+    '<b>  الحض على وحدة الجماعة.. فدرء المفسدة أولى من جلب المصلحة </b>',
+    '<b>  تقديم جانب الآخرة على الدنيا فالصبر على مافات منها ليدخر ذلك للآخرة </b>'
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+  '29': {
+    title: 'الحديث الثامن والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-52.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith28-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b>تستعملني:</b><span>   تصيرني عاملاً </span></li>
+         <li><b> الحوض:</b><span>    هو الحوض الذي خص الله به سيدنا محمد   </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن الراوي  ',
+    box1Items: [
+      '<b> الراوي:</b>  أسيد بن حضير من بني الأشهل / أبو يحيى/  ',
+    '<b> أسلم قبل سعد بن معاذ ع يد مصعب  </b>',
+    '<b>  كان من النقباء </b>',
+    '<b>  شهد بيعة العقبة الأولى والثانية ولم يشهد بدر </b>',
+    '<b>  شهد أحد وما بعدها من المشاهد   </b>',
+    '<b>  أصيب يوم أحد بسبع جراحات  </b>',
+    '<b>  ثبت مع رسول الله حين انكشف عنه الناس </b>',
+    '<b>  أخى رسول الله بينه وبين زيد بن حارثة  </b>',
+    '<b>   كان صوته حسن في القرآن </b>',
+    '<b>  كانت تقول عائشة: ثلاثة من الانصار لم يكن أحد يعتد عليهم فضلاً كلهم من بني عبد الأشهل، سعد بن معاذ وأسيد بن حضير و عباد بن بشر </b>',
+    '<b>  توفي في شعبان  </b>',
+    '<b>  حمله عمر حتى وضعه في القبر وصلى عليه وكان أوصني إلى عمر بن الخطاب فوجد عليه دين / ٠٤٠٠ / دنيار فباع نخله أربع سنين كل سنه ١٠٠٠ دينار حتى وفى دينيه </b>'
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+    '<b> النهي عن طلب الأمارة اذا كان أهلا لها وليس من أحد ينافسه عليها. </b>',
+    '<b> معجزة النبي في الاخبار عما سيقع فيه المستقبل. </b>',
+    '<b>  الصبر عن فساد الامور وعدم تولية الاأصحاب الكفاءة </b>',
+    '<b> في الحديث إيماء من رسول الله أن الخلافة من بعده لن تكون للانصار </b>'
+    ],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+  '30': {
+    title: 'الحديث الثامن والعشرون', 
+    name: '', 
+    hintText: '',
+    audioUrl: 'audio/ryad-bab-3/hadith-53.m4a',
+    imageUrls: [ '/images/ryad/bab3/hadith29-bab3.png'],
+explanation: `
+    <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+        <li><b> بعض أيامه:</b><span>  بعض غزواته وحروبه </span></li>
+        <li><b> أنتظر:</b><span>أخر قتالهم </span></li>
+        <li><b>مالت الشمس: </b><span>   مالت عن كبد السماء إلى جهة الغروب ( وقت الزوال)   </span></li>
+        <li><b> اسألوا الله العافية:</b><span>    اطلبوا من الله العافية من جميع الآفات ظاهراً و باطناً في الدينا و الآخرة  </span></li>
+        <li><b> اعلموا أن الجنة تحت ظلال السيوف:</b><span>   حض من النبي على مقاربة العدو واستعمال السلام للفوز بالجنة   </span></li>
+      </ul>
+    </div>
+  `,
+    box1Title: ' نبذة عن الراوي  ',
+    box1Items: [
+    '<b> الراوي:</b>  عبد الله بناي أوفي /أسلمي/   ',
+    '<b>  شهد الحديبية وخيبر وما بعدها من المشاهد  </b>',
+    '<b>  بقي بالمدينة حتى قبض رسول الله ثم تحول إلى الكوفة وتوفي هناك  </b>',
+    '<b>  وكف بصره في آخر عمره.   </b>'
 
-
-
-
-
-
-
+    ],
+    box2Title: 'فوائد الحديث', 
+    box2Items: [
+    '<b>  التي عن تمني لقاء العدو وهذا إشعار لهذه الأمة الا تطلب الحرب ابتداء إنما تدافع من من منع الحرب بإقامة الدين. </b>',
+    '<b>  سؤال الله العافية من الفتنة </b>',
+    '<b>   الحث على الصبر فى القتال</b>',
+    '<b>  وصية المقاتلين بمافيه صلاح أمرهم وتعليمهم ما يحتاجون اليه </b>',
+    '<b> جواز الدعاء على الاعداء  </b>',
+    '<b>  الجهاد ثواب الجنة فهو سبب للفوز بها </b>',
+    '<b> استحباب الدعاء في حال الشدائد والخروج من الحول والقوة إلى الله فقط  </b>'
+    
+    ],
+    box3Title: 'إضاءة: في دعاء النبي اللهم منزل الكتاب.',
+    box3Items: [
+    '<b>   إشارة إلى ثلاث نِعَم <br> <br>   نعمة أخروية: الاسلام في قوله ( منزل الكتاب)  </b>',
+    '<b>  نعمة دنيوية: الرزق (مجري السحاب) هطول المطر </b>',
+    '<b>  حفظ النعمتين (الأخروية - الدنيوية) (هازم الأحزاب) </b>',
+    ],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  }
 }
