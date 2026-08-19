@@ -828,6 +828,8 @@ border: none;
     font-size: 11px;
     min-width: 25px;
   }
+
+
 }
 
 
@@ -903,4 +905,11 @@ border: none;
 .custom-presentation-list li:has(.nawawi-slut) {
   counter-increment: none !important;
   padding-right: 0 !important;
+   position: relative !important;
 }
+.custom-presentation-list li:has(.nawawi-slut) {
+  position: relative !important;
+  background-color: #fcfbfa !important; /* ضع هنا نفس لون خلفية الكارد/الصندوق الحالي لكي يختفي الخط تحته تماماً */
+  z-index: 2 !important; /* لضمان أن عنصر النهاية يظهر فوق الخط العمودي */
+}
+
