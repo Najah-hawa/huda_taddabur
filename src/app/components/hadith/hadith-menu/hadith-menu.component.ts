@@ -16,13 +16,10 @@ import { Title, Meta } from '@angular/platform-browser'; // Importera Title och 
 export class HadithMenuComponent implements OnInit { 
 currentCategory: string = '';
 isNawawi: boolean = false; // 🌟 متغير لمعرفة ما إذا كنا في الأربعين النووية
- 
-  categoryKey: string = 'hadith-nawawi-40';
-  titleHeader: string = 'احاديث الأربعين النووية';
-
-  // القائمة المعروضة حالياً في الـ HTML
-  hadithNamesList: string[] = [];
-
+categoryKey: string = 'hadith-nawawi-40';
+titleHeader: string = 'احاديث الأربعين النووية';
+// القائمة المعروضة حالياً في الـ HTML
+hadithNamesList: string[] = [];
   // 📚1. قائمة الأربعين النووية
   nawawiList: string[] = [
     'الحديث الأول: الأعمال بالنيات',
@@ -70,12 +67,9 @@ isNawawi: boolean = false; // 🌟 متغير لمعرفة ما إذا كنا ف
    
 
   ];
-
-
-    nawawiIntro: string[] = [
+  nawawiIntro: string[] = [
  'مقدمة',
-    ]
-  // 📚 2. قائمة رياض الصالحين - باب 1
+  ]
   ryadBab1List: string[] = [
     'مقدمة باب الاخلاص واحضار النيه في جميع الاعمال والاحوال ',
     'الحديث الأول',
@@ -91,8 +85,6 @@ isNawawi: boolean = false; // 🌟 متغير لمعرفة ما إذا كنا ف
     'الحديث الحادي عشر',
     'الحديث الثاني عشر'
   ];
-
-  // 📚 3. قائمة رياض الصالحين - باب 2
   ryadBab2List: string[] = [
     'مقدمة باب التوبة ',
     'الحديث الأول',
@@ -108,8 +100,6 @@ isNawawi: boolean = false; // 🌟 متغير لمعرفة ما إذا كنا ف
     'الحديث الحادي عشر',
     'الحديث الثاني عشر'
   ];
-
-    // 📚 3 قائمة رياض الصالحين - باب  
   ryadBab3List: string[] = [
     'مقدمة باب الصبر ',
     'الحديث الأول',
@@ -142,22 +132,14 @@ isNawawi: boolean = false; // 🌟 متغير لمعرفة ما إذا كنا ف
     'الحديث الثامن والعشرون',
     'الحديث التاسع والعشرون',
   ];
-
-    // 📚 4 قائمة رياض الصالحين - باب  
   ryadBab4List: string[] = [
-    'مقدمة باب  ',
+    'مقدمة باب الصدق',
     'الحديث الأول',
     'الحديث الثاني',
     'الحديث الثالث',
     'الحديث الرابع',
     'الحديث الخامس',
-    'الحديث السادس',
-    'الحديث السابع',
-    'الحديث الثامن',
-    'الحديث التاسع',
-    'الحديث العاشر',    /*
-    'الحديث الحادي عشر',
-    'الحديث الثاني عشر'*/
+    'الحديث السادس'
   ];
 
 
@@ -230,7 +212,7 @@ constructor(private router: Router,
         break;
         
       case 'ryad-bab-4':
-        this.titleHeader = 'رياض الصالحين - باب الصبر';
+        this.titleHeader = 'رياض الصالحين - باب الصدق';
         this.hadithNamesList = this.ryadBab4List;
         break;
 
