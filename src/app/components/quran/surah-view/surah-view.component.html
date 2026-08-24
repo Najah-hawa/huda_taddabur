@@ -9,11 +9,14 @@
       {{ uiText.upcomingSurahsNotice[langService.currentLang()] }}
     </p>
     
-    <div class="parts-container">
-      @for (surah of categorySurahs; track surah.key) {
-        <div class="part-box" [routerLink]="getSurahRoute(surah)" style="cursor: pointer;">
-          <div>{{ uiText.surahPrefix[langService.currentLang()] }} {{ getSurahName(surah) }}</div>
-        </div>     
+   <div class="parts-container">
+   @for (surah of categorySurahs; track surah.key) {
+     <div class="part-box" [routerLink]="getSurahRoute(surah)" style="cursor: pointer;">
+       <div>
+         {{ uiText.surahPrefix[langService.currentLang()] }} 
+         {{ surah.name[langService.currentLang()] }}
+       </div>
+     </div>     
       }
     </div>
   </div>
