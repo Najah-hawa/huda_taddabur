@@ -1,10 +1,7 @@
 export const juz30Data: Record<string, any> = {
 'surah-78': {
   id: 'surah-78',
-
-  // ==========================================
   // ARABISKA (ar)
-  // ==========================================
   ar: {
     name: 'سورة النبأ',
     hint: {
@@ -12,7 +9,6 @@ export const juz30Data: Record<string, any> = {
       hintText: 'سورة النبأ تهز القلوب بمشاهد القيامة، وتلفت الأنظار لآيات الخلق، مذكّرة بمصير الكافرين ونعيم المتقين.',
     },
     tafseerSource: 'تفسير ابن كثير',
-    // 📖 Verser & Tafsir
     verses: [
       { number: 1, text: 'عَمَّ يَتَسَاءَلُونَ', tafsir: ' عن أي شيء يتساءلون من أمر <b>القيامة</b>.' },
       { number: 2, text: 'عَنِ ٱلنَّبَإِ ٱلْعَظِيمِ', tafsir: '<b>النبأ العظيم</b> يعني الخبر <b>الهائل</b> <b> المُفْظِع</b> <b>الباهر</b> أو <b>البعث بعد الموت</b>  أو <b>القرآن</b>.' },
@@ -302,12 +298,9 @@ export const juz30Data: Record<string, any> = {
         <li>قولُه تعالى: <strong>وَجَعَلْنَا النَّهَارَ مَعَاشًا</strong> النَّهارُ: الزَّمانُ الَّذي يكونُ فيه ضَوءُ الشَّمسِ...</li>
         </ul>
       `
-    }
+}
   },
-
-  // ==========================================
   // ENGELSKA (en)
-  // ==========================================
   en: {
     name: 'Surah An-Naba',
     hint: {
@@ -607,12 +600,7 @@ export const juz30Data: Record<string, any> = {
 },
 'surah-79': {
   id: 'surah-79',
-
-  // ==========================================
-  // ARABISKA (ar)
-  // ==========================================
   ar: {
-
   name: 'سورة النازعات',
   hint: {
     surahName: 'همسة من سورة النازعات',
@@ -674,7 +662,6 @@ export const juz30Data: Record<string, any> = {
   { number: 45, text: "إِنَّمَآ أَنتَ مُنذِرُ مَن يَخۡشَىٰهَا", tafsir: "إِنَّمَا بَعَثْتُكَ لِتُنْذِرَ النَّاسَ وَتُحَذِّرَهُمْ مِنْ بَأْسِ اللَّهِ وَعَذَابِهِ، فَمَنْ خَشِيَ اللَّهَ وَخَافَ مَقَامَهُ وَوَعِيدَهُ، اتَّبَعَكَ فَأَفْلَحَ وَنَجَحَ، وَالْخَيْبَةُ وَالْخَسَارُ عَلَى مَنْ كَذَّبَكَ وَخَالَفَكَ." },
   { number: 46, text: "كَأَنَّهُمۡ يَوۡمَ يَرَوۡنَهَا لَمۡ يَلۡبَثُوٓاْ إِلَّا عَشِيَّةً أَوۡ ضُحَىٰهَا",  tafsir: "<b>أَيْ</b>: إِذَا قَامُوا مِنْ قُبُورِهِمْ إِلَى الْمَحْشَرِ يَسْتَقْصِرُونَ مُدّة الْحَيَاةِ الدُّنْيَا، حَتَّى كَأَنَّهَا عِنْدَهُمْ كَانَتْ <b>عَشِيَّةً</b> مِنْ يَوْمٍ أَو <b>ضُحى مِنْ يَوْمٍ</b>.<br> <b>أَمَّا عَشِيَّة</b>: فَمَا بَيْنَ الظَّهْرِ إِلَى غُرُوبِ الشَّمْسِ، <b>أَوْ ضُحَاهَا</b> مَا بَيْنَ طُلُوعِ الشَّمْسِ إِلَى نِصْفِ النَّهَارِ. "}
 ],
-  // 🗺️ Visual / الربط التصويري
   introSummary:  ' أعمال الملائكة ومهامهم ← يوم القيامة وخوف الإنسان ← إنكار الكافرين البعث وتفاجئهم بوقوعه ← قصة موسى وفرعون ← آيات الخلق وعظمة الله ← السؤال عن الساعة.',
   rubtTassweerySections: [
  {
@@ -714,7 +701,6 @@ export const juz30Data: Record<string, any> = {
   verseNumbers: [42, 43, 44, 45, 46]
 }
   ],
-  // ❓ Quiz-frågor för denna sura
   questions: [
  {
   question: "ما المقصود بالنازعات غرقًا؟",
@@ -887,10 +873,7 @@ export const juz30Data: Record<string, any> = {
 }
 
   ],
-
-  // 💡 فائدة för denna sura (Valfri!)
   benefit: { title: '', text: '' },
-  // 🔔 تذكير / Påminnelse (Valfri!)
   reminder: { title: '',  content: ``, hadithSummary: '', hadithText: ``},
   nezool: {dalel: '',nezoolText: ` `},
   fawaeed: {
@@ -916,279 +899,276 @@ export const juz30Data: Record<string, any> = {
       </ul>
     `
   } },
-  // ==========================================
-  // ENGELSKA (en)
-  // ==========================================
   en: {
   name: 'Surat An-Nazi',
   hint: {
-    surahName: 'En insikt från Surat An-Nazi',
-    hintText: 'Änglarna som tar människors själar är en påminnelse om att alla angelägenheter ligger i Guds händer och att allt återvänder till Honom.',
+    surahName: 'A Whisper from Surat An-Nazi\'at',
+    hintText: 'The extraction of souls by the angels is a subtle reminder that all affairs belong solely to Allah, and to Him is the final return.',
   },
-  tafseerSource: 'Tafsir Ibn Kathir, Sa\'di och Ibn Uthaymeen',
+  tafseerSource: 'Tafsir Ibn Kathir (Abridged)',
   verses: [
-    { number: 1, text: "وَٱلنَّٰزِعَٰتِ غَرۡقٗا", translation:'', tafsir: "Änglarna som rycker upp <b>de otrognas/förnekarnas själar</b> med våld och hårdhet." },
-    { number: 2, text: "وَٱلنَّٰشِطَٰتِ نَشۡطٗا", translation:'', tafsir: "Änglarna som hämtar <b>de troendes själar</b> med lätthet, mjukhet och vördnad." },
-    { number: 3, text: "وَٱلسَّٰبِحَٰتِ سَبۡحٗا",translation:'',  tafsir: "Änglarna som skyndar sig att utföra <b>Allahs befallningar</b> i universum." },
-    { number: 4, text: "فَٱلسَّٰبِقَٰتِ سَبۡقٗا", translation:'', tafsir: "Änglarna som <b>skyndar före</b> andra för att utföra Allahs order, och som hinner före djävlarna med uppenbarelsen så att de inte kan tjuvlyssna." },
-    { number: 5, text: "فَٱلۡمُدَبِّرَٰتِ أَمۡرٗا", translation:'', tafsir: "Änglarna som Allah har anförtrott att styra och förvalta många angelägenheter i skapelsen, såsom regn, växter, vindar, hav, foster, paradiset och helvetet." },
-    { number: 6, text: "يَوۡمَ تَرۡجُفُ ٱلرَّاجِفَةُ", translation:'', tafsir: "Det är <b>Uppståndelsens dag</b> (den första stöten i basunen då jorden och bergen skakar kraftigt)." },
-    { number: 7, text: "تَتۡبَعُهَا ٱلرَّادِفَةُ",translation:'',  tafsir: "Det vill säga: <b>Den andra stöten</b> som följer direkt efter den första för att uppväcka alla skapelser." },
-    { number: 8, text: "قُلُوبٞ يَوۡمَئِذٖ وَاجِفَةٌ",translation:'',  tafsir: "Det vill säga: Hjärtan som denna dag är fyllda av skräck, oro och ångest inför det de ser och hör." },
-    { number: 9, text: "أَبۡصَٰرُهَا خَٰشِعَةٞ",translation:'',  tafsir: "Deras blickar är ödmjukade och sänkta i skam. Fruktan har greppat deras hjärtan och <b>ångern har överväldigat dem</b>." },
-    { number: 10, text: "يَقُولُونَ أَءِنَّا لَمَرۡدُودُونَ فِي ٱلۡحَافِرَةِ",translation:'',  tafsir: "Målet är: <b>Mekkas avgudadykare</b> och de som förnekar <b>uppståndelsen</b>. De finner det osannolikt att bli återuppväckta efter att ha nått <b>graven (Al-Hafiradh)</b>, efter att deras kroppar har förmultnat." },
-    { number: 11, text: "أَإِذَا كُنَّا عِظَامًا نَّخِرَةً",translation:'',  tafsir: "Förnekarna säger i denna värld som en <b>förnekelse</b>: När vi har blivit förmultnade och ihåliga ben?" },
-    { number: 12, text: "قَالُوا۟ تِلۡكَ إِذࣰا كَرَّةٌ خَاسِرَةࣱ",translation:'',  tafsir: "De sa: Det vore i så fall en återkomst som innebär ren förlust för oss! Det beror på deras okunnighet om <b>Allahs makt</b>." },
-    { number: 13, text: "فَإِنَّمَا هِیَ زَجۡرَةࣱ وَٰحِدَةࣱ",translation:'',  tafsir: "Allah förklarar hur enkelt detta är för Honom: <b>Det krävs bara ett enda rop / en stöt i basunen</b>." },
-    { number: 14, text: "فَإِذَا هُم بِٱلسَّاهِرَةِ", translation:'', tafsir: "Då befinner sig alla skapade varelser plötsligt på <b>jordens yta (Al-Sahirah)</b> stående, och Allah samlar dem för att döma mellan dem." },
-    { number: 15, text: "هَلۡ أَتَىٰكَ حَدِیثُ مُوسَىٰۤ",translation:'',  tafsir: "Allah säger till sin profet <b>Muhammed ﷺ</b>: <b>Har berättelsen om Mosa nått dig?</b> Det är en fråga om en stor och verklig händelse." },
-    { number: 16, text: "إِذۡ نَادَىٰهُ رَبُّهُۥ بِٱلۡوَادِ ٱلۡمُقَدَّسِ طُوًى", translation:'', tafsir: "När hans Herre kallade på honom i <b>den heliga dalen Tuwa</b>, platsen där Allah talade till honom och gav honom budskapet." },
-    { number: 17, text: "ٱذۡهَبۡ إِلَىٰ فِرۡعَوۡنَ إِنَّهُۥ طَغَىٰ",translation:'',  tafsir: "Gå till Farao, han har sannerligen överskridit alla gränser. Hejda honom med mjukt och vänligt tal, kanske <b>blir han påmind eller känner gudsfruktan</b>." },
-    { number: 18, text: "فَقُلۡ هَل لَّكَ إِلَىٰۤ أَن تَزَكَّىٰ", translation:'', tafsir: "Säg till honom: Vill du rena din själ från otro och tyranni till <b>tro och goda gärningar</b>?" },
-    { number: 19, text: "وَأَهۡدِیَكَ إِلَىٰ رَبِّكَ فَتَخۡشَىٰ",translation:'',  tafsir: "<b>Och att jag vägleder dig till din Herre</b> så att du fruktar Honom när du känner den raka vägen? Men Farao vägrade det som Mosa kallade honom till." },
-    { number: 20, text: "فَأَرَىٰهُ ٱلۡأٓيَةَ ٱلۡكُبۡرَىٰ",translation:'',  tafsir: "Mosa visade honom <b>det stora tecknet</b> (staven som blev en orm och hans hand som lyste vit)." },
-    { number: 21, text: "فَكَذَّبَ وَعَصَىٰ", translation:'', tafsir: "Men Farao <b>förnekade</b> sanningen och <b>trotsade</b> befallningen." },
-    { number: 22, text: "ثُمَّ أَدۡبَرَ يَسۡعَىٰ",translation:'',  tafsir: "Sedan vände han ryggen till och ansträngde sig för att bekämpa sanningen." },
-    { number: 23, text: "فَحَشَرَ فَنَادَىٰ",translation:'',  tafsir: "Han samlade sina arméer och sitt folk, ropade ut och sa:" },
-    { number: 24, text: "فَقَالَ أَنَا۠ رَبُّكُمُ ٱلۡأَعۡلَىٰ",translation:'',  tafsir: "Han sade till dem: <b>Jag är er högste herre!</b> Och de lydde honom i hans falskhet." },
-    { number: 25, text: "فَأَخَذَهُ ٱللَّهُ نَكَالَ ٱلۡأٓخِرَةِ وَٱلۡأُولَىٰٓ",translation:'',  tafsir: "Så Allah straffade honom med ett avskräckande straff i <b>detta liv och det tillkommande</b>." },
-    { number: 26, text: "إِنَّ فِي ذَلِكَ لَعِبْرَةً لِمَنْ يَخْشَى", translation:'', tafsir: "Detta är sannerligen en lära och varning för den som <b>fruktar Allah</b>. Den som ser Faraos straff förstår vad som händer den som förhäver sig mot den Högste Konungen." },
-    { number: 27, text: "ءَأَنتُمۡ أَشَدُّ خَلۡقًا أَمِ ٱلسَّمَاۤءُۚ بَنَىٰهَا", translation:'', tafsir: "Allah säger till förnekarna av uppståndelsen: <b>Är det svårare att skapa er</b> eller <b>himlen</b> med dess enorma storlek och väldiga skapelse som Han har byggt?" },
-    { number: 28, text: "رَفَعَ سَمۡكَهَا فَسَوَّىٰهَا",translation:'',  tafsir: "<b>Han reste dess höjd</b> och gav den en perfekt och välordnad form som förbluffar förståndet." },
-    { number: 29, text: "وَأَغۡطَشَ لَيۡلَهَا وَأَخۡرَجَ ضُحَىٰهَا", translation:'', tafsir: "<b>Han gjorde dess natt mörk</b> över hela jorden, och <b>drar fram dess morgonljus</b> när solen stiger upp så att människorna kan sköta sina behov." },
-    { number: 30, text: "وَٱلۡأَرۡضَ بَعۡدَ ذَٰلِكَ دَحَىٰهَآ",translation:'',  tafsir: "Därefter <b>bredde Han ut jorden</b> och lade till rätta dess nytta. <br>Han förklarade detta genom att säga: <b>Frambringade dess vatten, bete och stadfäste bergen.</b>" },
-    { number: 31, text: "أَخۡرَجَ مِنۡهَا مَآءَهَا وَمَرۡعَىٰهَا",translation:'',  tafsir: "Jorden skapades före himlen, men dess utbredning (daha) och frambringandet av vatten och bete skedde efter himlens skapelse." },
-    { number: 32, text: "وَٱلۡجِبَالَ أَرۡسَىٰهَا",translation:'',  tafsir: "Han förankrade bergen i jorden så att den inte ska skaka med varelserna." },
-    { number: 33, text: "مَتَٰعٗا لَّكُمۡ وَ لِأَنۡعَٰمِكُمۡ", translation:'', tafsir: "Detta gjorde Allah till en <b>försörjning och nytta för er</b> och för er <b>boskap</b>. Och sedan påminner Han om den slutliga återkomsten: <b>När den stora katastrofen (Al-Tammah Al-Kubra) inträffar</b>." },
-    { number: 34, text: "فَإِذَا جَآءَتِ ٱلطَّآمَّةُ ٱلۡكُبۡرَىٰ",translation:'',  tafsir: "När <b>Uppståndelsens dag</b> kommer, den enorma prövningen som gör att alla andra svårigheter verkar små. Då glömmer föräldern sitt barn och vännen sin vän." },
-    { number: 35, text: "يَوۡمَ يَتَذَكَّرُ ٱلۡإِنسَٰنُ مَا سَعَىٰ",translation:'',  tafsir: "Den dagen kommer människan att minnas alla sina handlingar, både goda och onda." },
-    { number: 36, text: "وَبُرِّزَتِ ٱلۡجَحِيمُ لِمَن يَرَىٰ",translation:'',  tafsir: "Och helvetets eld dras fram så att den blir fullt synlig för alla." },
-    { number: 37, text: "فَأَمَّا مَن طَغَىٰ", translation:'', tafsir: "Den som var upprorisk och överskred gränserna," },
-    { number: 38, text: "وَءَاثَرَ ٱلۡحَيَوٰةَ ٱلدُّنۡيَا", translation:'', tafsir: "Och föredrog det jordiska livet framför sin religion och det nästkommande livet," },
-    { number: 39, text: "فَإِنَّ ٱلۡجَحِيمَ هِيَ ٱلۡمَأۡوَىٰ", translation:'', tafsir: "Kommer att ha helvetet som sin slutliga boning." },
-    { number: 40, text: "وَأَمَّا مَنۡ خَافَ مَقَامَ رَبِّهِۦ وَنَهَى ٱلنَّفۡسَ عَنِ ٱلۡهَوَىٰ",translation:'',  tafsir: "Men den som fruktade att stå inför sin Herre och avhöll sin själ från begär," },
-    { number: 41, text: "فَإِنَّ ٱلۡجَنَّةَ هِيَ ٱلۡمَأۡوَىٰ",translation:'',  tafsir: "Har Paradiset som sin slutliga boning." },
-    { number: 42, text: "يَسۡـَٔلُونَكَ عَنِ ٱلسَّاعَةِ أَيَّانَ مُرۡسَىٰهَا",translation:'',  tafsir: "De frågar dig hånfullt om Domens dag: När inträffar den?" },
-    { number: 43, text: "فِيمَ أَنتَ مِن ذِكۡرَىٰهَآ",translation:'',  tafsir: "Allah svarar: Vad har du med att nämna dess tidpunkt? Det finns ingen nytta för människorna att veta den exakta tiden, därför har Allah hållit det dolt." },
-    { number: 44, text: "إِلَىٰ رَبِّكَ مُنتَهَىٰهَآ",translation:'',  tafsir: "Kunskapen om den tillhör enbart din Herre Allah." },
-    { number: 45, text: "إِنَّمَآ أَنتَ مُنذِرُ مَن يَخۡشَىٰهَا", translation:'', tafsir: "Din uppgift är endast att varna dem som fruktar den. Den som fruktar Allah följer dig och lyckas." },
-    { number: 46, text: "كَأَنَّهُمۡ يَوۡمَ يَرَوۡنَهَا لَمۡ يَلۡبَثُوٓاْ إِلَّا عَشِيَّةً أَوۡ ضُحَىٰهَا",translation:'',  tafsir: "Den dag de ser den kommer det att verka som om de inte levde på jorden mer än en kväll eller dess följande morgon." }
+    { number: 1, text: "وَٱلنَّٰزِعَٰتِ غَرۡقٗا", translation:'By those ˹angels˺ stripping out ˹evil souls˺ harshly,', tafsir: " (By those who pull out, drowning.) ' These are the angels who remove the souls from the Children of Adam.'  Among them are those whose souls are removed by the angels with difficulty, as if he is being drowned during its removal. There are those people whose souls the angels remove with ease, as if they were unraveling him (i.e., his soul from him) due to their briskness. This is the meaning of Allah's statement," },
+    { number: 2, text: "وَٱلنَّٰشِطَٰتِ نَشۡطٗا", translation:'and those pulling out ˹good souls˺ gently,', tafsir: " (By those who free briskly.) This has been mentioned by Ibn `Abbas. In reference to Allah's statement," },
+    { number: 3, text: "وَٱلسَّٰبِحَٰتِ سَبۡحٗا",translation:'and those gliding ˹through heavens˺ swiftly,',  tafsir: "(And by the swimmers, swimming.) Ibn Mas`ud said, 'They are the angels.' Similar statements have been reported from `Ali, Mujahid, Sa`id bin Jubayr, and Abu Salih. Concerning Allah's statement, "  },
+    { number: 4, text: "فَالسَّـبِقَـتِ سَبْقاً", translation:'and those taking the lead vigorously,', tafsir: " (And by the racers, racing.) It has been narrated from `Ali, Masruq, Mujahid, Abu Salih, and Al-Hasan Al-Basri that this means the angels. Then Allah says,"  },
+    { number: 5, text: "فَٱلۡمُدَبِّرَٰتِ أَمۡرٗا", translation:'and those conducting affairs ˹obediently˺!', tafsir: " (And by those who arrange affairs.) `Ali, Mujahid, `Ata', Abu Salih, Al-Hasan, Qatadah, Ar-Rabi` bin Anas, and As-Suddi all said, 'They are the angels.' Al-Hasan added, 'They control the affairs from the heaven to the earth, meaning by the command of their Lord, the Mighty and Majestic.'"  },
+    { number: 6, text: "يَوۡمَ تَرۡجُفُ ٱلرَّاجِفَةُ", translation:'˹Consider˺ the Day ˹when˺ the quaking Blast will come to pass,', tafsir: "(On the Day the Rajifah shakes,) This is similar to Allah's statement, "  },
+    { number: 7, text: "تَتۡبَعُهَا ٱلرَّادِفَةُ",translation:'followed by a second Blast.',  tafsir: " On the Day the Rajifah shakes, followed by the Radifah.) Ibn `Abbas said, 'These are the two blasts (of the Trumpet) -- the first and the second.' Mujahid, Al-Hasan, Qatadah, Ad-Dahhak and others have made similar statements. It has been reported from Mujahid that he said, 'In reference to the first, it is the statement of Allah,"  },
+    { number: 8, text: "قُلُوبٞ يَوۡمَئِذٖ وَاجِفَةٌ",translation:'˹The deniers’˺ hearts on that Day will be trembling ˹in horror˺,',  tafsir: "(Hearts that Day will tremble.) Ibn `Abbas said, 'This means afraid.' Mujahid and Qatadah also said this. "  },
+    { number: 9, text: "أَبۡصَٰرُهَا خَٰشِعَةٞ",translation:'with their eyes downcast.',  tafsir: " (Their vision humiliated.) meaning, the eyes of the people. It means that the eyes will be lowly and disgraced from what they will witness of terrors. Allah then says,"  },
+    { number: 10, text: "يَقُولُونَ أَءِنَّا لَمَرۡدُودُونَ فِي ٱلۡحَافِرَةِ",translation:'˹But now˺ they ask ˹mockingly˺, “Will we really be restored to our former state,',tafsir:  " (They say: 'Shall we indeed be brought back from Al-Hafirah') meaning, the idolators of the Quraysh and whoever rejects the Hereafter as they did. They consider the occurrence of the resurrection after being placed in Al-Hafirah -- which are the graves -- as something farfetched. This has been said by Mujahid. They feel that this is something impossible after the destruction of their physical bodies and the disintegration of their bones and their decaying. Thus, Allah says," },
+    { number: 11, text: "أَإِذَا كُنَّا عِظَامًا نَّخِرَةً",translation:'even after we have been reduced to decayed bones?”', tafsir: "(Even after we are bones Nakhirah) It has also been recited: (نَاخِرَةً) (Nakhirah) Ibn `Abbas, Mujahid and Qatadah, all said, 'This means decayed.' Ibn `Abbas said, 'It is the bone when it has decayed and air enters into it.' Concerning their saying, "  },
+    { number: 12, text: "قَالُوا۟ تِلۡكَ إِذࣰا كَرَّةٌ خَاسِرَةࣱ",translation:'Adding, “Then such a return would be a ˹total˺ loss ˹for us˺!”', tafsir: "(It would in that case be a return with loss.) (79:12) Muhammad bin Ka`b said that the Quraysh said, 'If Allah brings us back to life after we die, then surely we will be losers.'  Allah then says, "  },
+    { number: 13, text: "فَإِنَّمَا هِیَ زَجۡرَةࣱ وَٰحِدَةࣱ",translation:'But indeed, it will take only one ˹mighty˺ Blast,',  tafsir: " (But it will be only a single Zajrah. When behold, they are at As-Sahirah.) meaning, this is a matter that is from Allah that will not occur twice, nor will there be any opportunity to affirm it or verify it. "  },
+    { number: 14, text: "فَإِذَا هُم بِٱلسَّاهِرَةِ", translation:'and at once they will be above ground.', tafsir: " The people will be standing and looking. This will be when Allah commands the angel Israfil to blow into the Sur, which will be the blowing of the resurrection. At that time the first people and the last people will all be standing before their Lord looking. This is as Allah says,"  },
+    { number: 15, text: "هَلۡ أَتَىٰكَ حَدِیثُ مُوسَىٰۤ",translation:'Has the story of Moses reached you ˹O Prophet˺?',  tafsir: " (Has there come to you the story of Musa) meaning, have you heard of his story"  },
+    { number: 16, text: "إِذۡ نَادَىٰهُ رَبُّهُۥ بِٱلۡوَادِ ٱلۡمُقَدَّسِ طُوًى", translation:'His Lord called him in the sacred valley of Ṭuwa,', tafsir: " (When his Lord called him) meaning, He called out speaking to him.(in the holy valley) meaning purified. (Tuwa) According to what is correct, it is the name of a valley, as preceded in Surah Ta Ha. So, He said to him:"  },
+    { number: 17, text: "ٱذۡهَبۡ إِلَىٰ فِرۡعَوۡنَ إِنَّهُۥ طَغَىٰ",translation:'˹commanding,˺ “Go to Pharaoh, for he has truly transgressed ˹all bounds˺.', tafsir: " (Go to Fir`awn; verily, he has transgressed all bounds.) meaning, he has become haughty, rebellious and arrogant."  },
+    { number: 18, text: "فَقُلۡ هَل لَّكَ إِلَىٰۤ أَن تَزَكَّىٰ", translation:'And say, ‘Would you ˹be willing to˺ purify yourself,', tafsir: "(And say to him: 'Would you purify yourself') meaning, say to him, 'Will you respond to the path and way that will purify you' This means, `will you submit (accept Islam) and be obedient' "  },
+    { number: 19, text: "وَأَهۡدِیَكَ إِلَىٰ رَبِّكَ فَتَخۡشَىٰ",translation:'and let me guide you to your Lord so that you will be in awe ˹of Him˺?’”', tafsir: "(And that I guide to your Lord,) meaning, `I will guide you to the worship of your Lord.' (so that you fear) meaning, `so that your heart will become humble, obedient, and submissive to Him after it was hard, evil, and far away from goodness.'  "  },
+    { number: 20, text: "فَأَرَىٰهُ ٱلۡأٓيَةَ ٱلۡكُبۡرَىٰ",translation:'Then Moses showed him the great sign,', tafsir: " (Then he showed him the great sign.) This means that Musa showed him -- along with this truthful call -- a strong evidence and a clear proof of the truthfulness of what he had come up with from Allah."  },
+    { number: 21, text: "فَكَذَّبَ وَعَصَىٰ", translation:'but he denied and disobeyed ˹Allah˺,',tafsir: "(But he denied and disobeyed.) meaning, he (Fir`awn) rejected the truth and opposed what Musa commanded him with of obedience. So what happened with him was that his heart disbelieved, and Musa (i.e., his call) could not internally or externally affect it. Along with this, his knowledge that what Musa had come to him with was the truth, did not necessitate his being a believer in it. This is because recognition is the knowledge of the heart, and faith is its action. And it (faith) is to comply with the truth and submit to it. Concerning Allah's statement, "  },
+    { number: 22, text: "ثُمَّ أَدۡبَرَ يَسۡعَىٰ",translation:'then turned his back, striving ˹against the truth˺.',  tafsir: " (Then he turned back, striving.) meaning, in responding to the truth with falsehood. This was by his gathering the group of magicians in order to confront that which Musa had come up with of spectacular miracles."  },
+    { number: 23, text: "فَحَشَرَ فَنَادَىٰ",translation:'Then he summoned ˹his people˺ and called out,', tafsir: "(So he gathered (his people) and called out) meaning, among his people. "  },
+    { number: 24, text: "فَقَالَ أَنَا۠ رَبُّكُمُ ٱلۡأَعۡلَىٰ",translation:'saying, “I am your lord, the most high!”', tafsir: "(Saying; I am your lord, most high.') Ibn `Abbas and Mujahid both said, 'This is the word which Fir`awn said after he said, (`I have not known of any other god for you all other than me) for the past forty years.'' Allah then says,"  },
+    { number: 25, text: "فَأَخَذَهُ ٱللَّهُ نَكَالَ ٱلۡأٓخِرَةِ وَٱلۡأُولَىٰٓ",translation:'So Allah overtook him, making him an example in this life and the next.', tafsir: " (So Allah seized him with a punishing example for the Hereafter and the first (life). ) meaning, Allah avenged Himself against him with a severe vengeance, and He made an example and admonition of him for those rebellious people in the world who are like him. (And on the Day of Resurrection, evil indeed is the gift gifted i.e., the curse (in this world) pursued by another curse (in this world) pursued by another curse (in the Hereafter).) (11:99) This is as Allah says,"  },
+    { number: 26, text: "إِنَّ فِي ذَلِكَ لَعِبْرَةً لِمَنْ يَخْشَى", translation:'Surely in this is a lesson for whoever stands in awe of ˹Allah˺.', tafsir: "(In this is a lesson for whoever fears.) "  },
+    { number: 27, text: "ءَأَنتُمۡ أَشَدُّ خَلۡقًا أَمِ ٱلسَّمَاۤءُۚ بَنَىٰهَا", translation:'Which is harder to create: you or the sky? He built it,', tafsir: " (Are you) `O people'(more difficult to create or is the heaven...) meaning, `rather the heaven is more difficult to create than you.' As Allah said; (the creation of the heavens and the earth is greater than the creation of mankind;) (40:57) And His saying; (Is not the One Who created the heavens and the earth, capable of creating the similar to them. Yes, indeed! He is the Supreme Creator, the All-Knowing.) (36:81) Then Allah says,(He constructed) He explains this by His statement,  "  },
+    { number: 28, text: "رَفَعَ سَمۡكَهَا فَسَوَّىٰهَا",translation:'raising it high and forming it flawlessly.',  tafsir: " (He raised its height, and has perfected it.) meaning, He made it a lofty structure, vast in its space, with equal sides, and adorned with stars at night and in the darkness. Then Allah says,"  },
+    { number: 29, text: "وَأَغۡطَشَ لَيۡلَهَا وَأَخۡرَجَ ضُحَىٰهَا", translation:'He dimmed its night, and brought forth its daylight.', tafsir: " (Its night He covers and He brings out its forenoon.) meaning, He made its night dark and extremely black, and its day bright, luminous, shining and clear. Ibn `Abbas said, 'He did Aghtasha of its night means that He made it dark.'  Mujahid, `Ikrimah, Sa`id bin Jubayr and a large group have said this as well. In reference to Allah's statement, (And He brings out its forenoon.) meaning, He illuminated its day. Then Allah says,"  },
+    { number: 30, text: "وَٱلۡأَرۡضَ بَعۡدَ ذَٰلِكَ دَحَىٰهَآ",translation:'As for the earth, He spread it out as well,', tafsir: " (And after that He spread the earth,) He explains this statement by the statement that follows it,"  },
+    { number: 31, text: "أَخۡرَجَ مِنۡهَا مَآءَهَا وَمَرۡعَىٰهَا",translation:'bringing forth its water and pastures',  tafsir: " (And brought forth therefrom its water and its pasture.) It already has been mentioned previously in Surat Ha Mim As-Sajdah that the earth was created before the heaven was created, but it was only spread out after the creation of the heaven. This means that He brought out what was in it with a forceful action. This is the meaning of what was said by Ibn `Abbas and others, and it was the explanation preferred by Ibn Jarir. In reference to the statement of Allah,"  },
+    { number: 32, text: "وَٱلۡجِبَالَ أَرۡسَىٰهَا",translation:'and setting the mountains firmly ˹upon it˺—',  tafsir: "(And the mountains He has fixed firmly,) meaning, He settled them, made them firm, and established them in their places. And He is the Most Wise, the All-Knowing. He is Most Kind to His creation, Most Merciful. Allah then says, "  },
+    { number: 33, text: "مَتَٰعٗا لَّكُمۡ وَ لِأَنۡعَٰمِكُمۡ", translation:'all as ˹a means of˺ sustenance for you and your animals.', tafsir: " (As provision and benefit for you and your cattle.) meaning, He spread out the earth, caused its springs to gush forth, brought forth its hidden benefits, caused its rivers to flow, and caused its vegetation, trees, and fruits to grow. He also made its mountains firm so that it (the earth) would be calmly settled with its dwellers, and He stabilized its dwelling places. All of this is a means of beneficial enjoyment for His creatures (mankind) providing them of what cattle they need, which they eat and ride upon. He has granted them these beneficial things for the period that they need them, in this worldly abode, until the end of time and the expiration of this life."  },
+    { number: 34, text: "فَإِذَا جَآءَتِ ٱلطَّآمَّةُ ٱلۡكُبۡرَىٰ",translation:'But, when the Supreme Disaster1 comes to pass—',  tafsir: " (But when there comes the Great Catastrophe) This refers to the Day of Judgement. This has been said by Ibn `Abbas. It has been called this because it will overcome every matter. It will be frightful and horrifying. As Allah says,"  },
+    { number: 35, text: "يَوۡمَ يَتَذَكَّرُ ٱلۡإِنسَٰنُ مَا سَعَىٰ",translation:'the Day every person will remember all ˹their˺ striving,', tafsir: " (The Day when man shall remember what he strove for.) meaning, at that time the Son of Adam will reflect upon all of his deeds, both the good and the evil. This is as Allah says,"  },
+    { number: 36, text: "وَبُرِّزَتِ ٱلۡجَحِيمُ لِمَن يَرَىٰ",translation:'and the Hellfire will be displayed for all to see—',  tafsir: " (And Hell shall be made apparent for whoever sees.) meaning, it will become apparent for the onlookers, so the people will see it with their own eyes."  },
+    { number: 37, text: "فَأَمَّا مَن طَغَىٰ", translation:'then as for those who transgressed',tafsir: " (Then for him who transgressed) meaning, who rebels and behaves arrogantly."  },
+    { number: 38, text: "وَءَاثَرَ ٱلۡحَيَوٰةَ ٱلدُّنۡيَا", translation:'and preferred the ˹fleeting˺ life of this world,',tafsir: " (And preferred the life of this world,) meaning, he gives it precedence over the matters of his religion and his Hereafter."  },
+    { number: 39, text: "فَإِنَّ ٱلۡجَحِيمَ هِيَ ٱلۡمَأۡوَىٰ", translation:'the Hellfire will certainly be ˹their˺ home.',tafsir: " (Verily his abode will be the Hell;) meaning, his final destination will be Hell, his food will be from the tree of Zaqqum, and his drink will be from Hamim."  },
+    { number: 40, text: "وَأَمَّا مَنۡ خَافَ مَقَامَ رَبِّهِۦ وَنَهَى ٱلنَّفۡسَ عَنِ ٱلۡهَوَىٰ",translation:'And as for those who were in awe of standing before their Lord and restrained themselves from ˹evil˺ desires,',  tafsir: " (But as for him who feared standing before his Lord and forbade himself from desire.) meaning, he fears the standing before Allah, he fears Allah's judgement of him, he prevents his soul from following its desires, and he compels it to obey its Master."  },
+    { number: 41, text: "فَإِنَّ ٱلۡجَنَّةَ هِيَ ٱلۡمَأۡوَىٰ",translation:'Paradise will certainly be ˹their˺ home.', tafsir: " (Verily Paradise will be his abode.) meaning, his final abode, his destination, and his place of return will be the spacious Paradise. Then Allah says,"  },
+    { number: 42, text: "يَسۡـَٔلُونَكَ عَنِ ٱلسَّاعَةِ أَيَّانَ مُرۡسَىٰهَا",translation:'They ask you ˹O Prophet˺ regarding the Hour, “When will it be?”',  tafsir: "(They ask you about the Hour -- when will be its appointed time What do you have to mention of it. To your Lord it is limited.) meaning, its knowledge is not with you, nor with any creature. Rather the knowledge of it is with Allah. He is the One Who knows the exact time of its occurrence. "  },
+    { number: 43, text: "فِيمَ أَنتَ مِن ذِكۡرَىٰهَآ",translation:'But it is not for you to tell its time.',  tafsir: " (Heavy is its burden through the heavens and the earth. It shall not come upon you except all of a sudden. They ask you as if you have a good knowledge of it. Say: 'The knowledge thereof is with Allah.') (7:187) Allah says here,"  },
+    { number: 44, text: "إِلَىٰ رَبِّكَ مُنتَهَىٰهَآ",translation:'That knowledge rests with your Lord ˹alone˺.', tafsir: "(To your Lord it is limited.) Thus, when Jibril asked the Messenger of Allah ﷺ about the time of the last Hour he said, "  },
+    { number: 45, text: "إِنَّمَآ أَنتَ مُنذِرُ مَن يَخۡشَىٰهَا", translation:'Your duty is only to warn whoever is in awe of it.', tafsir: " (You are only a warner for those who fear it,) meaning, `I sent you to warn mankind and caution them to beware of the torment and punishment of Allah. So whoever fears Allah, fears standing before Him, and His threat, then he will follow you, and thus be successful and victorious. However, whoever denies you and opposes you, then he will only suffer loss and failure.' Allah then says,"  },
+    { number: 46, text: "كَأَنَّهُمۡ يَوۡمَ يَرَوۡنَهَا لَمۡ يَلۡبَثُوٓاْ إِلَّا عَشِيَّةً أَوۡ ضُحَىٰهَا",translation:'On the Day they see it, it will be as if they had stayed ˹in the world˺ no more than one evening or its morning.',  tafsir: "(The Day they see it (it will be) as if they had not tarried (in this world) except an (`Ashiyyah) afternoon or its (Duha) morning.) meaning, when they stand up from their graves to go to the place of Gathering, they will feel that the period of the worldy life was short, it will seem to them that it was only the afternoon of one day. Juwaybir reported from Ad-Dahhak from Ibn `Abbas:(The Day they see it (it will be) as if they had not tarried (in this world) except an (`Ashiyyah) afternoon or its (Duha) morning.) 'As for `Ashiyyah, it is the time between noon until the setting of the sun.  (Or its (Duha) morning) what is between sunrise and midday (noon).' Qatadah said, 'This refers to the time period of the worldly life in the eyes of the people when they see the Hereafter.' This is the end of the Tafsir of Surat An-Nazi`at. And to Allah belongs all praise and thanks. "  },
   ],
-  introSummary: 'Änglarnas uppgifter och arbete ← Domedagen och människans skräck ← Förnekarnas avvisande av uppståndelsen och deras överraskning ← Berättelsen om Moses och Farao ← Tecken i skapelsen och Allahs storhet ← Frågan om Domedagens tidpunkt.',
+  introSummary: 'Duties of the angels ← Day of Resurrection and human terror ← The disbelievers\' denial of resurrection and their shock ← The story of Moses and Pharaoh ← Signs of creation and Allah\'s greatness ← The question about the Hour.',
   rubtTassweerySections: [
     {
-      title: '❓ Änglarnas uppgifter och arbete',
-      description: 'Suran börjar med att nämna änglarna och deras olika uppgifter, särskilt hur de hämtar människors själar vid döden. Detta är en inledning till Domedagen där effekten av dessa handlingar visar sig.',
+      title: '❓ Duties and Actions of the Angels',
+      description: 'The Surah begins by mentioning the angels and their various duties, particularly how they extract the souls of people at death. This serves as a prelude to the Day of Resurrection, where the impact of these deeds becomes evident.',
       verseNumbers: [1, 2, 3, 4, 5]
     },
     {
-      title: '🌍 Domedagen och människans skräck',
-      description: 'Verserna beskriver scenen på Domedagen: jorden skakar, hjärtan bultar av skräck, blickarna är sänkta av ödmjukhet och människorna drabbas av djup fruktan.',
+      title: '🌍 The Day of Resurrection and Human Terror',
+      description: 'The verses depict the scene of the Day of Resurrection: the quaking of the earth, human hearts trembling with fear, downcast eyes, and the overwhelming dread that grips them.',
       verseNumbers: [6, 7, 8, 9]
     },
     {
-      title: '⚠️ Förnekarnas avvisande av uppståndelsen',
-      description: 'Fokus ligger på avgudadykarna som förnekade uppståndelsen, och deras häpnad när allt plötsligt sker med ett enda rop så att alla står på jordens yta på en gång.',
+      title: '⚠️ Disbelievers\' Denial of Resurrection and Their Shock',
+      description: 'These verses focus on the polytheists who denied resurrection after death and their astonishment when everything occurs suddenly with a single powerful Blast, leaving everyone standing above ground immediately.',
       verseNumbers: [10, 11, 12, 13, 14]
     },
     {
-      title: '🕊 Berättelsen om Mosa och Farao',
-      description: 'Efter att ha beskrivit skräcken på Domedagen ges ett historiskt exempel: Profeten Mosa och hur Farao var tyrannisk och straffades, som en varning för förnekare.',
+      title: '🕊 The Story of Moses and Pharaoh',
+      description: 'After describing the terror of the Day of Resurrection, an example from history is presented: the story of Prophet Moses and how Pharaoh transgressed and was punished—serving as a clear warning for anyone who denies the truth.',
       verseNumbers: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
     },
     {
-      title: '🌌 Tecken i skapelsen och Allahs storhet',
-      description: 'Bevis på Allahs makt i skapelsen (himlen, jorden, bergen, natten och dagen) bekräftar att allt är under Hans visdom. Detta kopplar det historiska straffet till den gudomliga makten.',
+      title: '🌌 Signs of Creation and Allah\'s Greatness',
+      description: 'Proofs of Allah\'s power in creation confirm that everything is governed by His wisdom. The universe, mountains, rivers, night, and day are all carefully arranged, connecting historical lessons directly to Divine Power.',
       verseNumbers: [26, 27, 28, 29, 30, 31, 32, 33]
     },
     {
-      title: '⏳ Domens dag och räkenskapen',
-      description: 'Alla dessa tecken om skapelsen förbereder oss inför räkenskapens dag: Belöningen för de gudfruktiga och straffet för de upproriska som föredrog det jordiska livet.',
+      title: '⏳ The Day of Judgment and Account',
+      description: 'All signs of creation prepare us for the Day of Account. The events of Resurrection unfold again, outlining the final home and recompense for both the transgressors and the righteous.',
       verseNumbers: [34, 35, 36, 37, 38, 39, 40, 41]
     },
     {
-      title: '⏳ Frågan om Domedagens tidpunkt',
-      description: 'Verserna betonar att kunskapen om Timmens exakta stund tillhör endast Allah, och beskriver hur snabbt det jordiska livet kommer att verka i jämförelse.',
+      title: '⏳ Asking About the Hour',
+      description: 'The final verses emphasize that knowledge of the exact time of the Hour rests solely with Allah, highlighting the role of the Prophet ﷺ as a warner and how short life will seem on that Day.',
       verseNumbers: [42, 43, 44, 45, 46]
     }
   ],
   questions: [
-    {
-      question: "Vad menas med 'An-Nazi'ati gharqa'?",
-      answers: [
-        { text: "Bergen som rycks upp från sina platser", isCorrect: false },
-        { text: "Vattnet som dränker jorden", isCorrect: false },
-        { text: "Änglarna som rycker upp de otrognas själar med hårdhet", isCorrect: true },
-        { text: "Stjärnorna som sjunker på himlen", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad betyder 'An-Nashitati nashta'?",
-      answers: [
-        { text: "Änglarna som hämtar de troendes själar med lätthet", isCorrect: true },
-        { text: "Snabba hästar", isCorrect: false },
-        { text: "Lysande planeter", isCorrect: false },
-        { text: "Snabba vindar", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vilka åsyftas med 'As-Sabiqati sabqa'?",
-      answers: [
-        { text: "Hästar som springer först i strid", isCorrect: false },
-        { text: "Änglarna som skyndar sig med de troendes själar till Paradiset", isCorrect: true },
-        { text: "Regnet som kommer före molnen", isCorrect: false },
-        { text: "Planeter som kretsar på himlen", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad är meningen med ordet 'Fal-mudabbirati amra'?",
-      answers: [
-        { text: "De lärda som styr angelägenheterna", isCorrect: false },
-        { text: "Änglarna som utför Allahs befallningar i skapelsen", isCorrect: true },
-        { text: "Stjärnorna som styr natt och dag", isCorrect: false },
-        { text: "Ledarna som styr krigen", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad betyder 'Yawma tarjufu ar-rajifah'?",
-      answers: [
-        { text: "Den första stöten i basunen (på Domedagen)", isCorrect: true },
-        { text: "En regnig dag", isCorrect: false },
-        { text: "En stjärnexplosion", isCorrect: false },
-        { text: "Jordbävningar i världen", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad åsyftas med 'Tatba'uha ar-radifah'?",
-      answers: [
-        { text: "Orkaner", isCorrect: false },
-        { text: "Jordbävningar", isCorrect: false },
-        { text: "Havsvågor", isCorrect: false },
-        { text: "Den andra stöten i basunen", isCorrect: true }
-      ]
-    },
-    {
-      question: "Vad kommer människan att minnas på Domedagen?",
-      answers: [
-        { text: "Drömmarna hon såg", isCorrect: false },
-        { text: "Pengarna hon spenderade", isCorrect: false },
-        { text: "Allt hon gjorde i det jordiska livet", isCorrect: true },
-        { text: "Endast människors namn", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad betyder 'Al-Tammah Al-Kubra'?",
-      answers: [
-        { text: "Ashura-dagen", isCorrect: false },
-        { text: "Domedagen", isCorrect: true },
-        { text: "Badr-dagen", isCorrect: false },
-        { text: "Hijra-dagen", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad blir ödet för den som var upprorisk och föredrog det jordiska livet?",
-      answers: [
-        { text: "Helvetet blir hans boning", isCorrect: true },
-        { text: "Han blir förlåten direkt", isCorrect: false },
-        { text: "Han kommer att gå in i Paradiset", isCorrect: false },
-        { text: "Han dör utan räkenskap", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad blir ödet för den som fruktade sin Herre och avhöll sig från begär?",
-      answers: [
-        { text: "Paradiset blir hans boning", isCorrect: true },
-        { text: "Han kommer aldrig att ställas till svars", isCorrect: false },
-        { text: "Han får mycket pengar", isCorrect: false },
-        { text: "Han hedras endast i detta liv", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad frågade förnekarna när de hörde talas om uppståndelsen?",
-      answers: [
-        { text: "Kommer vi verkligen att återvändas till vårt tidigare tillstånd?", isCorrect: true },
-        { text: "Kommer änglarna ner till jorden?", isCorrect: false },
-        { text: "Vem ger oss mat?", isCorrect: false },
-        { text: "När kommer regnet?", isCorrect: false }
-      ]
-    },
-    {
-      question: "Hur svarade Allah på förnekarnas tvivel om uppståndelsen?",
-      answers: [
-        { text: "Han gav dem en till chans", isCorrect: false },
-        { text: "Det krävs bara ett enda rop så står de på jordens yta", isCorrect: true },
-        { text: "Straffet skjuts upp för dem", isCorrect: false },
-        { text: "Domedagen kommer inte att inträffa", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vilket budskap kom Mosa med till Farao?",
-      answers: [
-        { text: "Att lära honom jordbruk", isCorrect: false },
-        { text: "Att fråga honom: Vill du rena din själ?", isCorrect: true },
-        { text: "Att ge honom pengar", isCorrect: false },
-        { text: "Att bygga ett palats åt honom", isCorrect: false }
-      ]
-    },
-    {
-      question: "Hur svarade Farao på Mosas kallelse?",
-      answers: [
-        { text: "Han teg och svarade inte", isCorrect: false },
-        { text: "Han trodde direkt", isCorrect: false },
-        { text: "Han förnekade, trotsade och vände ryggen till", isCorrect: true },
-        { text: "Han hedrade Mosa", isCorrect: false }
-      ]
-    },
-    {
-      question: "Varför nämns berättelsen om Farao i suran?",
-      answers: [
-        { text: "För att försköna berättelser", isCorrect: false },
-        { text: "För att lära ut magi", isCorrect: false },
-        { text: "Som en varning och lära av tyranners öde", isCorrect: true },
-        { text: "För att lära ut handel", isCorrect: false }
-      ]
-    },
-    {
-      question: "Vad är syftet med versen: 'Är det svårare att skapa er eller himlen'?",
-      answers: [
-        { text: "Att lära ut jordbruk", isCorrect: false },
-        { text: "En fråga om astronomi", isCorrect: false },
-        { text: "Att visa Allahs makt att återuppväcka skapelsen", isCorrect: true },
-        { text: "Uppmuntran till att resa", isCorrect: false }
-      ]
-    },
-    {
-      question: "Hur avslutas Surat An-Nazi'at?",
-      answers: [
-        { text: "Med att nämna Zakat", isCorrect: false },
-        { text: "Med att kunskapen om Domedagens tidpunkt tillhör endast Allah", isCorrect: true },
-        { text: "Med att nämna fastan", isCorrect: false },
-        { text: "Med att nämna bönen", isCorrect: false }
-      ]
-    }
+  {
+    question: "What is meant by 'An-Nazi'ati gharqa'?",
+    answers: [
+      { text: "Mountains torn from their places", isCorrect: false },
+      { text: "Waters flooding the earth", isCorrect: false },
+      { text: "The angels who extract the souls of disbelievers harshness and severity", isCorrect: true },
+      { text: "Stars sinking in the sky", isCorrect: false }
+    ]
+  },
+  {
+    question: "What is the meaning of 'An-Nashitati nashta'?",
+    answers: [
+      { text: "The angels who extract the souls of believers gently", isCorrect: true },
+      { text: "Swift horses", isCorrect: false },
+      { text: "Luminous planets", isCorrect: false },
+      { text: "Fast winds", isCorrect: false }
+    ]
+  },
+  {
+    question: "Who is referred to in 'As-Sabiqati sabqa'?",
+    answers: [
+      { text: "Horses racing in battle", isCorrect: false },
+      { text: "The angels racing with the souls of believers to Paradise", isCorrect: true },
+      { text: "Rain preceding the clouds", isCorrect: false },
+      { text: "Planets orbiting in the sky", isCorrect: false }
+    ]
+  },
+  {
+    question: "What is meant by 'Fal-mudabbirati amra'?",
+    answers: [
+      { text: "Scholars who manage affairs", isCorrect: false },
+      { text: "The angels who execute Allah's commands", isCorrect: true },
+      { text: "Stars regulating night and day", isCorrect: false },
+      { text: "Leaders managing wars", isCorrect: false }
+    ]
+  },
+  {
+    question: "What is meant by 'Yawma tarjufu ar-rajifah'?",
+    answers: [
+      { text: "The first Blast of the Trumpet", isCorrect: true },
+      { text: "A rainy day", isCorrect: false },
+      { text: "An exploding star", isCorrect: false },
+      { text: "Earthquakes in the worldly life", isCorrect: false }
+    ]
+  },
+  {
+    question: "What is meant by 'Tatba'uha ar-radifah'?",
+    answers: [
+      { text: "Hurricanes", isCorrect: false },
+      { text: "Earthquakes", isCorrect: false },
+      { text: "Ocean waves", isCorrect: false },
+      { text: "The second Blast of the Trumpet", isCorrect: true }
+    ]
+  },
+  {
+    question: "What will man remember on the Day of Resurrection?",
+    answers: [
+      { text: "Dreams he saw", isCorrect: false },
+      { text: "Wealth he spent", isCorrect: false },
+      { text: "All that he strived for in the worldly life", isCorrect: true },
+      { text: "Only people's names", isCorrect: false }
+    ]
+  },
+  {
+    question: "What does 'Al-Tammah Al-Kubra' mean?",
+    answers: [
+      { text: "The Day of Ashura", isCorrect: false },
+      { text: "The Day of Resurrection", isCorrect: true },
+      { text: "The Day of Badr", isCorrect: false },
+      { text: "The Day of Hijrah", isCorrect: false }
+    ]
+  },
+  {
+    question: "What will be the outcome for the one who transgressed and preferred worldly life?",
+    answers: [
+      { text: "Hellfire will be their refuge", isCorrect: true },
+      { text: "They will be forgiven immediately", isCorrect: false },
+      { text: "They will enter Paradise", isCorrect: false },
+      { text: "They will die without account", isCorrect: false }
+    ]
+  },
+  {
+    question: "What will be the outcome for the one who feared standing before their Lord and restrained desires?",
+    answers: [
+      { text: "Paradise will be their refuge", isCorrect: true },
+      { text: "They will never be questioned", isCorrect: false },
+      { text: "They will be given abundant wealth", isCorrect: false },
+      { text: "They will be honored in this life only", isCorrect: false }
+    ]
+  },
+  {
+    question: "What did the disbelievers ask mockingly when they heard about resurrection?",
+    answers: [
+      { text: "Will we really be restored to our former state?", isCorrect: true },
+      { text: "Do angels descend to earth?", isCorrect: false },
+      { text: "Who provides us with food?", isCorrect: false },
+      { text: "When will rain fall?", isCorrect: false }
+    ]
+  },
+  {
+    question: "How did Allah respond to their rejection of resurrection?",
+    answers: [
+      { text: "He gave them another chance", isCorrect: false },
+      { text: "It will take only one Shout, and at once they will be above ground", isCorrect: true },
+      { text: "Punishment will be delayed forever", isCorrect: false },
+      { text: "The Hour will not happen", isCorrect: false }
+    ]
+  },
+  {
+    question: "What message did Moses bring to Pharaoh?",
+    answers: [
+      { text: "To teach him agriculture", isCorrect: false },
+      { text: "To ask him: 'Would you be willing to purify yourself?'", isCorrect: true },
+      { text: "To give him money", isCorrect: false },
+      { text: "To build him a palace", isCorrect: false }
+    ]
+  },
+  {
+    question: "How did Pharaoh react to Moses' call?",
+    answers: [
+      { text: "He remained silent and did not respond", isCorrect: false },
+      { text: "He believed immediately", isCorrect: false },
+      { text: "He denied, disobeyed, and turned his back striving against truth", isCorrect: true },
+      { text: "He honored Moses", isCorrect: false }
+    ]
+  },
+  {
+    question: "Why did Allah mention the story of Pharaoh in this Surah?",
+    answers: [
+      { text: "To embellish stories", isCorrect: false },
+      { text: "To teach magic", isCorrect: false },
+      { text: "As a lesson from the fate of tyrants", isCorrect: true },
+      { text: "To teach trade", isCorrect: false }
+    ]
+  },
+  {
+    question: "What is the lesson from 'Are you a more difficult creation or is the heaven?'",
+    answers: [
+      { text: "Teaching agriculture", isCorrect: false },
+      { text: "A question about astronomy", isCorrect: false },
+      { text: "Demonstrating Allah's power to create and resurrect", isCorrect: true },
+      { text: "Encouraging travel", isCorrect: false }
+    ]
+  },
+  {
+    question: "How does Surat An-Nazi'at conclude?",
+    answers: [
+      { text: "By mentioning Zakat", isCorrect: false },
+      { text: "By stating that knowledge of the Hour belongs to Allah alone", isCorrect: true },
+      { text: "By mentioning fasting", isCorrect: false },
+      { text: "By mentioning prayer", isCorrect: false }
+    ]
+  }
   ],
   benefit: { title: '', text: '' },
   reminder: { title: '', content: ``, hadithSummary: '', hadithText: `` },
   nezool: { dalel: '', nezoolText: ` ` },
-  fawaeed: {
-    SurahFaidah: 'Insikter och lärdomar från Surat An-Nazi\'at',
+ fawaeed: {
+    SurahFaidah: 'Benefits and Insights from Surat An-Nazi\'at',
     FaidaText: `
       <ul class="custom-presentation-list">
       <li>
-        En av surans lärdomar är att änglarna som har i uppdrag att hämta de troendes själar gör det med stor lätthet och vördnad. 
-        <p>Vad gäller änglarna som hämtar de otrognas själar, när själen kallas att komma ut ropar änglarna till den med de värsta egenskaperna: <span>Kliv ut, du onda själ som fanns i en ond kropp, kliv ut till Allahs vrede...</span></p>
-        <p>Då sprider sig själen i kroppen och vill inte komma ut, så änglarna drar ut den med våld...</p>
-        <p>Medan de troendes själar tas emot med glada nyheter: <span>Kliv ut, du goda själ som fanns i en god kropp, kliv ut till Allahs nåd och välbehag</span>.</p>
-        <p>Därför sade Profeten ﷺ: <strong>«Den som älskar att möta Allah, älskar Allah att möta honom...»</strong>.</p>
+        One of the key lessons of the Surah is that the angels appointed to take the souls of believers do so with gentleness, ease, and care.
+        <p>As for the angels appointed to take the souls of disbelievers, when the soul is called to come out, the angels call it with the most severe terms: <span>"Come out, O wicked soul that inhabited a wicked body, come out to the wrath of Allah..."</span></p>
+        <p>The soul recoils in dread of what awaits it and scatters throughout the body—may Allah protect us—so they extract it with great severity...</p>
+        <p>As for the souls of the believers—may Allah make us and you among them—when the angels descend to take their souls, they bring good tidings saying: <span>"Come out, O good soul that inhabited a good body, come out to Allah's pleasure and grace."</span></p>
+        <p>Hence the Prophet ﷺ said: <strong>«Whoever loves to meet Allah, Allah loves to meet him...»</strong>.</p>
       </li>
       <li>
-        Versen: <strong>﴿فَالْمُدَبِّرَاتِ أَمْرًا﴾</strong> beskriver också änglarna som förvaltar Allahs befallningar i universum...
+        The ayah: <strong>﴿فَالْمُدَبِّرَاتِ أَمْرًا﴾</strong> is another description of the angels who execute and manage affairs by the command of Allah Almighty in the heavens and the earth...
       </li>
       <li>
-        Versen: <strong>﴿فَتَخْشَى﴾</strong> innebär att du fruktar Allah grundat på kunskap, eftersom gudsfruktan (Khashyah) är fruktan förenad med insikt...
+        The ayah: <strong>﴿فَتَخْشَى﴾</strong> means fearing Allah Almighty based on true knowledge, because awe (Khashyah) is a fear grounded in understanding and reverence...
       </li>
       <li>
-        Eftersom människor ofta inte accepterar en profet utan tecken, gav Allah sina sändebud tydliga tecken. Här säger Han: <strong>﴿فَأَرَاهُ الْآيَةَ الْكُبْرَى﴾</strong> (Och han visade honom det stora tecknet)...
+        Since people naturally do not accept a messenger's claim without proof of truthfulness, Allah Almighty sent clear miracles with every messenger. Here He states: <strong>﴿فَأَرَاهُ الْآيَةَ الْكُبْرَى﴾</strong> (And he showed him the great sign)...
       </li>
       </ul>
     `
@@ -2242,14 +2222,132 @@ export const juz30Data: Record<string, any> = {
   { "number": 25, "text": "إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ لَهُمْ أَجْرٌ غَيْرُ مَمْنُونٍ", "tafsir": " أي غير مقطوع." }
 ],
   // 🗺️ Visual / الربط التصويري
-  introSummary:  'تتحدث السورة عن أهوال قيام الساعة وانشقاق السماء، وانقسام الناس إلى من يؤتى كتابه بيمينه ومن يؤتى كتابه وراء ظهره، والجزاء العادل لكل منهم. ',
+introSummary: 'تتحدث السورة عن أهوال قيام الساعة وانشقاق السماء، وانقسام الناس إلى من يؤتى كتابه بيمينه ومن يؤتى كتابه وراء ظهره، والجزاء العادل لكل منهم.',
   rubtTassweerySections: [
-
+    {
+      title: '🌌 أهوال قيام الساعة وانشقاق السماء',
+      description: 'تبدأ السورة بذكر علامات القيامة وأهوالها؛ بانشقاق السماء وانقيادها لأمر ربها، ومد الأرض وإلقائها ما في بطنها من الأموات والكنوز وتخليها عنها استجابةً لبارئها.',
+      verseNumbers: [1, 2, 3, 4, 5]
+    },
+    {
+      title: '🏃 كدح الإنسان وحتمية اللقاء',
+      description: 'تنبيه للإنسان بأنه في هذه الدنيا في عمل وسعي دؤوب ومستمر، وأن نهاية هذا السعي هي ملاقاة الله عز وجل ليجازي كُلاً بعمله.',
+      verseNumbers: [6]
+    },
+    {
+      title: '📄 انقسام الناس: من يُؤتى كتابه بيمينه',
+      description: 'بيان حال أهل السعادة الذين يأخذون صحائفهم بأيمانهم، فيحاسبهم الله حسابًا يسيرًا وينقلبون إلى أهلهم في الجنة مسرورين بالفوز والنجاة.',
+      verseNumbers: [7, 8, 9]
+    },
+    {
+      title: '⚠️ انقسام الناس: من يُؤتى كتابه وراء ظهره',
+      description: 'وصف حال الأشقياء الذين كذبوا بالبعث، فيستلمون كتبهم بشمالهم من خلف ظهورهم يدعون على أنفسهم بالهلاك ويصلون نارًا سعيرة.',
+      verseNumbers: [10, 11, 12, 13, 14, 15]
+    },
+    {
+      title: '🌙 القسم بالتغيرات الكونية وتقلب أحوال الإنسان',
+      description: 'قسم بالشفق والليل وما جمع والقمر إذا اكتمل، على أن الإنسان ينتقل من حال إلى حال ومن طور إلى طور في الدنيا والآخرة.',
+      verseNumbers: [16, 17, 18, 19]
+    },
+    {
+      title: '⚖️ التعجيب من تكذيب الكفار والجزاء العادل',
+      description: 'استنكار لإصرار الكفار على التكذيب رغم وضوح الآيات، وختام السورة بالوعيد بالعذاب الأليم للمكذبين والتأكيد على الأجر المستمر والدائم للمؤمنين.',
+      verseNumbers: [20, 21, 22, 23, 24, 25]
+    }
   ],
   // ❓ Quiz-frågor för denna sura
-  questions: [
- 
-  ],
+ questions: [
+  {
+    question: "ما معنى قوله تعالى: (وَأَذِنَتْ لِرَبِّهَا وَحُقَّتْ)؟",
+    answers: [
+      { text: "تأخرت واعتذرت عن الأمر", isCorrect: false },
+      { text: "استمعت وأطاعت وحُقّ لها أن تطيع خالقها", isCorrect: true },
+      { text: "انقسَمت إلى أجزاء صغيرة", isCorrect: false },
+      { text: "تزينت بأمر من الله", isCorrect: false }
+    ]
+  },
+  {
+    question: "كيف تكون الأرض يوم القيامة وفقًا لقوله تعالى: (وَإِذَا الْأَرْضُ مُدَّتْ)؟",
+    answers: [
+      { text: "تمتد كمَدّ الجلد والجلدات وتتسطح", isCorrect: true },
+      { text: "تتشقق وتغرق بالماء", isCorrect: false },
+      { text: "تتحول إلى جبال شاهقة", isCorrect: false },
+      { text: "تطوى كما تطوى الصحيفة", isCorrect: false }
+    ]
+  },
+  {
+    question: "ما الذي تلقيه الأرض خارجها وتتخلى عنه؟",
+    answers: [
+      { text: "الأنهار والأشجار", isCorrect: false },
+      { text: "الرمال والحجارة", isCorrect: false },
+      { text: "الأموات والكنوز التي في بطنها", isCorrect: true },
+      { text: "المباني والمنازل", isCorrect: false }
+    ]
+  },
+  {
+    question: "ما معنى قوله تعالى: (يَا أَيُّهَا الْإِنسَانُ إِنَّكَ كَادِحٌ إِلَىٰ رَبِّكَ كَدْحًا فَمُلَاقِيهِ)؟",
+    answers: [
+      { text: "أن الإنسان يسافر في الأرض وستنتهي رحلته", isCorrect: false },
+      { text: "أن الإنسان ساعٍ وعامل بأعماله وسيلقى الله فيجازيه بها", isCorrect: true },
+      { text: "أن الإنسان يجمع المال وس يتركه لغيره", isCorrect: false },
+      { text: "أن الإنسان يواجه المشاكل والهموم في الدنيا فقط", isCorrect: false }
+    ]
+  },
+  {
+    question: "كيف يكون 'الحساب اليسير' لمن أوتي كتابه بيمينه؟",
+    answers: [
+      { text: "ألا يُعرض على الله مطلقًا", isCorrect: false },
+      { text: "أن تُغفر ذنوبه دون أن يعرفها", isCorrect: false },
+      { text: "العرض اليسير فيقرره الله بذنوبه ثم يسترها عليه", isCorrect: true },
+      { text: "أن يُسأل عن كل صغيرة وكبيرة بالتفصيل", isCorrect: false }
+    ]
+  },
+  {
+    question: "كيف يُؤتى كتاب من يدعو ثبورًا يوم القيامة؟",
+    answers: [
+      { text: "بيمينه من أمامه", isCorrect: false },
+      { text: "بشماله من وراء ظهره", isCorrect: true },
+      { text: "لا يُعطى كتابًا أصلًا", isCorrect: false },
+      { text: "معلقًا في عنقه", isCorrect: false }
+    ]
+  },
+  {
+    question: "ما العلة والسبب في هلاك وشقاء من أُوتي كتابه وراء ظهره؟",
+    answers: [
+      { text: "أنه كان فقيرًا في الدنيا", isCorrect: false },
+      { text: "أنه كان في أهله مسرورًا وظن أن لن يحور (لن يرجع ويحاسب)", isCorrect: true },
+      { text: "أنه لم يطلب العلم الشرعي", isCorrect: false },
+      { text: "أنه ترك التجارة والعمل", isCorrect: false }
+    ]
+  },
+  {
+    question: "ما المقصود بـ 'الشَّفَقِ' في قوله تعالى: (فَلَا أُقْسِمُ بِالشَّفَقِ)؟",
+    answers: [
+      { text: "نور الفجر الصادق", isCorrect: false },
+      { text: "الحمرة في الأفق بعد غروب الشمس", isCorrect: true },
+      { text: "ظل الأشجار عند الظهيرة", isCorrect: false },
+      { text: "ضوء القمر المتكامل", isCorrect: false }
+    ]
+  },
+  {
+    question: "ما معنى قوله تعالى: (لَتَرْكَبُنَّ طَبَقًا عَن طَبَقٍ)؟",
+    answers: [
+      { text: "لتمرن بأحوال وأهوال متعددة حالًا بعد حال", isCorrect: true },
+      { text: "لتصعدن إلى طبقات السماء", isCorrect: false },
+      { text: "لتتناولن أطباقًا مختلفة من الطعام", isCorrect: false },
+      { text: "لتسيرن في أطباق الأرض", isCorrect: false }
+    ]
+  },
+  {
+    question: "ما معنى 'أَجْرٌ غَيْرُ مَمْنُونٍ' للمؤمنين الذين عملوا الصالحات؟",
+    answers: [
+      { text: "أجر قليل", isCorrect: false },
+      { text: "أجر مؤقت", isCorrect: false },
+      { text: "أجر غير مقطوع ولا ممنوع", isCorrect: true },
+      { text: "أجر دنيوي فقط", isCorrect: false }
+    ]
+  }
+],
 
   // 💡 فائدة för denna sura (Valfri!)
   benefit: { title: '', text: '' },
@@ -2565,18 +2663,35 @@ export const juz30Data: Record<string, any> = {
       </li> 
       </ul>
     `
-}}, /*
-   'surah-86': {
-  id: 'surah-',
-  name: 'سورة ',
+}}, 
+'surah-86': {
+  id: 'surah-86',
+  name: 'سورة الطارق',
   hint: {
     surahName: 'همسة من سورة ',
     hintText: '',
   },
   tafseerSource: '  ',
-  // 📖 Verser & Tafsir
   verses: [
- 
+  { "number": 1, "text": "وَٱلسَّمَآءِ وَٱلطَّارِقِ ", "tafsir": " <b>يقول الله تعالى:</b> ﴿ وَالسَّمَاءِ وَالطَّارِقِ (1) ﴾ <b>:ثم فسر الطارق بقوله:</b>  ﴿ النَّجْمُ الثَّاقِبُ (3) ﴾  "},
+  { "number": 2, "text": "وَمَآ أَدْرَىٰكَ مَا ٱلطَّارِقُ", "tafsir": " "},
+  { "number": 3, "text": "ٱلنَّجْمُ ٱلثَّاقِبُ", "tafsir": " <b> أي:</b> المضيء الذي يثقب نوره فيخرق السماوات فينفذ حتى يُرى في الأرض. والصحيح أنه اسم جنس يشمل سائر النجوم الثواقب ، <b>وسمي طارقًا</b> لأنه يطرق ليلًا."},
+  { "number": 4, "text": "إِن كُلُّ نَفْسٍۢ لَّمَّا عَلَيْهَا حَافِظٌۭ", "tafsir": " <b>والمقسم عليه قوله: ﴿ إِن كُلُّ نَفْسٍ لَّمَّا عَلَيْهَا حَافِظٌ (4) ﴾</b>: يحفظ عليها أعمالها الصالحة والسيئة، وستجازى بعملها المحفوظ عليها. "},
+  { "number": 5, "text": " فَلْيَنظُرِ ٱلْإِنسَـٰنُ مِمَّ خُلِقَ", "tafsir": " <b>أي:</b> فليتدبر خلقته ومبدأه "},
+  { "number": 6, "text": "خُلِقَ مِن مَّآءٍۢ دَافِقٍۢ", "tafsir": " فإنه خلق <b> ﴿ مِن مَّاءٍ دَافِقٍ (6) ﴾</b> : وهو المني، "},
+  { "number": 7, "text": " يَخْرُجُ مِنۢ بَيْنِ ٱلصُّلْبِ وَٱلتَّرَآئِبِ", "tafsir": "<b> - الذي ﴿ يَخْرُجُ مِن بَيْنِ الصُّلْبِ وَالتَّرَائِبِ (7) ﴾ </b>: يحتمل أنه من بين صلب الرجل وترائب المرأة، وهي ثدياها، ويحتمل أن المراد المني الدافق، وهو مني الرجل، وأن محله الذي يخرج منه ما بين صلبه وترائبه- ،وترائبه؛ أعلى صدره ﴾"},
+  { "number": 8, "text": "إِنَّهُۥ عَلَىٰ رَجْعِهِۦ لَقَادِرٌۭ", "tafsir": "<b> أي: </b>الله عز وجل <b> ﴿عَلَى رَجْعِهِ﴾</b> أي: على رجْع الإنسانِ<b> ﴿لَقَادِرٌ﴾</b> وذلك يوم القيامة؛"},
+  { "number": 9, "text": " يَوْمَ تُبْلَى ٱلسَّرَآئِرُ", "tafsir": " <b>﴿يَوْمَ تُبْلَى السَّرَائِرُ﴾</b>، فالذي قدر على أن يخلق الإنسانَ من هذا الماء الدافق المهين قادرٌ على أن يُعيده يوم القيامة"},
+  { "number": 10, "text": " فَمَا لَهُۥ مِن قُوَّةٍۢ وَلَا نَاصِرٍۢ", "tafsir": "<b>﴿ فَمَا لَهُ مِن قُوَّةٍ ﴾ </b> أي: من نفسه يدفع بها،<b> ﴿ وَلَا نَاصِرٍ </b> ﴾ : من خارج ينتصر به، فهذا القَسَم على العاملين وقت عملهم وعند جزائهم. "},
+  { "number": 11, "text": " وَٱلسَّمَآءِ ذَاتِ ٱلرَّجْعِ", "tafsir": " ثم أقسم قسمًا ثانيًا على صحة القرآن، فقال:<b> ﴿وَالسَّمَاءِ ذَاتِ الرَّجْعِ (١١)﴾</b> <b>؛ أي:</b> ترجع السماء بالمطر كل عام، وترجع السماء أيضًا بالأقدار والشئون الإلهية كل وقت."},
+  { "number": 12, "text": " وَٱلْأَرْضِ ذَاتِ ٱلصَّدْعِ", "tafsir": " <b>وَالْأَرْضِ ذَاتِ الصَّدْعِ (١٢)﴾</b>؛ وتنصدع الأرض للنبات، فيعيش بذلك الآدميون والبهائم، وتنصدع الأرض عن الأموات."},
+  { "number": 13, "text": " إِنَّهُۥ لَقَوْلٌۭ فَصْلٌۭ", "tafsir": " ﴿<b>إِنَّهُ</b> ﴾؛ أي: القرآن،<b> ﴿لَقَوْلٌ فَصْلٌ (١٣)﴾</b>؛ أي: حق وصدق بيِّن واضح. "},
+  { "number": 14, "text": " وَمَا هُوَ بِٱلْهَزْلِ", "tafsir": " <b> أي:</b> جد ليس بالهزل، وهو القول الذي يفصل بين الطوائف والمقالات، وتنفصل به الخصومات."},
+  { "number": 15, "text": " إِنَّهُمْ يَكِيدُونَ كَيْدًۭا", "tafsir": " <b>﴿إِنَّهُمْ﴾</b>؛ أي: المكذبين للرسول ﷺ وللقرآن، <b>﴿يَكِيدُونَ كَيْدًا (١٥)﴾</b>: ليدفعوا بكيدهم الحق ويؤيدوا الباطل. "},
+  { "number": 16, "text": "وَأَكِيدُ كَيْدًا ", "tafsir": " لإظهار الحق، ولو كره الكافرون، ولدفع ما جاءوا به من الباطل، ويعلم بهذا من الغالب؛ فإن الآدمي أضعف وأحقر من أن يغالب القوي العليم في كيده."},
+  { "number": 17, "text": "فَمَهِّلِ الْكَافِرِينَ أَمْهِلْهُمْ رُوَيْدًا", "tafsir": " <b>أي:</b> قليلًا، فسيعلمون عاقبة أمرهم حين ينزل بهم العقاب."},
+
+
 ],
   // 🗺️ Visual / الربط التصويري
   introSummary:  '',
@@ -2600,8 +2715,8 @@ export const juz30Data: Record<string, any> = {
 
       </ul>
     `
-  } }
-  , 
+} }
+  , /*
    'surah-': {
   id: 'surah-',
   name: 'سورة ',
