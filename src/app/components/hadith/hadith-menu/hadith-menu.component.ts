@@ -141,6 +141,15 @@ hadithNamesList: string[] = [];
     'الحديث الخامس',
     'الحديث السادس'
   ];
+  ryadBab5List: string[] = [
+    'مقدمة باب المراقبة',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس'
+  ];
+
 
 
 constructor(private router: Router,
@@ -216,6 +225,10 @@ constructor(private router: Router,
         this.hadithNamesList = this.ryadBab4List;
         break;
 
+      case 'ryad-bab-5':
+        this.titleHeader = 'رياض الصالحين - باب المراقبة';
+        this.hadithNamesList = this.ryadBab5List;
+        break;
 
       case 'hadith-nawawi-40':
       default:
