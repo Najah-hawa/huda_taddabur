@@ -144,11 +144,11 @@
 
 </div>
       <!-- زر فتح/إغلاق شرح المفردات -->
-      <div class="tafsir-toggle-wrapper">
+      <div class="tafsir-toggle-wrapper"   *ngIf="explanation && explanation.trim() !== ''">
         <button class="modern-tafsir-toggle-btn" (click)="toggleExplanation()">
           <span>📚 شرح الحديث والمفردات</span>
           <span class="arrow" [class.open]="isExplanationShown">▼</span>
-        </button>
+        </button> 
       </div>
 
       <!-- 📚 صندوق الشرح والمفردات (يتأثر بتغيير fontSizeRawi وتكبير الحاوية) -->
