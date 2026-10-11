@@ -161,6 +161,20 @@ hadithNamesList: string[] = [];
     'الحديث الرابع',
     'الحديث الخامس'
   ];
+  ryadBab7List: string[] = [
+    'مقدمة باب اليقين والتوكل ',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+    'الحديث السابع',
+    'الحديث الثامن',
+    'الحديث التاسع',
+    'الحديث العاشر',
+    'الحديث الحادي عشر', 
+  ];
 
 
 
@@ -244,6 +258,10 @@ constructor(private router: Router,
       case 'ryad-bab-6':
         this.titleHeader = 'رياض الصالحين - باب التقوى';
         this.hadithNamesList = this.ryadBab6List;
+        break;
+        case 'ryad-bab-7':
+        this.titleHeader = 'رياض الصالحين - باب اليقين والتوكل';
+        this.hadithNamesList = this.ryadBab7List;
         break;
 
       case 'hadith-nawawi-40':

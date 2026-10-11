@@ -460,17 +460,7 @@ position: absolute;
   font-size: 1.1em;
 }
 
-/* الخط المدرّج أسفل العنوان */
-.benefit-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  border-radius: 3px;
-  background: linear-gradient(to right, #3d5236, #e6b800, #c5a059, #e6b800, #3d5236);
-}
+
 .benefit-title::after {
   content: '';
   position: absolute;

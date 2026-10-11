@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy, inject, ChangeDetectorRef, signal } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject, ChangeDetectorRef, signal,   ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
@@ -28,7 +28,7 @@ import { StatusBannerComponent, HadithStatus } from '../status-banner/status-ban
   styleUrls: ['./hadith-view.component.css']
 })
 export class HadithViewComponent implements OnInit, OnDestroy {
-  
+   @ViewChild('box1') box1!: ElementRef<HTMLElement>;
 currentHadithStatus = signal<HadithStatus>('not-started');
   
   // Id för aktuellt hadith (kan ändras dynamiskt senare)

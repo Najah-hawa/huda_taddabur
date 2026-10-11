@@ -1,11 +1,13 @@
 /* الحاوية المطلقة التي تجمع الأزرار في أعلى اليسار */
 .fawaed-controls-group {
+  display: none;   /* إخفاء الأزرار بشكل افتراضي على جميع الشاشات لعدم الحاجة الى  هذه الميزة */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 6px;
   width: 100%;
   margin: 10px 0;
+
 }
 /* الستايل الموحد الذهبي لجميع الأزرار */
 .fawaed-btn-action {
@@ -65,5 +67,7 @@
   .fawaed-controls-group {
     justify-content: flex-end; /* نقل الأزرار لأقصى اليسار في واجهات RTL */
     padding-left: 20px; /* مسافة بسيطة عن حافة الشاشة */
+    display: none; /* إخفاء الأزرار على الشاشات الكبيرة */
   }
+  
 }
