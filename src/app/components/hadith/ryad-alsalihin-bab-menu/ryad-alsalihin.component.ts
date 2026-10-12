@@ -20,6 +20,7 @@ babsList = [
     { id: 'ryad-bab-5', title: 'باب المراقبة' }, 
     { id: 'ryad-bab-6', title: 'باب التقوى' }, 
     { id: 'ryad-bab-7', title: 'باب اليقين والتوكل' }, 
+    { id: 'ryad-bab-8', title: 'باب الاستقامة' }, 
     // { id: 'ryad-bab-5', title: 'باب المراقبة' }, 
   ];
 

@@ -6,6 +6,7 @@ import { RYAD_BAB4_HADITHS } from './data/ryad-bab4-data';
 import { RYAD_BAB5_HADITHS } from './data/ryad-bab5-data';
 import { RYAD_BAB6_HADITHS } from './data/ryad-bab6-data';
 import { RYAD_BAB7_HADITHS } from './data/ryad-bab7-data';
+import { RYAD_BAB8_HADITHS } from './data/ryad-bab8-data';
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
@@ -43,6 +44,10 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-7': {
     title: 'رياض الصالحين - باب اليقين والتوكل',
     data: RYAD_BAB7_HADITHS
+  },
+  'ryad-bab-8': {
+    title: 'رياض الصالحين - باب  الاستقامة',
+    data: RYAD_BAB8_HADITHS
   }
   
 };
