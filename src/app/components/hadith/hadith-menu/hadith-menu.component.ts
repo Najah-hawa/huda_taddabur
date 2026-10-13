@@ -180,6 +180,21 @@ hadithNamesList: string[] = [];
     'الحديث الأول',
     'الحديث الثاني'
   ];
+  ryadBab9List: string[] = [
+    'مقدمة باب التفكر في عظيم مخلوقات الله '
+  ];
+  ryadBab10List: string[] = [
+    'مقدمة باب  المبادرة إلى الخيرات ',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+    'الحديث السابع',
+    'الحديث الثامن',
+
+  ];
 
 
 
@@ -272,6 +287,14 @@ constructor(private router: Router,
         case 'ryad-bab-8':
         this.titleHeader = 'رياض الصالحين - باب الاستقامة ';
         this.hadithNamesList = this.ryadBab8List;
+        break;
+        case 'ryad-bab-9':
+        this.titleHeader = 'رياض الصالحين - باب التفكر في عظيم مخلوقات الله ';
+        this.hadithNamesList = this.ryadBab9List;
+        break;
+        case 'ryad-bab-10':
+        this.titleHeader = 'رياض الصالحين - باب  المبادرة إلى الخيرات ';
+        this.hadithNamesList = this.ryadBab10List;
         break;
 
       case 'hadith-nawawi-40':
