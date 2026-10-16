@@ -9,6 +9,9 @@ import { RYAD_BAB7_HADITHS } from './data/ryad-bab7-data';
 import { RYAD_BAB8_HADITHS } from './data/ryad-bab8-data';
 import { RYAD_BAB9_HADITHS } from './data/ryad-bab9-data';
 import { RYAD_BAB10_HADITHS } from './data/ryad-bab10-data';
+import { RYAD_BAB127_HADITHS } from './data/ryad-bab127-data'; 
+import { RYAD_BAB128_HADITHS } from './data/ryad-bab128-data';
+
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
@@ -58,6 +61,16 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-10': {
     title: ' رياض الصالحين - باب المبادرة إلى الخيرات ',
     data: RYAD_BAB10_HADITHS
+  },
+  'ryad-bab-127': {
+    title:  'باب مايقوله عند النوم والاضجاع والقعود' ,
+    data: RYAD_BAB127_HADITHS
+  },
+  'ryad-bab-128': {
+    title: 'باب جواز الاستلقاء على القفا ووضع إحدى الرجلين على الأخرى إذا لم يخف انكشاف العورة ، وجواز القعود متربعاً ومحتبياً',
+    data: RYAD_BAB128_HADITHS
   }
-  
+
+
+
 };

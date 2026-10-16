@@ -195,6 +195,26 @@ hadithNamesList: string[] = [];
     'الحديث الثامن',
 
   ];
+  ryadBab127List: string[] = [
+   'مقدمة كتاب آداب النوم',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس'
+  ];
+  ryadBab128List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    //'الحديث الرابع',
+   // 'الحديث الخامس',
+    //'الحديث السادس',
+   // 'الحديث السابع',
+   // 'الحديث الثامن',
+
+  ];
 
 
 
@@ -296,6 +316,15 @@ constructor(private router: Router,
         this.titleHeader = 'رياض الصالحين - باب  المبادرة إلى الخيرات ';
         this.hadithNamesList = this.ryadBab10List;
         break;
+        case 'ryad-bab-127':
+        this.titleHeader = 'باب مايقوله عند النوم والاضجاع والقعود';
+        this.hadithNamesList = this.ryadBab127List;
+        break;
+        case 'ryad-bab-128':
+        this.titleHeader = 'باب جواز الاستلقاء على القفا ووضع إحدى الرجلين على الأخرى إذا لم يخف انكشاف العورة ، وجواز القعود متربعاً ومحتبياً' ;
+        this.hadithNamesList = this.ryadBab128List;
+        break;
+
 
       case 'hadith-nawawi-40':
       default:
