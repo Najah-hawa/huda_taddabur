@@ -119,7 +119,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab128/hadith3-bab128.png'],
+    imageUrls: [ '/images/ryad/bab128/hadith4-bab128.png'],
 explanation: `
   <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -128,7 +128,7 @@ explanation: `
        <li><b> المتخشع: </b><span> رمى ببصره نحو الأرض وغضه وخفض صوته</span></li>
       </ul>
     </div>
-  `,
+  `, 
     box1Title: 'نبذة عن الراوي',
     box1Items: [
     '<b class= "nawawi-slut">   قيلة التميمية من بني العنبر كان زوجها حبيب بن أزهر  </b> ', 
@@ -165,7 +165,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab128/hadith3-bab128.png'],
+    imageUrls: [ '/images/ryad/bab128/hadith5-bab128.png'],
 explanation: `
   <div class="explanation-content">
       <ul class="vocabulary-list"> 

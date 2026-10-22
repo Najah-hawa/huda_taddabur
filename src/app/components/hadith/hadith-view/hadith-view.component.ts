@@ -29,6 +29,7 @@ import { StatusBannerComponent, HadithStatus } from '../status-banner/status-ban
 })
 export class HadithViewComponent implements OnInit, OnDestroy {
    @ViewChild('box1') box1!: ElementRef<HTMLElement>;
+  @ViewChild('hadithBox') hadithImageBox?: ElementRef<HTMLElement>;
 currentHadithStatus = signal<HadithStatus>('not-started');
   
   // Id för aktuellt hadith (kan ändras dynamiskt senare)
@@ -105,6 +106,7 @@ source: string = '';
 // Skapa variabler för att hålla reda på nuvarande kategori och ID
 currentCategory = 'nawawi-40';
 currentHadithId = '1';
+private hasLoadedInitialHadith = false;
 
 
 ngOnInit(): void {
@@ -122,6 +124,15 @@ ngOnInit(): void {
 
     // Ladda själva data för hadithet
     this.loadHadithData(this.currentCategory, this.currentHadithId);
+    if (this.hasLoadedInitialHadith) {
+      requestAnimationFrame(() => {
+        this.hadithImageBox?.nativeElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    }
+    this.hasLoadedInitialHadith = true;
 
     // Läs in sparat tillstånd från LocalStorage för JUST DETTA hadith
     const storageKey = `hadith_${this.currentCategory}_${this.currentHadithId}_status`;
