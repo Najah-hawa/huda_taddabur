@@ -12,6 +12,8 @@ import { RYAD_BAB10_HADITHS } from './data/ryad-bab10-data';
 import { RYAD_BAB127_HADITHS } from './data/ryad-bab127-data'; 
 import { RYAD_BAB128_HADITHS } from './data/ryad-bab128-data';
 import { RYAD_BAB129_HADITHS } from './data/ryad-bab129-data';
+import { RYAD_BAB130_HADITHS } from './data/ryad-bab130-data';
+import { RYAD_BAB131_HADITHS } from './data/ryad-bab131-data';
 
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
@@ -74,6 +76,16 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-129': {
     title: 'باب اداب المجالس والجليس',
     data: RYAD_BAB129_HADITHS
+  }
+  ,
+  'ryad-bab-130': {
+    title: 'باب الرؤيا وما يتعلق بها',
+    data: RYAD_BAB130_HADITHS
+  }
+  ,
+  'ryad-bab-131': {
+    title: 'باب فضل السلام والأمر بإفشائه ',
+    data: RYAD_BAB131_HADITHS
   }
 
 

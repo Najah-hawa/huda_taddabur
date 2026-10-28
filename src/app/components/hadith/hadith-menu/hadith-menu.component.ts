@@ -226,6 +226,25 @@ hadithNamesList: string[] = [];
     'الحديث الثاني عشر', 
     'الحديث الثالث عشر', 
   ];
+  ryadBab130List: string[] = [
+    ' مقدمة باب الرؤيا وما يتعلق بها',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+    'الحديث السابع'
+  ];
+  ryadBab131List: string[] = [
+    ' مقدمة باب فضل السلام والأمر بإفشائه',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+   
+  ];
+
 
 
 
@@ -339,6 +358,17 @@ constructor(private router: Router,
         this.titleHeader = 'باب اداب المجالس والجليس' ;
         this.hadithNamesList = this.ryadBab129List;
         break;
+        ;
+        case 'ryad-bab-130':
+        this.titleHeader = ' باب الرؤيا وما يتعلق بها  ' ;
+        this.hadithNamesList = this.ryadBab130List;
+        break;
+        case 'ryad-bab-131':
+        this.titleHeader = '  باب فضل السلام والأمر بإفشائه' ;
+        this.hadithNamesList = this.ryadBab131List;
+        break;
+
+        
 
 
       case 'hadith-nawawi-40':

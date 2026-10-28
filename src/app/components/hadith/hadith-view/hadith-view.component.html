@@ -3,11 +3,11 @@
   <!-- Hamsa  Al-Hadith Al-Dinamikiya -->
   <app-surah-hint
   *ngIf="hintText && hintText.trim() !== ''"
-    [surahName]="'همسة من ' + ' ' + name"
+    [surahName]=" name"
     [hintText]="hintText">
   </app-surah-hint>
 
-  <!--Dynamic navigation buttons between conversations!-->
+  <!--Dynamic navigation buttons between conversations!
 
 <app-next-before-surah-meny 
   [RoutelinkBefore]="routeBefore" 
@@ -15,11 +15,11 @@
   [RoutelinkAfter]="routeAfter" 
   [SurahNext]="surahNext"
 [MenuRoute]="menuRoute">
-</app-next-before-surah-meny>
+</app-next-before-surah-meny>-->
   <div class="hadith-page-container">
 
   <!-- Main Hadith text container with full Zoom support-->
-<div #hadithBox class="fawaed-box-container mini hadith-main-box"*ngIf="imageUrls && imageUrls.length > 0 && imageUrls[0]" [class.maximized-style]="isRawiMaximized" style="margin-top: 0px; position: relative; ">
+<div #hadithBox  *ngIf="imageUrls && imageUrls.length > 0 && imageUrls[0]" [class.maximized-style]="isRawiMaximized" style="margin-top: 0px; position: relative; ">
 
   <div class="box-container">
     <app-zoom-controls
@@ -324,10 +324,11 @@
   [SurahNext]="surahNext"
 [MenuRoute]="menuRoute">
 </app-next-before-surah-meny>
-<!-- Längst ned i Hadith View -->
+<!--denna funktion används inte nu !-->
+<!--
 <app-status-banner 
   [currentStatus]="currentHadithStatus()"
   (statusChange)="onStatusChange($event)">
 </app-status-banner>
-
+-->
 <app-footer-info />
