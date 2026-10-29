@@ -107,7 +107,6 @@ explanation: `
        <li><b>اتباع الجنائز : </b><span> تشييعها</span></li>
        <li><b> تشميت العاطس: </b><span> الدعاء له   </span></li>
        <li><b> إفشاء السلام: </b><span>  الإكثار منه ونشره  </span></li>
-       <li><b> : </b><span>   </span></li>
        <li><b>إبرار المقسم : </b><span> أجابه إلى ما أقسم عليه   </span></li>
       </ul>
     </div>
@@ -138,7 +137,7 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  },/*
+  },
   '4': {
     title: '  الحديث الرابع ', 
     name:  'باب فضل السلام والأمر بإفشائه ', 
@@ -148,21 +147,18 @@ explanation: `
 explanation: `
   <div class="explanation-content">
       <ul class="vocabulary-list"> 
-       <li><b> : </b><span>  </span></li>
-       <li><b> : </b><span> </span></li>
+       <li><b>أفشوا : </b><span>  من فشا: اذا ظهر وانتشر وَذاع</span></li>
       </ul>
     </div>
   `,
-    box1Title: 'نبذة عن الراوي', 
+    box1Title: 'فوائد الحديث' ,
     box1Items: [
-    '<b  class="nawawi-slut" >    </b>', 
-    '<b>  </b>',
-    
+    '<b> لايدخل الجنة إلا المؤمنون وَمحبة المؤمنين من الإيمان  </b>',
+    '<b>  الحث على إفشاء السلام وبذله للمسلم </b>',
+    '<b>  يكره اذا لقي جماعة ان يخص بعضهم بالسلام دون الأخرين </b>',
     ],
-    box2Title:'فوائد الحديث' ,
+    box2Title:'',
     box2Items: [
-      '<b> </b>',
-    
     ],
     box3Title: '',
     box3Items: [
@@ -181,7 +177,7 @@ explanation: `
       correctAnswer: '  ',
     
      }] } 
-  },
+  },/*
   '5': {
     title: '  الحديث الخامس ', 
     name:  'باب فضل السلام والأمر بإفشائه ', 
