@@ -5,7 +5,7 @@ export const RYAD_BAB131_HADITHS: Record<string, any> = {
     hintText:  ' المقدمة ',
     audioUrl: '',
     //imageUrls: [ '/images/ryad/bab128/hadith4-bab128.png'],
-    imageUrls: [ '/images/ryad/bab130/hadith1-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith1-bab131.png'],
 explanation: ``,
     box1Title:  'فوائد الحديث', 
     box1Items: [
@@ -38,7 +38,7 @@ explanation: ``,
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab130/hadith2-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith2-bab131.png'],
 explanation: ``,
     box1Title: 'فوائد الحديث', 
     box1Items: [
@@ -71,7 +71,7 @@ explanation: ``,
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab130/hadith3-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith3-bab131.png'],
 explanation: ``,
     box1Title: 'فوائد الحديث', 
     box1Items: [
@@ -103,7 +103,7 @@ explanation: ``,
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab130/hadith4-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith4-bab131.png'],
 explanation: `
   <div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -146,7 +146,7 @@ explanation: `
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab130/hadith5-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith5-bab131.png'],
 explanation: ``,
     box1Title: 'نبذة عن الراوي', 
     box1Items: [
@@ -183,7 +183,7 @@ explanation: ``,
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab130/hadith6-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith6-bab131.png'],
 explanation: ``,
     box1Title: 'نبذة عن الراوي',
     box1Items: [
@@ -213,13 +213,13 @@ explanation: ``,
       correctAnswer: '  ',
     
      }] } 
-  },
+  }, /*
   '7': {
     title: '  الحديث السابع ', 
     name: '', 
     hintText: '',
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab130/hadith7-bab130.png'],
+    imageUrls: [ '/images/ryad/bab131/hadith7-bab131.png'],
 explanation: ` `,
     box1Title: 'فوائد الحديث', 
     box1Items: [
@@ -246,5 +246,5 @@ explanation: ` `,
       correctAnswer: '  ',
     
      }] } 
-  }
+  }*/
  }
