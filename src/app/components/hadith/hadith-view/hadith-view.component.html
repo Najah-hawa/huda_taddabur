@@ -33,9 +33,9 @@
   <div class="verse-wrapper" [style.margin-top]="isRawiMaximized ? '70px' : '35px'">
       
       <!-- Smart and advanced voice changer-->
-      <div class="hadith-audio-player-wrapper">
+      <div class="hadith-audio-player-wrapper" *ngIf="audioUrl && audioUrl.trim() !== ''">
         
-   <div class="hadith-player-buttons">
+   <div class="hadith-player-buttons" >
   <!-- Bakåt 10 sekunder -->
   <button class="player-nav-btn" (click)="skipBackward10()" title="تأخير 10 ثوانٍ">
      ⏭ 

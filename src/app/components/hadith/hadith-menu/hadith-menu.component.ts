@@ -237,10 +237,23 @@ hadithNamesList: string[] = [];
     'الحديث السابع'
   ];
   ryadBab131List: string[] = [
+    'كتاب السلام',
+    'مقدمة باب فضل السلام والأمر بإفشائه',
     'الحديث الأول',
     'الحديث الثاني',
     'الحديث الثالث',
     'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+   
+  ];
+  ryadBab132List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    //'الحديث الرابع',
+    //'الحديث الخامس',
+    //'الحديث السادس',
    
   ];
 
@@ -365,6 +378,10 @@ constructor(private router: Router,
         case 'ryad-bab-131':
         this.titleHeader = '  باب فضل السلام والأمر بإفشائه' ;
         this.hadithNamesList = this.ryadBab131List;
+        break;
+        case 'ryad-bab-132':
+        this.titleHeader = 'باب كيفية السلام ' ;
+        this.hadithNamesList = this.ryadBab132List;
         break;
 
         
