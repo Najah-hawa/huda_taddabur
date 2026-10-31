@@ -251,11 +251,28 @@ hadithNamesList: string[] = [];
     'الحديث الأول',
     'الحديث الثاني',
     'الحديث الثالث',
-    //'الحديث الرابع',
-    //'الحديث الخامس',
-    //'الحديث السادس',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
    
   ];
+  ryadBab133List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+  ];  
+  ryadBab134List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+  ];
+   ryadBab135List: string[] = [
+    'المقدمة ',
+    'الحديث الأول',
+  ];
+   ryadBab136List: string[] = [
+    'الحديث الأول',
+  ];
+
+
 
 
 
@@ -383,6 +400,24 @@ constructor(private router: Router,
         this.titleHeader = 'باب كيفية السلام ' ;
         this.hadithNamesList = this.ryadBab132List;
         break;
+        case 'ryad-bab-133':
+        this.titleHeader = ' باب آداب السلام' ;
+        this.hadithNamesList = this.ryadBab133List;
+        break;
+        case 'ryad-bab-134':
+        this.titleHeader = ' باب استحباب إعادة السلام على من تكرر لقاؤه على قرب بأن دخل ثم خرج ثم دخل في الحال أو حال بينها شجرة ونحوها .' ;
+        this.hadithNamesList = this.ryadBab134List;
+        break;
+        case 'ryad-bab-135':
+        this.titleHeader = ' باب استحباب السلام إذا دخل بيته' ;
+        this.hadithNamesList = this.ryadBab135List;
+        break;
+        case 'ryad-bab-136':
+        this.titleHeader = ' باب السلام على الصبيان' ;
+        this.hadithNamesList = this.ryadBab136List;
+        break;
+
+       
 
         
 

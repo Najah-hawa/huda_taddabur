@@ -15,6 +15,10 @@ import { RYAD_BAB129_HADITHS } from './data/ryad-bab129-data';
 import { RYAD_BAB130_HADITHS } from './data/ryad-bab130-data';
 import { RYAD_BAB131_HADITHS } from './data/ryad-bab131-data';
 import { RYAD_BAB132_HADITHS } from './data/ryad-bab132-data';
+import { RYAD_BAB133_HADITHS } from './data/ryad-bab133-data';
+import { RYAD_BAB134_HADITHS } from './data/ryad-bab134-data';
+import { RYAD_BAB135_HADITHS } from './data/ryad-bab135-data';
+import { RYAD_BAB136_HADITHS } from './data/ryad-bab136-data';
 
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
@@ -89,7 +93,24 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-132': {
     title: 'باب كيفية السلام',
     data: RYAD_BAB132_HADITHS
+  },
+  'ryad-bab-133': {
+    title: 'باب آداب السلام ',
+    data: RYAD_BAB133_HADITHS
+  },
+  'ryad-bab-134': {
+    title: ' باب استحباب إعادة السلام على من تكرر لقاؤه على قرب بأن دخل ثم خرج ثم دخل في الحال أو حال بينها شجرة ونحوها .',
+    data: RYAD_BAB134_HADITHS
+  },
+  'ryad-bab-135': {
+    title: 'باب استحباب السلام إذا دخل بيته ',
+    data: RYAD_BAB135_HADITHS
+  },
+  'ryad-bab-136': {
+    title: 'باب السلام على الصبيان ',
+    data: RYAD_BAB136_HADITHS
   }
+ 
 
 
 
