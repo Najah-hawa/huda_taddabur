@@ -1,50 +1,11 @@
 export const RYAD_BAB2_HADITHS: Record<string, any> = {
    '1': {
-    title: ' شرح آيات باب التوبة ', 
-    name: 'باب التوبة',
-    hintText: 'شرح آيات الباب',
-    audioUrl: '',
-    imageUrls: [ ''],
-explanation: ` `,
-    box1Title: ' شرح آيات باب التوبة ', 
-    box1Items: [
-   '<b class= "hadith-ayah"> ﴿ وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ ﴾  </b> <br>ارجعوا إلى الله واطلبوا مغفرته لتفوزوا برضاه والجنة   ',
-   '<b class= "hadith-ayah"> ﴿ وَأَنِ اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ﴾  </b> <br> اطلبوا من الله المغفرة ، وارجعوا إليه بالتوبة ',
-   '<b class= "hadith-ayah">  ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا﴾ </b> <br> توبوا إلى الله توبة صادقة ولا تعودوا إلى الذنوب. ',
-    ],
-    box2Title: '', 
-    box2Items: [],
-    box3Title: '',
-    box3Items: [],
-    box4Title: '',
-    box4Items: [],
-    metaDescription:'',
-    metaKeywords:'',
-    quizQuestions: { 
-    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
-    questions: [ // مصفوفة الأسئلة داخل خاصية questions
-    {
-      id: 1,
-      text: '',
-      options: [''],
-      correctAnswer: '  ',
-    
-     }] } 
-  },
-'2': {
     title: 'باب التوبة', 
     name: '', 
     hintText: '',
     audioUrl: '',
     imageUrls: [ ''],
-explanation: `
-    <div class="explanation-content">
-      <ul class="vocabulary-list"> 
-        <li><b> </b><span> </span></li>
-   
-      </ul>
-    </div>
-  `,
+explanation: ``,
     box1Title: 'باب التوبة ',
     box1Items: [
   '• <b>التوبه: لغةً:</b>  الرجوع. ',
@@ -88,6 +49,39 @@ explanation: `
     
      }] } 
   }, 
+  '2': {
+    title: ' شرح آيات باب التوبة ', 
+    name: 'باب التوبة',
+    hintText: 'شرح آيات باب التوبة',
+    audioUrl: '',
+    imageUrls: [ ''],
+explanation: ` `,
+    box1Title: ' شرح آيات باب التوبة ', 
+    box1Items: [
+   '<b class= "hadith-ayah"> ﴿ وَتُوبُوا إِلَى اللَّهِ جَمِيعًا أَيُّهَ الْمُؤْمِنُونَ لَعَلَّكُمْ تُفْلِحُونَ ﴾  </b> <br>ارجعوا إلى الله واطلبوا مغفرته لتفوزوا برضاه والجنة   ',
+   '<b class= "hadith-ayah"> ﴿ وَأَنِ اسْتَغْفِرُوا رَبَّكُمْ ثُمَّ تُوبُوا إِلَيْهِ﴾  </b> <br> اطلبوا من الله المغفرة ، وارجعوا إليه بالتوبة ',
+   '<b class= "hadith-ayah">  ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا تُوبُوا إِلَى اللَّهِ تَوْبَةً نَّصُوحًا﴾ </b> <br> توبوا إلى الله توبة صادقة ولا تعودوا إلى الذنوب. ',
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+
   '3': {
     title: 'الحديث الأول:', 
     name: '', 
