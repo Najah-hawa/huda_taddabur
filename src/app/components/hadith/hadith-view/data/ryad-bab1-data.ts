@@ -1,22 +1,47 @@
 export const RYAD_BAB1_HADITHS: Record<string, any> = {
-  '1': {
-    title: 'مقدمة ', 
-    name: '', 
-    hintText: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    '1': {
+    title: ' شرح آيات باب الاخلاص واحضار النية في جميع الاعمال والاحوال ', 
+    name: 'باب الاخلاص واحضار النية في جميع الاعمال والاحوال', 
+    hintText: 'شرح آيات الباب',
     audioUrl: '',
     imageUrls: [ ''],
-explanation: `
-    <div class="explanation-content">
-      <ul class="vocabulary-list"> 
-        <li><b> </b><span> </span></li>
-   
-      </ul>
-    </div>
-  `,
+explanation: ` `,
+    box1Title: ' شرح آيات باب الاخلاص واحضار النية في جميع الاعمال والاحوال ', 
+    box1Items: [
+   '<b class= "hadith-ayah"> ﴿ وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ وَيُقِيمُوا الصَّلَاةَ وَيُؤْتُوا الزَّكَاةَ ۚ وَذَٰلِكَ دِينُ الْقَيِّمَةِ﴾  </b> <br>  أمر الله الناس أن يعبدوه وحده لا يشكروا به شيئاً ويصلوا بأركانها وآدابها ويخرجوا الزكاة فذلك الدين الصحيح.  ',
+   '<b class= "hadith-ayah"> ﴿لَنْ يَنَالَ اللَّهَ لُحُومُهَا وَلَا دِمَاؤُهَا وَلَكِنْ يَنَالُهُ التَّقْوَى مِنْكم﴾ </b> <br>  الله لا يريد منكم لحم الاضحية ولا دمها بل يريد منكم الإخلاص وطاعة الله.',
+   '<b class= "hadith-ayah">﴿قُلْ إِنْ تُخْفُوا مَا فِي صُدُورِكُمْ أَوْ تُبْدُوهُ يَعْلَمْهُ اللَّهُ﴾ </b> <br> الله يعلم كل ما في قلوبنا سواء أخفيناه أو أظهرناه ',
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+  '2': {
+    title: ' مقدمة باب الاخلاص واحضار النيه في جميع الاعمال والاحوال  ', 
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'المقدمة',
+    audioUrl: '',
+    imageUrls: [ ''],
+explanation: ``,
     box1Title: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال  ',
     box1Items: [
-   '• <b>الاخلاص:</b> افراد الحق سبحانه وتعالى بالقصد في الطاعات ويزيد بحركته ويكون في سره وعلى نيته التقرب الى الله لا يمازجه نفس او دينا او هوى.',
-  '• <b>الاخلاص شريكين الله وبين العبد:</b> لا يعلمه ملك فيكتبه ولا شيطان فيفسده ولا هوى فيميله.',
+  '•<b>الاخلاص:</b> افراد الحق سبحانه وتعالى بالقصد في الطاعات ويزيد بحركته ويكون في سره وعلى نيته التقرب الى الله لا يمازجه نفس او دينا او هوى.',
+  '• <b>الاخلاص سرٌ بين الله وبين العبد:</b> لا يعلمه ملك فيكتبه ولا شيطان فيفسده ولا هوى فيميله.',
   '• <b>ابن عطاء يقول:</b> ان الله لا يحب العمل المشترك والقلب المشترك فالعمل المشترك هو لا يقبله والقلب المشترك هو لا يقبل عليه.'
     ],
     box2Title: '', 
@@ -38,10 +63,10 @@ explanation: `
     
      }] } 
   },
-   '2': {
+   '3': {
     title: 'الحديث الأول', 
-    name: '', 
-    hintText: '',
+    name:'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث الأول', 
     audioUrl: 'audio/ryad-bab-1/hadith-1.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith1.png'],
 explanation: `
@@ -108,10 +133,10 @@ explanation: `
     
      }] } 
   },
-   '3': {
+   '4': {
     title: 'الحديث الثاني', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText:  'الحديث الثاني', 
     audioUrl: 'audio/ryad-bab-1/hadith-2.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith2.png'],
 explanation: `
@@ -172,10 +197,10 @@ explanation: `
     
      }] } 
   },
-   '4': {
+   '5': {
     title: 'الحديث الثالث:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText:  'الحديث الثالث:',
     audioUrl: 'audio/ryad-bab-1/hadith-3.m4a',
     imageUrls:  [ '/images/ryad/bab1/ryad-bab1-hadith3.png'],
 explanation: `
@@ -215,10 +240,10 @@ explanation: `
     
      }] } 
   },
-   '5': {
+   '6': {
     title: 'الحديث الرابع:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث الرابع:', 
     audioUrl: 'audio/ryad-bab-1/hadith-4.m4a',
     imageUrls:  [ '/images/ryad/bab1/ryad-bab1-hadith4.png'],
 explanation: `
@@ -265,10 +290,10 @@ explanation: `
     
      }] } 
   },
-   '6': {
+   '7': {
     title: 'الحديث الخامس:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث الخامس:', 
     audioUrl: 'audio/ryad-bab-1/hadith-5.m4a',
     imageUrls:  [ '/images/ryad/bab1/ryad-bab1-hadith5-1.png','/images/ryad/bab1/ryad-bab1-hadith5-2.png' ],
 explanation: `
@@ -311,10 +336,10 @@ explanation: `
     
      }] } 
   },
-   '7': {
+   '8': {
     title: 'الحديث السادس:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث السادس:', 
     audioUrl:  'audio/ryad-bab-1/hadith-6.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith6.png'],
 explanation: `
@@ -375,10 +400,10 @@ explanation: `
     
      }] } 
   },
-   '8': {
+   '9': {
     title: 'الحديث السابع:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث السابع:', 
     audioUrl: 'audio/ryad-bab-1/hadith-7.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith7.png'],
 explanation: `
@@ -428,10 +453,10 @@ explanation: `
     
      }] } 
   },
-   '9': {
+   '10': {
     title: 'الحديث الثامن:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث الثامن:', 
     audioUrl: 'audio/ryad-bab-1/hadith-8.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith8.png'],
 explanation: `
@@ -484,10 +509,10 @@ explanation: `
     
      }] } 
   },
-   '10': {
+   '11': {
     title: 'الحديث التاسع:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث التاسع:', 
     audioUrl: 'audio/ryad-bab-1/hadith-9.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith9.png'],
 explanation: `
@@ -532,10 +557,10 @@ explanation: `
     
      }] } 
   },
-   '11': {
+   '12': {
     title: 'الحديث العاشر:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث العاشر:', 
     audioUrl: 'audio/ryad-bab-1/hadith-10.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith10.png'],
 explanation: `
@@ -578,10 +603,10 @@ explanation: `
     
      }] } 
   },
-   '12': {
+   '13': {
     title: 'الحديث الحادي عشر:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث الحادي عشر:', 
     audioUrl: 'audio/ryad-bab-1/hadith-11.m4a',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith11-1.png', '/images/ryad/bab1/ryad-bab1-hadith11-2.png'],
 explanation: `
@@ -635,10 +660,10 @@ explanation: `
     
      }] } 
   },
-   '13': {
+   '14': {
     title: 'الحديث الثاني عشر:', 
-    name: '', 
-    hintText: '',
+    name: 'باب الاخلاص واحضار النيه في جميع الاعمال والاحوال',
+    hintText: 'الحديث الثاني عشر:', 
     audioUrl: 'audio/ryad-bab-1/hadith-12.mpeg',
     imageUrls: [ '/images/ryad/bab1/ryad-bab1-hadith12-1.png', '/images/ryad/bab1/ryad-bab1-hadith12-2.png'],
 explanation: `

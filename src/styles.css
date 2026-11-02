@@ -948,3 +948,7 @@ border: none;
   z-index: 2 !important; /* لضمان أن عنصر النهاية يظهر فوق الخط العمودي */
 }
 
+
+.hadith-ayah{
+  color:#0c381e
+}

@@ -1,4 +1,36 @@
 export const RYAD_BAB4_HADITHS: Record<string, any> = {
+  /*
+   '1': {
+    title: ' شرح آيات باب الصبر ', 
+    name: 'باب الصير',
+    hintText: 'شرح آيات الصبر',
+    audioUrl: '',
+    imageUrls: [ ''],
+explanation: ` `,
+    box1Title: ' شرح آيات باب الصبر ', 
+    box1Items: [
+   '<b class= "hadith-ayah">   </b> <br>  ',
+    ],
+    box2Title: '', 
+    box2Items: [],
+    box3Title: '',
+    box3Items: [],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+*/
  '1': {
     title: 'باب الصدق', 
     name: '', 
