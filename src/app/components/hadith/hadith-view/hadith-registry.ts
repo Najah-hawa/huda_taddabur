@@ -19,7 +19,11 @@ import { RYAD_BAB133_HADITHS } from './data/ryad-bab133-data';
 import { RYAD_BAB134_HADITHS } from './data/ryad-bab134-data';
 import { RYAD_BAB135_HADITHS } from './data/ryad-bab135-data';
 import { RYAD_BAB136_HADITHS } from './data/ryad-bab136-data';
-
+import { RYAD_BAB137_HADITHS } from './data/ryad-bab137-data';
+import { RYAD_BAB138_HADITHS } from './data/ryad-bab138-data';
+import { RYAD_BAB139_HADITHS } from './data/ryad-bab139-data';
+import { RYAD_BAB140_HADITHS } from './data/ryad-bab140-data';
+import { RYAD_BAB141_HADITHS } from './data/ryad-bab141-data';
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
@@ -109,11 +113,26 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-136': {
     title: 'باب السلام على الصبيان ',
     data: RYAD_BAB136_HADITHS
+  },
+  'ryad-bab-137': {
+    title: 'بابُ سلام الرجل على زوجته والمرأة من محارمه ، وعلى أجنبية وأجتنبيات لا يخاف الفتنة بهنَّ ، وسلامهنَّ بهذا الشرط.' ,
+    data: RYAD_BAB137_HADITHS
+  },
+  'ryad-bab-138': {
+    title: 'باب تحريم ابتدائنا الكفار بالسلام، وكيفية الرد عليهم واستحباب السلام مع أهل مجلس فيهم مسلمون وكفار',
+    data: RYAD_BAB138_HADITHS
+  },
+  'ryad-bab-139': {
+    title: 'باب استحباب السلام إذا قام من المجلس وفارق جلساءه أو جليسه',
+    data: RYAD_BAB139_HADITHS
+  },
+  'ryad-bab-140': {
+    title: 'باب الاستئذان وآدابه',
+    data: RYAD_BAB140_HADITHS
+  },
+  'ryad-bab-141': {
+    title: 'باب بيان أن السنة إذا قيل للمستأذن من أنت؟ أن يقول فلان فيسمي نفسه بما يعرف به من اسم أو كنية وكراهية قول أنا ونحوها',
+    data: RYAD_BAB141_HADITHS
   }
- 
-
-
-
-
 
 };

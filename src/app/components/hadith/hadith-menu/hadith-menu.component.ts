@@ -276,6 +276,32 @@ hadithNamesList: string[] = [];
    ryadBab136List: string[] = [
     'الحديث الأول',
   ];
+  ryadBab137List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+  ];
+  ryadBab138List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+  ];
+  ryadBab139List: string[] = [
+    'الحديث الأول',
+  ];
+  ryadBab140List: string[] = [
+    ' شرح أيات الباب',
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+  ];
+  ryadBab141List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+  ];
 
 
 
@@ -421,7 +447,26 @@ constructor(private router: Router,
         this.titleHeader = ' باب السلام على الصبيان' ;
         this.hadithNamesList = this.ryadBab136List;
         break;
-
+        case 'ryad-bab-137':
+        this.titleHeader = 'بابُ سلام الرجل على زوجته والمرأة من محارمه ، وعلى أجنبية وأجتنبيات لا يخاف الفتنة بهنَّ ، وسلامهنَّ بهذا الشرط.' ;
+        this.hadithNamesList = this.ryadBab137List;
+        break;
+        case 'ryad-bab-138':
+        this.titleHeader = 'باب تحريم ابتدائنا الكفار بالسلام، وكيفية الرد عليهم واستحباب السلام مع أهل مجلس فيهم مسلمون وكفار';
+        this.hadithNamesList = this.ryadBab138List;
+        break;
+        case 'ryad-bab-139':
+        this.titleHeader = 'باب استحباب السلام إذا قام من المجلس وفارق جلساءه أو جليسه';
+        this.hadithNamesList = this.ryadBab139List;
+        break;
+        case 'ryad-bab-140':
+        this.titleHeader = 'باب الاستئذان وآدابه';
+        this.hadithNamesList = this.ryadBab140List;
+        break;
+        case 'ryad-bab-141':
+        this.titleHeader = 'باب بيان أن السنة إذا قيل للمستأذن من أنت؟ أن يقول فلان فيسمي نفسه بما يعرف به من اسم أو كنية وكراهية قول أنا ونحوها';
+        this.hadithNamesList = this.ryadBab141List;
+        break;
        
 
         
