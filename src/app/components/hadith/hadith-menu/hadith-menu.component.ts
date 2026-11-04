@@ -302,6 +302,15 @@ hadithNamesList: string[] = [];
     'الحديث الثالث',
     'الحديث الرابع',
   ];
+  ryadBab142List: string[] = [
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+    'الحديث السابع',
+  ];
 
 
 
@@ -466,6 +475,10 @@ constructor(private router: Router,
         case 'ryad-bab-141':
         this.titleHeader = 'باب بيان أن السنة إذا قيل للمستأذن من أنت؟ أن يقول فلان فيسمي نفسه بما يعرف به من اسم أو كنية وكراهية قول أنا ونحوها';
         this.hadithNamesList = this.ryadBab141List;
+        break;
+        case 'ryad-bab-142':
+        this.titleHeader =' باب استحباب تشميت العاطس إذا حمد الله تعالى وكراهية تشميته إذا لم يحمد الله تعالى وبيان آداب التشميت والعطاس والتثاوب';
+        this.hadithNamesList = this.ryadBab142List;
         break;
        
 

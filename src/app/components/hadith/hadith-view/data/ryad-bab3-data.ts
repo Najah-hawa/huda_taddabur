@@ -34,7 +34,6 @@ explanation: ` `,
     
      }] } 
   },
-
   '2': {
     title: 'باب الصبر',
     name: '', 

@@ -24,6 +24,7 @@ import { RYAD_BAB138_HADITHS } from './data/ryad-bab138-data';
 import { RYAD_BAB139_HADITHS } from './data/ryad-bab139-data';
 import { RYAD_BAB140_HADITHS } from './data/ryad-bab140-data';
 import { RYAD_BAB141_HADITHS } from './data/ryad-bab141-data';
+import { RYAD_BAB142_HADITHS } from './data/ryad-bab142-data';
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
@@ -133,6 +134,10 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-141': {
     title: 'باب بيان أن السنة إذا قيل للمستأذن من أنت؟ أن يقول فلان فيسمي نفسه بما يعرف به من اسم أو كنية وكراهية قول أنا ونحوها',
     data: RYAD_BAB141_HADITHS
+  },
+  'ryad-bab-142': {
+    title: ' باب استحباب تشميت العاطس إذا حمد الله تعالى وكراهية تشميته إذا لم يحمد الله تعالى وبيان آداب التشميت والعطاس والتثاوب',
+    data: RYAD_BAB142_HADITHS
   }
 
 };
