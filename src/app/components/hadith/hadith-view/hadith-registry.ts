@@ -26,6 +26,7 @@ import { RYAD_BAB140_HADITHS } from './data/ryad-bab140-data';
 import { RYAD_BAB141_HADITHS } from './data/ryad-bab141-data';
 import { RYAD_BAB142_HADITHS } from './data/ryad-bab142-data';
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
+import { RYAD_BAB143_HADITHS } from './data/ryad-bab143-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -138,6 +139,10 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-142': {
     title: ' باب استحباب تشميت العاطس إذا حمد الله تعالى وكراهية تشميته إذا لم يحمد الله تعالى وبيان آداب التشميت والعطاس والتثاوب',
     data: RYAD_BAB142_HADITHS
+  },
+  'ryad-bab-143': {
+    title: 'باب استحباب المصافحة عند اللقاء وبشاشة الوجه وَتقبيل يد الرجل الصالح.. وَتقبيل ولده شفقة وَمعانقة القادم من السفر وَكراهية الانحناء',
+    data: RYAD_BAB143_HADITHS
   }
 
 };
