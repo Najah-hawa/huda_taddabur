@@ -240,4 +240,46 @@ explanation: ` <div class="explanation-content">
     
      }] } 
   },
+  '7': {
+    title: '  الحديث السابع ', 
+    name: 'باب استحباب المصافحة عند اللقاء وبشاشة الوجه وَتقبيل يد الرجل الصالح.. وَتقبيل ولده شفقة وَمعانقة القادم من السفر وَكراهية الانحناء',
+    hintText: '  الحديث السابع', 
+    audioUrl: '',
+    imageUrls: [ '/images/ryad/bab143/hadith7-bab143.png'],
+explanation: ` <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+       <li><b>  قدام : </b><span>عاد من سفر  </span></li>
+       <li><b>  فقرع : </b><span>طرق ودق </span></li>
+       <li><b>   يجر ثوبه: </b><span>لم يضيع موضعه وهو دليل على الاسراع   </span></li>
+      </ul>
+</div>`,
+    box1Title:'فوائد الحديث ',  
+    box1Items: [
+    '<b>  استحباب قصد القادم أول قدومه من يتربك به   </b>',
+    '<b>   مشروعية المعانقة للقادم من السفر  </b>',
+    '<b>   الحث على محبة الاخوان </b>',
+    '<b>   الاستبشار بقدوم الآخرين والتعجيل للقائهم من أسباب كسب القلوب وزيادة المحبة </b>',
+    '<b>  الاقتداء برسول الله في عدم تعالي ذي  للسلطان على راعيتهم بل معاملتهم كالإخوان  </b>',
+    '<b>  فضل زيد بن حارثة وحبّ رسول الله له  </b>',
+ ],
+    box2Title:'',
+    box2Items: [],
+    box3Title: '',
+    box3Items: [
+    ],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
 }
