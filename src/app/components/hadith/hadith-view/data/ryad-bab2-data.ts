@@ -1,5 +1,5 @@
 export const RYAD_BAB2_HADITHS: Record<string, any> = {
-   '1': {
+  '1': {
     title: 'باب التوبة', 
     name: 'باب التوبة', 
     hintText: 'المقدمة',
