@@ -4,7 +4,7 @@ export const RYAD_BAB149_HADITHS: Record<string, any> = {
     name: 'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
     hintText: '  الحديث الأول', 
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab148/hadith1-bab148.png'],
+    imageUrls: [ '/images/ryad/bab149/hadith1-bab149.png'],
 explanation: ` `,
     box1Title:'',  
     box1Items: [
@@ -34,7 +34,7 @@ explanation: ` `,
     name: 'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
     hintText: '  الحديث الثاني', 
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab148/hadith2-bab148.png'],
+    imageUrls: [ '/images/ryad/bab149/hadith2-bab149.png'],
 explanation: ` `,
     box1Title:'',  
     box1Items: [
@@ -64,7 +64,7 @@ explanation: ` `,
     name: 'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
     hintText: '  الحديث الثالث ', 
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab148/hadith3-bab148.png'],
+    imageUrls: [ '/images/ryad/bab149/hadith3-bab149.png'],
 explanation: `
  <div class="explanation-content">
       <ul class="vocabulary-list"> 
