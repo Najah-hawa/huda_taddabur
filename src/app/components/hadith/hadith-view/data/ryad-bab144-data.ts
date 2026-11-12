@@ -153,7 +153,7 @@ explanation: ` <div class="explanation-content">
     name: 'باب عيادة المريض',
     hintText: '  الحديث الرابع ', 
     audioUrl: '',
-    imageUrls: [ '/images/ryad/bab144/hadith2-bab144.png'],
+    imageUrls: [ '/images/ryad/bab144/hadith4-bab144.png'],
 explanation: ` <div class="explanation-content">
       <ul class="vocabulary-list"> 
        <li><b>   فكوا: </b><span>اطلقوا سراحه.  </span></li>
