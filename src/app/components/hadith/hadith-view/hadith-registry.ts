@@ -27,6 +27,12 @@ import { RYAD_BAB141_HADITHS } from './data/ryad-bab141-data';
 import { RYAD_BAB142_HADITHS } from './data/ryad-bab142-data';
 import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 import { RYAD_BAB143_HADITHS } from './data/ryad-bab143-data';
+import { RYAD_BAB144_HADITHS } from './data/ryad-bab144-data';
+import { RYAD_BAB145_HADITHS } from './data/ryad-bab145-data';
+import { RYAD_BAB146_HADITHS } from './data/ryad-bab146-data';
+import { RYAD_BAB147_HADITHS } from './data/ryad-bab147-data';
+import { RYAD_BAB148_HADITHS } from './data/ryad-bab148-data';
+import { RYAD_BAB149_HADITHS } from './data/ryad-bab149-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -143,6 +149,30 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-143': {
     title: 'باب استحباب المصافحة عند اللقاء وبشاشة الوجه وَتقبيل يد الرجل الصالح.. وَتقبيل ولده شفقة وَمعانقة القادم من السفر وَكراهية الانحناء',
     data: RYAD_BAB143_HADITHS
+  },
+  'ryad-bab-144': {
+    title:'باب عيادة المريض',
+    data: RYAD_BAB144_HADITHS
+  },
+  'ryad-bab-145': {
+    title:'باب ما يدعى به للمريض',
+    data: RYAD_BAB145_HADITHS
+  },
+  'ryad-bab-146': {
+    title:'باب استحباب سؤال أهل المريض عن حاله',
+    data: RYAD_BAB146_HADITHS
+  },
+  'ryad-bab-147': {
+    title:'باب ما يقوله من أيس من حياته',
+    data: RYAD_BAB147_HADITHS
+  },
+  'ryad-bab-148': {
+    title:'باب استحباب وصية أهل المريض ومن يخدمه بالإحسان إليه والصبر على ما يشق من أمره',
+    data: RYAD_BAB148_HADITHS
+  },
+  'ryad-bab-149': {
+    title:'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
+    data: RYAD_BAB149_HADITHS
   }
 
 };

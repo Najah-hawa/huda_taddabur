@@ -282,4 +282,79 @@ explanation: ` <div class="explanation-content">
     
      }] } 
   },
+  '8': {
+    title: '  الحديث الثامن ', 
+    name: 'باب استحباب المصافحة عند اللقاء وبشاشة الوجه وَتقبيل يد الرجل الصالح.. وَتقبيل ولده شفقة وَمعانقة القادم من السفر وَكراهية الانحناء',
+    hintText: '  الحديث الثامن', 
+    audioUrl: '',
+    imageUrls: [ '/images/ryad/bab143/hadith8-bab143.png'],
+explanation: ` <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+       <li><b>   لا تحقرن : </b><span> الحقر في كل معاني الذلة </span></li>
+       <li><b>  تصاغرت : </b><span>المحقرات الصغائر</span></li>
+       <li><b> المعروف : </b><span> اسم جامع لكل ما عُرف من طاعة الله والتقرب إليه والإحسان إلى الناس وهو كل ما ندب إليه الشرع من المحسنات ونهى عن القبائح </span></li>
+      </ul>
+</div>`,
+    box1Title:'فوائد الحديث ',  
+    box1Items: [
+    '<b>   الحث على فعل المعروف وما تيسر منه  وإن قلّ كطلاقة الوجه عند اللقاء  </b>',
+    '<b>   عدم الاستهانة بأي عمل ما دام من وجوه الخير  </b>',
+    '<b>   استحباب إدخال السرور على الآخرين لما فيه من تحقيق الألفة.  </b>',
+ ],
+    box2Title:'',
+    box2Items: [],
+    box3Title: '',
+    box3Items: [
+    ],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  },
+  '9': {
+    title: '  الحديث التاسع ', 
+    name: 'باب استحباب المصافحة عند اللقاء وبشاشة الوجه وَتقبيل يد الرجل الصالح.. وَتقبيل ولده شفقة وَمعانقة القادم من السفر وَكراهية الانحناء',
+    hintText: '  الحديث التاسع', 
+    audioUrl: '',
+    imageUrls: [ '/images/ryad/bab143/hadith9-bab143.png'],
+explanation: ` <div class="explanation-content">
+      <ul class="vocabulary-list"> 
+       <li><b>  الولد : </b><span>  يطلق على الذكر والأنثى المفرد المثنى الجمع  </span></li>
+      </ul>
+</div>`,
+    box1Title:'فوائد الحديث ',  
+    box1Items: [
+    '<b>  تقبيل الولد وغيره من الأهل المحارم وغيرهم من الاجانب إنما يكون  للشفقة والرحمة.   </b>',
+    '<b>   رحمة الله للعباد مرتبطة بتراحمهم فيما بينهم.  </b>',
+ ],
+    box2Title:'',
+    box2Items: [],
+    box3Title: '',
+    box3Items: [
+    ],
+    box4Title: '',
+    box4Items: [],
+    metaDescription:'',
+    metaKeywords:'',
+    quizQuestions: { 
+    hadith_title_prov: '', // العنوان الذي تطلبه الـ Interface
+    questions: [ // مصفوفة الأسئلة داخل خاصية questions
+    {
+      id: 1,
+      text: '',
+      options: [''],
+      correctAnswer: '  ',
+    
+     }] } 
+  }
 }

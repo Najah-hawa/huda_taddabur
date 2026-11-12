@@ -318,10 +318,47 @@ hadithNamesList: string[] = [];
     'الحديث الرابع',
     'الحديث الخامس',
     'الحديث السادس',
-    //'الحديث السابع',
-    //'الحديث الثامن',
-    //'الحديث التاسع',
+    'الحديث السابع',
+    'الحديث الثامن',
+    'الحديث التاسع',
   ];
+  ryadBab144List: string[] = [
+    '  كتاب عيادة المريض وتشييع الميت والصلاة عليه وحضور دفنه والمكث عند قبره بعد دفنه ', 
+    'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+    'الحديث السابع'
+  ];
+  ryadBab145List: string[] = [
+   'الحديث الأول',
+    'الحديث الثاني',
+    'الحديث الثالث',
+    'الحديث الرابع',
+    'الحديث الخامس',
+    'الحديث السادس',
+    'الحديث السابع', 
+    'الحديث الثامن',
+    'الحديث التاسع'
+  ];
+  ryadBab146List: string[] = [
+   'الحديث الأول',
+  ];
+   ryadBab147List: string[] = [
+   'الحديث الأول',
+    'الحديث الثاني',
+  ];
+   ryadBab148List: string[] = [
+   'الحديث الأول',
+  ];
+   ryadBab149List: string[] = [
+   'الحديث الأول',
+    'الحديث الثاني',
+     'الحديث الثالث',
+  ];
+
 
 
 
@@ -495,11 +532,35 @@ constructor(private router: Router,
         this.titleHeader = 'باب استحباب المصافحة عند اللقاء وبشاشة الوجه وَتقبيل يد الرجل الصالح.. وَتقبيل ولده شفقة وَمعانقة القادم من السفر وَكراهية الانحناء';
         this.hadithNamesList = this.ryadBab143List;
         break;
+        case 'ryad-bab-144':
+        this.titleHeader = ' باب عيادة المريض  ';
+        this.hadithNamesList = this.ryadBab144List;
+        break;
+        case 'ryad-bab-145':
+        this.titleHeader = 'باب ما يدعى به للمريض'
+        this.hadithNamesList = this.ryadBab145List;
+        break; 
+        case 'ryad-bab-146':
+        this.titleHeader = 'باب استحباب سؤال أهل المريض عن حاله';
+        this.hadithNamesList = this.ryadBab146List;
+        break;
+        case 'ryad-bab-147':
+        this.titleHeader = 'باب ما يقوله من أيس من حياته';
+        this.hadithNamesList = this.ryadBab147List;
+        break;
+         case 'ryad-bab-148':
+        this.titleHeader = 'باب استحباب وصية أهل المريض ومن يخدمه بالإحسان إليه والصبر على ما يشق من أمره',
+        this.hadithNamesList = this.ryadBab148List;
+        break;
+         case 'ryad-bab-149':
+        this.titleHeader = 'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك';
+        this.hadithNamesList = this.ryadBab149List;
+        break;
 
        
        
 
-        
+   
 
 
       case 'hadith-nawawi-40':
