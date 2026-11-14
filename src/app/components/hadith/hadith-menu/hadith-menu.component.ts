@@ -358,6 +358,33 @@ hadithNamesList: string[] = [];
     'الحديث الثاني',
      'الحديث الثالث',
   ];
+  ryadBab150List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+  ];
+  ryadBab151List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab152List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+   'الحديث الرابع',
+   'الحديث الخامس',
+  ];
+  ryadBab153List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+  ];
+  ryadBab154List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab155List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+  ];
 
 
 
@@ -555,6 +582,30 @@ constructor(private router: Router,
          case 'ryad-bab-149':
         this.titleHeader = 'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك';
         this.hadithNamesList = this.ryadBab149List;
+        break;
+        case 'ryad-bab-150':
+        this.titleHeader = '١٥٠ - باب تلقين المحتضر: لا إله إلا الله';
+        this.hadithNamesList = this.ryadBab150List;
+        break;
+        case 'ryad-bab-151':
+        this.titleHeader = '١٥١ - باب ما يقوله بعد تغميض الميت';
+        this.hadithNamesList = this.ryadBab151List;
+        break;
+        case 'ryad-bab-152':
+        this.titleHeader = '١٥٢ - باب ما يقال عند الميت وما يقوله من مات له ميت';
+        this.hadithNamesList = this.ryadBab152List;
+        break;
+        case 'ryad-bab-153':
+        this.titleHeader = '١٥٣- باب جواز البكاء على الميت بغير ندب ولا نياحة';
+        this.hadithNamesList = this.ryadBab153List;
+        break;
+        case 'ryad-bab-154':
+        this.titleHeader = '١٥٤ - باب الكف عما يرى في الميت من مكروه';
+        this.hadithNamesList = this.ryadBab154List;
+        break;
+        case 'ryad-bab-155':
+        this.titleHeader = '١٥٥- باب الصلاة على الميت وتشييعه وحضور دفنه وكراهة اتباع النساء الجنائز';
+        this.hadithNamesList = this.ryadBab155List;
         break;
 
        

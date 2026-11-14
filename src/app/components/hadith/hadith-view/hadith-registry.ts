@@ -33,6 +33,12 @@ import { RYAD_BAB146_HADITHS } from './data/ryad-bab146-data';
 import { RYAD_BAB147_HADITHS } from './data/ryad-bab147-data';
 import { RYAD_BAB148_HADITHS } from './data/ryad-bab148-data';
 import { RYAD_BAB149_HADITHS } from './data/ryad-bab149-data';
+import { RYAD_BAB150_HADITHS } from './data/ryad-bab150-data';
+import { RYAD_BAB151_HADITHS } from './data/ryad-bab151-data';
+import { RYAD_BAB152_HADITHS } from './data/ryad-bab152-data';
+import { RYAD_BAB153_HADITHS } from './data/ryad-bab153-data';
+import { RYAD_BAB154_HADITHS } from './data/ryad-bab154-data';
+import { RYAD_BAB155_HADITHS } from './data/ryad-bab155-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -173,6 +179,30 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-149': {
     title:'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
     data: RYAD_BAB149_HADITHS
+  },
+  'ryad-bab-150': {
+    title:'١٥٠ - باب تلقين المحتضر: لا إله إلا الله',
+    data: RYAD_BAB150_HADITHS
+  },
+  'ryad-bab-151': {
+    title:'١٥١ - باب ما يقوله بعد تغميض الميت',
+    data: RYAD_BAB151_HADITHS
+  },
+  'ryad-bab-152': {
+    title:'١٥٢ - باب ما يقال عند الميت وما يقوله من مات له ميت',
+    data: RYAD_BAB152_HADITHS
+  },
+  'ryad-bab-153': {
+    title:'١٥٣- باب جواز البكاء على الميت بغير ندب ولا نياحة',
+    data: RYAD_BAB153_HADITHS
+  },
+  'ryad-bab-154': {
+    title:'١٥٤ - باب الكف عما يرى في الميت من مكروه',
+    data: RYAD_BAB154_HADITHS
+  },
+  'ryad-bab-155': {
+    title:'١٥٥- باب الصلاة على الميت وتشييعه وحضور دفنه وكراهة اتباع النساء الجنائز',
+    data: RYAD_BAB155_HADITHS
   }
 
 };
