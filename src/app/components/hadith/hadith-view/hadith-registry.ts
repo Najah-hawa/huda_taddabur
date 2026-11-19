@@ -39,6 +39,9 @@ import { RYAD_BAB152_HADITHS } from './data/ryad-bab152-data';
 import { RYAD_BAB153_HADITHS } from './data/ryad-bab153-data';
 import { RYAD_BAB154_HADITHS } from './data/ryad-bab154-data';
 import { RYAD_BAB155_HADITHS } from './data/ryad-bab155-data';
+import { RYAD_BAB156_HADITHS } from './data/ryad-bab156-data';
+import { RYAD_BAB157_HADITHS } from './data/ryad-bab157-data';
+import { RYAD_BAB158_HADITHS } from './data/ryad-bab158-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -203,6 +206,18 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-155': {
     title:'١٥٥- باب الصلاة على الميت وتشييعه وحضور دفنه وكراهة اتباع النساء الجنائز',
     data: RYAD_BAB155_HADITHS
+  },
+  'ryad-bab-156': {
+    title:'١٥٦ - باب استحباب تكثير المصلين على الجنازة وجعل صفوفهم ثلاثة فأكثر',
+    data: RYAD_BAB156_HADITHS
+  },
+  'ryad-bab-157': {
+    title:'١٥٧ - باب ما يُقرأ في صلاة الجنازة ',
+    data: RYAD_BAB157_HADITHS
+  },
+  'ryad-bab-158': {
+    title:'١٥٨ - باب الإسراع بالجنازة',
+    data: RYAD_BAB158_HADITHS
   }
 
 };

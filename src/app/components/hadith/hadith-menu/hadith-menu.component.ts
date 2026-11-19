@@ -385,6 +385,24 @@ hadithNamesList: string[] = [];
    'الحديث الثاني',
    'الحديث الثالث',
   ];
+  ryadBab156List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+  ];
+  ryadBab157List: string[] = [
+   'مقدمة الصلاة على الجنازة',
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+   'الحديث الرابع',
+   'الحديث الخامس',
+   'الحديث السادس',
+  ];
+   ryadBab158List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني'
+  ];
 
 
 
@@ -607,10 +625,21 @@ constructor(private router: Router,
         this.titleHeader = '١٥٥- باب الصلاة على الميت وتشييعه وحضور دفنه وكراهة اتباع النساء الجنائز';
         this.hadithNamesList = this.ryadBab155List;
         break;
+        case 'ryad-bab-156':
+        this.titleHeader = '١٥٦ - باب استحباب تكثير المصلين على الجنازة وجعل صفوفهم ثلاثة فأكثر';
+        this.hadithNamesList = this.ryadBab156List;
+        break;
+        case 'ryad-bab-157':
+        this.titleHeader = '١٥٧ - باب ما يُقرأ في صلاة الجنازة ';
+        this.hadithNamesList = this.ryadBab157List;
+        break;
+        case 'ryad-bab-158':
+        this.titleHeader = '١٥٨ - باب الإسراع بالجنازة';
+        this.hadithNamesList = this.ryadBab158List;
+        break;
 
        
-       
-
+      
    
 
 
