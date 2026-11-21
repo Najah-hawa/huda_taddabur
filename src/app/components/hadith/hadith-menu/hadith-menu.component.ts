@@ -403,6 +403,34 @@ hadithNamesList: string[] = [];
    'الحديث الأول',
    'الحديث الثاني'
   ];
+  ryadBab159List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني'
+  ];
+  ryadBab160List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab161List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني'
+  ];
+  ryadBab162List: string[] = [
+  'مقدمة',
+   'الحديث الأول',
+   'الحديث الثاني'
+  ];
+  ryadBab163List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني'
+  ];
+  ryadBab164List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث'
+  ];
+  ryadBab165List: string[] = [
+   'الحديث الأول',
+  ];
 
 
 
@@ -636,6 +664,34 @@ constructor(private router: Router,
         case 'ryad-bab-158':
         this.titleHeader = '١٥٨ - باب الإسراع بالجنازة';
         this.hadithNamesList = this.ryadBab158List;
+        break;
+        case 'ryad-bab-159':
+        this.titleHeader = '159 - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.';
+        this.hadithNamesList = this.ryadBab159List;
+        break;
+        case 'ryad-bab-160':
+        this.titleHeader = '١٦٠ - باب الموعظة عند الصبر';
+        this.hadithNamesList = this.ryadBab160List;
+        break;
+        case 'ryad-bab-161':
+        this.titleHeader = '١٦١- الدعاء للميت بعد دفنه وَالقعود عند قبره ساعة للدعاء له وَ الاستغفار وَ القراءة';
+        this.hadithNamesList = this.ryadBab161List;
+        break;
+        case 'ryad-bab-162':
+        this.titleHeader = '١٦٢- باب الصدقة عن الميت وَ الدعاء له';
+        this.hadithNamesList = this.ryadBab162List;
+        break;
+        case 'ryad-bab-163':
+        this.titleHeader = '١٦٣-باب الثناء ع الميت';
+        this.hadithNamesList = this.ryadBab163List;
+        break;
+        case 'ryad-bab-164':
+        this.titleHeader = '١٦٤ - باب فضل من مات وله أولاد صغار';
+        this.hadithNamesList = this.ryadBab164List;
+        break;
+        case 'ryad-bab-165':
+        this.titleHeader = '١٦٥ -باب البكاء وَالخوف عند المرور بقبور الظالمين وَمصارعهم وَاظهار الافتقار إلى الله وَالتحذير من الغفلة عن ذلك.';
+        this.hadithNamesList = this.ryadBab165List;
         break;
 
        

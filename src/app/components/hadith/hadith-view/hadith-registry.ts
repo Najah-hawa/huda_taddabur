@@ -42,6 +42,13 @@ import { RYAD_BAB155_HADITHS } from './data/ryad-bab155-data';
 import { RYAD_BAB156_HADITHS } from './data/ryad-bab156-data';
 import { RYAD_BAB157_HADITHS } from './data/ryad-bab157-data';
 import { RYAD_BAB158_HADITHS } from './data/ryad-bab158-data';
+import { RYAD_BAB159_HADITHS } from './data/ryad-bab159-data';
+import { RYAD_BAB160_HADITHS } from './data/ryad-bab160-data';
+import { RYAD_BAB161_HADITHS } from './data/ryad-bab161-data';
+import { RYAD_BAB162_HADITHS } from './data/ryad-bab162-data';
+import { RYAD_BAB163_HADITHS } from './data/ryad-bab163-data';
+import { RYAD_BAB164_HADITHS } from './data/ryad-bab164-data';
+import { RYAD_BAB165_HADITHS } from './data/ryad-bab165-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -218,6 +225,34 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-158': {
     title:'١٥٨ - باب الإسراع بالجنازة',
     data: RYAD_BAB158_HADITHS
+  },
+  'ryad-bab-159': {
+    title:'159 - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.',
+    data: RYAD_BAB159_HADITHS
+  },
+  'ryad-bab-160': {
+    title:'١٦٠ - باب الموعظة عند الصبر',
+    data: RYAD_BAB160_HADITHS
+  },
+  'ryad-bab-161': {
+    title:'١٦١- الدعاء للميت بعد دفنه وَالقعود عند قبره ساعة للدعاء له وَ الاستغفار وَ القراءة',
+    data: RYAD_BAB161_HADITHS
+  },
+  'ryad-bab-162': {
+    title:'١٦٢- باب الصدقة عن الميت وَ الدعاء له',
+    data: RYAD_BAB162_HADITHS
+  },
+  'ryad-bab-163': {
+    title:'١٦٣-باب الثناء ع الميت',
+    data: RYAD_BAB163_HADITHS
+  },
+  'ryad-bab-164': {
+    title:'١٦٤ - باب فضل من مات وله أولاد صغار',
+    data: RYAD_BAB164_HADITHS
+  },
+  'ryad-bab-165': {
+    title:'١٦٥ -باب البكاء وَالخوف عند المرور بقبور الظالمين وَمصارعهم وَاظهار الافتقار إلى الله وَالتحذير من الغفلة عن ذلك.',
+    data: RYAD_BAB165_HADITHS
   }
 
 };
