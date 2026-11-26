@@ -431,6 +431,31 @@ hadithNamesList: string[] = [];
   ryadBab165List: string[] = [
    'الحديث الأول',
   ];
+  ryadBab166List: string[] = [
+    'كتاب آداب السفر',
+   'الحديث الأول',
+   'الحديث الثاني'
+  ];
+  ryadBab167List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+   'الحديث الرابع',
+  ];
+  ryadBab168List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+   'الحديث الرابع',
+   'الحديث الخامس',
+   'الحديث السادس',
+   'الحديث السابع'
+  ];
+  ryadBab169List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث'
+  ];
 
 
 
@@ -626,7 +651,7 @@ constructor(private router: Router,
         this.hadithNamesList = this.ryadBab148List;
         break;
          case 'ryad-bab-149':
-        this.titleHeader = 'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك';
+        this.titleHeader = ' ١٤٩- باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك';
         this.hadithNamesList = this.ryadBab149List;
         break;
         case 'ryad-bab-150':
@@ -666,7 +691,7 @@ constructor(private router: Router,
         this.hadithNamesList = this.ryadBab158List;
         break;
         case 'ryad-bab-159':
-        this.titleHeader = '159 - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.';
+        this.titleHeader = '١٥٩ - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.';
         this.hadithNamesList = this.ryadBab159List;
         break;
         case 'ryad-bab-160':
@@ -693,6 +718,27 @@ constructor(private router: Router,
         this.titleHeader = '١٦٥ -باب البكاء وَالخوف عند المرور بقبور الظالمين وَمصارعهم وَاظهار الافتقار إلى الله وَالتحذير من الغفلة عن ذلك.';
         this.hadithNamesList = this.ryadBab165List;
         break;
+        case 'ryad-bab-166':
+        this.titleHeader = '١٦٦ - باب استحباب الخروج يوم الخميس واستحبابه أول النهار';
+        this.hadithNamesList = this.ryadBab166List;
+        break;
+        case 'ryad-bab-167':
+        this.titleHeader = '١٦٧ - باب استحباب طلب الرفقة وتأميرهم على أنفسهم واحداً يطيعونه';
+        this.hadithNamesList = this.ryadBab167List;
+        break;
+        case 'ryad-bab-168':
+        this.titleHeader = '١٦٨ - باب آداب السير والنزول والمبيت والنوم في السفر';
+        this.hadithNamesList = this.ryadBab168List;
+        break;
+        case 'ryad-bab-169':
+        this.titleHeader = '١٦٩ - باب إعانة الرفيق';
+        this.hadithNamesList = this.ryadBab169List;
+        break;/*
+        case 'ryad-bab-170':
+        this.titleHeader = '';
+        this.hadithNamesList = this.ryadBab170List;
+        break;
+        */
 
        
       

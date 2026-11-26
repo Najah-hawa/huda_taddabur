@@ -1,7 +1,7 @@
 export const RYAD_BAB159_HADITHS: Record<string, any> = {
   '1': {
     title: '  الحديث الأول  ', 
-    name: '',
+    name: '١٥٩ - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.',
     audioUrl: '  الحديث الأول  ', 
     imageUrls: [ '/images/ryad/bab159/hadith1-bab159.png'],
 explanation: `<div class="explanation-content">
@@ -39,7 +39,7 @@ explanation: `<div class="explanation-content">
   },
   '2': {
     title: '  الحديث الثاني ', 
-    name: '',
+    name: '١٥٩ - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.',
     hintText: '  الحديث الثاني', 
     audioUrl: '',
     imageUrls: [ '/images/ryad/bab159/hadith2-bab159.png'],

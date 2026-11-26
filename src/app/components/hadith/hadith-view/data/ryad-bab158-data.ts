@@ -2,7 +2,8 @@ export const RYAD_BAB158_HADITHS: Record<string, any> = {
   '1': {
     title: '  الحديث الأول  ', 
     name: '١٥٨ - باب الإسراع بالجنازة',
-    audioUrl: '  الحديث الأول  ', 
+    hintText: '  الحديث الأول', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab158/hadith1-bab158.png'],
 explanation: ``,
     box1Title:'فوائد الحديث',

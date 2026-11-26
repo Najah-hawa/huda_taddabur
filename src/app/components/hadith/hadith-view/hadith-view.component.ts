@@ -220,12 +220,10 @@ const categoryObj = HADITH_CATEGORIES[category];
   this.box4Title = currentHadith.box4Title;
   this.box4Items = currentHadith.box4Items;
 
-  
-// 1. Om kategorin är Nawawi 40 (Hadith 1 till 42 i Arba'een)
+  // 1. Nawawi 40 (Hadith 1 till 42 i Arba'een) – OFÖRÄNDRAD
 if (category === 'hadith-nawawi-40') {
   this.menuRoute = '/hadith/hadith-nawawi-40/menu';
 
-  // Beräkna föregående / nästa för Nawawi 40
   const currentNum = parseInt(id, 10);
   const totalHadiths = categoryObj?.data ? Object.keys(categoryObj.data).length : 0;
 
@@ -246,29 +244,45 @@ if (category === 'hadith-nawawi-40') {
     this.routeAfter = '/hadith/hadith-nawawi-40/menu';
     this.surahNext = 'القائمة';
   }
+}
 
-} 
-// 2. Om kategorin är Nawawi Intro (ترجمة الإمام النووي)
+// 2. Nawawi Intro (ترجمة الإمام النووي)
 else if (category === 'nawawi-intro') {
   this.menuRoute = '/hadith';
 
   this.routeBefore = '/hadith';
   this.surahBefore = 'قائمة رياض الصالحين ';
-  this.routeAfter = '/hadith/ryad-bab-1/1'; 
+  this.routeAfter = '/hadith/ryad-bab-1/1';
   this.surahNext = 'الباب الأول: الإخلاص';
+}
 
-} 
-// 3. För alla andra kategorier (t.ex. Riyad Al-Salihin och dess kapitel)
+// 3. Riyad Al-Salihin och dess kapitel (bab)
 else {
   this.menuRoute = '/hadith/ryad-alsalihin';
 
   const currentNum = parseInt(id, 10);
   const totalHadiths = categoryObj?.data ? Object.keys(categoryObj.data).length : 0;
 
+  const babMatch = category?.match(/^ryad-bab-(\d+)$/);
+  const currentBabNum = babMatch ? parseInt(babMatch[1], 10) : null;
+
+  const prevBab = currentBabNum && currentBabNum > 1 ? `ryad-bab-${currentBabNum - 1}` : null;
+  const nextBab = currentBabNum ? `ryad-bab-${currentBabNum + 1}` : null;
+
+  const prevBabCategory = prevBab ? HADITH_CATEGORIES[prevBab] : undefined;
+  const nextBabCategory = nextBab ? HADITH_CATEGORIES[nextBab] : undefined;
+
+  const hasPrevBab = Boolean(prevBabCategory?.data);
+  const hasNextBab = Boolean(nextBabCategory?.data);
+
   // ⬅️ Föregående
   if (currentNum > 1) {
     this.routeBefore = `/hadith/${category}/${currentNum - 1}`;
     this.surahBefore = 'السابق';
+  } else if (hasPrevBab && prevBab && prevBabCategory) {
+    const prevTotal = Object.keys(prevBabCategory.data).length;
+    this.routeBefore = `/hadith/${prevBab}/${prevTotal}`;
+    this.surahBefore = prevBabCategory.title || 'الباب السابق';
   } else {
     this.routeBefore = '/hadith/ryad-alsalihin';
     this.surahBefore = 'أبواب رياض الصالحين';
@@ -278,6 +292,9 @@ else {
   if (currentNum < totalHadiths) {
     this.routeAfter = `/hadith/${category}/${currentNum + 1}`;
     this.surahNext = 'التالي';
+  } else if (hasNextBab && nextBab && nextBabCategory) {
+    this.routeAfter = `/hadith/${nextBab}/1`;
+    this.surahNext = nextBabCategory.title || 'الباب التالي';
   } else {
     this.routeAfter = '/hadith/ryad-alsalihin';
     this.surahNext = 'أبواب رياض الصالحين';

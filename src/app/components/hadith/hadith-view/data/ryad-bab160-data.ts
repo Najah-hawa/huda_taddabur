@@ -2,7 +2,8 @@ export const RYAD_BAB160_HADITHS: Record<string, any> = {
   '1': {
     title: '  الحديث الأول  ', 
     name: '١٦٠ - باب الموعظة عند الصبر',
-    audioUrl: '  الحديث الأول  ', 
+    hintText: '  الحديث الأول', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab160/hadith1-bab160.png'],
 explanation: `<div class="explanation-content">
       <ul class="vocabulary-list"> 

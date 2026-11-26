@@ -2,7 +2,8 @@ export const RYAD_BAB164_HADITHS: Record<string, any> = {
   '1': {
     title: '  الحديث الأول  ', 
     name: '١٦٤ - باب فضل من مات وله أولاد صغار',
-    audioUrl: '  الحديث الأول  ', 
+    hintText:'  الحديث الأول  ', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab164/hadith1-bab164.png'],
 explanation: `<div class="explanation-content">
       <ul class="vocabulary-list"> 

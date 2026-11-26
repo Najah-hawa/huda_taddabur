@@ -2,7 +2,8 @@ export const RYAD_BAB165_HADITHS: Record<string, any> = {
   '1': {
     title: '  الحديث الأول  ', 
     name: '١٦٥ -باب البكاء وَالخوف عند المرور بقبور الظالمين وَمصارعهم وَاظهار الافتقار إلى الله وَالتحذير من الغفلة عن ذلك.',
-    audioUrl: '  الحديث الأول  ', 
+    hintText:'  الحديث الأول  ', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab165/hadith1-bab165.png'],
 explanation: `<div class="explanation-content">
       <ul class="vocabulary-list"> 

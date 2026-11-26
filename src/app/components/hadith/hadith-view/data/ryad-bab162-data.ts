@@ -2,7 +2,8 @@ export const RYAD_BAB162_HADITHS: Record<string, any> = {
     '1': {
     title: '  مقدمة ', 
     name: '١٦٢- باب الصدقة عن الميت وَ الدعاء له',
-    audioUrl: ' مقدمة ', 
+    hintText:' مقدمة ', 
+    audioUrl: '', 
     imageUrls: [],
 explanation: ``,
     box1Title:'قال تعالى: (وَالذين جاؤوا من بعدهم يقولون ربنا اغفر لنا وَ لأخواننا الذين سبقونا بلايمان) ',
@@ -32,7 +33,8 @@ explanation: ``,
   '2': {
     title: '  الحديث الأول  ', 
     name: '١٦٢- باب الصدقة عن الميت وَ الدعاء له',
-    audioUrl: '  الحديث الأول  ', 
+    hintText:' الحديث الأول  ', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab162/hadith1-bab162.png'],
 explanation: `<div class="explanation-content">
       <ul class="vocabulary-list"> 
@@ -68,7 +70,7 @@ explanation: `<div class="explanation-content">
   },
   '3': {
     title: '  الحديث الثاني ', 
-    name: '',
+    name: '١٦٢- باب الصدقة عن الميت وَ الدعاء له',
     hintText: '  الحديث الثاني', 
     audioUrl: '',
     imageUrls: [ '/images/ryad/bab162/hadith2-bab162.png'],

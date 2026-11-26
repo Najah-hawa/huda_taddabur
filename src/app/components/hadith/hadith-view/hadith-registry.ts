@@ -49,6 +49,10 @@ import { RYAD_BAB162_HADITHS } from './data/ryad-bab162-data';
 import { RYAD_BAB163_HADITHS } from './data/ryad-bab163-data';
 import { RYAD_BAB164_HADITHS } from './data/ryad-bab164-data';
 import { RYAD_BAB165_HADITHS } from './data/ryad-bab165-data';
+import { RYAD_BAB166_HADITHS } from './data/ryad-bab166-data';
+import { RYAD_BAB167_HADITHS } from './data/ryad-bab167-data';
+import { RYAD_BAB168_HADITHS } from './data/ryad-bab168-data';
+import { RYAD_BAB169_HADITHS } from './data/ryad-bab169-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -187,7 +191,7 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
     data: RYAD_BAB148_HADITHS
   },
   'ryad-bab-149': {
-    title:'باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
+    title:' ١٤٩- باب جواز قول المريض: أنا وجع، أو شديد الوجع، أو موعوك، أو وارأساه، وبيان أنه لا كراهة في ذلك',
     data: RYAD_BAB149_HADITHS
   },
   'ryad-bab-150': {
@@ -227,7 +231,7 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
     data: RYAD_BAB158_HADITHS
   },
   'ryad-bab-159': {
-    title:'159 - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.',
+    title:'١٥٩ - باب تعجيل قضاء الدين عن الميت وَالمبادرة إلى تجهيزه إلا أن يموت فجأة فيترك حتى يتيقن موته.',
     data: RYAD_BAB159_HADITHS
   },
   'ryad-bab-160': {
@@ -253,6 +257,27 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-165': {
     title:'١٦٥ -باب البكاء وَالخوف عند المرور بقبور الظالمين وَمصارعهم وَاظهار الافتقار إلى الله وَالتحذير من الغفلة عن ذلك.',
     data: RYAD_BAB165_HADITHS
-  }
+  },
+  'ryad-bab-166': {
+    title: '١٦٦ - باب استحباب الخروج يوم الخميس واستحبابه أول النهار',
+    data: RYAD_BAB166_HADITHS
+  },
+  'ryad-bab-167': {
+    title: '١٦٧ - باب استحباب طلب الرفقة وتأميرهم على أنفسهم واحداً يطيعونه',
+    data: RYAD_BAB167_HADITHS
+  },
+  'ryad-bab-168': {
+    title: '١٦٨ - باب آداب السير والنزول والمبيت والنوم في السفر',
+    data: RYAD_BAB168_HADITHS
+  },
+  'ryad-bab-169': {
+    title: '١٦٩ - باب إعانة الرفيق',
+    data: RYAD_BAB169_HADITHS
+  },/*
+  'ryad-bab-10': {
+    title: '',
+    data: RYAD_BAB170_HADITHS
+  } */
+ 
 
 };

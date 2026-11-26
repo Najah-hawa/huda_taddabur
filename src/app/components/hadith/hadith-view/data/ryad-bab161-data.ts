@@ -2,7 +2,8 @@ export const RYAD_BAB161_HADITHS: Record<string, any> = {
   '1': {
     title: '  الحديث الأول  ', 
     name: '١٦١- الدعاء للميت بعد دفنه وَالقعود عند قبره ساعة للدعاء له وَ الاستغفار وَ القراءة',
-    audioUrl: '  الحديث الأول  ', 
+    hintText: '  الحديث الأول ', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab161/hadith1-bab161.png'],
 explanation: `<div class="explanation-content">
       <ul class="vocabulary-list"> 

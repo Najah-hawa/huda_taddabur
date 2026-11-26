@@ -36,7 +36,8 @@ explanation: ``,
   '2': {
     title: '  الحديث الأول  ', 
     name: '١٥٧ - باب ما يُقرأ في صلاة الجنازة',
-    audioUrl: '  الحديث الأول  ', 
+    hintText: '  الحديث الأول   ', 
+    audioUrl: '', 
     imageUrls: [ '/images/ryad/bab157/hadith1-bab157.png'],
 explanation: ` <div class="explanation-content">
       <ul class="vocabulary-list"> 
