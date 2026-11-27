@@ -456,6 +456,46 @@ hadithNamesList: string[] = [];
    'الحديث الثاني',
    'الحديث الثالث'
   ];
+  ryadBab170List: string[] = [
+    'مقدمة',
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث'
+  ];
+  ryadBab171List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+   'الحديث الثالث',
+   'الحديث الرابع',
+   'الحديث الخامس',
+  ];
+  ryadBab172List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab173List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab174List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+  ];
+  ryadBab175List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab176List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+  ];
+  ryadBab177List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab178List: string[] = [
+   'الحديث الأول',
+  ];
+  ryadBab179List: string[] = [
+   'الحديث الأول',
+   'الحديث الثاني',
+  ];
 
 
 
@@ -733,12 +773,47 @@ constructor(private router: Router,
         case 'ryad-bab-169':
         this.titleHeader = '١٦٩ - باب إعانة الرفيق';
         this.hadithNamesList = this.ryadBab169List;
-        break;/*
+        break;
         case 'ryad-bab-170':
-        this.titleHeader = '';
+        this.titleHeader = '١٧٠ - باب ما يقول إذا ركب الدابة للسفر';
         this.hadithNamesList = this.ryadBab170List;
         break;
-        */
+        case 'ryad-bab-171':
+        this.titleHeader = '١٧١ - باب استحباب تكبير المسافر إذا صعد الثنايا وشبهها وتسبيحه إذا هبط الأودية ونحوها والنهي عن المبالغة برفع الصوت بالتكبير ونحوه';
+        this.hadithNamesList = this.ryadBab171List;
+        break;
+        case 'ryad-bab-172':
+        this.titleHeader = '١٧٢ - باب استحباب الدعاء في السفر';
+        this.hadithNamesList = this.ryadBab172List;
+        break;
+        case 'ryad-bab-173':
+        this.titleHeader = '١٧٣- باب ما يدعو اذا خاف ناساً أو غيرهم .';
+        this.hadithNamesList = this.ryadBab173List;
+        break;
+        case 'ryad-bab-174':
+        this.titleHeader = '١٧٤ - باب ما يقوله إذا نزل منزلاً';
+        this.hadithNamesList = this.ryadBab174List;
+        break;
+        case 'ryad-bab-175':
+        this.titleHeader = '١٧٥ - باب استحباب تعجيل المسافر الرجوع إلى أهله إذا قضى حاجته';
+        this.hadithNamesList = this.ryadBab175List;
+        break;
+        case 'ryad-bab-176':
+        this.titleHeader = '١٧٦ - باب استحباب القدوم على أهله نهاراً وكراهته في الليل لغير حاجة';
+        this.hadithNamesList = this.ryadBab176List;
+        break;
+        case 'ryad-bab-177':
+        this.titleHeader = '١٧٧ - باب ما يقول إذا رجع وإذا رأى بلدته';
+        this.hadithNamesList = this.ryadBab177List;
+        break;
+        case 'ryad-bab-178':
+        this.titleHeader = '١٧٨ - باب استحباب ابتداء القادم بالمسجد الذي في جواره وصلاته فيه ركعتين';
+        this.hadithNamesList = this.ryadBab178List;
+        break;
+        case 'ryad-bab-179':
+        this.titleHeader = '١٧٩ - باب تحريم سفر المرأة وحدها';
+        this.hadithNamesList = this.ryadBab179List;
+        break;
 
        
       

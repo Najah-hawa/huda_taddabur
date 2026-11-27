@@ -1,5 +1,6 @@
 import { NAWAWI_HADITHS } from './data/hadith-data';
-import { RYAD_BAB1_HADITHS } from './data/ryad-bab1-data'; // حسب مسار الملف لديك
+import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
+import { RYAD_BAB1_HADITHS } from './data/ryad-bab1-data'; 
 import { RYAD_BAB2_HADITHS } from './data/ryad-bab2-data'; 
 import { RYAD_BAB3_HADITHS } from './data/ryad-bab3-data'; 
 import { RYAD_BAB4_HADITHS } from './data/ryad-bab4-data';
@@ -25,7 +26,6 @@ import { RYAD_BAB139_HADITHS } from './data/ryad-bab139-data';
 import { RYAD_BAB140_HADITHS } from './data/ryad-bab140-data';
 import { RYAD_BAB141_HADITHS } from './data/ryad-bab141-data';
 import { RYAD_BAB142_HADITHS } from './data/ryad-bab142-data';
-import { NAWAWI_INTRO } from './data/intro-imam-nawawi'; 
 import { RYAD_BAB143_HADITHS } from './data/ryad-bab143-data';
 import { RYAD_BAB144_HADITHS } from './data/ryad-bab144-data';
 import { RYAD_BAB145_HADITHS } from './data/ryad-bab145-data';
@@ -53,6 +53,16 @@ import { RYAD_BAB166_HADITHS } from './data/ryad-bab166-data';
 import { RYAD_BAB167_HADITHS } from './data/ryad-bab167-data';
 import { RYAD_BAB168_HADITHS } from './data/ryad-bab168-data';
 import { RYAD_BAB169_HADITHS } from './data/ryad-bab169-data';
+import { RYAD_BAB170_HADITHS } from './data/ryad-bab170-data';
+import { RYAD_BAB171_HADITHS } from './data/ryad-bab171-data';
+import { RYAD_BAB172_HADITHS } from './data/ryad-bab172-data';
+import { RYAD_BAB173_HADITHS } from './data/ryad-bab173-data';
+import { RYAD_BAB174_HADITHS } from './data/ryad-bab174-data';
+import { RYAD_BAB175_HADITHS } from './data/ryad-bab175-data';
+import { RYAD_BAB176_HADITHS } from './data/ryad-bab176-data';
+import { RYAD_BAB177_HADITHS } from './data/ryad-bab177-data';
+import { RYAD_BAB178_HADITHS } from './data/ryad-bab178-data';
+import { RYAD_BAB179_HADITHS } from './data/ryad-bab179-data';
 export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<string, any> }> = {
   'hadith-nawawi-40': {
     title: 'الأربعون النووية',
@@ -273,11 +283,47 @@ export const HADITH_CATEGORIES: Record<string, { title: string; data: Record<str
   'ryad-bab-169': {
     title: '١٦٩ - باب إعانة الرفيق',
     data: RYAD_BAB169_HADITHS
-  },/*
-  'ryad-bab-10': {
-    title: '',
+  },
+  'ryad-bab-170': {
+    title: '١٧٠ - باب ما يقول إذا ركب الدابة للسفر',
     data: RYAD_BAB170_HADITHS
-  } */
+  },
+  'ryad-bab-171': {
+    title: '١٧١ - باب استحباب تكبير المسافر إذا صعد الثنايا وشبهها وتسبيحه إذا هبط الأودية ونحوها والنهي عن المبالغة برفع الصوت بالتكبير ونحوه',
+    data: RYAD_BAB171_HADITHS
+  },
+  'ryad-bab-172': {
+    title: '١٧٢ - باب استحباب الدعاء في السفر',
+    data: RYAD_BAB172_HADITHS
+  },
+  'ryad-bab-173': {
+    title: '١٧٣- باب ما يدعو اذا خاف ناساً أو غيرهم',
+    data: RYAD_BAB173_HADITHS
+  },
+  'ryad-bab-174': {
+    title: '١٧٤ - باب ما يقوله إذا نزل منزلاً',
+    data: RYAD_BAB174_HADITHS
+  },
+  'ryad-bab-175': {
+    title: '١٧٥ - باب استحباب تعجيل المسافر الرجوع إلى أهله إذا قضى حاجته',
+    data: RYAD_BAB175_HADITHS
+  },
+  'ryad-bab-176': {
+    title: '١٧٦ - باب استحباب القدوم على أهله نهاراً وكراهته في الليل لغير حاجة',
+    data: RYAD_BAB176_HADITHS
+  },
+  'ryad-bab-177': {
+    title: '١٧٧ - باب ما يقول إذا رجع وإذا رأى بلدته',
+    data: RYAD_BAB177_HADITHS
+  },
+  'ryad-bab-178': {
+    title: '١٧٨ - باب استحباب ابتداء القادم بالمسجد الذي في جواره وصلاته فيه ركعتين',
+    data: RYAD_BAB178_HADITHS
+  },
+  'ryad-bab-179': {
+    title: '١٧٩ - باب تحريم سفر المرأة وحدها',
+    data: RYAD_BAB179_HADITHS
+  } 
  
 
 };
